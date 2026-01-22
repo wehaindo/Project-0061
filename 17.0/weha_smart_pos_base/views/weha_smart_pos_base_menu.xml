@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <menuitem id="menu_pos_base_features"
+        name="Other Features"
+        parent="point_of_sale.menu_point_root"
+        sequence="60"/>
+   
+</odoo>

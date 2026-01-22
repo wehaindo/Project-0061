@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.OrderSummary" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('line')]/div[hasclass('entry')]" position="inside">
+            <div class="st_total"></div>
+        </xpath>
+        <xpath expr="//div[hasclass('line')]/div[hasclass('entry')]/div[hasclass('st_total')]" position="inside">
+             <xpath expr="//div[hasclass('line')]/div[hasclass('entry')]/span[hasclass('badge')]" position="move"/>
+             <xpath expr="//div[hasclass('line')]/div[hasclass('entry')]/span[hasclass('value')]" position="move"/>
+        </xpath>
+    </t>
+</templates>

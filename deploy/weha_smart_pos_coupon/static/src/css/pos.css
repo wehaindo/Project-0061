@@ -1,0 +1,40 @@
+.wallet-titled-case{
+    letter-spacing:1px;
+}
+.pos .walletLedgerList-screen .full-content{
+    overflow: auto;
+}
+
+.pos .walletLedgerList-screen .wallet-list{
+    font-size: 16px;
+    width: 100%;
+}
+.pos .walletLedgerList-screen .wallet-list th,
+.pos .walletLedgerList-screen .wallet-list td {
+    padding: 12px 8px;
+}
+.pos .walletLedgerList-screen .wallet-list tr{
+    transition: all 150ms linear;
+    background: rgb(230,230,230);
+}
+.pos .walletLedgerList-screen .wallet-list thead > tr,
+.pos .walletLedgerList-screen .wallet-list tr:nth-child(even) {
+    background: rgb(247,247,247);
+}
+.pos .walletLedgerList-screen .wallet-list tr.highlight{
+    transition: all 150ms linear;
+    background: rgb(110,200,155) !important;
+    color: white;
+}
+.pos .walletLedgerList-screen .window,
+.pos .walletLedgerList-screen .full-content .subwindow{
+    display: block;amount_return
+}
+.pos .walletLedgerList-screen .full-content .subwindow-container{
+    display: block;
+    height: 100%;
+}
+.pos .walletLedgerList-screen .full-content .subwindow.collapsed,
+.pos .walletLedgerList-screen .full-content .subwindow-container.collapsed{
+    height: auto;
+}

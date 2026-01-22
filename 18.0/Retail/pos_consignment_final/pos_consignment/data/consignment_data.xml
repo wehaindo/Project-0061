@@ -1,0 +1,6 @@
+
+<odoo>
+  <record id="consignment_group_user" model="res.groups">
+    <field name="name">Consignment / User</field>
+  </record>
+</odoo>

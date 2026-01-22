@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="MemberDayIcon" owl="1">
+        <div class="oe_status">
+            <div class="js_connected oe_icon"
+                title="Member Day Active">
+                <i class="fa fa-fw fa-check" role="img" aria-label="Memeber Day"></i>
+            </div>
+        </div>
+    </t>
+
+</templates>

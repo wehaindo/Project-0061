@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="BankManualPopup" owl="1">
+        <div class="popup bank-manual-popup">
+            <header class="title">
+                Bank Card Information
+            </header>
+            <main class="body">
+                <input id="cardnumber" style="margin-bottom:10px" name="cardnumber" type="text"  t-model="state.cardNumberValue" t-ref="cardNumberRef" placeholder="Card Number" required="required"/> 
+                <input id="expireddate" style="margin-bottom:10px"  name="expireddate" type="text"  t-model="state.expiredDateValue" t-ref="expiredDateRef" placeholder="Expired Date" />             
+                <input id="approvalcode" style="margin-bottom:10px" name="approvalcode" type="text"  t-model="state.approvalCodeValue" t-ref="approvalCodeRef" placeholder="Approva; Code" required="required"/>            
+                <input id="merchantcode" style="margin-bottom:10px" name="merchantcode" type="text"  t-model="state.merchantCodeValue" t-ref="merchantCodeRef" placeholder="Merchant Code" required="required"/>             
+                <input id="terminalid" style="margin-bottom:10px" name="terminalid" type="text"  t-model="state.terminalIdValue" t-ref="terminalIdRef" placeholder="Terminal ID" required="required"/>                            
+            </main>
+            <footer class="footer">
+                <div class="button cancel" t-on-click="cancel">Cancel</div>
+                <div class="button confirm" t-on-click="confirm">Confirm</div>
+            </footer>
+        </div>
+    </t>
+</templates>

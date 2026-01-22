@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-else='']/ul[hasclass('orderlines')]" position="before">
+            <div class="SetuOrderLineHeader">
+                <h3>Order Details</h3>
+                <button class="qty-clear" t-on-click="onClearOrder" type="button" data-hotkey="d">
+                    <i class="fa fa-trash"/> Clear All
+                </button>
+            </div>
+        </xpath>
+    </t>
+
+</templates>

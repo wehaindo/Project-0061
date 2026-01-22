@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ImportOrdersPopup" owl="1">
+            <div class="popup popup-textinput">
+                <header class="title">
+                    Import Orders
+                </header>
+                <div class="body">
+                    <p>
+                        Please select file Import Ordres!
+                    </p>
+                    <input type="file" t-ref="fileImport" t-on-change="importOrders"/>
+                </div>
+                <div class="footer">
+                    <div class="button cancel" t-on-click="cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+    </t>
+
+</templates>

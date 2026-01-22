@@ -1,0 +1,7 @@
+.payment_qr_code_disable {
+    display: none;
+}
+
+.payment_qr_code_enable {
+    display: block;
+}

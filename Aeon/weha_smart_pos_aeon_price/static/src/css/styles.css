@@ -1,0 +1,12 @@
+.orderline-badge {
+    /* Center the content */
+    align-items: center;
+    justify-content: center;
+
+    /* Colors */
+    background-color: #d1d5db;
+    color: #fff;
+
+    /* Rounded border */
+    border-radius: 5px;    
+}

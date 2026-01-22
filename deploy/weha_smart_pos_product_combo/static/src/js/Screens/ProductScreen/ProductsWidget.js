@@ -1,0 +1,60 @@
+odoo.define('weha_smart_pos_product_combo.ProductsWidget', function(require) {
+	"use strict";
+
+	const Registries = require('point_of_sale.Registries');
+	const ProductsWidget = require('point_of_sale.ProductsWidget');
+
+	const ProductComboProductsWidget = (ProductsWidget) =>
+		class extends ProductsWidget {
+			constructor() {
+				super(...arguments);
+			}
+
+			get productsToDisplay() {
+				let self = this;
+				let prods = super.productsToDisplay;
+				let use_combo = self.env.pos.config.use_combo;
+				if (this.searchWord !== '') {
+	                let products =  this.env.pos.db.search_product_in_category(
+	                    this.selectedCategoryId,
+	                    this.searchWord
+	                );
+	                var product_list = []
+		                for (let product in products){
+		                	if(products[product].is_pack == true){
+		                		if(use_combo){
+		                			product_list.push(products[product])
+		                		}
+
+		                	}else{
+		                		product_list.push(products[product])
+		                	}
+
+		                }
+		               	return product_list
+	            } else {
+	               	let products =  this.env.pos.db.get_product_by_category(this.selectedCategoryId);
+	            	
+	                var product_list = []
+		                for (let product in products){
+		                	if(products[product].is_pack == true){
+		                		if(use_combo){
+		                			product_list.push(products[product])
+		                		}
+
+		                	}else{
+		                		product_list.push(products[product])
+		                	}
+
+		                }
+		               	return product_list
+	            }
+				
+			}
+		};
+
+	Registries.Component.extend(ProductsWidget, ProductComboProductsWidget);
+
+	return ProductsWidget;
+
+});

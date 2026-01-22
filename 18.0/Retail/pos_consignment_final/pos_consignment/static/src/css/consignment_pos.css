@@ -1,0 +1,13 @@
+
+.o_pos_consignment_badge {
+    background: orange;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    margin-left: 6px;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    z-index: 5;
+}

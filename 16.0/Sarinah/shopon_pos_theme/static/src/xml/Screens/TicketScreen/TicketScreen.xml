@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-inherit="point_of_sale.TicketScreen" t-inherit-mode="extension" owl="1">
+         <xpath expr="//div[hasclass('leftpane')]" position="before">
+            <xpath expr="//div[hasclass('rightpane')]" position="move"/>
+        </xpath>
+
+        <xpath expr="//div[hasclass('rightpane')]" position="attributes">
+            <attribute name="id">rightpaneBg</attribute>
+        </xpath>
+
+
+          <xpath expr="//div[hasclass('rightpane')]" position="before">
+             <div class="dn_sidebar"
+                  style="border-radius: 8px;display: none;justify-content: space-between;flex-direction: column;flex-direction: column;align-items: center;">
+                 <div class="setu_control_buttons">
+                     <CashierName/>
+                 </div>
+                 <div class="bottom_bar">
+                     <img src="/shopon_pos_theme/static/src/img/logo.png"
+                          style="margin-bottom: 14px;padding: 0 8px;max-width: 200px;position: relative;left: 50%;transform: translate(-50%,0);"/>
+                 </div>
+                 <span class="breadcrumb-button breadcrumb-home close_side_bar_menu" t-if="env.isMobile" t-on-click="_closeSideBar"><i role="img" aria-label="menu" title="menu" class="fa fa-close"></i></span>
+             </div>
+        </xpath>
+
+
+        <xpath expr="//div[hasclass('setu_control_buttons')]" position="inside">
+            <t t-set="_selectedSyncedOrder" t-value="getSelectedSyncedOrder()"/>
+            <t t-set="_selectedOrderlineId" t-value="getSelectedOrderlineId()"/>
+            <xpath expr="//div[hasclass('control-buttons')]" position="move"/>
+        </xpath>
+         <xpath expr="//div[hasclass('control-buttons')]" position="inside">
+             <CashMoveButton/>
+             <TicketButton/>
+                <CustomerFacingDisplayButton t-if="this.env.pos.config.iface_customer_facing_display"/>
+                <HeaderButton/>
+        </xpath>
+        <xpath expr="//div[hasclass('buttons')]/button" position="before">
+            <button class="highlight" style="border-radius: 8px;" t-on-click="_openSideBar" data-hotkey="m">
+                <i class="fa fa-bars"/>
+            </button>
+        </xpath>
+    </t>
+
+
+</templates>

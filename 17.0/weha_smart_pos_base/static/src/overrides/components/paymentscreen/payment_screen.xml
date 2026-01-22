@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<templates id="template" xml:space="preserve">        
+    <t t-name="weha_smart_pos_base.PaymentScreenTop" t-inherit="point_of_sale.PaymentScreenTop" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('back')]" position="replace">
+            <div class="button back btn btn-lg btn-secondary" t-on-click="goToBackScreen">
+                <i class="fa fa-angle-double-left me-2" />
+                <span class="back_text">Back</span>
+            </div>            
+        </xpath>                
+    </t>
+
+    <t t-name="weha_smart_pos_base.PaymentScreenMethods" t-inherit="point_of_sale.PaymentScreenMethods" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('paymentmethods')]" position="replace">
+            <t t-if="pos.config.is_show_payment_method_popup">
+                <div class="paymentmethods d-flex flex-column">
+                    <h4 class="title-category pt-3 pb-2 px-3 m-0 bg-view border-bottom border-2">Payment method</h4>
+                    <div class="button paymentmethod btn btn-light rounded-0 border-bottom" t-on-click="showPaymentMethod">
+                        <div class="payment-method-display d-flex align-items-center flex-grow-1">                        
+                            <div>
+                                <img class="payment-method-icon" src="/point_of_sale/static/src/img/money.png" />
+                            </div>
+                            <span class="payment-name">Choose Payment</span>
+                        </div>
+                    </div>
+                </div>
+            </t>
+            <t t-else="">
+                <div class="paymentmethods d-flex flex-column">
+                    <h4 class="title-category pt-3 pb-2 px-3 m-0 bg-view border-bottom border-2">Payment method</h4>
+                    <t t-foreach="payment_methods_from_config" t-as="paymentMethod" t-key="paymentMethod.id">
+                        <t t-if="paymentMethod.is_allow_voucher != true">
+                            <div class="button paymentmethod btn btn-light rounded-0 border-bottom" t-on-click="() => this.addNewPaymentLine(paymentMethod)">
+                                <div class="payment-method-display d-flex align-items-center flex-grow-1">
+                                    <div>
+                                        <img class="payment-method-icon" t-att-src="paymentMethodImage(paymentMethod.id)" />
+                                    </div>
+                                    <span class="payment-name" t-esc="paymentMethod.name" />
+                                </div>
+                            </div>
+                        </t>                
+                    </t>
+                </div>
+            </t>
+        </xpath>
+    </t>
+
+    <t t-name="weha_smart_pos_base.PaymentScreenButtons" t-inherit="point_of_sale.PaymentScreenButtons" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('payment-buttons')]" position="inside">
+            <t t-if="pos.config.enable_voucher">
+            <button class="button voucher-button btn btn-light py-3 text-start rounded-0 border-bottom"
+                t-on-click="addVoucher">
+                <i class="fa fa-user me-2" role="img" title="Add Voucher" />
+                Add Voucher                                
+            </button>    
+            </t>
+        </xpath>                
+    </t>
+
+
+</templates>

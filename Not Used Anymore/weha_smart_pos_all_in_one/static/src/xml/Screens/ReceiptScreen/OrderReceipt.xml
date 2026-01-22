@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<templates id="template" xml:space="preserve">    
+    <t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
+        <!-- DISPLAY ORDER QRCODE -->
+        <xpath expr="//div[hasclass('pos-receipt-order-data')]" position="inside">
+            <br/>
+            <div id="qrcode" class="text-center"></div>
+            <script type="text/javascript">
+                var qrcode = new QRCode("qrcode", {
+                    text: "http://jindo.dev.naver.com/collie",
+                    width: 100,
+                    height: 100,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+                qrcode.makeCode("qrcode"); 
+            </script>
+        </xpath>
+        <!-- DISPLAY LOYALTY POINT SUMMARY 
+        <xpath expr="//div[hasclass('summary')]" position="inside">
+            <table class="loyalty-table">
+                <thead>
+                    <tr class="header-loyalty">
+                        <th>
+                            Client Points
+                        </th>
+                        <th>
+                            Redeem
+                        </th>
+                        <th>
+                            Remaining
+                        </th>
+                        <th>
+                            Plus
+                        </th>
+                        <th>
+                            Future Points
+                        </th>
+                    </tr>
+                    <tr class="header-loyalty">
+                        <th>
+                            <span class='value client_point'>
+                            </span>
+                        </th>
+                        <th>
+                                <span class='value redeem_point'>
+                            </span>
+                        </th>
+                        <th>
+                            <span class='value remaining_point'>
+                            </span>
+                        </th>
+                        <th>
+                            <span class='value plus_point'>
+                            </span>
+                        </th>
+                        <th>
+                            <span class='value next_point'>
+                            </span>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </xpath>
+        -->
+    </t>
+</templates>

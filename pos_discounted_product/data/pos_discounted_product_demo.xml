@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+    <data noupdate="1">
+
+        <record id="demo_pricelist_item_2" model="product.pricelist.item">
+            <field name="compute_price">percentage</field>
+            <field name="percent_price">10</field>
+        </record>
+        <record id="pos_discounted_product_pricelist" model="product.pricelist">
+            <field name="name">Christmas Offer (10% Off)</field>
+            <field name="sequence">1</field>
+            <field name="item_ids" eval="[(6,0,[ref('demo_pricelist_item_2')])]"></field>
+        </record>
+
+        <record model="pos.config" id="point_of_sale.pos_config_main">
+            <field name="use_pricelist">True</field>
+            <field name="available_pricelist_ids" eval="[(4,ref('pos_discounted_product_pricelist'))]" />
+            <field name="pricelist_id" ref="pos_discounted_product_pricelist"></field>
+        </record>
+
+        <function model="res.config.settings" name="enable_pricelist_setting" />
+
+    </data>
+</odoo>

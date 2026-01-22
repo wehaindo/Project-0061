@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_my_home_menu_products" name="Portal layout : product menu entries" inherit_id="portal.portal_breadcrumbs" priority="30">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'products' or products" t-attf-class="breadcrumb-item #{'active ' if not product else ''}">
+                <a t-if="product" t-attf-href="/my/products?{{ keep_query() }}">Products</a>
+                <t t-else="">Products</t>
+            </li>
+            <li t-if="product" class="breadcrumb-item active">
+                <t t-esc="product.name" t-if="product.name" />
+                <t t-else="">Products</t>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_vendor_products" name="Show Vendor Products"
+              customize_show="True" inherit_id="portal.portal_my_home"
+              priority="25">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Products</t>
+                <t t-set="url" t-value="'/my/products'"/>
+                <t t-set="placeholder_count" t-value="'product_count'"/>
+            </t>
+        </xpath>
+        
+    </template>
+
+
+    <template id="portal_my_product" name="Portal my Product">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Products</t>
+                <div class="form-inline ml-lg-4">
+                    <a id="new_product" class="btn btn-success btn-sm" name="new_product" title="Create New Product" aria-label="Create New Product" role="button"><i class="fa fa-plus" /> Create New Product</a>
+                </div>
+            </t>
+            <div id="createProductModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Create Vendor Product</h4>
+                            <button type="button" class="close" data-dismiss="modal">&amp;times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/portal-create-product" id="form_id" method="POST" class="form-horizontal mt32" enctype="multipart/form-data">
+                                <div class="row" style="text-align: right;">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div t-attf-class="form-group #{error and 'portal_product_name' in error and 'has-error' or ''}">
+                                                    <label class="control-label" for="portal_product_name">Product Name</label>
+                                                    <input type="text" class="form-control" id="portal_product_name" name="portal_product_name" t-att-value=""/>
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div t-attf-class="form-group #{error and 'portal_product_sku' in error and 'has-error' or ''}">
+                                                    <label class="control-label" for="portal_product_sku">Product SKU</label>
+                                                    <input type="text" class="form-control" id="portal_product_ksu" name="portal_product_sku" t-att-value=""/>
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" id="create_vendor_product" class="btn btn-primary">Create Product</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <t t-if="products" t-call="portal.portal_table">
+                <thead>                    
+                    <tr class="active">
+                        <th>Product Name</th>
+                        <th>Internal Reference</th>
+                        <th>Brand</th>
+                        <th>Product Type</th>
+                        <th>Product Category</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <t t-foreach="products" t-as="product">
+                        <tr>
+                            <td><a t-att-href="'/my/product/%s' % product.id"><t t-out="product.name"/></a></td>
+                            <td><span t-field="product.default_code"/></td>
+                            <td><span t-field="product.product_brand_id"/></td>
+                            <td><span t-field="product.detailed_type"/></td>
+                            <td><span t-field="product.categ_id"/></td>
+                            <td><span t-field="product.list_price"/></td>
+                        </tr>
+                    </t>                   
+                </tbody>
+            </t>
+        </t>
+    </template>
+    
+    <template id="portal_vendor_product_page" name="Vendor Product Portal Template" inherit_id="portal.portal_sidebar" primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+            <div class="row mt16 o_portal_vendor_product_sidebar">
+                <t t-call="portal.portal_record_sidebar">
+                    <t t-set="classes" t-value="'col-12 col-lg flex-lg-grow-0 d-print-none'" />
+                    <!-- <t t-set="title">
+                        <h2 class="mb-0">
+                            <b t-if="product" t-field="product.name" />
+                            <b t-else="Product" t-field="product.name" />
+                        </h2>
+                    </t> -->
+                    <t t-set="entries">
+                        <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                            <li class="list-group-item flex-grow-1">
+                                <div class="o_download_pdf btn-toolbar flex-sm-nowrap flex-md-nowrap">
+                                    <div class="btn-group flex-grow-1 mr-1 mb-1">
+                                        <a class="btn btn-secondary btn-block o_download_btn"  title="Download"><i class="fa fa-download" /> Download</a>
+                                    </div>
+                                    <div class="btn-group flex-grow-1 mr-1 mb-1">
+                                        <a id="edit_product" class="btn btn-success btn-sm" name="edit_product" title="Edit Product" aria-label="Edit Product" role="button"><i class="fa fa-plus" />Edit Product</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </t>
+                </t>
+                <div id="product_content" class="col-12 col-lg justify-content-end">
+                    <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}">
+                        <div t-call="weha_smart_pos_vendor_portal.vendor_product_portal_content" />
+                    </div>
+
+                    <!-- chatter -->
+                    <!-- <div id="ticket_communication" class="mt-4">
+                        <h2>History</h2>
+                        <t t-call="portal.message_thread">
+                            <t t-set="object" t-value="ticket" />
+                        </t>
+                    </div> -->
+                </div>
+            </div>
+        </xpath>
+    </template>
+    
+    <template id="vendor_product_portal_content" name="Vendor Product Portal Content">
+        <div id="introduction" t-attf-class="pb-2 pt-3 #{'card-header bg-white' if report_type == 'html' else ''}">
+            <h2 class="my-0">
+                <strong><em t-esc="product.name" /></strong>
+            </h2>
+        </div>
+        <div t-attf-class="#{'card-body' if report_type == 'html' else ''}">
+            <div id="informations">
+                <div class="row">
+                    <div class="mb-3 col-6 col-sm-12">
+                        <div class="row">
+                            <div class="col-6 col-sm-12">
+                                <strong>Product Brand</strong>
+                            </div>
+                            <div class="col-6 col-sm-12">
+                                <span t-field="product.product_brand_id" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-6 col-sm-12">
+                        <div class="row">
+                            <div class="col-6 col-sm-12">
+                                <strong>Create Date</strong>
+                            </div>
+                            <div class="col-6 col-sm-12">
+                                <span t-field="product.create_date" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Product Type</strong>
+                            </div>
+                            <div class="col-6">
+                                <span t-field="product.detailed_type" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Product Category</strong>
+                            </div>
+                            <div class="col-6">
+                                <span t-field="product.categ_id" />
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="mb-3 col-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>SKU</strong>
+                            </div>
+                            <div class="col-6">
+                                <span t-field="product.default_code" />
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h5>Product Store Price Information</h5>
+                    </div>                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Branch</th>
+                                <th>List Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="product.product_template_data_ids" t-as="product_template_data">
+                                <tr>
+                                    <td><span t-field="product_template_data.branch_id"/></td>
+                                    <td><span t-field="product_template_data.list_price"/></td>
+                                    <td><a id="edit_product_price" class="btn btn-success btn-sm" name="edit_product_price" title="Edit" aria-label="Edit" role="button"><i class="fa fa-plus" />Edit</a></td>
+                                </tr>
+                            </t>                            
+                        </tbody>                                   
+                    </table>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h5>Product Location Information</h5>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Location</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="stock_quants" t-as="stock_quant">
+                                <t t-if="stock_quant.location_id.usage == 'internal'">
+                                    <tr>
+                                        <td><span t-field="stock_quant.location_id"/></td>
+                                        <td><span t-field="stock_quant.quantity"/></td>
+                                        <td><a id="view_product_location" class="btn btn-success btn-sm" name="view_product_location" title="Location" aria-label="Edit" role="button"><i class="fa fa-plus" />View</a></td>
+                                    </tr>
+                                </t>                                
+                            </t>                            
+                        </tbody>                                   
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </template>   
+
+
+    <template id="portal_my_home_vendor_stock_requests" name="Show Vendor Stock Requests"
+              customize_show="True" inherit_id="portal.portal_my_home"
+              priority="25">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Stock Requests</t>
+                <t t-set="url" t-value="'/my/stockrequests'"/>
+                <t t-set="placeholder_count" t-value="'stock_request_count'"/>
+            </t>
+        </xpath>        
+    </template>
+
+    <template id="portal_my_stock_request" name="Portal my Stock Request">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Stock Requests</t>
+                <div class="form-inline ml-lg-4">
+                    <a id="new_stock_request" class="btn btn-success btn-sm" name="new_stock_request" title="Create New Stock Request" aria-label="Create New Stock Request" role="button"><i class="fa fa-plus" /> Create New Stock Request</a>
+                </div>
+            </t>
+            <div id="createStockRequestModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Create Stock Request</h4>
+                            <button type="button" class="close" data-dismiss="modal">&amp;times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/portal-create-stock-request" id="form_id" method="POST" class="form-horizontal mt32" enctype="multipart/form-data">
+                                <div class="row" style="text-align: right;">
+                                    <div class="col-12">
+                                        <button type="submit" id="create_vendor_product" class="btn btn-primary">Create Stock Request</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <t t-if="stock_request" t-call="portal.portal_table">
+                <thead>                    
+                    <tr class="active">
+                        <th>Name</th>
+                        <th>Warehouse</th>
+                        <th>Location</th>                        
+                    </tr>
+                </thead>
+                <tbody> 
+                    <t t-foreach="stock_request" t-as="stock_request">
+                        <tr>
+                            <td><a t-att-href="'/my/stockrequest/%s' % stock_request.id"><t t-out="stock_request.name"/></a></td>
+                            <td><span t-field="stock_request.warehouse_id"/></td>
+                            <td><span t-field="stock_request.location_id"/></td>                            
+                        </tr>
+                    </t>                   
+                </tbody>
+            </t>
+        </t>
+    </template>
+</odoo>

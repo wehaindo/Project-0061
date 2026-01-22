@@ -1,0 +1,1430 @@
+.sh_receipt_footer {
+    text-align: center;
+    font-size: 75%;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+}
+
+.pos-receipt-print {
+    width: 360px;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: left;
+    direction: ltr;
+    font-size: 19px;
+    color: #000000;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+}
+
+
+/*mobile*/
+
+.pos .pos-receipt-mobile {
+    width: 188px;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 12px !important;
+    border: none;
+    font-weight: bold !important;
+}
+
+
+.pos .pos-receipt-mobile .orderlines table {
+    width: 100%;
+    font-weight: bold !important;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+}
+
+.pos .pos-receipt-mobile .orderlines table .pos-receipt-product {
+    width: 45%;
+    padding-left: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-mobile .orderlines table .pos-receipt-quantity {
+    padding-left: 3px;
+    width: 15%;
+    font-size: 12px;
+    text-align: right;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-mobile .orderlines table .pos-receipt-price {
+    padding-left: 3px;
+    width: 25%;
+    text-align: right;
+    font-size: 12px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-mobile .orderlines table .pos-receipt-X {
+    padding-left: 3px;
+    text-align: left;
+    width: 5%;
+    font-size: 12px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+
+.pos .pos-receipt-mobile .orderlines table .pos-receipt-total {
+    min-width: 20px;
+    width: 10%;
+    text-align: right;
+    font-size: 12px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-mobile .orderlines table .pos-receipt-total-line {
+    width: 100%;
+    text-align: right;
+    font-size: 12px;
+    width: 100%;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-mobile .orderlines table tbody tr .padding-left-total {
+    /*padding-left: 5px ;*/
+    text-align: right;
+}
+
+/*end mobile*/
+
+/* receipt printing*/
+
+.pos-receipt-print {
+    width: 360px;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: left;
+    direction: ltr;
+    font-size: 19px;
+    color: #000000;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+}
+
+
+.pos .pos-receipt-print .orderlines table {
+    width: 100%;
+    font-weight: bold !important;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+}
+
+.pos .pos-receipt-print .orderlines table .receipt-product-row {
+    font-size: 16px;
+}
+
+.pos .pos-receipt-print .orderlines table .pos-receipt-product {
+    width: 45%;
+    padding-left: 3px;
+    font-size: 14px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-print .orderlines table .pos-receipt-quantity {
+    padding-left: 3px;
+    width: 15%;
+    font-size: 14px;
+    text-align: right;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-print .orderlines table .pos-receipt-price {
+    padding-left: 3px;
+    width: 25%;
+    text-align: right;
+    font-size: 14px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-print .orderlines table .pos-receipt-X {
+    padding-left: 3px;
+    text-align: left;
+    width: 5%;
+    font-size: 14px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+
+.pos .pos-receipt-print .orderlines table .pos-receipt-total {
+    min-width: 20px;
+    width: 10%;
+    text-align: right;
+    font-size: 14px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-print .orderlines table .pos-receipt-total-line {
+    width: 100%;
+    text-align: right;
+    font-size: 16px;
+    width: 100%;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-print .orderlines table tbody tr .padding-left-total {
+    /*padding-left: 5px ;*/
+    text-align: right;
+}
+
+.pos .pos-receipt-print .pos-receipt-contact div:first-child {
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-print .pos-receipt-contact div:not(:first-child) {
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-print .pos-info-order .pos-info-order-title {
+    padding-left: 3px;
+    text-align: left;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.pos .pos-receipt-print .pos-info-order .pos-info-order-samadengan {
+    padding-left: 3px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.pos .pos-receipt-print .pos-info-order .pos-info-order-value {
+    padding-left: 3px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.pos .pos-receipt-print .pos-receipt-amount-table {
+    width: 100%;
+}
+
+.pos .pos-receipt-print .pos-receipt-amount-table tr {
+    width: 100%;
+}
+
+.pos .pos-receipt-print .pos-receipt-amount-table td {
+    font-size: 16px;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-print .pos-receipt-amount-enter {
+    width: 40%;
+}
+
+.pos .pos-receipt-print .pos-receipt-amount-total {
+    width: 35%;
+    white-space: nowrap;
+    text-align: left;
+    padding-right: 5px;
+    font-size: 16px;
+}
+
+.pos .pos-receipt-print .pos-receipt-amount-value {
+    width: 25%;
+    text-align: right;
+    font-size: 16px;
+
+}
+
+/* end printing*/
+
+.pos .pos-receipt {
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    font-size: 19px !important;
+    width: 360px;
+    font-weight: bold !important;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+}
+
+
+/* receipt printing test*/
+
+.pos .pos-receipt-modif {
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    /*font-size: 12px !important;*/
+    font-size: 19px !important;
+    /*width: 266px;*/
+    width: 360px;
+    font-weight: bold !important;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+}
+
+
+.pos .pos-receipt-modif .orderlines table {
+    width: 100%;
+    font-weight: bold !important;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+}
+
+.pos .pos-receipt-modif .orderlines table .receipt-product-row {
+    font-size: 16px;
+}
+
+.pos .pos-receipt-modif .orderlines table .pos-receipt-product {
+    width: 45%;
+    padding-left: 3px;
+    font-size: 14px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-modif .orderlines table .pos-receipt-quantity {
+    padding-left: 3px;
+    width: 15%;
+    font-size: 14px;
+    text-align: right;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-modif .orderlines table .pos-receipt-price {
+    padding-left: 3px;
+    width: 25%;
+    text-align: right;
+    font-size: 14px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-modif .orderlines table .pos-receipt-X {
+    padding-left: 3px;
+    text-align: left;
+    width: 5%;
+    font-size: 14px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+
+.pos .pos-receipt-modif .orderlines table .pos-receipt-total {
+    min-width: 20px;
+    width: 10%;
+    text-align: right;
+    font-size: 14px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-modif .orderlines table .pos-receipt-total-line {
+    width: 100%;
+    text-align: right;
+    font-size: 16px;
+    width: 100%;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-modif .orderlines table tbody tr .padding-left-total {
+    /*padding-left: 5px ;*/
+    text-align: right;
+}
+
+.pos .pos-receipt-modif .pos-receipt-contact div:first-child {
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-modif .pos-receipt-contact div:not(:first-child) {
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold !important;
+}
+
+.pos-receipt-contact div:first-child {
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold !important;
+}
+
+.pos-receipt-contact div:not(:first-child) {
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-modif .pos-info-order .pos-info-order-title {
+    padding-left: 3px;
+    text-align: left;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.pos .pos-receipt-modif .pos-info-order .pos-info-order-samadengan {
+    padding-left: 3px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.pos .pos-receipt-modif .pos-info-order .pos-info-order-value {
+    padding-left: 3px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.pos .pos-receipt-modif .pos-receipt-amount-table {
+    width: 100%;
+}
+
+.pos .pos-receipt-modif .pos-receipt-amount-table tr {
+    width: 100%;
+}
+
+.pos .pos-receipt-modif .pos-receipt-amount-table td {
+    font-size: 16px;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt-modif .pos-receipt-amount-enter {
+    width: 40%;
+}
+
+.pos .pos-receipt-modif .pos-receipt-amount-total {
+    width: 35%;
+    white-space: nowrap;
+    text-align: left;
+    padding-right: 5px;
+    font-size: 16px;
+}
+
+.pos .pos-receipt-modif .pos-receipt-amount-value {
+    width: 25%;
+    text-align: right;
+    font-size: 16px;
+
+}
+
+/* end printing test*/
+
+
+.pos .pos-receipt .orderlines table {
+    width: 100%;
+    font-weight: bold !important;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+}
+
+.pos .pos-receipt .orderlines table .pos-receipt-product {
+    width: 45%;
+    padding-left: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt .orderlines table .pos-receipt-quantity {
+    padding-left: 3px;
+    font-size: 12px;
+    text-align: right;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt .orderlines table .pos-receipt-price {
+    padding-left: 3px;
+    text-align: right;
+    font-size: 12px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt .orderlines table .pos-receipt-X {
+    padding-left: 3px;
+    text-align: left;
+    font-size: 12px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+
+.pos .pos-receipt .orderlines table .pos-receipt-total {
+    min-width: 20px;
+    text-align: right;
+    font-size: 12px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt .orderlines table .pos-receipt-total-line {
+    width: 100%;
+    text-align: right;
+    font-size: 12px;
+    white-space: nowrap;
+    /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+    font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt .orderlines table tbody tr .padding-left-total {
+    /*padding-left: 5px ;*/
+    text-align: right;
+}
+
+.pos .pos-receipt .padding-left-price {
+    padding-left: 3px;
+    text-align: right;
+}
+
+.pos .pos-receipt .padding-left-total {
+    /*padding-left: 5px ;*/
+    text-align: right;
+}
+
+.o_debug_manager {
+    display: none;
+}
+
+.o_chat_window {
+    display: none;
+}
+
+.blockUI {
+    display: none;
+}
+
+.pos-receipt-header-table {
+    border-bottom: 2px dashed #555555;
+}
+
+
+.pos-receipt .pos-receipt-amount {
+    font-size: 100%;
+    padding-left: 20em;
+    font-weight: bold !important;
+}
+
+.pos-receipt-contact div:first-child {
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold !important;
+}
+
+.pos-receipt-contact div:not(:first-child) {
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold !important;
+}
+
+.pos-receipt-border-dash {
+    border-bottom: 2px dashed #555555;
+    width: 100%;
+    margin: 2px;
+}
+
+.receipt-promotion-row td {
+    font-size: 9px;
+    font-style: italic;
+}
+
+.pos .pos-receipt .pos-info-order {
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+}
+
+.pos .pos-receipt .pos-info-order .pos-info-order-title {
+    padding-left: 3px;
+    text-align: left;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.pos .pos-receipt .pos-info-order .pos-info-order-samadengan {
+    padding-left: 3px;
+    text-align: left;
+    font-size: 12px;
+}
+
+.pos .pos-receipt .pos-info-order .pos-info-order-value {
+    padding-left: 3px;
+    text-align: left;
+    font-size: 12px;
+}
+
+.pos-receipt-payment {
+    font-weight: bold !important;
+}
+
+.pos-receipt-center-align {
+    font-weight: bold !important;
+}
+
+.pos-product-discount-apply {
+    text-align: center;
+    font-weight: bold !important;
+}
+
+.pos-product-discount-terms {
+    text-align: left;
+    font-weight: bold !important;
+}
+
+.order-line-enter {
+    height: 10px;
+}
+
+
+.pos .pos-receipt .pos-receipt-amount-table {
+    width: 100%;
+}
+
+.pos .pos-receipt .pos-receipt-amount-table tr {
+    width: 100%;
+}
+
+.pos .pos-receipt .pos-receipt-amount-table td {
+    font-size: 14px;
+    font-weight: bold !important;
+}
+
+.pos .pos-receipt .pos-receipt-amount-enter {
+    width: 40%;
+}
+
+.pos .pos-receipt .pos-receipt-amount-total {
+    width: 35%;
+    white-space: nowrap;
+    text-align: left;
+    padding-right: 5px;
+    font-size: 14px;
+}
+
+.pos .pos-receipt .pos-receipt-amount-value {
+    width: 25%;
+    text-align: right;
+    font-size: 14px;
+
+}
+
+.pos .pos-receipt .receipt-product-row {
+    font-size: 14px;
+}
+
+@media print {
+    * {
+        color: black;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+    body {
+        margin: 0;
+        color: white;
+        background: initial;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+    .o_notification_manager,
+    .oe_leftbar,
+    .oe_loading,
+    .pos .pos-topheader,
+    .pos .pos-leftpane,
+    .pos .keyboard_frame,
+    .pos .receipt-screen header,
+    .pos .receipt-screen .top-content,
+    .pos .receipt-screen .centered-content .button,
+    .pos .receipt-screen .centered-content .print_invoice {
+        display: none;
+    }
+
+    .pos,
+    .pos .pos-content,
+    .pos .rightpane,
+    .pos .screen,
+    .pos .window,
+    .pos .window .subwindow,
+    .pos .subwindow .subwindow-container {
+        display: block;
+        position: static;
+        height: auto;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+    .pos {
+        background: white;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+    .pos .rightpane {
+        left: 0px;
+        background-color: white;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+    .pos .receipt-screen {
+        text-align: left;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+    .pos .receipt-screen .centered-content {
+        position: static;
+        border: none;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+    .pos .pos-receipt-container {
+        text-align: left;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+    .pos-actionbar {
+        display: none;
+    }
+
+    .debug-widget {
+        display: none;
+    }
+
+    .pos * {
+        text-shadow: none;
+        box-shadow: none;
+        background: transparent;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+    /*mobile*/
+    .pos .pos-receipt-mobile {
+        width: 188px;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 12px !important;
+        border: none;
+        font-weight: bold !important;
+    }
+
+
+    .pos .pos-receipt-mobile .orderlines table {
+        width: 100%;
+        font-weight: bold !important;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+    .pos .pos-receipt-mobile .orderlines table .pos-receipt-product {
+        width: 45%;
+        padding-left: 3px;
+        font-size: 12px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-mobile .orderlines table .pos-receipt-quantity {
+        padding-left: 3px;
+        width: 15%;
+        font-size: 12px;
+        text-align: right;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-mobile .orderlines table .pos-receipt-price {
+        padding-left: 3px;
+        width: 25%;
+        text-align: right;
+        font-size: 12px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-mobile .orderlines table .pos-receipt-X {
+        padding-left: 3px;
+        text-align: left;
+        width: 5%;
+        font-size: 12px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+
+    .pos .pos-receipt-mobile .orderlines table .pos-receipt-total {
+        min-width: 20px;
+        width: 10%;
+        text-align: right;
+        font-size: 12px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-mobile .orderlines table .pos-receipt-total-line {
+        width: 100%;
+        text-align: right;
+        font-size: 12px;
+        width: 100%;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-mobile .orderlines table tbody tr .padding-left-total {
+        /*padding-left: 5px ;*/
+        text-align: right;
+    }
+
+    /*end mobile*/
+    /* receipt printing*/
+    .pos-receipt-print {
+        width: 360px;
+        height: 0;
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+        text-align: left;
+        direction: ltr;
+        font-size: 19px;
+        color: #000000;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+
+    .pos .pos-receipt-print .orderlines table {
+        width: 100%;
+        font-weight: bold !important;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+    .pos .pos-receipt-print .orderlines table .receipt-product-row {
+        font-size: 16px;
+    }
+
+    .pos .pos-receipt-print .orderlines table .pos-receipt-product {
+        width: 45%;
+        padding-left: 3px;
+        font-size: 14px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-print .orderlines table .pos-receipt-quantity {
+        padding-left: 3px;
+        width: 15%;
+        font-size: 14px;
+        text-align: right;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-print .orderlines table .pos-receipt-price {
+        padding-left: 3px;
+        width: 25%;
+        text-align: right;
+        font-size: 14px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-print .orderlines table .pos-receipt-X {
+        padding-left: 3px;
+        text-align: left;
+        width: 5%;
+        font-size: 14px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+
+    .pos .pos-receipt-print .orderlines table .pos-receipt-total {
+        min-width: 20px;
+        width: 10%;
+        text-align: right;
+        font-size: 14px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-print .orderlines table .pos-receipt-total-line {
+        width: 100%;
+        text-align: right;
+        font-size: 16px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-print .orderlines table tbody tr .padding-left-total {
+        /*padding-left: 5px ;*/
+        text-align: right;
+    }
+
+    .pos .pos-receipt-print .pos-receipt-contact div:first-child {
+        text-align: center;
+        font-size: 19px;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-print .pos-receipt-contact div:not(:first-child) {
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-print .pos-info-order .pos-info-order-title {
+        padding-left: 3px;
+        text-align: left;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .pos .pos-receipt-print .pos-info-order .pos-info-order-samadengan {
+        padding-left: 3px;
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .pos .pos-receipt-print .pos-info-order .pos-info-order-value {
+        padding-left: 3px;
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .pos .pos-receipt-print .pos-receipt-amount-table {
+        width: 100%;
+    }
+
+    .pos .pos-receipt-print .pos-receipt-amount-table tr {
+        width: 100%;
+    }
+
+    .pos .pos-receipt-print .pos-receipt-amount-table td {
+        font-size: 16px;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-print .pos-receipt-amount-enter {
+        width: 40%;
+    }
+
+    .pos .pos-receipt-print .pos-receipt-amount-total {
+        width: 35%;
+        white-space: nowrap;
+        text-align: left;
+        padding-right: 5px;
+        font-size: 16px;
+    }
+
+    .pos .pos-receipt-print .pos-receipt-amount-value {
+        width: 25%;
+        text-align: right;
+        font-size: 16px;
+
+    }
+
+    /* end printing*/
+    .pos .pos-receipt {
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+        border: none;
+        font-size: 19px !important;
+        width: 360px;
+        font-weight: bold !important;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+
+    /* receipt printing test*/
+    .pos .pos-receipt-modif {
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+        border: none;
+        /*font-size: 12px !important;*/
+        font-size: 19px !important;
+        /*width: 266px;*/
+        width: 360px;
+        font-weight: bold !important;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+
+    .pos .pos-receipt-modif .orderlines table {
+        width: 100%;
+        font-weight: bold !important;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+    .pos .pos-receipt-modif .orderlines table .receipt-product-row {
+        font-size: 16px;
+    }
+
+    .pos .pos-receipt-modif .orderlines table .pos-receipt-product {
+        width: 45%;
+        padding-left: 3px;
+        font-size: 14px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-modif .orderlines table .pos-receipt-quantity {
+        padding-left: 3px;
+        width: 15%;
+        font-size: 14px;
+        text-align: right;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-modif .orderlines table .pos-receipt-price {
+        padding-left: 3px;
+        width: 25%;
+        text-align: right;
+        font-size: 14px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-modif .orderlines table .pos-receipt-X {
+        padding-left: 3px;
+        text-align: left;
+        width: 5%;
+        font-size: 14px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+
+    .pos .pos-receipt-modif .orderlines table .pos-receipt-total {
+        min-width: 20px;
+        width: 10%;
+        text-align: right;
+        font-size: 14px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-modif .orderlines table .pos-receipt-total-line {
+        width: 100%;
+        text-align: right;
+        font-size: 16px;
+        white-space: nowrap;
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-modif .orderlines table tbody tr .padding-left-total {
+        /*padding-left: 5px ;*/
+        text-align: right;
+    }
+
+    .pos .pos-receipt-modif .pos-receipt-contact div:first-child {
+        text-align: center;
+        font-size: 19px;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-modif .pos-receipt-contact div:not(:first-child) {
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-modif .pos-info-order .pos-info-order-title {
+        padding-left: 3px;
+        text-align: left;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .pos .pos-receipt-modif .pos-info-order .pos-info-order-samadengan {
+        padding-left: 3px;
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .pos .pos-receipt-modif .pos-info-order .pos-info-order-value {
+        padding-left: 3px;
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .pos .pos-receipt-modif .pos-receipt-amount-table {
+        width: 100%;
+    }
+
+    .pos .pos-receipt-modif .pos-receipt-amount-table tr {
+        width: 100%;
+    }
+
+    .pos .pos-receipt-modif .pos-receipt-amount-table td {
+        font-size: 16px;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt-modif .pos-receipt-amount-enter {
+        width: 40%;
+    }
+
+    .pos .pos-receipt-modif .pos-receipt-amount-total {
+        width: 35%;
+        white-space: nowrap;
+        text-align: left;
+        padding-right: 5px;
+        font-size: 16px;
+    }
+
+    .pos .pos-receipt-modif .pos-receipt-amount-value {
+        width: 25%;
+        text-align: right;
+        font-size: 16px;
+
+    }
+
+    /* end printing test*/
+    .pos .pos-receipt .orderlines table {
+        width: 100%;
+        font-weight: bold !important;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+    }
+
+    .pos .pos-receipt .orderlines table .pos-receipt-product {
+        width: 45%;
+        padding-left: 3px;
+        font-size: 12px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt .orderlines table .pos-receipt-quantity {
+        padding-left: 3px;
+        font-size: 12px;
+        text-align: right;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt .orderlines table .pos-receipt-price {
+        padding-left: 3px;
+        text-align: right;
+        font-size: 12px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt .orderlines table .pos-receipt-X {
+        padding-left: 3px;
+        text-align: left;
+        font-size: 12px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+
+    .pos .pos-receipt .orderlines table .pos-receipt-total {
+        min-width: 20px;
+        text-align: right;
+        font-size: 12px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt .orderlines table .pos-receipt-total-line {
+        width: 100%;
+        text-align: right;
+        font-size: 12px;
+        white-space: nowrap;
+        /*font-family: 'Courier New', 'Lucida Console', sans-serif ;*/
+        font-family: 'Lato', 'Lucida Grande', Helvetica, Verdana, Arial;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt .orderlines table tbody tr .padding-left-total {
+        /*padding-left: 5px ;*/
+        text-align: right;
+    }
+
+    .pos .pos-receipt .padding-left-price {
+        padding-left: 3px;
+        text-align: right;
+    }
+
+    .pos .pos-receipt .padding-left-total {
+        /*padding-left: 5px ;*/
+        text-align: right;
+    }
+
+    .o_debug_manager {
+        display: none;
+    }
+
+    .o_chat_window {
+        display: none;
+    }
+
+    .blockUI {
+        display: none;
+    }
+
+    .pos-receipt-header-table {
+        border-bottom: 2px dashed #555555;
+    }
+
+
+    .pos-receipt .pos-receipt-amount {
+        font-size: 100%;
+        padding-left: 20em;
+        font-weight: bold !important;
+    }
+
+    .pos-receipt-contact div:first-child {
+        text-align: center;
+        font-size: 19px;
+        font-weight: bold !important;
+    }
+
+    .pos-receipt-contact div:not(:first-child) {
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold !important;
+    }
+
+    .pos-receipt-border-dash {
+        border-bottom: 2px dashed #555555;
+        width: 100%;
+        margin: 2px;
+    }
+
+    .receipt-promotion-row td {
+        font-size: 9px;
+        font-style: italic;
+    }
+
+    .pos .pos-receipt .pos-info-order {
+        width: 100%;
+        text-align: left;
+        font-size: 12px;
+    }
+
+    .pos .pos-receipt .pos-info-order .pos-info-order-title {
+        padding-left: 3px;
+        text-align: left;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .pos .pos-receipt .pos-info-order .pos-info-order-samadengan {
+        padding-left: 3px;
+        text-align: left;
+        font-size: 12px;
+    }
+
+    .pos .pos-receipt .pos-info-order .pos-info-order-value {
+        padding-left: 3px;
+        text-align: left;
+        font-size: 12px;
+    }
+
+    .pos-receipt-payment {
+        font-weight: bold !important;
+    }
+
+    .pos-receipt-center-align {
+        font-weight: bold !important;
+    }
+
+    .pos-product-discount-apply {
+        text-align: center;
+        font-weight: bold !important;
+    }
+
+    .pos-product-discount-terms {
+        text-align: left;
+        font-weight: bold !important;
+    }
+
+    .order-line-enter {
+        height: 10px;
+    }
+
+
+    .pos .pos-receipt .pos-receipt-amount-table {
+        width: 100%;
+    }
+
+    .pos .pos-receipt .pos-receipt-amount-table tr {
+        width: 100%;
+    }
+
+    .pos .pos-receipt .pos-receipt-amount-table td {
+        font-size: 14px;
+        font-weight: bold !important;
+    }
+
+    .pos .pos-receipt .pos-receipt-amount-enter {
+        width: 40%;
+    }
+
+    .pos .pos-receipt .pos-receipt-amount-total {
+        width: 35%;
+        white-space: nowrap;
+        text-align: left;
+        padding-right: 5px;
+        font-size: 14px;
+    }
+
+    .pos .pos-receipt .pos-receipt-amount-value {
+        width: 25%;
+        text-align: right;
+        font-size: 14px;
+
+    }
+
+    .pos .pos-receipt .receipt-product-row {
+        font-size: 14px;
+    }
+
+    .pos-receipt-contact div:first-child {
+        text-align: center;
+        font-size: 19px;
+        font-weight: bold !important;
+    }
+
+    .pos-receipt-contact div:not(:first-child) {
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold !important;
+    }
+
+}

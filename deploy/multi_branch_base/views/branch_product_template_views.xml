@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+		<!-- view common to both template and product -->
+        <record id="view_template_branch_form" model="ir.ui.view">
+            <field name="name">product.template.branch.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <field name="categ_id" position="before">
+                    <field name="business_unit_ids" widget="many2many_tags"/>
+                    <field name="branch_ids" widget="many2many_tags"/>
+                    <field name="line_id" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                    <field name="division_id" domain="[('line_id','=',line_id)]" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                    <field name="group_id" domain="[('division_id','=',division_id)]" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                    <field name="dept_id" domain="[('group_id','=',group_id)]" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                </field>
+                <field name="categ_id" position="after">
+                    <field name="sub_categ_id" domain="[('product_category_id','=',categ_id)]" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                </field>
+                <field name="categ_id" position="replace">
+                    <field name="categ_id" domain="[('dept_id','=',dept_id)]" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                </field>
+			</field>
+		  </record>
+
+      <record id="app_product_template_search_view" model="ir.ui.view">
+        <field name="name">product.template.branch.search.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="line_id"/>
+                <field name="division_id"/>
+                <field name="group_id"/>
+                <field name="dept_id"/>
+                <field name="sub_categ_id"/>
+                <searchpanel>
+                    <field name="line_id"/>
+                    <field name="division_id"/>
+                    <field name="group_id"/>
+                    <field name="dept_id"/>
+                </searchpanel>
+            </xpath>
+        </field>
+    </record>
+    </data>
+</odoo>

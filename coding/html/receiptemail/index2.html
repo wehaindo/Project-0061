@@ -1,0 +1,199 @@
+<div style="margin: 0px; padding: 0px;">
+    <table border="0" width="100%" cellpadding="0" bgcolor="#ededed"
+      style="padding: 20px; background-color: #ededed; border-collapse:separate;">
+      <tbody>
+        <!-- HEADER -->
+        <tr>
+          <td align="center" style="min-width: 590px;">
+            <table width="590" border="0" cellpadding="0" bgcolor="#875A7B"
+              style="min-width: 590px; background-color:#AD2181; padding: 20px; border-collapse:separate;">
+              <tr>
+                <td valign="middle" align="left">
+                  <img
+                    src="/weha_smart_pos_aeon_email_receipt/static/src/img/aeon_white_logo.png"
+                    style="padding: 0px; margin: 0px; height: auto; width: 80px;"
+                    alt="{{object.company_id.name}}" />
+                </td>
+                <td valign="middle" align="right">
+                  <span style="font-size:20px; color:white; font-weight: bold;">
+                    <t t-out="object.date_order"></t> <br /> <t t-out="object.pos_reference"></t> </span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- CONTENT -->
+        <tr>
+          <td align="center" style="min-width: 590px;">
+            <table width="590" border="0" cellpadding="0" bgcolor="#ffffff"
+              style="min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse:separate;">
+              <tbody>
+                <td valign="top"
+                  style="font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;">
+                  <h2>
+                    Dear Customer
+                  </h2>
+                  <p> Thank you for your order! <br /> We are please to confirm your recent
+                    transaction. </p>
+                  <p style="text-align: center;">
+                    <strong style="font-size:20px;">Transaction Amount: <span style="color:#AD2181"><t t-out="object.amount_total" t-options="{'widget': 'monetary','display_currency':  object.currency_id}"></t></span></strong>
+                  </p>
+                  <h3>
+                    Payment Details
+                  </h3>
+                  <table style="width: 100%;">
+                    <tbody>
+                      <t t-foreach="object.payment_ids" t-as="payment" t-key="payment.id">
+                        <tr>
+                          <td style="width: 50%;">
+                            <t t-out="payment.payment_method_id.name"></t>
+                          </td>
+                          <td style="width: 50%;text-align: right;">
+                            <t t-out="payment.amount" t-options="{'widget': 'monetary','display_currency':  object.currency_id}"></t>
+                          </td>
+                        </tr>
+                      </t>                            
+                    </tbody>
+                  </table>
+                  <hr />
+                  <table style="width: 100%;">
+                    <tbody>
+                      <tr>
+                        <td style="width: 50%;">
+                          Total Payment
+                        </td>
+                        <td style="width: 50%;text-align: right;">
+                          <t t-out="object.amount_total" t-options="{'widget': 'monetary','display_currency':  object.currency_id}"></t>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <br />
+                  <h3>
+                    Order Details
+                  </h3>
+                  <table style="width: 100%;">
+                    <tbody>
+                      <tr>
+                        <td style="width: 50%;">
+                          Total Items
+                        </td>
+                        <td style="width: 50%;text-align: right;">
+                          <t t-out="total_item"></t>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 50%;">
+                          Total Quantity
+                        </td>
+                        <td style="width: 50%;text-align: right;">
+                          <t t-out="total_quantity"></t>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 50%;">
+                          Discount
+                        </td>
+                        <td style="width: 50%;text-align: right;">
+                          Rp 0,00
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 50%;">
+                          Total Amount
+                        </td>
+                        <td style="width: 50%;text-align: right;">
+                          <t t-out="object.amount_total" t-options="{'widget': 'monetary','display_currency':  object.currency_id}"></t>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <br />
+                  <p> Thank you for shopping at AEON <br /> We hope to serve you again soon. </p>
+                  <br />
+                  <p> Best Regards, <br /> AEON Indonesia. </p>
+                </td>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+        <!-- FOOTER -->
+        <tr>
+          <td align="center" style="min-width: 590px;">
+            <table width="590" border="0" cellpadding="0" bgcolor="#875A7B"
+              style="min-width: 590px; background-color: #AD2181; padding: 20px; border-collapse:separate;">
+
+              <tbody>
+                <tr>
+                  <td style="text-align: center;">
+                    <h2 style="margin-bottom: 5px;color: #ffffff;">Follow Us</h2>
+                    <table style="margin: 0 auto;">
+                      <tbody>
+                        <tr>
+                          <td style="width:10%;padding: 0 10px;">
+                            <a href="https://www.facebook.com/AEONStoreIndonesia/">
+                              <img
+                                src="/weha_smart_pos_aeon_email_receipt/static/src/img/facebook.png"
+                                style="padding: 0px; margin: 0px; height: auto; width: 20px;"
+                                alt="Facebook" />
+                            </a>
+                          </td>
+                          <td style="width:10%;padding: 0 10px;">
+                            <a href="https://www.tiktok.com/@aeonindonesia">
+                            <img
+                                src="/weha_smart_pos_aeon_email_receipt/static/src/img/tiktok.png"
+                                style="padding: 0px; margin: 0px; height: auto; width: 20px;"
+                                alt="Tiktok" />
+                            </a>
+                          </td>
+                          <td style="width:10%;padding: 0 10px;">
+                            <a href="https://www.instagram.com/aeonstore_hbc/">
+                            <img
+                                src="/weha_smart_pos_aeon_email_receipt/static/src/img/instagram.png"
+                                style="padding: 0px; margin: 0px; height: auto; width: 20px;"
+                                alt="Instagram" />
+                            </a>
+                          </td>
+                          <td style="width:10%;padding: 0 10px;">
+                            <a href="https://www.youtube.com/@AEONStoreIndonesia">
+                            <img
+                                src="/weha_smart_pos_aeon_email_receipt/static/src/img/youtube.png"
+                                style="padding: 0px; margin: 0px; height: auto; width: 20px;"
+                                alt="Youtube" />
+                            </a>
+                          </td>
+                          <td style="width:50%;padding: 0 10px;">
+                           
+                          </td>
+                          <td style="width:20%;padding: 0 10px;">
+                            <a href="https://play.google.com/store/apps/details?id=com.mejor.aeon.indonesia.release">
+                            <img
+                                src="/weha_smart_pos_aeon_email_receipt/static/src/img/google-play-badge.png"
+                                style="padding: 0px; margin: 0px; width: auto; height: 40px;"
+                                alt="Google Play Store" />
+                            </a>
+                          </td>
+                          <td style="width:20%;padding: 0 10px;">
+                            <a href="https://play.google.com/store/apps/details?id=com.mejor.aeon.indonesia.release">
+                            <img
+                                src="/weha_smart_pos_aeon_email_receipt/static/src/img/google-play-badge.png"
+                                style="padding: 0px; margin: 0px; width: auto; height: 40px;"
+                                alt="Google Play Store" />
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p style="margin-top: 5px; color: #ffffff;">© 2025 AEON Indonesia. All
+                      rights reserved.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

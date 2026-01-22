@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wizard_pos_rfid_form" model="ir.ui.view">
+        <field name="name">wizard.pos.rfid.form</field>
+        <field name="model">wizard.pos.rfid</field>
+        <field name="arch" type="xml">
+            <form string="Set POS RFID">                
+                <group>
+                    <field name="rfid" />
+                </group>
+                <footer>
+                    <button name="set_rfid" string="Save RFID" type="object" class="btn-primary" data-hotkey="q"/>
+                    <button special="cancel" data-hotkey="z" string="Cancel" class="btn-secondary" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_pos_rfid" model="ir.actions.act_window">
+        <field name="name">Wizard POS Rfid</field>
+        <field name="res_model">wizard.pos.rfid</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

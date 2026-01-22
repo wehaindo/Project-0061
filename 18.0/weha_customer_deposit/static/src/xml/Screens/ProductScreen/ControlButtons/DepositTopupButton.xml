@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="DepositTopupButton" owl="1">
+        <div class="control-button">
+            <i class="fa fa-th-list" role="img" aria-label="Deposit" title="Deposit" />  
+            Topup Deposit          
+        </div>
+    </t>
+</templates>

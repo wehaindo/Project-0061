@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_payment_method_view_form_inherit" model="ir.ui.view">
+        <field name="name">pos.payment.method.form.inherit</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="weha_smart_pos_aeon_bca_ecr.pos_payment_method_view_form_inherit"/>
+        <field name="arch" type="xml">
+            <field name="terminal_id" position="replace">
+                <field name="terminal_id" attrs="{'invisible': [('use_payment_terminal', 'not in', ['bcaecr','mandiriecr'])], 'required': [('use_payment_terminal', 'in', ['bcaecr','mandiriecr'])]}"/>
+            </field>
+            <field name="is_ether" position="replace">
+                <field name="is_ether" attrs="{'invisible': [('use_payment_terminal', 'not in', ['bcaecr','mandiriecr'])], 'required': [('use_payment_terminal', 'in', ['bcaecr','mandiriecr'])]}"/>
+            </field>           
+            <field name="is_dev" position="replace">
+                <field name="is_dev" attrs="{'invisible': [('use_payment_terminal', 'not in', ['bcaecr','mandiriecr'])], 'required': [('use_payment_terminal', 'in', ['bcaecr','mandiriecr'])]}"/>
+            </field>
+            <field name="pan" position="replace">
+                <field name="pan" attrs="{'invisible': [('use_payment_terminal', 'not in', ['bcaecr','mandiriecr'])], 'required': [('use_payment_terminal', 'in', ['bcaecr','mandiriecr'])]}"/>
+            </field>
+            <field name="expirydate" position="replace">
+                <field name="expirydate" attrs="{'invisible': [('use_payment_terminal', 'not in', ['bcaecr','mandiriecr'])], 'required': [('use_payment_terminal', 'in', ['bcaecr','mandiriecr'])]}"/>
+            </field>                        
+            <xpath expr="//field[@name='is_ether']" position="after">
+                <field name="mandiri_trans_type" attrs="{'invisible': [('use_payment_terminal', '!=', 'mandiriecr')], 'required': [('use_payment_terminal', 'in', ['mandiriecr'])]}"/>                
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_price_change_view_tree" model="ir.ui.view">
+        <field name="name">product.price.change.view.tree</field>
+        <field name="model">product.price.change</field>
+        <field name="arch" type="xml">
+            <tree string="Product Price Change">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_price_change_view_form" model="ir.ui.view">
+        <field name="name">product.price.change.view.form</field>
+        <field name="model">product.price.change</field>
+        <field name="arch" type="xml">
+            <form string="Product Price Change">
+                <header>
+                    <button string="Generate Product" name="action_generate" type="object" class="oe_highlight"/>
+                    <button string="Request Approval" name="action_request_approval" type="object" class="oe_highlight"/>
+                    <button string="Process" name="action_process" type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_product"
+                            class="oe_stat_button"
+                            icon="fa-shopping-basket"
+                            type="object">
+                            <field name="line_count" widget="statinfo" string="Products"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="date"/>
+                        <field name="branch_id"/>
+                        <field name="product_price_list_id"/>
+                        <field name="is_product_only"/>
+                        <field name="res_line_ids" widget="many2many_tags" attrs="{'invisible':[('is_product_only','=',True)]}"/>
+                        <field name="res_division_ids" domain="[('line_id','in',res_line_ids)]" widget="many2many_tags" attrs="{'invisible':[('is_product_only','=',True)]}"/>
+                        <field name="res_group_ids" domain="[('division_id','in',res_division_ids)]" widget="many2many_tags" attrs="{'invisible':[('is_product_only','=',True)]}"/>
+                        <field name="res_department_ids" domain="[('group_id','in',res_group_ids)]" widget="many2many_tags" attrs="{'invisible':[('is_product_only','=',True)]}"/>
+                        <field name="product_category_ids" domain="[('dept_id','in',res_department_ids)]" widget="many2many_tags" attrs="{'invisible':[('is_product_only','=',True)]}"/>
+                        <field name="product_template_ids" widget="many2many_tags" attrs="{'invisible':[('is_product_only','=',False)]}"/>
+                    </group>                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="product_price_change_view_search" model="ir.ui.view">
+        <field name="name">product.price.change.view.search</field>
+        <field name="model">product.price.change</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="state"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_product_price_change" model="ir.actions.act_window">
+        <field name="name">Price Change</field>
+        <field name="res_model">product.price.change</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p>Create for Price Change Transaction</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_product_price_change"
+        name="Price Change"
+        parent="weha_smart_pos_aeon_price_change.pos_product_price_management_menu"        
+        action="action_product_price_change"
+        sequence="1"
+        groups="point_of_sale.group_pos_manager"/>
+
+    <record id="product_price_change_line_view_tree" model="ir.ui.view">
+        <field name="name">product.price.change.line.view.tree</field>
+        <field name="model">product.price.change.line</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="product_template_id" />
+                <field name="product_product_id" />
+                <field name="min_quantity" />
+                <field name="fixed_price" />
+                <field name="member_fixed_price" />
+                <field name="date_start" />
+                <field name="date_end" />
+            </tree>
+        </field>
+    </record>
+
+</odoo>

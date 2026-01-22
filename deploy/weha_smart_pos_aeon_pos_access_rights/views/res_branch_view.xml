@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_branch_form_inherit" model="ir.ui.view">
+        <field name="name">branch.form.inherit</field>
+        <field name="model">res.branch</field>
+        <field name="inherit_id" ref="multi_branch_base.view_branch_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='page_pos_config_settings']" position="inside">
+                <group>
+                    <group name="pos_supervisors" string="POS Supervisors">
+                        <field name="supervisor_ids" widget="many2many_tags"/>                        
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

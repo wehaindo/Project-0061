@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<!--inheriting pos.session form view-->
+	<record id="view_pos_session_view_form_inherit" model="ir.ui.view">
+		<field name="name">pos.session.form.inherit</field>
+		<field name="model">pos.session</field>
+		<field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+		<field name="arch" type="xml">			
+			<xpath expr="//header" position="inside">				
+				<button name="%(action_wizard_send_message)d" string="Send Message to Pos Session" type="action" class="oe_highlight"/>
+			</xpath>
+		</field>
+	</record>
+</odoo>

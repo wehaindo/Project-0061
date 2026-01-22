@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="weha_smart_pos_base.ProductGridButton">
+        <button class="menu-item navbar-button btn btn-light rounded-0 d-flex align-items-center px-3 cursor-pointer" t-on-click="showToggleProductGrid">
+            <div class="oe_icon oe_green">
+                <i class="fa fa-rotate-right" role="img"></i>
+            </div>
+        </button>
+    </t>
+</templates>

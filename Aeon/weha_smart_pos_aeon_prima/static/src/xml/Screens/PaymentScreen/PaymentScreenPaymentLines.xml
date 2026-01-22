@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="PaymentScreenPaymentLines" t-inherit="point_of_sale.PaymentScreenPaymentLines" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[@class='paymentline electronic_payment']" position="inside">
+            <t t-elif="line.payment_status == 'waiting_prima_qris'">
+                <div class="electronic_status">
+                    Waiting for Qris Payment
+                </div>
+                <div class="button send_payment_request highlight" title="Check Payment QRIS" t-on-click="() => this.trigger('check-payment-prima-qris', line)">
+                    Check
+                </div>
+            </t>
+        </xpath>
+    </t>
+</templates>

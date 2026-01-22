@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<templates id="template" xml:space="preserve">        
+    <t t-name="weha_smart_pos_base.Navbar" t-inherit="point_of_sale.Navbar" t-inherit-mode="extension">
+        <xpath expr="//CashierName" position="before">         
+            <SyncDataButton/>
+            <SupportChannelButton/>   
+            <ProductGridButton/>                        
+        </xpath>
+
+        <xpath expr="//li[hasclass('backend-button')]" position="after">
+            <li class="logout-button"  t-on-click="() => pos.logoutPos()">
+                <a class="dropdown-item py-2">
+                    Logout
+                </a>
+            </li>
+        </xpath>        
+    </t>
+</templates>

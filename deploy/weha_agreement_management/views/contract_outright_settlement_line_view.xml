@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="view_outright_line_tree" model="ir.ui.view">
+        <field name="name">view.outright.line.tree</field>
+        <field name="model">contract.outright.settlement.line</field>
+        <field name="arch" type="xml">
+            <tree string="Outright Settlement Line" create="false" delete="false" edit="false">
+                <field name="partner_id" />
+                <field name="agreement_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view for "model" -->
+    <record id="view_outright_line_form" model="ir.ui.view">
+        <field name="name">view.outright.line.form</field>
+        <field name="model">contract.outright.settlement.line</field>
+        <field name="arch" type="xml">
+            <form string="Outright Settlement Line" create="false" delete="false" edit="false">
+                <sheet>
+                    <group>
+                        <field name="purchase_id" />
+                        <field name="partner_id" />
+                        <field name="agreement_contract_id" />
+                        <field name="is_invoice" />
+                    </group>
+                    <group string="Product" />
+                    <field name="outright_settlement_product_ids" options="{'no_create': True}">
+                        <tree>
+                            <field name="product_id" />
+                            <field name="name" />
+                            <field name="amount_po" />
+                            <field name="discount" />
+                            <field name="amount_rebate" />
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Main window action for "model" -->
+    <record id="action_outright_line_act_window" model="ir.actions.act_window">
+        <field name="name">Action Consigment Line</field>
+        <field name="res_model">contract.outright.settlement.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Main menu for "model" -->
+    <!-- <record id="menu_outright" model="ir.ui.menu">
+        <field name="name">Outright Settlement</field>
+        <field name="sequence" eval="10" />
+        <field name="action" ref="action_outright_line_act_window" />
+        <field name="parent_id" ref="agreement_rebate.agreement_rebate_settlement_menu_root" />
+    </record> -->
+
+</odoo>

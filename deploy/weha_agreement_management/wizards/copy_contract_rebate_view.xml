@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_wizard_copy_contract_rebate" model="ir.ui.view">
+        <field name="name">wizard.copy.contract.rebate.form</field>
+        <field name="model">wizard.copy.contract.rebate</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Scan Contract Rebate">
+                <group>
+                    <group>
+                        <field name="start_date" attrs="{'readonly':[('is_checked','=', True)]}" />
+                    </group>
+                    <group>
+                        <field name="end_date" attrs="{'readonly':[('is_checked','=', True)]}" />
+                    </group>
+                </group>
+                <group string="Copy From Rebate Criteria">
+                    <group>
+                        <field name="supplier_id" attrs="{'readonly':[('is_checked','=', True)]}" />
+                        <field name="is_valid" invisible="1" />
+                        <field name="is_checked" invisible="1" />
+                    </group>
+                </group>
+                <notebook>
+                    <!-- attrs="{'invisible':[('is_checked','=', False)]}" -->
+                    <page string="Contract Rebate" attrs="{'invisible':[('is_checked','=', False)]}">
+                        <field name="copy_contract_line_ids" readonly="1">
+                            <tree string="Copy Contract Rebate">
+                                <field name="contract_id" string="Contract" />
+                                <field name="supplier_id" string="Supplier" />
+                                <field name="signature_date" string="Signature Date" />
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+                <footer>
+                    <button name="process" string="Process" type="object" class="btn-primary"
+                        attrs="{'invisible':[('is_checked','=', True)]}" />
+                    <button name="confirm" string="Confirm" type="object" class="btn-primary"
+                        attrs="{'invisible':[('is_checked','=', False)]}" />
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_copy_contract_rebate" model="ir.actions.act_window">
+        <field name="name">Copy Contract Rebate</field>
+        <field name="res_model">wizard.copy.contract.rebate</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

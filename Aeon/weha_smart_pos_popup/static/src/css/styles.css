@@ -1,0 +1,39 @@
+.pos .popup.popup-number-denom {
+    width: 450px;
+    height: 450px;
+}
+
+.pos .popup-number-denom .popup-input {
+    text-align: center;
+}
+
+.pos .popup-numpad-denom {
+    direction: ltr;
+    margin: 12px auto;
+    text-align: center;
+    width: 300px;
+}
+
+.pos .popup-numpad-denom .input-button,
+.pos .popup-numpad-denom .mode-button {
+    background: none;
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 25px;
+    margin: 4px;
+    vertical-align: top;
+    color: #444;
+}
+.pos .popup-numpad-denom .input-button:active,
+.pos .popup-numpad-denom .mode-button:active {
+    background: #444;
+    color: white;
+    border-color: #444;
+}
+
+
+
+.pos .numpad {
+    grid-template-columns: repeat(5, 1fr);
+}

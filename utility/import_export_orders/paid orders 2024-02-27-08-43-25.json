@@ -1,0 +1,168 @@
+{
+  "paid_orders": [
+    {
+      "id": "008630001",
+      "data": {
+        "name": "Order 008630001",
+        "amount_paid": 288500,
+        "amount_total": 288500,
+        "amount_tax": 28590,
+        "amount_return": 0,
+        "lines": [
+          [
+            0,
+            0,
+            {
+              "qty": 1,
+              "price_unit": 275000,
+              "price_subtotal": 247748,
+              "price_subtotal_incl": 275000,
+              "discount": 0,
+              "product_id": 171801,
+              "tax_ids": [
+                [
+                  6,
+                  false,
+                  [
+                    1
+                  ]
+                ]
+              ],
+              "id": 4,
+              "pack_lot_ids": [],
+              "description": "",
+              "full_product_name": "ARMANDO CARUSO BRUSH SET ACB 5",
+              "price_extra": 0,
+              "price_manually_set": false,
+              "price_automatically_set": false,
+              "price_source": "list_price",
+              "list_price": 275000,
+              "price_override_user": false,
+              "price_override_reason": false,
+              "prc_no": "",
+              "discount_type": "",
+              "discount_amount": 0,
+              "uniqueParentId": false,
+              "uniqueChildId": false,
+              "isRuleApplied": false,
+              "promotion": false,
+              "combination_id": false,
+              "parent_combination_id": false,
+              "promotion_flag": false,
+              "promotion_disc_parentId": false,
+              "promotion_disc_childId": false,
+              "product_uom": 1
+            }
+          ],
+          [
+            0,
+            0,
+            {
+              "qty": 1,
+              "price_unit": 13500,
+              "price_subtotal": 12162,
+              "price_subtotal_incl": 13500,
+              "discount": 0,
+              "product_id": 84717,
+              "tax_ids": [
+                [
+                  6,
+                  false,
+                  [
+                    1
+                  ]
+                ]
+              ],
+              "id": 5,
+              "pack_lot_ids": [],
+              "description": "",
+              "full_product_name": "AUTAN ALL NIGHT TUBE 50ML",
+              "price_extra": 0,
+              "price_manually_set": false,
+              "price_automatically_set": false,
+              "price_source": "list_price",
+              "list_price": 13500,
+              "price_override_user": false,
+              "price_override_reason": false,
+              "prc_no": "",
+              "discount_type": "",
+              "discount_amount": 0,
+              "uniqueParentId": false,
+              "uniqueChildId": false,
+              "isRuleApplied": false,
+              "promotion": false,
+              "combination_id": false,
+              "parent_combination_id": false,
+              "promotion_flag": false,
+              "promotion_disc_parentId": false,
+              "promotion_disc_childId": false,
+              "product_uom": 1
+            }
+          ]
+        ],
+        "statement_ids": [
+          [
+            0,
+            0,
+            {
+              "name": "2024-02-27 01:43:19",
+              "payment_method_id": 1,
+              "amount": 288500,
+              "payment_status": "",
+              "ticket": "",
+              "card_type": "",
+              "cardholder_name": "",
+              "transaction_id": "",
+              "voucherlines": [],
+              "bca_ecr_data": "",
+              "reff_number": "",
+              "pan": "",
+              "approval_code": "",
+              "merchant_id": "",
+              "terminal_id": "",
+              "card_holder_name": ""
+            }
+          ]
+        ],
+        "pos_session_id": 1227,
+        "pricelist_id": 2,
+        "partner_id": false,
+        "user_id": 10,
+        "uid": "008630001",
+        "sequence_number": 1,
+        "creation_date": "2024-02-27T01:43:19.137Z",
+        "fiscal_position_id": false,
+        "server_id": false,
+        "to_invoice": false,
+        "to_ship": false,
+        "is_tipped": false,
+        "tip_amount": 0,
+        "access_token": "367139ff-3c02-4ea2-81b3-b485e9f6ed6b",
+        "is_void": false,
+        "is_refund": false,
+        "refund_parent_pos_reference": "",
+        "void_parent_pos_reference": "",
+        "is_aeon_member": false,
+        "card_no": false,
+        "aeon_member": false,
+        "aeon_member_day": false,
+        "is_void_order": false,
+        "orderPromotion": false,
+        "orderDiscountLine": false,
+        "_id": "367139ff-3c02-4ea2-81b3-b485e9f6ed6b"
+      },
+      "to_invoice": false
+    }
+  ],
+  "session": "POS/01227",
+  "session_id": 1227,
+  "date": "Tue, 27 Feb 2024 01:43:23 GMT",
+  "version": [
+    16,
+    0,
+    0,
+    "final",
+    0,
+    ""
+  ]
+}

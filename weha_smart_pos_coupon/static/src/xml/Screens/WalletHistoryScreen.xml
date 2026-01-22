@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="WalletHistoryScreen" owl="1">
+        <div class="walletLedgerList-screen screen">
+            <div class="screen-content">
+                <div class="top-content">
+                    <div class="button back" t-on-click="back_screen">
+                        <t t-if="!env.isMobile">Back</t>
+                        <t t-else="">
+                            <i class="fa fa-undo"></i>
+                        </t>
+                    </div>
+                    <t t-if="env.pos.config.print_ledger">
+                        <div class="button print_ledger" t-on-click="print_ledger">
+                            <t t-if="!env.isMobile">
+                                <i class="fa fa-print"></i>
+                                Wallet Ledger</t>
+                            <t t-else="">
+                                <i class="fa fa-undo"></i>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+                <section class="full-content">
+                    <div class="wallet-window">
+                        <section class="subwindow list">
+                            <div class="subwindow-container">
+                                <div class="subwindow-container-fix scrollable-y">
+                                    <t t-if="records.length > 0">
+                                        <table class="wallet-list">
+                                            <thead>
+                                                <tr>
+                                                    <th > Customer </th>
+                                                    <th > Order    </th>
+                                                    <th t-if="!env.isMobile"> Cashier  </th>
+                                                    <th t-if="!env.isMobile"> Type     </th>
+                                                    <th t-if="!env.isMobile"> Debit    </th>
+                                                    <th t-if="!env.isMobile"> Credit   </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="client-list-contents">
+                                                <t t-foreach="records" t-as="history" t-key="history.id">
+                                                    <WalletHistoryList record="history"/>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </t>
+                                    <t t-else="">
+                                        <h2 style="text-align:center">No Record Found</h2>
+                                    </t>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </t>
+
+</templates>

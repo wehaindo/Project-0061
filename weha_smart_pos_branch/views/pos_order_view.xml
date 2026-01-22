@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_pos_form_inherit_pos_order" model="ir.ui.view">
+        <field name="name">model.name.view.form.inherit</field>
+        <field name="model">model.name</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field=[@name='session_id']" position="after">
+                <field name="pos_branch_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_pos_order_tree_inherit_pos_order" model="ir.ui.view">
+        <field name="name">model.name.view.form.inherit</field>
+        <field name="model">model.name</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field=[@name='session_id']" position="after">
+                <field name="pos_branch_id"/>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<templates id="template" xml:space="preserve">    
+    <!-- <t t-name="ButtonList" owl="1">
+        
+    </t> -->
+
+    <t t-name="ProductScreen" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension" owl="1">
+        
+        <xpath expr="//div[hasclass('control-buttons')]" position="replace">
+            <div></div>
+        </xpath>
+
+        <xpath expr="//div[hasclass('leftpane')]" position="before">
+            <div class="buttonpane" t-if="!env.isMobile || mobile_pane === 'button'">
+                <div class="control-buttons">
+                    <t t-if="env.isMobile and controlButtons.length > 1">
+                        <div class="control-button" t-on-click="_displayAllControlPopup">More...</div>
+                    </t>
+                    <t t-else="">
+                        <t t-foreach="controlButtons" t-as="cb" t-key="cb.name">
+                            <t t-component="cb.component" t-key="cb.name"/>
+                        </t>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>

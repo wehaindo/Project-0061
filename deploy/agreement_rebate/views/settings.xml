@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.lunch</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="100" />
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Agreement" string="Agreement"
+                    data-key="agreement_rebate">
+                    <field name="currency_id" invisible="1" />
+                    <h2>Agreement</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box" title="None">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Rebate Product Name</span>
+                                <div class="content-group">
+                                    <div class="mt16 row">
+                                        <label for="rebate_product_id" string="Rebate Product"
+                                            class="col-3 col-lg-3 o_light_label" />
+                                        <field name="rebate_product_id" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Reception
+                                    notification</span>
+                                <div class="text-mutex">
+                                    Send this message to your users when their order has been
+                                    delivered.
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="agreement_config_settings_action" model="ir.actions.act_window">
+        <field name="name">
+            Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_form" />
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module'
+            : 'agreement_rebate'}</field>
+    </record>
+
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="res_company_settings" model="ir.ui.view">
+        <field name="name">Res Company Settings</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Contract Settings">
+                    <group>
+                        <group string="Product Rebate">
+                            <field name="rebate_product_id" />
+                            <field name="journal_id" />
+                            <field name="account_id" />
+                        </group>
+                    </group>
+                </page>
+
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

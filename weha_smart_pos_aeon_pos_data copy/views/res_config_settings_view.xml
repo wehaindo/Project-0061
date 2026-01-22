@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_view_form_inherit_weha_smart_pos_data" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.weha.smart.pos.data</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='pos_interface_section']" position="inside">
+                <div class="col-12 col-lg-6 o_setting_box">
+                    <div class="o_setting_left_pane">
+                        <field name="use_pos_data_speed_up"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Use POS Data Speed Up </span>
+                        <div class="text-muted">
+                            Speed Up POS Data Load
+                        </div>  
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 o_setting_box">
+                    <div class="o_setting_left_pane">
+                        <field name="direct_pos_data_local_products_db"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Direct Local Products DB </span>                    
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 o_setting_box">
+                    <div class="o_setting_left_pane">
+                        <field name="save_pos_order"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Save POS Order Locally</span>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

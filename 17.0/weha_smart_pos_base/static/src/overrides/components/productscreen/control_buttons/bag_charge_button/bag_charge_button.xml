@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="weha_smart_pos_base.BagChargeButton">        
+        <div class="control-button clear-button btn rounded-0 fw-bolder text-truncate" t-on-click="onClick">            
+            <i class="fa fa-bag-shopping me-1" role="img" aria-label="Bag Charge" title="Bag Charge" />               
+                Bag Charge             
+        </div>
+    </t>
+</templates>

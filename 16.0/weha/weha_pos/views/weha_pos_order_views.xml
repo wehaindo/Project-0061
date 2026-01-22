@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="weha_pos_config_view_tree" model="ir.ui.view">
+        <field name="name">weha.pos.config.view.tree</field>
+        <field name="model">weha.pos.config</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="weha_pos_config_view_form" model="ir.ui.view">
+        <field name="name">weha.pos.config.view.form</field>
+        <field name="model">weha.pos.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="weha_pos_config_view_search" model="ir.ui.view">
+        <field name="name">weha.pos.config.view.search</field>
+        <field name="model">weha.pos.config</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="weha_pos_config_action" model="ir.actions.act_window">
+        <field name="name">Pos Config</field>
+        <field name="res_model">weha.pos.config</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>        
+    </record>
+
+    <menuitem
+        id="weha_pos_config_menu"
+        name="Pos Config"
+        action="weha_pos_config_action"
+        groups="group_pos_manager"
+        parent="menu_weha_pos_configuration"
+        sequence="9"/>
+
+    <record id="weha_pos_payment_method_view_tree" model="ir.ui.view">
+        <field name="name">weha.pos.payment.method.view.tree</field>
+        <field name="model">weha.pos.payment.method</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="weha_pos_payment_method_view_form" model="ir.ui.view">
+        <field name="name">weha.pos.payment.method.view.form</field>
+        <field name="model">weha.pos.payment.method</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/> 
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="weha_pos_payment_method_view_search" model="ir.ui.view">
+        <field name="name">weha.pos.payment.method.view.search</field>
+        <field name="model">weha.pos.payment.method</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="weha_pos_payment_method_action" model="ir.actions.act_window">
+        <field name="name">Payment Method</field>
+        <field name="res_model">weha.pos.payment.method</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>        
+    </record>
+
+    <menuitem
+        id="payment_method_menu"
+        name="Payment Method"
+        action="weha_pos_payment_method_action"
+        groups="group_pos_manager"
+        parent="menu_weha_pos_configuration"
+        sequence="10"/>
+
+
+    <record id="weha_pos_product_category_view_tree" model="ir.ui.view">
+        <field name="name">weha.pos.product.category.view.tree</field>
+        <field name="model">weha.pos.product.category</field>
+        <field name="arch" type="xml">
+            <tree string="">
+               <field name="name"/> 
+            </tree>
+        </field>
+    </record>
+
+    <record id="weha_pos_product_category_view_form" model="ir.ui.view">
+        <field name="name">weha.pos.product.category.view.form</field>
+        <field name="model">weha.pos.product.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="weha_pos_product_category_view_search" model="ir.ui.view">
+        <field name="name">weha.pos.product.category.view.search</field>
+        <field name="model">weha.pos.product.category</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="name"/>   
+            </search>
+        </field>
+    </record>
+
+    <record id="weha_pos_product_category_action" model="ir.actions.act_window">
+        <field name="name">Product Category</field>
+        <field name="res_model">weha.pos.product.category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>        
+    </record>    
+
+    <menuitem
+        id="weha_pos_product_category_menu"
+        name="Product Category"
+        action="weha_pos_product_category_action"
+        groups="group_pos_manager"
+        parent="menu_weha_pos_configuration"
+        sequence="11"/>
+
+    <record id="weha_pos_order_view_tree" model="ir.ui.view">
+        <field name="name">weha.pos.order.view.tree</field>
+        <field name="model">weha.pos.order</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    
+</odoo>

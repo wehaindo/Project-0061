@@ -1,0 +1,5 @@
+        create_date         |    name    |       full_product_name       | price_unit | qty  | price_subtotal | price_subtotal_incl | branch_id | price_source | price_override_user | price_override_reason 
+----------------------------+------------+-------------------------------+------------+------+----------------+---------------------+-----------+--------------+---------------------+-----------------------
+ 2025-04-11 14:42:38.232213 | 602/226031 | BIFESTA CLEANSING BALM BRIGHT |   109400.0 | 2.00 |       197117.0 |            218800.0 |        43 | override     |                  35 | 001
+(1 row)
+

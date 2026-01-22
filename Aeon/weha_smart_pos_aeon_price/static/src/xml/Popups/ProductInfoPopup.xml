@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="weha_smart_pos_aeon_price.ProductInfoPopup" t-inherit="point_of_sale.ProductInfoPopup" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('section-product-info-title')]" position="replace">
+            <div class="section-product-info-title">
+                <div class="column flex-start">
+                    <span t-esc="props.product.display_name" class="global-info-title product-name"/>
+                    <span>Store Price : <t t-esc="env.pos.format_currency(props.product.lst_price)"/></span>
+                </div>
+                <div class="column flex-end">
+                    <span t-esc="env.pos.format_currency(productInfo.all_prices.price_with_tax)" class="global-info-title" />
+                    <t t-foreach="productInfo.all_prices.tax_details" t-as="tax" t-key="tax.name">
+                        <div><t t-esc="tax.name"/>: <t t-esc="env.pos.format_currency(tax.amount)"/></div>
+                    </t>
+                </div>
+            </div>    
+        </xpath>
+        
+    </t>
+</templates>

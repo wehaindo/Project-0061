@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Menu Item -->
+    <menuitem 
+        id="menu_remove_duplicate_wizard"
+        name="Remove Duplicate Orders"
+        parent="point_of_sale.menu_point_root"
+        action="action_remove_duplicate_wizard"
+        sequence="100"/>
+
+</odoo>

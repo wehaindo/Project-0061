@@ -1,0 +1,3 @@
+
+Version 16.0.0.1 (06/12/22)
+	- Solved issue into move line have changed field name product_uom_qty to reserved_uom_qty.

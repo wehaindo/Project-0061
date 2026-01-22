@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">    
+    <t t-name="ClosePosPopup" t-inherit="point_of_sale.ClosePosPopup" t-inherit-mode="extension" owl="1">        
+        <xpath expr="//footer/div[hasclass('button')][2]" position="replace">
+            <div class="button" t-on-click="closePos" title="Visit the Backend but keep session open" hidden="1">Backend</div>
+        </xpath>    
+        
+        <xpath expr="//footer/div[hasclass('button')][1]" position="replace">
+            <t t-if="state.is_supervisor == true">
+                <div class="button highlight" t-on-click="confirm">Close Session</div>
+            </t>
+            <t t-if="state.is_supervisor == false">
+                <div class="button highlight" t-on-click="confirm" hidden="1">Close Session</div>
+            </t>
+        </xpath>
+            
+    </t>
+</templates>

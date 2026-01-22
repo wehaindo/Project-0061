@@ -1,0 +1,538 @@
+// Normal
+[
+  {
+    "message_follower_ids": [],
+    "message_ids": [],
+    "rating_ids": [],
+    "website_message_ids": [],
+    "access_token": "29a7e8a3-9f5e-4355-a98d-7656d8b54c7e",
+    "name": "Order 00001-002-0004",
+    "last_order_preparation_change": {
+      "lines": {},
+      "generalNote": "",
+      "sittingMode": "dine in"
+    },
+    "date_order": "2025-09-13 02:27:08",
+    "user_id": 2,
+    "amount_difference": false,
+    "amount_tax": 825,
+    "amount_total": 8325,
+    "amount_paid": 8325,
+    "amount_return": 0,
+    "lines": [
+      [
+        0,
+        0,
+        {
+          "skip_change": false,
+          "product_id": 13,
+          "attribute_value_ids": [],
+          "custom_attribute_value_ids": [],
+          "price_unit": 7500,
+          "qty": 1,
+          "price_subtotal": 7500,
+          "price_subtotal_incl": 8325,
+          "price_extra": 0,
+          "price_type": "original",
+          "discount": false,
+          "order_id": 4,
+          "tax_ids": [
+            [
+              4,
+              1
+            ]
+          ],
+          "pack_lot_ids": [],
+          "full_product_name": "Product 002 (White)",
+          "customer_note": false,
+          "refund_orderline_ids": [],
+          "refunded_orderline_id": false,
+          "uuid": "e4f79628-56f0-4df3-85a9-5e587f05300c",
+          "note": false,
+          "combo_parent_id": false,
+          "combo_line_ids": [],
+          "combo_item_id": false,
+          "id": 1
+        }
+      ]
+    ],
+    "company_id": 1,
+    "pricelist_id": false,
+    "partner_id": false,
+    "sequence_number": 4,
+    "session_id": 1,
+    "state": "paid",
+    "account_move": false,
+    "picking_ids": [],
+    "procurement_group_id": false,
+    "floating_order_name": false,
+    "general_note": "",
+    "nb_print": 0,
+    "pos_reference": "00001-002-0004",
+    "fiscal_position_id": false,
+    "payment_ids": [
+      [
+        0,
+        0,
+        {
+          "name": false,
+          "pos_order_id": 4,
+          "amount": 8325,
+          "payment_method_id": 2,
+          "payment_date": "2025-09-13 02:22:16",
+          "card_type": false,
+          "card_brand": false,
+          "card_no": false,
+          "cardholder_name": false,
+          "payment_ref_no": false,
+          "payment_method_authcode": false,
+          "payment_method_issuer_bank": false,
+          "payment_method_payment_mode": false,
+          "transaction_id": false,
+          "payment_status": false,
+          "ticket": "",
+          "is_change": false,
+          "account_move_id": false,
+          "uuid": "e0a3aae5-a4a5-43a0-95fb-f83542d7d431",
+          "id": 1,
+          "create_uid": false,
+          "create_date": false,
+          "write_uid": false,
+          "write_date": false,
+          "online_account_payment_id": false
+        }
+      ]
+    ],
+    "to_invoice": false,
+    "shipping_date": false,
+    "is_tipped": false,
+    "tip_amount": false,
+    "ticket_code": "tlr0a",
+    "uuid": "8932c3fa-6e71-4f98-b214-16ef2fcc1b40",
+    "has_deleted_line": false,
+    "id": "4",
+    "create_uid": false,
+    "create_date": false,
+    "write_uid": false,
+    "write_date": "2025-09-12 22:46:18",
+    "l10n_id_qris_transaction_ids": [],
+    "employee_id": false,
+    "next_online_payment_amount": false
+  }
+]
+// Combo Product
+[
+  {
+    "message_follower_ids": [],
+    "message_ids": [],
+    "rating_ids": [],
+    "website_message_ids": [],
+    "access_token": "1b94c51b-9921-4250-9ac1-a8027688af1f",
+    "name": "Order 00001-004-0005",
+    "last_order_preparation_change": {
+      "lines": {},
+      "generalNote": "",
+      "sittingMode": "dine in"
+    },
+    "date_order": "2025-09-13 02:35:38",
+    "user_id": 2,
+    "amount_difference": false,
+    "amount_tax": 0.11,
+    "amount_total": 1.11,
+    "amount_paid": 1.11,
+    "amount_return": 0,
+    "lines": [
+      [
+        0,
+        0,
+        {
+          "skip_change": false,
+          "product_id": 15,
+          "attribute_value_ids": [],
+          "custom_attribute_value_ids": [],
+          "price_unit": 0,
+          "qty": 1,
+          "price_subtotal": 0,
+          "price_subtotal_incl": 0,
+          "price_extra": 0,
+          "price_type": "original",
+          "discount": false,
+          "order_id": 5,
+          "tax_ids": [],
+          "pack_lot_ids": [],
+          "full_product_name": "Product Combo 001",
+          "customer_note": false,
+          "refund_orderline_ids": [],
+          "refunded_orderline_id": false,
+          "uuid": "cd7ce3d3-5c29-4852-8b07-a65b23ab78ef",
+          "note": false,
+          "combo_parent_id": false,
+          "combo_line_ids": [
+            2,
+            3
+          ],
+          "combo_item_id": false,
+          "id": 1
+        }
+      ],
+      [
+        0,
+        0,
+        {
+          "skip_change": false,
+          "product_id": 9,
+          "attribute_value_ids": [],
+          "custom_attribute_value_ids": [],
+          "price_unit": 0.75,
+          "qty": 1,
+          "price_subtotal": 0.75,
+          "price_subtotal_incl": 0.83,
+          "price_extra": false,
+          "price_type": false,
+          "discount": false,
+          "order_id": 5,
+          "tax_ids": [
+            [
+              4,
+              1
+            ]
+          ],
+          "pack_lot_ids": [],
+          "full_product_name": "Product 001 (Black)",
+          "customer_note": false,
+          "refund_orderline_ids": [],
+          "refunded_orderline_id": false,
+          "uuid": "290e2f2b-2dba-4f9d-b7ab-68b3186a7b7c",
+          "note": false,
+          "combo_parent_id": 1,
+          "combo_line_ids": [],
+          "combo_item_id": 5,
+          "id": 2
+        }
+      ],
+      [
+        0,
+        0,
+        {
+          "skip_change": false,
+          "product_id": 5,
+          "attribute_value_ids": [],
+          "custom_attribute_value_ids": [],
+          "price_unit": 0.25,
+          "qty": 1,
+          "price_subtotal": 0.25,
+          "price_subtotal_incl": 0.28,
+          "price_extra": false,
+          "price_type": false,
+          "discount": false,
+          "order_id": 5,
+          "tax_ids": [
+            [
+              4,
+              1
+            ]
+          ],
+          "pack_lot_ids": [],
+          "full_product_name": "Product 004",
+          "customer_note": false,
+          "refund_orderline_ids": [],
+          "refunded_orderline_id": false,
+          "uuid": "7511a9f0-6bea-428f-b4e1-935ac3eec5c3",
+          "note": false,
+          "combo_parent_id": 1,
+          "combo_line_ids": [],
+          "combo_item_id": 4,
+          "id": 3
+        }
+      ]
+    ],
+    "company_id": 1,
+    "pricelist_id": false,
+    "partner_id": false,
+    "sequence_number": 5,
+    "session_id": 1,
+    "state": "paid",
+    "account_move": false,
+    "picking_ids": [],
+    "procurement_group_id": false,
+    "floating_order_name": false,
+    "general_note": "",
+    "nb_print": 0,
+    "pos_reference": "00001-004-0005",
+    "fiscal_position_id": false,
+    "payment_ids": [
+      [
+        0,
+        0,
+        {
+          "name": false,
+          "pos_order_id": 5,
+          "amount": 1.11,
+          "payment_method_id": 2,
+          "payment_date": "2025-09-13 02:35:24",
+          "card_type": false,
+          "card_brand": false,
+          "card_no": false,
+          "cardholder_name": false,
+          "payment_ref_no": false,
+          "payment_method_authcode": false,
+          "payment_method_issuer_bank": false,
+          "payment_method_payment_mode": false,
+          "transaction_id": false,
+          "payment_status": false,
+          "ticket": "",
+          "is_change": false,
+          "account_move_id": false,
+          "uuid": "606d6970-b083-4c6b-a24c-dbab715349ca",
+          "id": 1,
+          "create_uid": false,
+          "create_date": false,
+          "write_uid": false,
+          "write_date": false,
+          "online_account_payment_id": false
+        }
+      ]
+    ],
+    "to_invoice": false,
+    "shipping_date": false,
+    "is_tipped": false,
+    "tip_amount": false,
+    "ticket_code": "92aoh",
+    "uuid": "8762f733-2d89-44ae-90fa-4d8fdac0ef20",
+    "has_deleted_line": false,
+    "id": "5",
+    "create_uid": false,
+    "create_date": false,
+    "write_uid": false,
+    "write_date": false,
+    "l10n_id_qris_transaction_ids": [],
+    "employee_id": false,
+    "next_online_payment_amount": false
+  }
+]
+
+// With Employee
+[
+  {
+    "message_follower_ids": [],
+    "message_ids": [],
+    "rating_ids": [],
+    "website_message_ids": [],
+    "access_token": "078c0e10-fe8b-4dd3-a0f0-64a0a6e9b065",
+    "name": "Order 00003-001-0001",
+    "last_order_preparation_change": {
+      "lines": {},
+      "generalNote": "",
+      "sittingMode": "dine in"
+    },
+    "date_order": "2025-09-13 05:40:56",
+    "user_id": 2,
+    "amount_difference": false,
+    "amount_tax": 4950.11,
+    "amount_total": 49951.11,
+    "amount_paid": 49951.11,
+    "amount_return": 0,
+    "lines": [
+      [
+        0,
+        0,
+        {
+          "skip_change": false,
+          "product_id": 5,
+          "attribute_value_ids": [],
+          "custom_attribute_value_ids": [],
+          "price_unit": 45000,
+          "qty": 1,
+          "price_subtotal": 45000,
+          "price_subtotal_incl": 49950,
+          "price_extra": 0,
+          "price_type": "original",
+          "discount": false,
+          "order_id": 8,
+          "tax_ids": [
+            [
+              4,
+              1
+            ]
+          ],
+          "pack_lot_ids": [],
+          "full_product_name": "Product 004",
+          "customer_note": false,
+          "refund_orderline_ids": [],
+          "refunded_orderline_id": false,
+          "uuid": "b167746d-1dda-4ffe-8128-791825893384",
+          "note": false,
+          "combo_parent_id": false,
+          "combo_line_ids": [],
+          "combo_item_id": false,
+          "id": 1
+        }
+      ],
+      [
+        0,
+        0,
+        {
+          "skip_change": false,
+          "product_id": 15,
+          "attribute_value_ids": [],
+          "custom_attribute_value_ids": [],
+          "price_unit": 0,
+          "qty": 1,
+          "price_subtotal": 0,
+          "price_subtotal_incl": 0,
+          "price_extra": 0,
+          "price_type": "original",
+          "discount": false,
+          "order_id": 8,
+          "tax_ids": [],
+          "pack_lot_ids": [],
+          "full_product_name": "Product Combo 001",
+          "customer_note": false,
+          "refund_orderline_ids": [],
+          "refunded_orderline_id": false,
+          "uuid": "7997fd4f-b409-45ad-8915-945d771cdd54",
+          "note": false,
+          "combo_parent_id": false,
+          "combo_line_ids": [
+            3,
+            4
+          ],
+          "combo_item_id": false,
+          "id": 2
+        }
+      ],
+      [
+        0,
+        0,
+        {
+          "skip_change": false,
+          "product_id": 9,
+          "attribute_value_ids": [],
+          "custom_attribute_value_ids": [],
+          "price_unit": 0.75,
+          "qty": 1,
+          "price_subtotal": 0.75,
+          "price_subtotal_incl": 0.83,
+          "price_extra": false,
+          "price_type": false,
+          "discount": false,
+          "order_id": 8,
+          "tax_ids": [
+            [
+              4,
+              1
+            ]
+          ],
+          "pack_lot_ids": [],
+          "full_product_name": "Product 001 (Black)",
+          "customer_note": false,
+          "refund_orderline_ids": [],
+          "refunded_orderline_id": false,
+          "uuid": "cdc3e086-1948-4105-ad7d-a6eea77a8baf",
+          "note": false,
+          "combo_parent_id": 2,
+          "combo_line_ids": [],
+          "combo_item_id": 5,
+          "id": 3
+        }
+      ],
+      [
+        0,
+        0,
+        {
+          "skip_change": false,
+          "product_id": 5,
+          "attribute_value_ids": [],
+          "custom_attribute_value_ids": [],
+          "price_unit": 0.25,
+          "qty": 1,
+          "price_subtotal": 0.25,
+          "price_subtotal_incl": 0.28,
+          "price_extra": false,
+          "price_type": false,
+          "discount": false,
+          "order_id": 8,
+          "tax_ids": [
+            [
+              4,
+              1
+            ]
+          ],
+          "pack_lot_ids": [],
+          "full_product_name": "Product 004",
+          "customer_note": false,
+          "refund_orderline_ids": [],
+          "refunded_orderline_id": false,
+          "uuid": "1525c542-6194-497f-b503-ad509bf5c2dd",
+          "note": false,
+          "combo_parent_id": 2,
+          "combo_line_ids": [],
+          "combo_item_id": 4,
+          "id": 4
+        }
+      ]
+    ],
+    "company_id": 1,
+    "pricelist_id": false,
+    "partner_id": false,
+    "sequence_number": 1,
+    "session_id": 3,
+    "state": "paid",
+    "account_move": false,
+    "picking_ids": [],
+    "procurement_group_id": false,
+    "floating_order_name": false,
+    "general_note": "",
+    "nb_print": 0,
+    "pos_reference": "00003-001-0001",
+    "fiscal_position_id": false,
+    "payment_ids": [
+      [
+        0,
+        0,
+        {
+          "name": false,
+          "pos_order_id": 8,
+          "amount": 49951.11,
+          "payment_method_id": 2,
+          "payment_date": "2025-09-13 05:40:54",
+          "card_type": false,
+          "card_brand": false,
+          "card_no": false,
+          "cardholder_name": false,
+          "payment_ref_no": false,
+          "payment_method_authcode": false,
+          "payment_method_issuer_bank": false,
+          "payment_method_payment_mode": false,
+          "transaction_id": false,
+          "payment_status": false,
+          "ticket": "",
+          "is_change": false,
+          "account_move_id": false,
+          "uuid": "c6f5f6f9-132c-4ad0-935c-bd73d5abb8c0",
+          "id": 1,
+          "create_uid": false,
+          "create_date": false,
+          "write_uid": false,
+          "write_date": false,
+          "online_account_payment_id": false
+        }
+      ]
+    ],
+    "to_invoice": false,
+    "shipping_date": false,
+    "is_tipped": false,
+    "tip_amount": false,
+    "ticket_code": "3vc8p",
+    "uuid": "ec645b41-510c-4003-ba75-feb66bd06628",
+    "has_deleted_line": false,
+    "id": "8",
+    "create_uid": false,
+    "create_date": false,
+    "write_uid": false,
+    "write_date": false,
+    "l10n_id_qris_transaction_ids": [],
+    "employee_id": 1,
+    "next_online_payment_amount": false
+  }
+]

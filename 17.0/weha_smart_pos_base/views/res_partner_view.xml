@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.inheritt</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml"> 
+            <xpath expr="//notebook" position="inside">
+                <page string="Deposit" name="deposit_page">
+                    <group>
+                        <group>
+                            <field name="remaining_deposit_amount"/>
+                            <field name="card_number"/>
+                        </group>   
+                    </group>
+                    
+                    <field name="deposit_lines" nolabel="1">
+                        <tree>
+                            <field name="customer_id"/>
+                            <field name="order_id"/>
+                            <field name="cashier_id"/>
+                            <field name="type"/>
+                            <field name="debit"/>
+                            <field name="credit"/>
+                            <field name="state"/> 
+                        </tree>
+                    </field>
+                    
+                </page>
+                <page string="Voucher" name="voucher_page">
+                    <!-- <field name="pos_voucher_ids">
+                        <tree>                            
+                            <field name="voucher_seq" />
+                            <field name="voucher_amount" />
+                        </tree>
+                    </field> -->
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

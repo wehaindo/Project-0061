@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="PosInterfaceButton" owl="1">
+        <div class="oe_status" t-on-click="onClick">
+            <div class="js_connected oe_icon"
+                title="POS Interface Connection">
+                <i class="fa fa-fw fa-fa-handshake-o" role="img" aria-label="POS Interface"></i>
+            </div>
+        </div>
+    </t>
+
+</templates>

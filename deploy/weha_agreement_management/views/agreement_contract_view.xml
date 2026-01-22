@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="view_agreement_contract_form" model="ir.ui.view">
+        <field name="name">Agreement Contract Form</field>
+        <field name="model">agreement.contract</field>
+        <field name="arch" type="xml">
+            <form string="Agreement Contract">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="code" class="oe_edit_only" />
+                        <h1>
+                            <field name="code" readonly="1"/>
+                        </h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <group>
+                                <field name="supplier_id" />
+                                <field name="supplier_code" />
+                            </group>
+                        </div>
+                        <div class="col-sm-6">
+                            <group string="Address" />
+                            <div class="o_address_format" >
+                                <field name="street" placeholder="Street..." class="o_address_street" />
+                                <field name="street2" placeholder="Street 2..." class="o_address_street" />
+                                <field name="city" placeholder="City" class="o_address_city" />
+                                <field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}" 
+                                    context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip" />
+                                <div name="partner_address_country" class="d-flex justify-content-between">
+                                        <field name="country_id" placeholder="Country" class="o_address_country" 
+                                    options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" />
+                                </div>
+                            </div>
+                            <br/><br/>
+                        </div>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="supplier_contract_type" />
+                        </group>
+                    </group>
+                    <div class="row" attrs="{'invisible': [('supplier_contract_type','!=', 'ab'), ]}">
+                        <div class="col-sm-6">
+                            <group>
+                                <field name="new_supplier_id" />
+                                <field name="new_supplier_code" />
+                            </group>
+                        </div>
+                        <div class="col-sm-6">
+                            <group string="Address" />
+                            <div class="o_address_format" >
+                                <field name="new_street" placeholder="Street..." class="o_address_street" />
+                                <field name="new_street2" placeholder="Street 2..." class="o_address_street" />
+                                <field name="new_city" placeholder="City" class="o_address_city" />
+                                <field name="new_state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}" 
+                                    context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}"/>
+                                <field name="new_zip" placeholder="ZIP" class="o_address_zip" />
+                                <div name="partner_address_country" class="d-flex justify-content-between">
+                                        <field name="new_country_id" placeholder="Country" class="o_address_country" 
+                                    options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" />
+                                </div>
+                            </div>
+                            <br/><br/>
+                        </div>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="supplier_sub_type" />
+                            <field name="contract_holder_type" attrs="{'readonly': [('supplier_contract_type','!=', 'ab'), ]}"/>
+                            <field name="supplier_source" />
+                        </group>
+                        <group>
+                            <field name="signature_date" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="payment_term_id" />
+                            <field name="target" />
+                            <field name="tax_id" />
+                        </group>
+                        <group>
+                            <field name="guarantee_min_monthly" />
+                            <field name="guarantee_min_yearly" />
+                            <field name="guarantee_total" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="line_ids" widget="many2many_tags" />
+                            <field name="branch_ids" widget="many2many_tags" />
+                        </group>
+                        <group>
+                            <field name="description" />
+                            <field name="fixed_percent" />
+                        </group>
+                    </group>
+                    <group string="Deduction" />
+                    <field name="deduction_ids" nolabel="1" context="{'default_active_id': active_id}">
+                        <tree>
+                            <field name="name" />
+                            <field name="receipt" />
+                            <field name="method" />
+                            <field name="journal_id" />
+                            <field name="account_id" />
+                        </tree>
+                    </field>
+                    <group string="Rebate" />
+                    <field name="rebate_ids" nolabel="1" context="{'default_active_id': active_id}">
+                        <tree>
+                            <!-- <field name="code" /> -->
+                            <field name="supplier_id" />
+                            <!-- <field name="store_id" /> -->
+                            <field name="contract_id" />
+                            <field name="deduction_id" />
+                            <field name="expenses_type" />
+                            <field name="calculate_from" />
+                            <field name="start_date" />
+                            <field name="end_date" />
+                            <field name="date_year" />
+                            <field name="rebate_value" />
+                            <field name="payment_periode" />
+                            <field name="is_process" readonly="1" nolabel="1" optional="show"
+                                widget="boolean_toggle" />
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_agreement_contract_tree" model="ir.ui.view">
+        <field name="name">Agreement Contract Tree</field>
+        <field name="model">agreement.contract</field>
+        <field name="arch" type="xml">
+            <tree string="Caption">
+                <field name="code" />
+                <field name="supplier_code" />
+                <field name="supplier_id" />
+                <field name="supplier_contract_type" />
+                <field name="supplier_sub_type" />
+                <field name="signature_date" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search view for "model" -->
+    <record id="view_agreement_contract_search" model="ir.ui.view">
+        <field name="name">Agreement Contract Search</field>
+        <field name="model">agreement.contract</field>
+        <field name="arch" type="xml">
+            <search string="Contract">
+                <field name="supplier_id"/>
+                <field name="supplier_code"/>
+                <group expand="0" string="Group By">
+                    <filter string="Supplier" name="group_by_supplier" domain="[]" context="{'group_by':'supplier_id'}" />
+                    <filter string="Supplier Sub Type" name="group_by_supplier_sub_type" domain="[]" context="{'group_by':'supplier_sub_type'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="agreement_contract_action" model="ir.actions.act_window">
+        <field name="name">Agreement Contract</field>
+        <field name="res_model">agreement.contract</field>
+        <field name="context">{'search_default_group_by_supplier': 1, 'search_default_group_by_supplier_sub_type': 1,}</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

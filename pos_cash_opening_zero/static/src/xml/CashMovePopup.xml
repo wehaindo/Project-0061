@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="CashMovePopup" t-inherit="point_of_sale.CashMovePopup" t-inherit-mode="extension" owl="1">        
+        <xpath expr="//div[hasclass('popup')]" position="after">
+            <MoneyDetailsPopup
+                t-if="state.displayMoneyDetailsPopup"
+                manualInputCashCount="manualInputCashCount"
+                onConfirm="(payload) => this.updateCashOpening(payload)"
+                onDiscard.bind="closeDetailsPopup"
+            />
+        </xpath>
+        <!-- <xpath expr="//div[hasclass('input-field')]" position="after">        
+            <div class="button icon" t-on-click="openDetailsPopup">
+                <i class="fa fa-calculator" role="img" title="Open the money details popup"/>
+            </div>        
+        </xpath> -->
+    </t>
+</templates>

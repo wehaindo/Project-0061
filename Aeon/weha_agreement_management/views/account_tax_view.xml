@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="contract_account_tax" model="ir.ui.view">
+        <field name="name">Contract Account Tax</field>
+        <field name="model">account.tax</field>
+        <field name="inherit_id" ref="account.view_tax_form" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="supplier_id" />
+                <field name="deduction_id" />
+            </field>
+
+        </field>
+    </record>
+</odoo>

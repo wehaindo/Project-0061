@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wizard_process_pos_data_view_form" model="ir.ui.view">
+        <field name="name">wizard.process.pos.data.view.form</field>
+        <field name="model">wizard.process.pos.data</field>
+        <field name="arch" type="xml">
+            <form string="">                
+                <p>
+                    Are you sure to generate pos data ?
+                </p>
+                <footer>
+                    <button name="process" string="Process" type="object" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_generate_pos_data" model="ir.actions.act_window">
+        <field name="name">Generate POS Data</field>
+        <field name="res_model">wizard.process.pos.data</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem action="action_generate_pos_data" id="menu_process_pos_data" parent="menu_point_pos_data" sequence="1" groups="point_of_sale.group_pos_manager"/>
+
+</odoo>

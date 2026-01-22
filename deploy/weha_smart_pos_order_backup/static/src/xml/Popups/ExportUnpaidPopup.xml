@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ExportUnpaidOrdersPopup" owl="1">
+        <Draggable>
+            <div class="popup popup-confirm">
+                <header class="title drag-handle">
+                    Export Unpaid Orders
+                </header>
+                <main class="body">
+                    <t t-if="state.isUnpaidOrdersReady">
+                        <center><a t-att-download="state.filename" t-att-href="state.url">Download File</a></center>
+                    </t>
+                    <t t-if="!state.isUnpaidOrdersReady">
+                        <center>Click Generate File Button!</center>
+                    </t>
+                </main>
+                <footer class="footer">
+                    <div t-if="!state.isUnpaidOrdersReady" class="button" t-on-click="generateFile" title="Generate Paid Orders">Generate File</div>
+                    <div class="button cancel" t-on-click="cancel">
+                        Close
+                    </div>
+                </footer>
+            </div>
+        </Draggable>
+    </t>
+</templates>

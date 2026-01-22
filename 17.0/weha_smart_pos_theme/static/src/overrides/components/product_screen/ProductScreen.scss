@@ -1,0 +1,24 @@
+.pos .buttonpane {
+    background-color: #e2e2e2;
+    width: 150px;
+    border-right: 1px solid rgba(0, 0, 0, 0.14);
+    height: 100%;    
+}
+
+.pos .buttonpane .control-buttons {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.pos .leftpane {
+    border-right: solid 3px #787878;
+    background: #e2e2e2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    max-width: 100%;
+    flex-basis: 300px;
+    overflow-y: auto;
+}

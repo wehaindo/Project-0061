@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<templates id="template" xml:space="preserve">    
+    <t t-name="Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension" owl="1">
+        <xpath expr="(//ul) [position()=last()]" position="after">
+            <t t-if="props.line.selected">
+                <ul class="info-list">
+                    <button class="btn btn-primary btn-lg button-orderline" t-on-click="onClickDelete"><i class="fa fa-trash button-orderline-icon"></i></button>
+                    <button class="btn btn-primary btn-lg button-orderline" ><i class="fa fa-percent button-orderline-icon"></i></button>
+                    <button class="btn btn-primary btn-lg button-orderline" ><i class="fa fa-home button-orderline-icon" ></i></button>
+                </ul>
+            </t>
+        </xpath>
+    </t>
+</templates>
+
+

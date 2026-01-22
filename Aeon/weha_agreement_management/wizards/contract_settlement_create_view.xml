@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_contract_settlement_create_wiz" model="ir.ui.view">
+        <field name="name">contract.settlement.wiz</field>
+        <field name="model">contract.settlement.wiz</field>
+        <field name="arch" type="xml">
+            <form string="Generate Contract">
+                <group>
+                    <!-- <field name="date" readonly="1" /> -->
+                    <!-- <field name="date_from" />
+                    <field name="date_to" /> -->
+                    <field name="supplier_sub_type" />
+                    <field name="payment_term_id" />
+                </group>
+                <footer>
+                    <button
+                        string="Generate"
+                        name="action_create_settlement"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_contract_settlement" model="ir.actions.act_window">
+        <field name="name">Generate Contract</field>
+        <field name="res_model">contract.settlement.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

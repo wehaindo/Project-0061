@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="AddMoneyToWalletPopup" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup popup-textinput">
+                <header class="title">
+                    <t t-esc="props.title"/>
+                </header>
+                <div class="div">
+                    <p>
+                        Customer :
+                    <t t-esc="props.customer"/>
+                    </p>
+                </div>
+                <div t-if='props.wallet_bal' class="div">
+                    <p>
+                        Wallet Balance :
+                        <t t-esc="env.pos.format_currency(props.wallet_bal)"/>
+                    </p>
+                </div>
+                <div class="div">
+                    <p>
+                        Amount :
+                    <input type="text" t-model="state.rechargeAmount" t-on-keydown="onInputKeyDown" t-ref="input" style="width:30%"/>
+                    </p>
+                </div>
+                <t t-if="state.showMsg">
+                    <div class="div" style="color:red">
+                        <p><t t-esc="state.message"/> </p>
+                    </div>
+                </t>
+                <div class="footer">
+                    <div class="button confirm" t-on-click="confirm">
+                        <t t-esc="props.confirmText"/>
+                    </div>
+                    <div class="button cancel" t-on-click="cancel">
+                        <t t-esc="props.cancelText"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

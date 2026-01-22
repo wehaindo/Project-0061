@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ReceiptScreen" t-inherit="point_of_sale.ReceiptScreen" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('pos-receipt-container')]" position="replace">
+            <div class="pos-receipt-container">
+                <t t-if="props.mode == 'from_wallet'">
+                    <WalletLedgerReceipt wallet="props.wallet" order="currentOrder" t-ref="order-receipt"/>
+                </t>
+                <t t-else="">
+                    <OrderReceipt order="currentOrder" client_bal="" t-ref="order-receipt" />
+                </t>
+            </div>
+        </xpath>
+    </t>
+</templates>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_category_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.category.form.inherit</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="multi_branch_base.product_category_form_view_inherit_branch"/>
+        <field name="arch" type="xml">
+            <group name="department" position="after">
+                <group name="aeon_member">
+                    <group string="AEON Member">
+                        <label for="is_member_discount"/>
+                        <div>
+                            <field name="is_member_discount" class="oe_inline"/>
+                            <field name="member_discount_percentage" class="oe_inline" attrs="{'invisible':[('is_member_discount','=',False)]}"/>
+                        </div>
+                        <label for="is_member_day_discount"/>
+                        <div>
+                            <field name="is_member_day_discount" class="oe_inline"/>
+                            <field name="member_day_discount_percentage" class="oe_inline" attrs="{'invisible':[('is_member_day_discount','=',False)]}"/>
+                        </div>
+                    </group>
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>

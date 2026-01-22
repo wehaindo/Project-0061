@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<templates id="template" xml:space="preserve">        
+    <t t-name="weha_smart_pos_base.CustomerFacingDisplayHead" t-inherit="point_of_sale.CustomerFacingDisplayHead" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('resources')]" position="replace">
+            <div class="resources">
+                <base t-att-href="origin" />
+                <meta http-equiv="cache-control" content="no-cache" />
+                <meta http-equiv="pragma" content="no-cache" />
+                <link rel="stylesheet" type="text/css" t-att-href="origin + '/web/static/src/libs/fontawesome/css/font-awesome.css'"/>
+                <link rel="stylesheet" type="text/css" t-att-href="origin + '/point_of_sale/static/src/css/customer_facing_display.css'"/>
+                <!-- <link rel="stylesheet" type="text/css" t-att-href="origin + '/weha_smart_pos_base/static/lib/css/bootstrap.min.css'"/> -->
+                <link rel="stylesheet" type="text/css" t-att-href="origin + '/weha_smart_pos_base/static/lib/css/jquery-ui.min.css'"/>
+                <link rel="stylesheet" type="text/css" t-att-href="origin + '/weha_smart_pos_base/static/lib/css/owl.min.css'"/>                
+                <link rel="stylesheet" type="text/css" t-att-href="origin + '/weha_smart_pos_base/static/lib/css/fontawesome.min.css'"/>                        
+                <link rel="stylesheet" type="text/css" t-att-href="origin + '/weha_smart_pos_base/static/lib/css/customer_facing_display.css?t=11111112'"/>                
+                <!-- <link rel="stylesheet" type="text/css" href="/weha_smart_pos_base/static/lib/css/customer_facing_header.css"/>                 -->
+                <link rel="stylesheet" type="text/css" t-att-href="origin + '/weha_smart_pos_base/static/lib/css/customer_facing_carousel.css?t=11111112'"/>                            
+                <!-- The scroll to the last selected order line (in the POS UI) is made using scroll-snap-* css properties, but the JS code below checks and does an alternative attempt with scrollIntoView if the css properties are not supported or not behaving correctly. (this JS script is in the xml template to be accessible for local and remote displays) -->
+                <script type="text/javascript" id="old_browser_fix_auto_scroll">
+                    function isCentered(el) {
+                        const rect = el.getBoundingClientRect();
+                        const elemHeight = (rect.top + rect.bottom) / 2;
+                        const windowMiddleHeight = window.innerHeight / 2;
+                        return (windowMiddleHeight * 0.9 &lt;= elemHeight) &amp;&amp; (elemHeight &lt;= windowMiddleHeight * 1.1);
+                    }
+
+                    function fixScrollingIfNecessary() {
+                        const selectedOrderlineShouldBeScrolledTo = document.querySelector(".pos-customer_facing_display .pos_orderlines_list.backend_product_screen .selected_orderline");
+                        if (selectedOrderlineShouldBeScrolledTo &amp;&amp; !isCentered(selectedOrderlineShouldBeScrolledTo)) {
+                            selectedOrderlineShouldBeScrolledTo.scrollIntoView({ behavior: "instant", block: "center" });
+                        }
+                    }
+                </script>            
+            </div>
+        </xpath>        
+    </t>    
+
+    <t t-name="weha_smart_pos_base.CustomerFacingDisplayOrder" t-inherit="point_of_sale.CustomerFacingDisplayOrder" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('pos-payment_info')]" position="replace">
+            <div class="pos-payment_info">
+                <!-- Carousel -->                
+                <div class="onboard-slider owl-carousel" id="advCarousel">               
+                    <div class="item">
+                        <img style="width:100%;" src="https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU" alt="img"/>
+                    </div>
+                    <div class="item">
+                        <img style="width:100%;" src="https://fastly.picsum.photos/id/2/5000/3333.jpg?hmac=_KDkqQVttXw_nM-RyJfLImIbafFrqLsuGO5YuHqD-qQ" alt="img"/>
+                    </div>
+                    <div class="item">
+                        <img style="width:100%;" src="https://fastly.picsum.photos/id/6/5000/3333.jpg?hmac=pq9FRpg2xkAQ7J9JTrBtyFcp9-qvlu8ycAi7bUHlL7I" alt="img"/>                        
+                    </div>
+                </div>                       
+            </div>
+           
+            <script src="/weha_smart_pos_base/static/lib/js/jquery.3.6.min.js"></script>
+            <!-- <script src="/weha_smart_pos_base/static/lib/js/bootstrap.min.js"></script> -->
+            <script src="/weha_smart_pos_base/static/lib/js/jquery-ui.min.js"></script>
+            <!-- <script src="/weha_smart_pos_base/static/lib/js/fontawesome.min.js"></script> -->
+            <script src="/weha_smart_pos_base/static/lib/js/owl.min.js"></script>
+            <!-- main js  -->            
+            <script src="/weha_smart_pos_base/static/lib/js/customer_facing_carousel.js"></script>
+        </xpath>
+    </t>
+
+    <t t-name="CustomerFacingDisplayOrderLines" t-inherit="point_of_sale.CustomerFacingDisplayOrderLines" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('pos_orderlines_list')]" position="after">
+            <div class="pos-payment_info_details">
+                <!-- Order Total -->
+                <div class="pos-total">
+                    <div class="pos-amount-container pos-spaced-line-container">
+                        <span class="name">Total:</span>
+                        <div class="spacer" />
+                        <div class="pos-spaced-line-container">
+                            <div class="spacer" />
+                            <span class="pos-total_amount amount" t-esc="pos.env.utils.formatCurrency(order and order.get_total_with_tax() || 0)" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paymentlines -->
+                <t t-call="point_of_sale.CustomerFacingDisplayPaymentLines" />
+            </div>
+        </xpath>
+    </t>
+</templates>

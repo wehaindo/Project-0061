@@ -1,0 +1,14 @@
+.qty-input{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    .product-qty{
+        margin: 0px 6px 0px 0px;
+    }
+    .qty-count{
+        background: $primary;
+        color: #FFF;
+        border-radius: 4px;
+        margin: 6px 6px 0px 0px;
+    }
+}

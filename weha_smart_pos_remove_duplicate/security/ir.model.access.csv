@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_remove_duplicate_wizard_user,access.remove.duplicate.wizard.user,model_remove_duplicate_wizard,point_of_sale.group_pos_user,1,1,1,1
+access_remove_duplicate_wizard_manager,access.remove.duplicate.wizard.manager,model_remove_duplicate_wizard,point_of_sale.group_pos_manager,1,1,1,1
+access_remove_duplicate_order_user,access.remove.duplicate.order.user,model_remove_duplicate_order,point_of_sale.group_pos_user,1,1,1,1
+access_remove_duplicate_order_manager,access.remove.duplicate.order.manager,model_remove_duplicate_order,point_of_sale.group_pos_manager,1,1,1,1
+access_remove_duplicate_order_summary_user,access.remove.duplicate.order.summary.user,model_remove_duplicate_order_summary,point_of_sale.group_pos_user,1,1,1,1
+access_remove_duplicate_order_summary_manager,access.remove.duplicate.order.summary.manager,model_remove_duplicate_order_summary,point_of_sale.group_pos_manager,1,1,1,1
+access_remove_duplicate_session_summary_user,access.remove.duplicate.session.summary.user,model_remove_duplicate_session_summary,point_of_sale.group_pos_user,1,1,1,1
+access_remove_duplicate_session_summary_manager,access.remove.duplicate.session.summary.manager,model_remove_duplicate_session_summary,point_of_sale.group_pos_manager,1,1,1,1

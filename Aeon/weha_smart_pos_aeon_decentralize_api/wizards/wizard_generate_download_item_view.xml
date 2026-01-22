@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>			
+		<record id="view_generate_download_item_wizard" model="ir.ui.view">
+			<field name="name">generate.download.item.wizard</field>
+			<field name="model">wizard.generate.download.item</field>
+			<field name="arch" type="xml">
+				<form string="Generate S File">
+					<group>
+						<group>
+							<field name="res_branch_id"/>
+							<field name="data_type"/>
+						</group>	
+						<group>
+							<field name="name"/>
+							<field name="date_end"/>
+							<field name="is_background"/>
+							<!-- <field name="is_copy"/>						 -->
+						</group>										
+					</group>				
+					<footer>
+						<button name="trans_generate" string="Generate" type="object" class="btn-primary"/>
+						<button string="Cancel" class="btn-default" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_generate_download_item" model="ir.actions.act_window">
+			<field name="name">Generate Download Item</field>
+			<field name="res_model">wizard.generate.download.item</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<menuitem id="menu_generate_download_item" name="Generate Download Item" action="action_generate_download_item" parent="weha_upload_transpos.process_file_menu" sequence="10"/>
+		
+	</data>
+</odoo>

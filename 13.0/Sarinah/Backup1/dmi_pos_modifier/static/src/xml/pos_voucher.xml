@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+
+
+    <t t-extend="PaymentScreen-Paymentlines">
+        <t t-jquery=".paymentlines tbody" t-operation="append">
+            <t t-if="is_memo">
+                <tr class="memo-line" t-att-data-cid="0">
+                    <t t-if="memo">
+                        <td class="memo-edit" colspan="2">
+                            <input type="text" id="gift-memo" autofocus="autofocus" placeholder="memo" t-att-value="memo"/>
+                        </td>
+                    </t>
+                    <t t-else="">
+                        <td class="memo-edit" colspan="2">
+                            <input type="text" id="gift-memo" autofocus="autofocus" placeholder="memo"/>
+                        </td>
+                    </t>
+
+                    <td>
+                        <div class="add-memo" >
+                            <i class="add-memo-button fa fa-check-circle" ></i>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cancel-memo" >
+                            <i class="cancel-memo-button fa fa-minus-circle" ></i>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+            </t>
+        </t>
+    </t>
+</templates>

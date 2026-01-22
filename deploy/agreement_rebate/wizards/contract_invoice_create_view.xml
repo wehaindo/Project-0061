@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_contract_invoice_create_wiz" model="ir.ui.view">
+        <field name="name">contract.invoice.create.wiz</field>
+        <field name="model">contract.invoice.create.wiz</field>
+        <field name="arch" type="xml">
+            <form string="Create invoices">
+                <group>
+                    <field name="date" />
+                    <field name="date_from" />
+                    <field name="date_to" />
+                    <field name="supplier_sub_type" />
+                    <!-- <field name="jurnal_id" /> -->
+                </group>
+                <footer>
+                    <button
+                        string="Create"
+                        name="action_create"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="contract_invoice_create_action" model="ir.actions.act_window">
+        <field name="name">Process Settlements</field>
+        <field name="res_model">contract.invoice.create.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

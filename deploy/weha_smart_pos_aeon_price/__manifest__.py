@@ -1,0 +1,42 @@
+{
+    "name" : "WEHA Smart POS - AEON POS Product Price Change",
+    "version" : "16.0.1.0",
+    "category" : "Point of Sale",
+    "depends" : ['point_of_sale',
+        'multi_branch_base',
+        'weha_smart_pos_aeon_price_base',
+        'weha_smart_pos_aeon_pos_access_rights',
+        'weha_smart_pos_popup',
+        'weha_smart_pos_aeon_pos_data',
+        'weha_smart_pos_aeon_pms'],
+    "author": "WEHA",
+    'summary': 'Speed Up POS Data Load',
+    "description": """
+        Purpose : POS 
+    """,
+    "website" : "https://www.weha-id.com",
+    'email': "weha.consultant@gmail.com",
+    'price': 0,
+    'currency': 'USD',
+    'images': ['static/description/main_background.png'],
+    "data": [
+        'security/ir.model.access.csv',
+        'views/product_price_menu.xml',
+        'views/product_pricelist_view.xml',
+        'views/product_price_change_view.xml',
+        'views/product_product_view.xml',
+        'views/pos_order_view.xml',
+        'views/res_config_settings_view.xml',
+    ],
+    'assets': {
+        'point_of_sale.assets': [
+            # 'weha_smart_pos_base/static/src/css/screen.css',
+            'weha_smart_pos_aeon_price/static/src/css/styles.css',
+            'weha_smart_pos_aeon_price/static/src/js/**/*.js',
+            'weha_smart_pos_aeon_price/static/src/xml/**/*.xml',
+        ],
+    },
+    "auto_install": False,
+    "installable": True,
+    'license': 'LGPL-3',
+}

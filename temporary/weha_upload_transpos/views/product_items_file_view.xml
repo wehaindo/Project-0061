@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="view_product_items_file_form" model="ir.ui.view">
+        <field name="name">Product Items File Form</field>
+        <field name="model">product.items.file</field>
+        <field name="arch" type="xml">
+            <form string="Product Items File" create="true" delete="true" edit="true">
+                <header>
+                    <button string="Split File" name="process_split_file" type="object"/>
+                    <button string="Process File" name="process_download" type="object" class="oe_highlight" />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="filename" invisible="1" />
+                            <field name="file" filename="filename" string="Product File" />
+                            <field name="is_use_thread"/>
+                            <field name="split_number"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                        </group>
+                    </group>
+                    <!-- <field name="line_ids">
+                        <tree>
+                            <field name="file" />
+                            <field name="filename" />
+                            <field name="state" />
+                        </tree>
+                    </field>             -->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_product_items_file_tree" model="ir.ui.view">
+        <field name="name">Product Items File Tree</field>
+        <field name="model">product.items.file</field>
+        <field name="arch" type="xml">
+            <tree string="Product Items File" create="true" delete="true" edit="true">
+                <field name="filename" />
+                <field name="file" />
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_items_file_action" model="ir.actions.act_window">
+        <field name="name">Product Items File</field>
+        <field name="res_model">product.items.file</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

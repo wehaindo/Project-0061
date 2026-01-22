@@ -1,0 +1,31 @@
+<odoo>
+    <record id="action_compute_all_days" model="ir.actions.server">
+        <field name="name">Compute All Days</field>
+        <field name="model_id" ref="model_srn_pos_product_discount"/>
+        <field name="binding_model_id" ref="model_srn_pos_product_discount"/>
+        <field name="state">code</field>
+        <field name="code">
+records.compute_all_day_of_week_ids()
+        </field>
+    </record>
+    <record id="action_reset_voucher" model="ir.actions.server">
+        <field name="name">Reset Voucher</field>
+        <field name="model_id" ref="model_gift_voucher"/>
+        <field name="binding_model_id" ref="model_gift_voucher"/>
+        <field name="state">code</field>
+        <field name="code">
+records.reset_voucher_used()
+        </field>
+    </record>
+
+    <record id="action_update_note" model="ir.actions.server">
+        <field name="name">Update Note</field>
+        <field name="model_id" ref="model_pos_payment_method"/>
+        <field name="binding_model_id" ref="model_pos_payment_method"/>
+        <field name="state">code</field>
+        <field name="code">
+records.update_note()
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- view common to both template and product -->
+    <record id="inherit_pos_payment_method_form" model="ir.ui.view">
+        <field name="name">inherit_pos_payment_method_form</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form" />
+        <field name="arch" type="xml">
+            <field name="split_transactions" position="before">
+                <field name="code" />
+                <field name="pos_pay_type_code" />
+                <field name="payment_description" />
+                <field name="merchant_code" />
+                <field name="description" />
+                <field name="credit_card_number" />
+                <field name="approval_code" />
+                <field name="credit_card_terminal_id" />
+                <field name="credit_card_trace_no" />
+            </field>
+            <field name="company_id" position="after">
+                <field name="store_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="inherit_pos_payment_method_tree" model="ir.ui.view">
+        <field name="name">inherit_pos_payment_method_tree</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_tree" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="code" />
+                <field name="pos_pay_type_code" />
+                <field name="payment_description" />
+                <field name="merchant_code" />
+                <field name="description" />
+            </field>
+            <field name="company_id" position="after">
+                <field name="store_id" />
+            </field>
+        </field>
+    </record>
+</odoo>

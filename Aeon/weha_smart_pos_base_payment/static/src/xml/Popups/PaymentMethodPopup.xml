@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="PaymentMethodPopup" owl="1">
+            <Draggable>
+                <div class="popup popup-control-buttons">
+                    <header class="title drag-handle">
+                        Payment Method
+                    </header>
+                    <!-- When one of the buttons is clicked, close this popup. -->
+                    <div class="body">
+                        <div class="control-buttons" t-on-click="cancel" style="display: grid; grid-template-columns: auto auto auto auto;">
+                            <t t-foreach="paymentMethods" t-as="paymentMethod" t-key="paymentMethod.id">
+                                <div class="button paymentmethod" style="height:80px;align-items:center;background-color:#ad2181;color:#ffffff"
+                                    t-on-click="() => this.parent.trigger('new-payment-line', paymentMethod)">
+                                    <div class="payment-name" style="padding: 0px;">
+                                        <t t-esc="paymentMethod.name" />
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                    <footer class="footer">
+                        <div class="button cancel" t-on-click="cancel">
+                            <t t-esc="props.cancelText" />
+                        </div>
+                    </footer>
+                </div>
+            </Draggable>
+    </t>
+
+</templates>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">    
+    <t t-name="MoneyDetailsPopup" t-inherit="point_of_sale.MoneyDetailsPopup" t-inherit-mode="extension" owl="1">        
+        <xpath expr="//div[hasclass('money-details-info')]" position="replace">
+            <div class="money-details-info" style="display:block;">
+                <div style="width:100%;" t-foreach="[firstHalfMoneyDetails, lastHalfMoneyDetails]" t-as="moneyDetailsList" t-key="moneyDetailsList_index">
+                    <table class="money-details-table">
+                        <t t-foreach="moneyDetailsList" t-as="moneyValue" t-key="moneyValue">                        
+                            <tr>
+                            <!-- <div class="money-details-value" style="justify-content:space-between;" t-on-input="updateMoneyDetailsAmount">                             -->
+                                
+                                <td width="25%" style="text-align:left;"><CurrencyAmount  forTarget="moneyValue" currency="currency" amount="moneyValue"/></td>
+                                <td width="25%" >
+                                    <div class="input-with-icon d-flex align-items-center">
+                                        <input
+                                            t-att-id="moneyValue"
+                                            type="number"        
+                                            t-on-input="updateMoneyDetailsAmount"
+                                            t-att-value="state.moneyDetails[moneyValue]"                                                                                        
+                                            t-on-change="(ev) => this.handleInputChange(ev, moneyValue)"
+                                            t-on-focus="(ev) => this.handleInputFocus(ev, moneyValue)"
+                                            t-on-blur="(ev) => this.handleInputBlur(ev, moneyValue)"
+                                            class="form-control me-2"
+                                            style="flex: 1;"
+                                        />
+                                        <!-- <div class="button icon d-flex justify-content-center align-items-center" style="width: 36px; height: 36px; cursor: pointer;">
+                                            <i class="fa fa-calculator" role="img" title="Open the money details popup"/>
+                                        </div> -->
+                                    </div>
+                                    
+                                </td>
+                                <td width="50%" style="text-align:right;">
+                                    <span class="total-per-value">
+                                        <t t-esc="getTotalPerValue(moneyValue)"/>
+                                    </span>
+                                </td>
+                            <!-- </div> -->
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>

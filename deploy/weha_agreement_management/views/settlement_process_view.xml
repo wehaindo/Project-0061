@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- Form view for "model" -->
+    <record id="view_settlement_process_form" model="ir.ui.view">
+        <field name="name">view.settlement.process.form</field>
+        <field name="model">settlement.process</field>
+        <field name="arch" type="xml">
+            <form string="Process Rebate" create="true" delete="true" edit="true">
+                <header>
+                    <button name="generate_settlement" type="object" string="Generate Settlement"
+                        class="oe_highlight" states="draft" />
+                    <button name="generate_settlement_confirm" type="object" string="Confirm"
+                        class="oe_highlight" states="confirm" />
+                    <button name="generate_invoice" type="object" string="Generate Invoice"
+                        class="oe_highlight" states="inprogress" />
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,confirm,inprogress,posted" />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="open_rebate_settlement"
+                            type="object" icon="fa-money">
+                            <div class="o_stat_info">
+                                <span class="o_stat_value">
+                                    <!-- <field name="related_taxes_amount"/> -->
+                                </span>
+                                <span class="o_stat_text">
+                                    Rebate Details
+                                </span>
+                            </div>
+                        </button>
+                        <button class="oe_stat_button" name="open_invoice"
+                            type="object" icon="fa-file">
+                            <div class="o_stat_info">
+                                <span class="o_stat_value">
+                                    <!-- <field name="related_taxes_amount"/> -->
+                                </span>
+                                <span class="o_stat_text">
+                                    Invoice
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" class="oe_inline" placeholder="name" readonly="1" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="date" readonly="1" />
+                            <field name="supplier_id" />
+                            <field name="contract_id" domain="[('supplier_id', '=', supplier_id)]"/>
+                            <field name="payment_term_id" />
+                            <field name="store_id" />
+                            <field name="payment_periode" />
+                            <field name="deduction_id" />
+                        </group>
+                        <group>
+                            <field name="start_date" string="From Date"/>
+                            <field name="end_date" string="To Date"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_settlement_process_tree" model="ir.ui.view">
+        <field name="name">view.settlement.process.tree</field>
+        <field name="model">settlement.process</field>
+        <field name="arch" type="xml">
+            <tree string="Process Rebate" create="true" delete="true" edit="true">
+                <field name="name" />
+                <field name="date" />
+                <field name="payment_term_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search view for "model" -->
+    <record id="view_settlement_process_search" model="ir.ui.view">
+        <field name="name">view.settlement.process.search</field>
+        <field name="model">settlement.process</field>
+        <field name="arch" type="xml">
+            <search string="Process Rebate">
+                <field name="name" />
+                <field name="date" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Main window action for "model" -->
+    <record id="action_process_rebate" model="ir.actions.act_window">
+        <field name="name">Process Rebate</field>
+        <field name="res_model">settlement.process</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_settlement_process_search" />
+    </record>
+
+</odoo>

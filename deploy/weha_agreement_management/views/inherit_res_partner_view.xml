@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="inherit_res_partner" model="ir.ui.view">
+        <field name="name">Inherit Res Partner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='l10n_id_pkp']" position="replace">
+                <field name="l10n_id_pkp" invisible="1"/>
+            </xpath>
+            
+            <xpath expr="//field[@name='avatar_128']" position="before">
+                <h1>
+                    <field name="supplier_code" readonly="1" />
+                </h1>
+            </xpath>
+            <field name="vat" position="after">
+                <field name="parent_supplier_id" />
+            </field>
+            <xpath expr="//notebook" position="inside">
+                <page string="Contract Settings">
+                    <group>
+                        <group>
+                            <field name="reg_number" />
+                            <field name="code_siup" />
+                            <field name="supplier_sub_type" />
+                            <field name="supplier_type" />
+                            <field name="supplier_source" />
+                        </group>
+                        <group>
+                            <field name="supplier_utility" />
+                            <field name="supplier_problem" />
+                            <field name="supplier_entity_type" />
+                            <field name="type_of_entity" />
+                            <field name="supplier_contract_type" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="tax_supplier" />
+                        </group>
+                        <group attrs="{'invisible': [('tax_supplier', '=', 'no')]}" string="Tax Supplier">
+                            <field name="vat_reg_number" />
+                            <field name="pb1_taxable_supplier" />
+                            <field name="pb1_reg_number" />
+                        </group>
+                    </group>
+                    <group string="Witholding Tax" />
+                    <field name="account_tax_ids" nolabel="1">
+                        <tree create="true" delete="true" edit="true">
+                            <field name="name" />
+                            <field name="deduction_id" />
+                            <field name="active" readonly="1" widget="boolean_toggle" />
+                        </tree>
+                    </field>
+                    <group string="Agreement Contract" />
+                    <field name="agreement_contract_ids" nolabel="1">
+                        <tree create="false" delete="false" edit="false">
+                            <field name="code" />
+                            <field name="supplier_code" />
+                            <field name="supplier_id" />
+                            <field name="supplier_contract_type" />
+                            <field name="supplier_sub_type" />
+                            <field name="signature_date" />
+                            <field name="start_date" />
+                            <field name="end_date" />
+                        </tree>
+                    </field>
+                </page>
+
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

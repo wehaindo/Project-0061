@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <template id="point_of_sale.assets" name="point_of_sale assets">
+            <link rel="stylesheet" type="text/scss" href="/web/static/src/scss/fonts.scss"/>
+            <link rel="stylesheet" href="/web/static/lib/fontawesome/css/font-awesome.css"/>
+            <link rel="stylesheet" href="/point_of_sale/static/src/css/pos.css" id="pos-stylesheet"/>
+            <link rel="stylesheet" href="/point_of_sale/static/src/css/keyboard.css"/>
+            <link rel="stylesheet" href="/point_of_sale/static/src/css/pos_receipts.css"/>
+            <link rel="stylesheet" type="text/less" href="/web/static/src/scss/fontawesome_overridden.scss"/>
+
+            <script type="text/javascript" src="/point_of_sale/static/lib/backbone/backbone.js"></script>
+            <script type="text/javascript" src="/point_of_sale/static/lib/waitfont.js"></script>
+            <script type="text/javascript" src="/point_of_sale/static/lib/sha1.js"></script>
+            <script type="text/javascript" src="/point_of_sale/static/src/js/main.js"></script>
+            <script type="text/javascript" src="/point_of_sale/static/src/js/db.js"></script>
+            <script type="text/javascript" src="/point_of_sale/static/src/js/models.js"></script>
+            <script type="text/javascript" src="/point_of_sale/static/src/js/widget_base.js"></script>
+            <script type="text/javascript" src="/point_of_sale/static/src/js/keyboard.js"></script>
+            <script type="text/javascript" src="/point_of_sale/static/src/js/barcode_reader.js"></script>
+            <script type="text/javascript" src="/point_of_sale/static/src/js/chrome.js"></script>
+            <script type="text/javascript" src="/point_of_sale/static/src/js/devices.js"></script>
+            <script type="text/javascript" src="/point_of_sale/static/src/js/gui.js"></script>
+            <script type="text/javascript" src="/point_of_sale/static/src/js/popups.js"></script>
+            <script type="text/javascript" src="/dmi_pos_modifier/static/src/js/screens_mod.js"></script>
+            <script type="text/javascript" src="/point_of_sale/static/src/js/payment.js"></script>
+        </template>
+
+        <template id="mcs_aspl_pos_promotion.assets" inherit_id="point_of_sale.index">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/mcs_aspl_pos_promotion/static/src/css/style_free_product.css"/>
+                <script type="text/javascript" src="/mcs_aspl_pos_promotion/static/src/js/popup_free.js"></script>
+                <!--                <script type="text/javascript" src="/mcs_aspl_pos_promotion/static/src/js/promotions.js"></script>-->
+            </xpath>
+        </template>
+        <template id="assets_dmi_struk" inherit_id="point_of_sale.index">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/dmi_pos_modifier/static/src/css/pos_receipt40.css"/>
+            </xpath>
+        </template>
+
+        <template id="assets_dmi" inherit_id="point_of_sale.index">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/dmi_pos_modifier/static/src/js/promotions15.js"></script>
+            </xpath>
+        </template>
+        <!-- Inherit template assets from point_of_sale.index -->
+        <template id="assets" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <!-- Menambahkan file CSS -->
+                <link rel="stylesheet" href="/dmi_pos_modifier/static/src/css/pos_receipt40.css"/>
+
+                <!-- Menambahkan file JavaScript -->
+                <script type="text/javascript"
+                        src="/dmi_pos_modifier/static/src/js/pos_button1.js"/>
+                <script type="text/javascript"
+                        src="/dmi_pos_modifier/static/src/js/pos_button.js"/>
+                <script type="text/javascript"
+                        src="/dmi_pos_modifier/static/src/js/srn_pos_product_promotion.js"></script>
+            </xpath>
+
+        </template>
+
+        <template id="srn_pos_referral.pos_referal_extend_assets" inherit_id="point_of_sale.assets">
+            <!-- JS -->
+
+            <!-- CSS -->
+            <xpath expr="//link[@id='pos-stylesheet']" position="after">
+                <link rel="stylesheet" href="/srn_pos_referral/static/src/css/style.css"/>
+            </xpath>
+        </template>
+
+        <template id="srn_pos_referral2.pos_referal2_extend_assets" inherit_id="point_of_sale.assets">
+
+            <!-- CSS -->
+            <xpath expr="//link[@id='pos-stylesheet']" position="after">
+                <link rel="stylesheet" href="/srn_pos_referral2/static/src/css/style.css"/>
+            </xpath>
+        </template>
+
+
+        <template id="srn_pos_discount_with_product.pos_referal_extend_assets" inherit_id="point_of_sale.assets">
+            <!-- JS -->
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/dmi_pos_modifier/static/src/js/pos_product_discount2.js"/>
+            </xpath>
+        </template>
+
+        <template id="sh_pos_order_return_exchange.sh_assets_frontend" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/dmi_pos_modifier/static/src/js/pos_return_exchange2.js"/>
+                <link rel="stylesheet" href="/sh_pos_order_return_exchange/static/src/css/pos.css"/>
+            </xpath>
+        </template>
+
+        <template id="sh_pos_receipt_extend.sh_assets_frontend" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/dmi_pos_modifier/static/src/js/pos_receipt_extend.js" />
+
+            <link rel="stylesheet" href="/sh_pos_receipt_extend/static/src/css/pos.css" />
+        </xpath>
+    </template>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,1858 @@
+[
+  {
+    "OrderID": "681f564063be2bf6a3210a78",
+    "OrderDate": "2025-05-10 20:36:00",
+    "Details": [
+      {
+        "PAYMENT METHOD": "DEBIT",
+        "TERMINAL ID": "AHD00001",
+        "RRN": "003013000250",
+        "PRODUCT SKU": 9910003,
+        "NAME": "TOTAL CARE MOUTHWASH EXTRAFILL",
+        "UNIT PRICE": 17500,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 35000,
+        "TOTAL PRICE (EX-TAX)": 31532,
+        "PROMO CODE": "P000626877",
+        "DISCOUNT AMOUNT": -35000
+      },
+      {
+        "PAYMENT METHOD": "DEBIT",
+        "TERMINAL ID": "AHD00001",
+        "RRN": "003013000250",
+        "PRODUCT SKU": 9820272,
+        "NAME": "FRANZZI PASSION FRUIT CHIA SEE",
+        "UNIT PRICE": 8250,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 16500,
+        "TOTAL PRICE (EX-TAX)": 14865,
+        "PROMO CODE": "P000626726",
+        "DISCOUNT AMOUNT": -16500
+      }
+    ]
+  },
+  {
+    "OrderID": "682039b063be2bf6a3210b96",
+    "OrderDate": "2025-05-11 12:46:24",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "011450240586",
+        "PRODUCT SKU": 7407413,
+        "NAME": "WARDAH UV SHIELD ACTIVE PROTEC",
+        "UNIT PRICE": 81500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 81500,
+        "TOTAL PRICE (EX-TAX)": 73423,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "68204c4b63be2bf6a3210bf2",
+    "OrderDate": "2025-05-11 14:05:47",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000251851475",
+        "PRODUCT SKU": 8008411,
+        "NAME": "SOMETHINC EYELINER FOREVER STA",
+        "UNIT PRICE": 56700,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 56700,
+        "TOTAL PRICE (EX-TAX)": 51081,
+        "PROMO CODE": "627865    ",
+        "DISCOUNT AMOUNT": -24300
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000251851475",
+        "PRODUCT SKU": 9678415,
+        "NAME": "SOMETHINC TINT LIP BALM CERAPL",
+        "UNIT PRICE": 68600,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 68600,
+        "TOTAL PRICE (EX-TAX)": 61802,
+        "PROMO CODE": "627865    ",
+        "DISCOUNT AMOUNT": -29400
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000251851475",
+        "PRODUCT SKU": 9678361,
+        "NAME": "SOMETHINC TINT LIP BALM CERAPL",
+        "UNIT PRICE": 68600,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 68600,
+        "TOTAL PRICE (EX-TAX)": 61802,
+        "PROMO CODE": "627865    ",
+        "DISCOUNT AMOUNT": -29400
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000251851475",
+        "PRODUCT SKU": 5832569,
+        "NAME": "WARDAH CRYSTAL SECRET MELTING ",
+        "UNIT PRICE": 34500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 34500,
+        "TOTAL PRICE (EX-TAX)": 31081,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "68204c8463be2bf6a3210bf7",
+    "OrderDate": "2025-05-11 14:06:44",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000251862636",
+        "PRODUCT SKU": 1017625,
+        "NAME": "SELECTION FACIAL COTTON 75GR  ",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 20000,
+        "TOTAL PRICE (EX-TAX)": 18018,
+        "PROMO CODE": "630111    ",
+        "DISCOUNT AMOUNT": -11000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000251862636",
+        "PRODUCT SKU": 9872905,
+        "NAME": "HELLO PANDA STRAWBERRY 42GR   ",
+        "UNIT PRICE": 8800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 8800,
+        "TOTAL PRICE (EX-TAX)": 7928,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "6820505e63be2bf6a3210c18",
+    "OrderDate": "2025-05-11 14:23:10",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252069147",
+        "PRODUCT SKU": 10005125,
+        "NAME": "TIC TIC SAMCOL 65GR           ",
+        "UNIT PRICE": 3900,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 7800,
+        "TOTAL PRICE (EX-TAX)": 7027,
+        "PROMO CODE": "P000623906",
+        "DISCOUNT AMOUNT": -7800
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252069147",
+        "PRODUCT SKU": 9781702,
+        "NAME": "TEH BOTOL PET LESS SUGAR 350ML",
+        "UNIT PRICE": 4800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 4800,
+        "TOTAL PRICE (EX-TAX)": 4324,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252069147",
+        "PRODUCT SKU": 6961046,
+        "NAME": "PIXY UVW CONCEALING BASE 03 CR",
+        "UNIT PRICE": 43000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 43000,
+        "TOTAL PRICE (EX-TAX)": 38739,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252069147",
+        "PRODUCT SKU": 7197840,
+        "NAME": "AMARA MINI LIPSTICK STRAWBERRY",
+        "UNIT PRICE": 17850,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 17850,
+        "TOTAL PRICE (EX-TAX)": 16081,
+        "PROMO CODE": "632613    ",
+        "DISCOUNT AMOUNT": -7650
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252069147",
+        "PRODUCT SKU": 1017625,
+        "NAME": "SELECTION FACIAL COTTON 75GR  ",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 20000,
+        "TOTAL PRICE (EX-TAX)": 18018,
+        "PROMO CODE": "630111    ",
+        "DISCOUNT AMOUNT": -11000
+      }
+    ]
+  },
+  {
+    "OrderID": "68205a6a63be2bf6a3210ca6",
+    "OrderDate": "2025-05-11 15:06:02",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252580995",
+        "PRODUCT SKU": 2729848,
+        "NAME": "AMARA  SPRAY COLOGNE FANTASY 1",
+        "UNIT PRICE": 12950,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 12950,
+        "TOTAL PRICE (EX-TAX)": 11667,
+        "PROMO CODE": "632613    ",
+        "DISCOUNT AMOUNT": -5550
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252580995",
+        "PRODUCT SKU": 8457318,
+        "NAME": "BARRY M KOHL EYELINER PENCIL N",
+        "UNIT PRICE": 15150,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 15150,
+        "TOTAL PRICE (EX-TAX)": 13649,
+        "PROMO CODE": "630188    ",
+        "DISCOUNT AMOUNT": -35350
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252580995",
+        "PRODUCT SKU": 8411983,
+        "NAME": "BIORE UV FRESH BRIGHT INSTANT ",
+        "UNIT PRICE": 33000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 33000,
+        "TOTAL PRICE (EX-TAX)": 29730,
+        "PROMO CODE": "632150    ",
+        "DISCOUNT AMOUNT": -8500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252580995",
+        "PRODUCT SKU": 8411976,
+        "NAME": "BIORE UV FRESH BRIGHT OIL CONT",
+        "UNIT PRICE": 33000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 33000,
+        "TOTAL PRICE (EX-TAX)": 29730,
+        "PROMO CODE": "632150    ",
+        "DISCOUNT AMOUNT": -8500
+      }
+    ]
+  },
+  {
+    "OrderID": "68205ab263be2bf6a3210cab",
+    "OrderDate": "2025-05-11 15:07:14",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "505514875946",
+        "PRODUCT SKU": 5832347,
+        "NAME": "WARDAH RENEW YOU ANTI AGING NI",
+        "UNIT PRICE": 59000,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 118000,
+        "TOTAL PRICE (EX-TAX)": 106306,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "505514875946",
+        "PRODUCT SKU": 9407596,
+        "NAME": "BONAVIE BODY MIST MAISON DU SA",
+        "UNIT PRICE": 23000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 23000,
+        "TOTAL PRICE (EX-TAX)": 20721,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "505514875946",
+        "PRODUCT SKU": 9445864,
+        "NAME": "BONAVIE EDP FLEUR DU JARDIN 30",
+        "UNIT PRICE": 60300,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 60300,
+        "TOTAL PRICE (EX-TAX)": 54324,
+        "PROMO CODE": "632393    ",
+        "DISCOUNT AMOUNT": -6700
+      }
+    ]
+  },
+  {
+    "OrderID": "68205f4663be2bf6a3210cf7",
+    "OrderDate": "2025-05-11 15:26:46",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252824348",
+        "PRODUCT SKU": 6108649,
+        "NAME": "PIXY MAKE IT GLOW CUSHION REFI",
+        "UNIT PRICE": 73600,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 73600,
+        "TOTAL PRICE (EX-TAX)": 66306,
+        "PROMO CODE": "630186    ",
+        "DISCOUNT AMOUNT": -18400
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252824348",
+        "PRODUCT SKU": 7421358,
+        "NAME": "TAMMIA BB CC ROUND PUFF 2CT BL",
+        "UNIT PRICE": 30500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 30500,
+        "TOTAL PRICE (EX-TAX)": 27477,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "68205f5563be2bf6a3210d02",
+    "OrderDate": "2025-05-11 15:27:01",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505518564979",
+        "PRODUCT SKU": 1289541,
+        "NAME": "LISTERINE MOUTHWASH TARTAR CON",
+        "UNIT PRICE": 25000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 25000,
+        "TOTAL PRICE (EX-TAX)": 22523,
+        "PROMO CODE": "630031    ",
+        "DISCOUNT AMOUNT": -6500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505518564979",
+        "PRODUCT SKU": 9082700,
+        "NAME": "OMICA TOOTHBRUSH FOR TRIP     ",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 10000,
+        "TOTAL PRICE (EX-TAX)": 9009,
+        "PROMO CODE": "630031    ",
+        "DISCOUNT AMOUNT": -2800
+      }
+    ]
+  },
+  {
+    "OrderID": "6820600763be2bf6a3210d1c",
+    "OrderDate": "2025-05-11 15:29:59",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252863354",
+        "PRODUCT SKU": 9899049,
+        "NAME": "JYT SUGAR FREE BAG SERIES 80GR",
+        "UNIT PRICE": 16800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 16800,
+        "TOTAL PRICE (EX-TAX)": 15135,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252863354",
+        "PRODUCT SKU": 9957855,
+        "NAME": "VINA LAVA COOKIE BALLS YOGURT ",
+        "UNIT PRICE": 16000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 16000,
+        "TOTAL PRICE (EX-TAX)": 14414,
+        "PROMO CODE": "P000626728",
+        "DISCOUNT AMOUNT": -16000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000252863354",
+        "PRODUCT SKU": 9957831,
+        "NAME": "VINA LAVA COOKIE BALLS MATCHA ",
+        "UNIT PRICE": 16000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 16000,
+        "TOTAL PRICE (EX-TAX)": 14414,
+        "PROMO CODE": "P000626728",
+        "DISCOUNT AMOUNT": -16000
+      }
+    ]
+  },
+  {
+    "OrderID": "6820604863be2bf6a3210d23",
+    "OrderDate": "2025-05-11 15:31:04",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "505510016951",
+        "PRODUCT SKU": 1300376,
+        "NAME": "HADALABO GOKUJYUN ULT MOIST FA",
+        "UNIT PRICE": 29500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 29500,
+        "TOTAL PRICE (EX-TAX)": 26577,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "505510016951",
+        "PRODUCT SKU": 9336728,
+        "NAME": "SECRET GARDEN BATH BOMB AROMAT",
+        "UNIT PRICE": 59800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 59800,
+        "TOTAL PRICE (EX-TAX)": 53874,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "6820607663be2bf6a3210d28",
+    "OrderDate": "2025-05-11 15:31:50",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "505518573050",
+        "PRODUCT SKU": 9336674,
+        "NAME": "SECRET GARDEN BATH BOMB AROMAT",
+        "UNIT PRICE": 59800,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 119600,
+        "TOTAL PRICE (EX-TAX)": 107748,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "505518573050",
+        "PRODUCT SKU": 9779228,
+        "NAME": "CHAOH UNSWEETENED GREEN TEA WI",
+        "UNIT PRICE": 7800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 7800,
+        "TOTAL PRICE (EX-TAX)": 7027,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "6820609363be2bf6a3210d2b",
+    "OrderDate": "2025-05-11 15:32:19",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "523485772959",
+        "PRODUCT SKU": 8761972,
+        "NAME": "PURENCE EMBUN AIR EMBUN 500ML ",
+        "UNIT PRICE": 8800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 8800,
+        "TOTAL PRICE (EX-TAX)": 7928,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "523485772959",
+        "PRODUCT SKU": 9470880,
+        "NAME": "MEDIHEAL LIP LABOCARE PANTENOL",
+        "UNIT PRICE": 41000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 41000,
+        "TOTAL PRICE (EX-TAX)": 36937,
+        "PROMO CODE": "627010    ",
+        "DISCOUNT AMOUNT": -14000
+      }
+    ]
+  },
+  {
+    "OrderID": "682060fa63be2bf6a3210d2e",
+    "OrderDate": "2025-05-11 15:34:02",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "250511886067",
+        "PRODUCT SKU": 6998288,
+        "NAME": "EMERON SHAMPOO HIJAB ANTI DAND",
+        "UNIT PRICE": 26000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 26000,
+        "TOTAL PRICE (EX-TAX)": 23423,
+        "PROMO CODE": "630157    ",
+        "DISCOUNT AMOUNT": -14500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "250511886067",
+        "PRODUCT SKU": 1024920,
+        "NAME": "VIVA FACE TONIC STD 100ML     ",
+        "UNIT PRICE": 8500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 8500,
+        "TOTAL PRICE (EX-TAX)": 7658,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "250511886067",
+        "PRODUCT SKU": 9922181,
+        "NAME": "BIOLYSINE PLATINUM JERUK SYR 2",
+        "UNIT PRICE": 46000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 46000,
+        "TOTAL PRICE (EX-TAX)": 41441,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "250511886067",
+        "PRODUCT SKU": 8405173,
+        "NAME": "BIOAQUA ESSENCE MASK KIWI VT E",
+        "UNIT PRICE": 4000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 4000,
+        "TOTAL PRICE (EX-TAX)": 3604,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "250511886067",
+        "PRODUCT SKU": 8405302,
+        "NAME": "BIOAQUA FACIAL MASK COLLAGEN 2",
+        "UNIT PRICE": 4500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 4500,
+        "TOTAL PRICE (EX-TAX)": 4054,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "250511886067",
+        "PRODUCT SKU": 9586871,
+        "NAME": "IMPLORA SHEET MASK ESSENTIAL A",
+        "UNIT PRICE": 3500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 3500,
+        "TOTAL PRICE (EX-TAX)": 3153,
+        "PROMO CODE": "630235    ",
+        "DISCOUNT AMOUNT": -800
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "250511886067",
+        "PRODUCT SKU": 8405296,
+        "NAME": "BIOAQUA FACIAL MASK CENTELLA 2",
+        "UNIT PRICE": 4500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 4500,
+        "TOTAL PRICE (EX-TAX)": 4054,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "250511886067",
+        "PRODUCT SKU": 7741821,
+        "NAME": "HANASUI MINERAL MUD MASK JAPAN",
+        "UNIT PRICE": 4000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 4000,
+        "TOTAL PRICE (EX-TAX)": 3604,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "250511886067",
+        "PRODUCT SKU": 9149830,
+        "NAME": "HBC REUSABLE BAG XS           ",
+        "UNIT PRICE": 4000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 4000,
+        "TOTAL PRICE (EX-TAX)": 3604,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "250511886067",
+        "PRODUCT SKU": 8488176,
+        "NAME": "HANASUI SERUM POWER BRIGHT 20M",
+        "UNIT PRICE": 28500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 28500,
+        "TOTAL PRICE (EX-TAX)": 25676,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "250511886067",
+        "PRODUCT SKU": 8885128,
+        "NAME": "VERITY ALKALINE WATER 591ML   ",
+        "UNIT PRICE": 9800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 9800,
+        "TOTAL PRICE (EX-TAX)": 8829,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "682062b963be2bf6a3210d4b",
+    "OrderDate": "2025-05-11 15:41:29",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000253000384",
+        "PRODUCT SKU": 9779792,
+        "NAME": "HYDRO COCO 500ML              ",
+        "UNIT PRICE": 12000,
+        "QUANTITY": 3,
+        "TOTAL PRICE": 36000,
+        "TOTAL PRICE (EX-TAX)": 32433,
+        "PROMO CODE": "630065    ",
+        "DISCOUNT AMOUNT": -14400
+      }
+    ]
+  },
+  {
+    "OrderID": "6820660363be2bf6a3210d73",
+    "OrderDate": "2025-05-11 15:55:31",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "00000067MKRK",
+        "PRODUCT SKU": 8885128,
+        "NAME": "VERITY ALKALINE WATER 591ML   ",
+        "UNIT PRICE": 9800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 9800,
+        "TOTAL PRICE (EX-TAX)": 8829,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "682066da63be2bf6a3210d7f",
+    "OrderDate": "2025-05-11 15:59:06",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "292471298764",
+        "PRODUCT SKU": 1243239,
+        "NAME": "NATURES HEALTH COLLAGEN COMPLE",
+        "UNIT PRICE": 392000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 392000,
+        "TOTAL PRICE (EX-TAX)": 353153,
+        "PROMO CODE": "630057    ",
+        "DISCOUNT AMOUNT": -98000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "292471298764",
+        "PRODUCT SKU": 9780972,
+        "NAME": "NUTELLA B READY T1 22GR       ",
+        "UNIT PRICE": 9800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 9800,
+        "TOTAL PRICE (EX-TAX)": 8829,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "292471298764",
+        "PRODUCT SKU": 6532864,
+        "NAME": "HERBA MOJO 60S                ",
+        "UNIT PRICE": 256700,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 256700,
+        "TOTAL PRICE (EX-TAX)": 231261,
+        "PROMO CODE": "630047    ",
+        "DISCOUNT AMOUNT": -45300
+      }
+    ]
+  },
+  {
+    "OrderID": "6820673163be2bf6a3210d87",
+    "OrderDate": "2025-05-11 16:00:33",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "681166864281",
+        "PRODUCT SKU": 9957831,
+        "NAME": "VINA LAVA COOKIE BALLS MATCHA ",
+        "UNIT PRICE": 16000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 16000,
+        "TOTAL PRICE (EX-TAX)": 14414,
+        "PROMO CODE": "P000626728",
+        "DISCOUNT AMOUNT": -16000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "681166864281",
+        "PRODUCT SKU": 9957855,
+        "NAME": "VINA LAVA COOKIE BALLS YOGURT ",
+        "UNIT PRICE": 16000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 16000,
+        "TOTAL PRICE (EX-TAX)": 14414,
+        "PROMO CODE": "P000626728",
+        "DISCOUNT AMOUNT": -16000
+      }
+    ]
+  },
+  {
+    "OrderID": "6820700b63be2bf6a3210de6",
+    "OrderDate": "2025-05-11 16:38:19",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000008091650",
+        "PRODUCT SKU": 9779877,
+        "NAME": "ITO EN OI OCHA 500ML          ",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 9500,
+        "TOTAL PRICE (EX-TAX)": 8559,
+        "PROMO CODE": "632453    ",
+        "DISCOUNT AMOUNT": -1300
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000008091650",
+        "PRODUCT SKU": 9779792,
+        "NAME": "HYDRO COCO 500ML              ",
+        "UNIT PRICE": 12000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 11400,
+        "TOTAL PRICE (EX-TAX)": 10270,
+        "PROMO CODE": "630065    ",
+        "DISCOUNT AMOUNT": -5400
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000008091650",
+        "PRODUCT SKU": 7841101,
+        "NAME": "BAGUS FRESH99 ANTBACT HANDWASH",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 9500,
+        "TOTAL PRICE (EX-TAX)": 8559,
+        "PROMO CODE": "630031    ",
+        "DISCOUNT AMOUNT": -5500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000008091650",
+        "PRODUCT SKU": 7841071,
+        "NAME": "BAGUS FRESH99 ANTBACT HANDWASH",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 19000,
+        "TOTAL PRICE (EX-TAX)": 17118,
+        "PROMO CODE": "630031    ",
+        "DISCOUNT AMOUNT": -11000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000008091650",
+        "PRODUCT SKU": 3205433,
+        "NAME": "CAPLANG MINYAK KAYU PUTIH AROM",
+        "UNIT PRICE": 20000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 19000,
+        "TOTAL PRICE (EX-TAX)": 17117,
+        "PROMO CODE": "630059    ",
+        "DISCOUNT AMOUNT": -14500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000008091650",
+        "PRODUCT SKU": 9221017,
+        "NAME": "FLIMNOODLE BKS 70GR           ",
+        "UNIT PRICE": 11000,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 22000,
+        "TOTAL PRICE (EX-TAX)": 19820,
+        "PROMO CODE": "P000629763",
+        "DISCOUNT AMOUNT": -22000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000008091650",
+        "PRODUCT SKU": 6174170,
+        "NAME": "POSH DEO ROLL ON ANTI STAIN 50",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 9500,
+        "TOTAL PRICE (EX-TAX)": 8559,
+        "PROMO CODE": "630157    ",
+        "DISCOUNT AMOUNT": -7500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000008091650",
+        "PRODUCT SKU": 9957800,
+        "NAME": "VINA COOKIE BALLS STRAWBERRY F",
+        "UNIT PRICE": 6750,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 13500,
+        "TOTAL PRICE (EX-TAX)": 12162,
+        "PROMO CODE": "P000626727",
+        "DISCOUNT AMOUNT": -13500
+      }
+    ]
+  },
+  {
+    "OrderID": "682072b463be2bf6a3210e04",
+    "OrderDate": "2025-05-11 16:49:40",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000253829047",
+        "PRODUCT SKU": 7566042,
+        "NAME": "SENKA FACIAL FOAM PERFECT WHIP",
+        "UNIT PRICE": 98500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 98500,
+        "TOTAL PRICE (EX-TAX)": 88739,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000253829047",
+        "PRODUCT SKU": 8207265,
+        "NAME": "YUNIKON UNSCENTED ANTIBAC BABY",
+        "UNIT PRICE": 8500,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 17000,
+        "TOTAL PRICE (EX-TAX)": 15316,
+        "PROMO CODE": "629854    ",
+        "DISCOUNT AMOUNT": -3000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000253829047",
+        "PRODUCT SKU": 9149830,
+        "NAME": "HBC REUSABLE BAG XS           ",
+        "UNIT PRICE": 4000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 4000,
+        "TOTAL PRICE (EX-TAX)": 3604,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000253829047",
+        "PRODUCT SKU": 1253689,
+        "NAME": "DETTOL ANTISEPTIC LIQUID 245ML",
+        "UNIT PRICE": 79500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 79500,
+        "TOTAL PRICE (EX-TAX)": 71622,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "6820792463be2bf6a3210e3b",
+    "OrderDate": "2025-05-11 17:17:08",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505510208842",
+        "PRODUCT SKU": 8230898,
+        "NAME": "NUVO BODYWASH PUTIH POUCH 825M",
+        "UNIT PRICE": 20250,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 20250,
+        "TOTAL PRICE (EX-TAX)": 18243,
+        "PROMO CODE": "P000629652",
+        "DISCOUNT AMOUNT": -20250
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505510208842",
+        "PRODUCT SKU": 9346048,
+        "NAME": "NUVO BODYWASH FRESH PROTECT YU",
+        "UNIT PRICE": 20250,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 20250,
+        "TOTAL PRICE (EX-TAX)": 18243,
+        "PROMO CODE": "P000629652",
+        "DISCOUNT AMOUNT": -20250
+      }
+    ]
+  },
+  {
+    "OrderID": "68207e1563be2bf6a3210e59",
+    "OrderDate": "2025-05-11 17:38:13",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000254454198",
+        "PRODUCT SKU": 1017625,
+        "NAME": "SELECTION FACIAL COTTON 75GR  ",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 20000,
+        "TOTAL PRICE (EX-TAX)": 18018,
+        "PROMO CODE": "630111    ",
+        "DISCOUNT AMOUNT": -11000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000254454198",
+        "PRODUCT SKU": 8761972,
+        "NAME": "PURENCE EMBUN AIR EMBUN 500ML ",
+        "UNIT PRICE": 8800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 8800,
+        "TOTAL PRICE (EX-TAX)": 7928,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "68207e7e63be2bf6a3210e5f",
+    "OrderDate": "2025-05-11 17:39:57",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000254477832",
+        "PRODUCT SKU": 1115802,
+        "NAME": "FRESH CARE TEENS BUBLE GUM 10M",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 10000,
+        "TOTAL PRICE (EX-TAX)": 9009,
+        "PROMO CODE": "630059    ",
+        "DISCOUNT AMOUNT": -3800
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000254477832",
+        "PRODUCT SKU": 6215958,
+        "NAME": "SOFTEX CELANA MENSTRUASI 2S   ",
+        "UNIT PRICE": 18000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 18000,
+        "TOTAL PRICE (EX-TAX)": 16216,
+        "PROMO CODE": "630078    ",
+        "DISCOUNT AMOUNT": -3500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000254477832",
+        "PRODUCT SKU": 4854050,
+        "NAME": "EMERON HAIR VITAMIN SOFT SHINE",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 10000,
+        "TOTAL PRICE (EX-TAX)": 9009,
+        "PROMO CODE": "630157    ",
+        "DISCOUNT AMOUNT": -1500
+      }
+    ]
+  },
+  {
+    "OrderID": "68207e8d63be2bf6a3210e63",
+    "OrderDate": "2025-05-11 17:40:13",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000254478976",
+        "PRODUCT SKU": 1024906,
+        "NAME": "VIVA MILK CLEANSER BENGKUANG 1",
+        "UNIT PRICE": 9800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 9800,
+        "TOTAL PRICE (EX-TAX)": 8829,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "68207eb963be2bf6a3210e65",
+    "OrderDate": "2025-05-11 17:40:57",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505518807709",
+        "PRODUCT SKU": 6470838,
+        "NAME": "YOUVIT MULTIVITAMIN FOR KIDS 7",
+        "UNIT PRICE": 19800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 19800,
+        "TOTAL PRICE (EX-TAX)": 17838,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505518807709",
+        "PRODUCT SKU": 9782037,
+        "NAME": "YAKULT LIGHT 5 X 65 ML        ",
+        "UNIT PRICE": 13000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 13000,
+        "TOTAL PRICE (EX-TAX)": 11712,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "6820834363be2bf6a3210e85",
+    "OrderDate": "2025-05-11 18:00:19",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505518843938",
+        "PRODUCT SKU": 9979475,
+        "NAME": "MENTOS INCREDIBLE CHEW GRAPE 4",
+        "UNIT PRICE": 7500,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 15000,
+        "TOTAL PRICE (EX-TAX)": 13514,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505518843938",
+        "PRODUCT SKU": 6107246,
+        "NAME": "HANSAPLAST SPRAY ANTISEPTIK 40",
+        "UNIT PRICE": 35800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 35800,
+        "TOTAL PRICE (EX-TAX)": 32252,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505518843938",
+        "PRODUCT SKU": 9820234,
+        "NAME": "FRANZZI YOGURT CHOCOLATE COOKI",
+        "UNIT PRICE": 16500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 16500,
+        "TOTAL PRICE (EX-TAX)": 14865,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "682086d463be2bf6a3210ea3",
+    "OrderDate": "2025-05-11 18:15:32",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000254933721",
+        "PRODUCT SKU": 9720756,
+        "NAME": "PARAGO CHEWY COKLAT 50X54GR   ",
+        "UNIT PRICE": 6800,
+        "QUANTITY": 3,
+        "TOTAL PRICE": 20400,
+        "TOTAL PRICE (EX-TAX)": 18378,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "6820877d63be2bf6a3210eb0",
+    "OrderDate": "2025-05-11 18:18:21",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000254984661",
+        "PRODUCT SKU": 6386665,
+        "NAME": "IOMI GM SHOWER CREAM AVOCADO O",
+        "UNIT PRICE": 35000,
+        "QUANTITY": 3,
+        "TOTAL PRICE": 105000,
+        "TOTAL PRICE (EX-TAX)": 94596,
+        "PROMO CODE": "630031    ",
+        "DISCOUNT AMOUNT": -126000
+      }
+    ]
+  },
+  {
+    "OrderID": "6820961863be2bf6a3210f1d",
+    "OrderDate": "2025-05-11 19:20:40",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000255834700",
+        "PRODUCT SKU": 7157554,
+        "NAME": "BANANA BOAT SIMPLY PRT KIDS SP",
+        "UNIT PRICE": 160000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 160000,
+        "TOTAL PRICE (EX-TAX)": 144144,
+        "PROMO CODE": "630111    ",
+        "DISCOUNT AMOUNT": -69500
+      }
+    ]
+  },
+  {
+    "OrderID": "6820963263be2bf6a3210f1f",
+    "OrderDate": "2025-05-11 19:21:06",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000255839531",
+        "PRODUCT SKU": 7882562,
+        "NAME": "BIZARRE PEEL MASK PERFECT SMOO",
+        "UNIT PRICE": 10500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 10500,
+        "TOTAL PRICE (EX-TAX)": 9459,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000255839531",
+        "PRODUCT SKU": 9149830,
+        "NAME": "HBC REUSABLE BAG XS           ",
+        "UNIT PRICE": 4000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 4000,
+        "TOTAL PRICE (EX-TAX)": 3604,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000255839531",
+        "PRODUCT SKU": 9957824,
+        "NAME": "VINA COOKIE BALLS YOGURT FLAVO",
+        "UNIT PRICE": 6750,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 13500,
+        "TOTAL PRICE (EX-TAX)": 12162,
+        "PROMO CODE": "P000626727",
+        "DISCOUNT AMOUNT": -13500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000255839531",
+        "PRODUCT SKU": 8766359,
+        "NAME": "AULIA HAND CREAM DREAM VALLEY ",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 10000,
+        "TOTAL PRICE (EX-TAX)": 9009,
+        "PROMO CODE": "630234    ",
+        "DISCOUNT AMOUNT": -7500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000255839531",
+        "PRODUCT SKU": 8766366,
+        "NAME": "AULIA HAND CREAM WHITE MUSK 30",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 10000,
+        "TOTAL PRICE (EX-TAX)": 9009,
+        "PROMO CODE": "630234    ",
+        "DISCOUNT AMOUNT": -7500
+      }
+    ]
+  },
+  {
+    "OrderID": "682096a363be2bf6a3210f2a",
+    "OrderDate": "2025-05-11 19:22:58",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000255865397",
+        "PRODUCT SKU": 9809598,
+        "NAME": "GRANOVA GRANOLA CHOCOLATE CRAN",
+        "UNIT PRICE": 48500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 48500,
+        "TOTAL PRICE (EX-TAX)": 43694,
+        "PROMO CODE": "630059    ",
+        "DISCOUNT AMOUNT": -16300
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000255865397",
+        "PRODUCT SKU": 9809611,
+        "NAME": "GRANOVA GRANOLA BANANA NUT 270",
+        "UNIT PRICE": 48500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 48500,
+        "TOTAL PRICE (EX-TAX)": 43694,
+        "PROMO CODE": "630059    ",
+        "DISCOUNT AMOUNT": -16300
+      }
+    ]
+  },
+  {
+    "OrderID": "682099ab63be2bf6a3210f38",
+    "OrderDate": "2025-05-11 19:35:55",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000632557925",
+        "PRODUCT SKU": 9781610,
+        "NAME": "SUNPRIDE LYFECAVENDISH BANANA ",
+        "UNIT PRICE": 8000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 8000,
+        "TOTAL PRICE (EX-TAX)": 7207,
+        "PROMO CODE": "630038    ",
+        "DISCOUNT AMOUNT": -2500
+      }
+    ]
+  },
+  {
+    "OrderID": "68209cca63be2bf6a3210f3e",
+    "OrderDate": "2025-05-11 19:49:14",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000256241159",
+        "PRODUCT SKU": 8761972,
+        "NAME": "PURENCE EMBUN AIR EMBUN 500ML ",
+        "UNIT PRICE": 8800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 8800,
+        "TOTAL PRICE (EX-TAX)": 7928,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "6820a48263be2bf6a3210f77",
+    "OrderDate": "2025-05-11 20:22:10",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "505519138833",
+        "PRODUCT SKU": 7144943,
+        "NAME": "NUVO BODYWASH MERAH REF 825ML ",
+        "UNIT PRICE": 20250,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 40500,
+        "TOTAL PRICE (EX-TAX)": 36486,
+        "PROMO CODE": "P000629652",
+        "DISCOUNT AMOUNT": -40500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "505519138833",
+        "PRODUCT SKU": 9480285,
+        "NAME": "POSH DEO HIJAB ROLL ON REFRESH",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 9500,
+        "TOTAL PRICE (EX-TAX)": 8559,
+        "PROMO CODE": "630157    ",
+        "DISCOUNT AMOUNT": -7500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "505519138833",
+        "PRODUCT SKU": 9004313,
+        "NAME": "KOMIX HERBAL PEPPERMINT 6SX15M",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 9500,
+        "TOTAL PRICE (EX-TAX)": 8559,
+        "PROMO CODE": "630059    ",
+        "DISCOUNT AMOUNT": -6000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "505519138833",
+        "PRODUCT SKU": 5819904,
+        "NAME": "POSH MEN BODY SPRAY RED EXTREM",
+        "UNIT PRICE": 18500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 17575,
+        "TOTAL PRICE (EX-TAX)": 15833,
+        "PROMO CODE": "630157    ",
+        "DISCOUNT AMOUNT": -7225
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "505519138833",
+        "PRODUCT SKU": 7947353,
+        "NAME": "POSH DEO ROLL ON MEN ACTIVE PR",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 9500,
+        "TOTAL PRICE (EX-TAX)": 8559,
+        "PROMO CODE": "630157    ",
+        "DISCOUNT AMOUNT": -7500
+      }
+    ]
+  },
+  {
+    "OrderID": "6820a51d63be2bf6a3210f7d",
+    "OrderDate": "2025-05-11 20:24:45",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505510581121",
+        "PRODUCT SKU": 7058370,
+        "NAME": "CHIEF SHAMPOO COMPLETE TREATME",
+        "UNIT PRICE": 78000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 74100,
+        "TOTAL PRICE (EX-TAX)": 66757,
+        "PROMO CODE": "630135    ",
+        "DISCOUNT AMOUNT": -13400
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505510581121",
+        "PRODUCT SKU": 9782464,
+        "NAME": "JAPANESE CHOCO PUDDING PPN    ",
+        "UNIT PRICE": 16800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 15960,
+        "TOTAL PRICE (EX-TAX)": 14378,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": -840
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505510581121",
+        "PRODUCT SKU": 9997059,
+        "NAME": "SHINZUI BODY CLEANSER SAKURA 1",
+        "UNIT PRICE": 70000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 66500,
+        "TOTAL PRICE (EX-TAX)": 59910,
+        "PROMO CODE": "630031    ",
+        "DISCOUNT AMOUNT": -16000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505510581121",
+        "PRODUCT SKU": 9611443,
+        "NAME": "ZEN BODY CLEANSER SEASALT REFI",
+        "UNIT PRICE": 34000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 32300,
+        "TOTAL PRICE (EX-TAX)": 29099,
+        "PROMO CODE": "630031    ",
+        "DISCOUNT AMOUNT": -13500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "505510581121",
+        "PRODUCT SKU": 8761972,
+        "NAME": "PURENCE EMBUN AIR EMBUN 500ML ",
+        "UNIT PRICE": 8800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 8360,
+        "TOTAL PRICE (EX-TAX)": 7532,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": -440
+      }
+    ]
+  },
+  {
+    "OrderID": "6820a86963be2bf6a3210f8d",
+    "OrderDate": "2025-05-11 20:38:49",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "840656531632",
+        "PRODUCT SKU": 5793440,
+        "NAME": "MYB PWD FIT ME LOOSE LIGHT    ",
+        "UNIT PRICE": 150000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 142500,
+        "TOTAL PRICE (EX-TAX)": 128378,
+        "PROMO CODE": "630081    ",
+        "DISCOUNT AMOUNT": -89300
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "840656531632",
+        "PRODUCT SKU": 6481018,
+        "NAME": "MAKE OVER PS DM CVR CUSHION N3",
+        "UNIT PRICE": 180000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 171000,
+        "TOTAL PRICE (EX-TAX)": 154054,
+        "PROMO CODE": "634111    ",
+        "DISCOUNT AMOUNT": -54000
+      }
+    ]
+  },
+  {
+    "OrderID": "6820a89a63be2bf6a3210f90",
+    "OrderDate": "2025-05-11 20:39:38",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000256923782",
+        "PRODUCT SKU": 9851313,
+        "NAME": "PONDS UV MIRACLE HYDRATE SPF50",
+        "UNIT PRICE": 66000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 66000,
+        "TOTAL PRICE (EX-TAX)": 59459,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "6820a8e463be2bf6a3210f92",
+    "OrderDate": "2025-05-11 20:40:51",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "840657259109",
+        "PRODUCT SKU": 8761972,
+        "NAME": "PURENCE EMBUN AIR EMBUN 500ML ",
+        "UNIT PRICE": 8800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 8800,
+        "TOTAL PRICE (EX-TAX)": 7928,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "6820b1df63be2bf6a3210fa8",
+    "OrderDate": "2025-05-11 21:19:10",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000257388834",
+        "PRODUCT SKU": 9213289,
+        "NAME": "SKINTIFIC MICELLAR WATER MUGWO",
+        "UNIT PRICE": 84000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 84000,
+        "TOTAL PRICE (EX-TAX)": 75676,
+        "PROMO CODE": "632068    ",
+        "DISCOUNT AMOUNT": -37000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000257388834",
+        "PRODUCT SKU": 3741207,
+        "NAME": "CAPLANG GPU KRIM ORIGINAL 150G",
+        "UNIT PRICE": 20000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 20000,
+        "TOTAL PRICE (EX-TAX)": 18018,
+        "PROMO CODE": "630059    ",
+        "DISCOUNT AMOUNT": -8500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000257388834",
+        "PRODUCT SKU": 8045492,
+        "NAME": "AVOSKIN YSB SERUM VIT C 3P NIA",
+        "UNIT PRICE": 143000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 143000,
+        "TOTAL PRICE (EX-TAX)": 128829,
+        "PROMO CODE": "630074    ",
+        "DISCOUNT AMOUNT": -26000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000257388834",
+        "PRODUCT SKU": 8937292,
+        "NAME": "DHC FORSKOHLII B1 B2 AND B6 28",
+        "UNIT PRICE": 120600,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 120600,
+        "TOTAL PRICE (EX-TAX)": 108649,
+        "PROMO CODE": "630047    ",
+        "DISCOUNT AMOUNT": -13400
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000257388834",
+        "PRODUCT SKU": 8937261,
+        "NAME": "DHC COLLAGEN B1 AND B2 42S    ",
+        "UNIT PRICE": 60300,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 60300,
+        "TOTAL PRICE (EX-TAX)": 54324,
+        "PROMO CODE": "630047    ",
+        "DISCOUNT AMOUNT": -6700
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000257388834",
+        "PRODUCT SKU": 4252757,
+        "NAME": "TIGER BALM PLASTER COOL       ",
+        "UNIT PRICE": 15000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 15000,
+        "TOTAL PRICE (EX-TAX)": 13514,
+        "PROMO CODE": "630059    ",
+        "DISCOUNT AMOUNT": -4800
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000257388834",
+        "PRODUCT SKU": 9813793,
+        "NAME": "SKINTIFIC SUNSCREEN SERUM MATT",
+        "UNIT PRICE": 118000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 118000,
+        "TOTAL PRICE (EX-TAX)": 106306,
+        "PROMO CODE": "632068    ",
+        "DISCOUNT AMOUNT": -51000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000257388834",
+        "PRODUCT SKU": 9943407,
+        "NAME": "AUTUMN BIO COLLAGEN MASK 30GR ",
+        "UNIT PRICE": 33600,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 33600,
+        "TOTAL PRICE (EX-TAX)": 30270,
+        "PROMO CODE": "630235    ",
+        "DISCOUNT AMOUNT": -8400
+      }
+    ]
+  },
+  {
+    "OrderID": "6820b2b063be2bf6a3210fb1",
+    "OrderDate": "2025-05-11 21:22:40",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000257423847",
+        "PRODUCT SKU": 1181425,
+        "NAME": "BIORE PORE PACK BLACK 4S      ",
+        "UNIT PRICE": 14800,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 14060,
+        "TOTAL PRICE (EX-TAX)": 12667,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": -740
+      }
+    ]
+  },
+  {
+    "OrderID": "6820b2ea63be2bf6a3210fb3",
+    "OrderDate": "2025-05-11 21:23:38",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000257436750",
+        "PRODUCT SKU": 4600121,
+        "NAME": "LOR ELS FALL RESIST 3X MASK 20",
+        "UNIT PRICE": 88000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 88000,
+        "TOTAL PRICE (EX-TAX)": 79279,
+        "PROMO CODE": "630127    ",
+        "DISCOUNT AMOUNT": -29500
+      }
+    ]
+  },
+  {
+    "OrderID": "6820b49d63be2bf6a3210fb5",
+    "OrderDate": "2025-05-11 21:30:52",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000257508622",
+        "PRODUCT SKU": 9111158,
+        "NAME": "ION WATER PET 500ML           ",
+        "UNIT PRICE": 9500,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 19000,
+        "TOTAL PRICE (EX-TAX)": 17117,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  },
+  {
+    "OrderID": "6820b4b263be2bf6a3210fb7",
+    "OrderDate": "2025-05-11 21:31:14",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000257514362",
+        "PRODUCT SKU": 9920255,
+        "NAME": "BEBIGOO BABY ACTIVITY WIPES 8S",
+        "UNIT PRICE": 22500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 22500,
+        "TOTAL PRICE (EX-TAX)": 20270,
+        "PROMO CODE": "630078    ",
+        "DISCOUNT AMOUNT": -2500
+      }
+    ]
+  },
+  {
+    "OrderID": "6820b52563be2bf6a3210fb9",
+    "OrderDate": "2025-05-11 21:33:09",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000257532115",
+        "PRODUCT SKU": 7144943,
+        "NAME": "NUVO BODYWASH MERAH REF 825ML ",
+        "UNIT PRICE": 20250,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 20250,
+        "TOTAL PRICE (EX-TAX)": 18243,
+        "PROMO CODE": "P000629652",
+        "DISCOUNT AMOUNT": -20250
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000257532115",
+        "PRODUCT SKU": 7863103,
+        "NAME": "PS LOVE KNEEHEAT PAIN RELIEF 1",
+        "UNIT PRICE": 10500,
+        "QUANTITY": 2,
+        "TOTAL PRICE": 21000,
+        "TOTAL PRICE (EX-TAX)": 18919,
+        "PROMO CODE": "P000626483",
+        "DISCOUNT AMOUNT": -21000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000257532115",
+        "PRODUCT SKU": 1107111,
+        "NAME": "ELLIPS HAIR VITAMIN PRO KRTN S",
+        "UNIT PRICE": 13000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 13000,
+        "TOTAL PRICE (EX-TAX)": 11712,
+        "PROMO CODE": "630122    ",
+        "DISCOUNT AMOUNT": -3500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000257532115",
+        "PRODUCT SKU": 9693630,
+        "NAME": "SCARLETT BODY SCRUB CHARMING 2",
+        "UNIT PRICE": 48000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 48000,
+        "TOTAL PRICE (EX-TAX)": 43243,
+        "PROMO CODE": "630029    ",
+        "DISCOUNT AMOUNT": -27000
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000257532115",
+        "PRODUCT SKU": 7803314,
+        "NAME": "SIDO MUNCUL VITAMIN C 1000 ORA",
+        "UNIT PRICE": 10000,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 10000,
+        "TOTAL PRICE (EX-TAX)": 9009,
+        "PROMO CODE": "630059    ",
+        "DISCOUNT AMOUNT": -2500
+      },
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0001",
+        "RRN": "000257532115",
+        "PRODUCT SKU": 8230898,
+        "NAME": "NUVO BODYWASH PUTIH POUCH 825M",
+        "UNIT PRICE": 20250,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 20250,
+        "TOTAL PRICE (EX-TAX)": 18243,
+        "PROMO CODE": "P000629652",
+        "DISCOUNT AMOUNT": -20250
+      }
+    ]
+  },
+  {
+    "OrderID": "6820b54563be2bf6a3210fc0",
+    "OrderDate": "2025-05-11 21:33:40",
+    "Details": [
+      {
+        "PAYMENT METHOD": "QRIS",
+        "TERMINAL ID": "AHLC0002",
+        "RRN": "000257535820",
+        "PRODUCT SKU": 1301137,
+        "NAME": "SELSUN BLUE 5 120 ML          ",
+        "UNIT PRICE": 56500,
+        "QUANTITY": 1,
+        "TOTAL PRICE": 56500,
+        "TOTAL PRICE (EX-TAX)": 50901,
+        "PROMO CODE": NaN,
+        "DISCOUNT AMOUNT": 0
+      }
+    ]
+  }
+]

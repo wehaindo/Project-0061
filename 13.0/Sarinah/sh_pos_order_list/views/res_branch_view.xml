@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>        
+
+        <record id="branch_res_branch_view_form_inherit" model="ir.ui.view">
+            <field name="name">res.branch.form.inherit</field>
+            <field name="model">res.branch</field>
+            <field name="inherit_id" ref="branch.branch_res_branch_view_form"/>
+            <field name="arch" type="xml">
+                <field name="telephone" position="after">
+                    <field name="supervisor_pin"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="weha_contact_view_tree" model="ir.ui.view">
+        <field name="name">weha.contact.view.tree</field>
+        <field name="model">weha.contact</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="weha_contact_view_form" model="ir.ui.view">
+        <field name="name">weha.contact.view.form</field>
+        <field name="model">weha.contact</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="email"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="weha_contact_view_search" model="ir.ui.view">
+        <field name="name">weha.contact.view.search</field>
+        <field name="model">weha.contact</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="name"/>
+                <field name="email"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="weha_contact_action" model="ir.actions.act_window">
+        <field name="name">Weha Contact</field>
+        <field name="res_model">weha.contact</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p>Create Weha Contact</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_weha_contact_line"
+        name="Weha Contact"
+        parent="menu_weha_contact"
+        sequence="0"
+        action="weha_contact_action"
+        groups="base.group_user"/>
+
+</odoo>

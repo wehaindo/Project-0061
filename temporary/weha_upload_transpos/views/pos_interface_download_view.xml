@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="pos_interface_download_view_tree" model="ir.ui.view">
+        <field name="name">pos.interface.download.view.tree</field>
+        <field name="model">pos.interface.download</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="file_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pos_interface_download_view_form" model="ir.ui.view">
+        <field name="name">pos.interface.download.view.form</field>
+        <field name="model">pos.interface.download</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="process_download_file" string="Process" type="object" class="oe_hightlight"/>
+                    <button name="import_download_file" string="Import" type="object" class="oe_hightlight"/>
+
+                </header>
+                <sheet>
+                    <group>
+                        <group string="General">
+                            <field name="name" />                            
+                        </group>
+                        <group string="Files">
+                            <field name="file_count"/>
+                        </group>                        
+                    </group>
+                    <group string="Divisions"/>
+                    <field name="division_ids">
+                        <tree>
+                            <field name="filename"/>
+                            <field name="file"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                    <group string="Departments"/>
+                    <field name="department_ids">
+                        <tree>
+                            <field name="filename"/>
+                            <field name="file"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                    <group string="Categories"/>
+                    <field name="category_ids">
+                        <tree>
+                            <field name="filename"/>
+                            <field name="file"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                    <group string="Sub Categories"/>
+                    <field name="subcategory_ids">
+                        <tree>
+                            <field name="file"/>
+                            <field name="filename"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                    <group string="Products"/>
+                    <field name="file_ids">
+                        <tree>
+                            <field name="file"/>
+                            <field name="filename"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                    <group string="Barcodes"/>
+                    <field name="barcode_ids">
+                        <tree>
+                            <field name="file"/>
+                            <field name="filename"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                    <group string="Price Changes"/>
+                    <field name="change_ids">
+                        <tree>
+                            <field name="file"/>
+                            <field name="filename"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                    <group string="Mix and Match Partial"/>
+                    <field name="partial_ids">
+                        <tree>
+                            <field name="file"/>
+                            <field name="filename"/>                           
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                    <group string="Mix and Match Combination"/>
+                    <field name="combination_ids">
+                        <tree>
+                            <field name="file"/>
+                            <field name="filename"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pos_interface_download_action" model="ir.actions.act_window">
+        <field name="name">Pos Interface Download</field>
+        <field name="res_model">pos.interface.download</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem
+        id="menu_pos_interface_download"
+        action="pos_interface_download_action"
+        name="Interface Download"
+        parent="download_file_menu"
+        sequence="99"
+    />
+</odoo>

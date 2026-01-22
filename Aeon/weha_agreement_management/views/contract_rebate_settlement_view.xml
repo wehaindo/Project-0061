@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+    <record id="view_contract_rebate_settlement_form" model="ir.ui.view">
+        <field name="name">Rebate Settlement Form</field>
+        <field name="model">contract.rebate.settlement</field>
+        <field name="arch" type="xml"> 
+            <form string="Rebate Settlement" >
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="supplier_id" />
+                            <field name="supplier_code" />
+                            <field name="contract_id" />
+                            <field name="payment_periode" />
+                        </group>
+                        <group>
+                            <field name="date" readonly="1"/>
+                            <field name="bu_id" />
+                            <field name="store_id" />
+                            <field name="deduction_id" />
+                            <field name="net_purchase" />
+                            <field name="rebate_amount" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_contract_rebate_settlement_tree" model="ir.ui.view">
+        <field name="name">Rebate Settlement Tree</field>
+        <field name="model">contract.rebate.settlement</field>
+        <field name="arch" type="xml"> 
+            <tree string="Rebate Settlement" >
+                <field name="name" />
+                <field name="supplier_id" />
+                <field name="supplier_code" />
+                <field name="contract_id" />
+                <field name="bu_id" />
+                <field name="store_id" />
+                <field name="date" />
+                <field name="payment_periode" />
+                <field name="deduction_id" />
+                <field name="net_purchase" />
+                <field name="rebate_amount" />
+                <field name="state" string="Status"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="contract_rebate_settlement_action" model="ir.actions.act_window">
+        <field name="name">Rebate Details</field>
+        <field name="res_model">contract.rebate.settlement</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+</odoo>

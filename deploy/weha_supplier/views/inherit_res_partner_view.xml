@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="inherit_res_partner_form" model="ir.ui.view">
+        <field name="name">inherit.res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <field name="vat" position="after">
+                <field name="supplier_code" />
+                <field name="partner_id" />
+                <field name="code_siup" />
+                <field name="is_supplier_branch" invisible="1"/>
+            </field>
+            <xpath expr="//notebook" position="inside">
+                <page string="Branch" attrs="{'invisible': [('is_supplier_branch','=',True)]}">
+                    <field name="res_partner_ids">
+                        <tree>
+                            <field name="name"/>
+                            <field name="phone"/>                            
+                            <field name="street"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="Store">
+                    <field name="res_branch_supplier_ids">
+                        <tree>
+                            <field name="branch_id"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <field name="branch_id"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>                
+                <page string="Agremeent">
+                    <field name='agreement_ids'>
+                        <tree>
+                            <field name="code" />
+                            <field name="name" />
+                            <field name="domain" />
+                            <field name="start_date" />
+                            <field name="end_date" />
+                        </tree>
+                    </field>
+                </page>
+                <page string="Other">
+                    <group>
+                        <group>
+                            <field name="supplier_sub_type" />
+                            <field name="supplier_type" />
+                            <field name="type_of_entity" />
+                            <field name="supplier_source" />
+                        </group>
+                        <group>
+                            <field name="supplier_entity_type" />
+                            <field name="supplier_problem" />
+                            <field name="supplier_utility" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

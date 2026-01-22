@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="PosEnableDisplayButton" owl="1">
+        <div class="oe_status" t-on-click="onClick">
+            <div class="js_connected oe_icon"
+                title="POS Enable Display">
+                <i class="fa fa-fw fa-window-close" role="img" aria-label="POS Enable Display"></i>
+            </div>
+        </div>
+    </t>
+
+</templates>

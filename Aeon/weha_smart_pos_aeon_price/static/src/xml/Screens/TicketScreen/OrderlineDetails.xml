@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="OrderlineDetails" t-inherit="point_of_sale.OrderlineDetails" t-inherit-mode="extension" owl="1"> 
+        <xpath expr="//li[hasclass('info')]" position="after">            
+            <li class="discount-info">
+                <t t-if="get_price_source() == 'pdc'">
+                    <span>PDC</span>
+                </t>
+                <t t-if="get_price_source() == 'pdcm'">
+                    <span>PDCM</span>
+                </t>
+                <t t-if="get_price_source() == 'mix_and_match'">
+                    <span>Mix and Match</span>
+                </t>
+                <t t-if="get_price_source() == 'member_day'">
+                    <span>Member Day</span>
+                </t>
+            </li>
+        </xpath>
+    </t>
+</templates>

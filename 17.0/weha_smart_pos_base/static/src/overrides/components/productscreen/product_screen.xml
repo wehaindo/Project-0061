@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<templates id="template" xml:space="preserve">        
+    <t t-name="weha_smart_pos_base.ProductScreen" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension">
+        
+        <!-- Show Total Items and Total Quantity -->
+        <xpath expr="//OrderWidget" position="attributes">
+            <attribute name="isShowTotalItems">pos.config.is_show_total_items</attribute>
+            <attribute name="totalItems">totalItems</attribute>
+            <attribute name="isShowTotalQuantity">pos.config.is_show_total_quantity</attribute>            
+            <attribute name="totalQuantity">totalQuantity</attribute>
+        </xpath>
+
+    </t>
+</templates>

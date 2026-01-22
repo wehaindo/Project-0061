@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="pos_config_menu_root"
+        name="POS File"
+        web_icon="posfile,static/description/icon.png"
+        sequence="10"
+    />
+    <!-- ########### -->
+    <menuitem
+        id="pos_config_menu"
+        name="Upload File"
+        parent="pos_config_menu_root"
+        sequence="0"
+    />
+    <menuitem
+        id="profit_file_menu"
+        action="pos_trans_code_action"
+        name="Profit File"
+        parent="pos_config_menu"
+        sequence="0"
+    />
+    <menuitem
+        id="sales_file_menu"
+        action="pos_order_upload_action"
+        name="Sales File"
+        parent="pos_config_menu"
+        sequence="1"
+    />
+    <!-- ########### -->
+    <menuitem
+        id="download_file_menu"
+        name="Download File"
+        parent="pos_config_menu_root"
+        sequence="1"
+    />
+    <menuitem
+        id="division_file_submenu"
+        action="division_file_action"
+        name="Division File"
+        parent="download_file_menu"
+        sequence="0"
+    />
+    <menuitem
+        id="dept_file_submenu"
+        action="department_file_action"
+        name="Department File"
+        parent="download_file_menu"
+        sequence="1"
+    />
+    <menuitem
+        id="category_file_submenu"
+        action="product_category_file_action"
+        name="Category File"
+        parent="download_file_menu"
+        sequence="2"
+    />
+    <menuitem
+        id="subcategory_file_submenu"
+        action="product_subcategory_file_action"
+        name="Sub-Category File"
+        parent="download_file_menu"
+        sequence="3"
+    />
+    <menuitem
+        id="product_file_submenu"
+        action="product_items_file_action"
+        name="Product File"
+        parent="download_file_menu"
+        sequence="4"
+    />
+    <menuitem
+        id="product_barcode_file_submenu"
+        action="product_barcode_file_action"
+        name="Product Barcode File"
+        parent="download_file_menu"
+        sequence="5"
+    />
+    <menuitem
+        id="price_change_file_submenu"
+        action="price_change_file_action"
+        name="Price Change File"
+        parent="download_file_menu"
+        sequence="6"
+    />
+    <menuitem
+        id="group_price_change_file_submenu"
+        action="group_price_change_file_action"
+        name="Group Price Change File"
+        parent="download_file_menu"
+        sequence="7"
+    />
+    <menuitem
+        id="mix_and_match_file_submenu"
+        name="Mix And Match File"
+        parent="download_file_menu"
+        sequence="8"
+    />
+    <menuitem
+        id="mix_and_match_partial_subsubmenu"
+        action="mix_and_match_partial_file_action"
+        name="Partial"
+        parent="mix_and_match_file_submenu"
+        sequence="0"
+    />
+    <menuitem
+        id="mix_and_match_comb_subsubmenu"
+        action="mix_and_match_comb_file_action"
+        name="Combination"
+        parent="mix_and_match_file_submenu"
+        sequence="1"
+    />
+</odoo>

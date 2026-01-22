@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="WalletHistoryList" owl="1">
+        <tr>
+            <td>
+                <t t-esc="props.record.customer_id[1]" />
+            </td>
+            <td t-if="!env.isMobile">
+                <t t-esc="props.record.order_id[1]" />
+            </td>
+             <td t-if="!env.isMobile">
+                <t t-esc="props.record.cashier_id[1]" />
+            </td>
+             <td t-if="!env.isMobile">
+                <t t-esc="props.record.type" />
+            </td>
+             <td t-if="!env.isMobile">
+                <t t-esc="env.pos.format_currency(props.record.debit)"/>
+            </td>
+             <td t-if="!env.isMobile">
+                <t t-esc="env.pos.format_currency(props.record.credit)"/>
+            </td>
+        </tr>
+    </t>
+</templates>

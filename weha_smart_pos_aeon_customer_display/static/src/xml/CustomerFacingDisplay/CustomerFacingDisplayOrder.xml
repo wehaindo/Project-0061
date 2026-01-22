@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+
+    <t t-name="CustomerFacingDisplayHead" t-inherit="point_of_sale.CustomerFacingDisplayHead" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('resources')]" position="replace">
+            <div class="resources">
+                <base t-att-href="origin"/>
+                <meta http-equiv="cache-control" content="no-cache" />
+                <meta http-equiv="pragma" content="no-cache" />
+                <link rel="stylesheet" type="text/css" href="/weha_smart_pos_aeon_customer_display/static/src/css/bootstrap.min.css"/>
+                <link rel="stylesheet" type="text/css" href="/weha_smart_pos_aeon_customer_display/static/src/css/jquery-ui.min.css"/>
+                <link rel="stylesheet" type="text/css" href="/weha_smart_pos_aeon_customer_display/static/src/css/owl.min.css"/>                
+                <link rel="stylesheet" type="text/css" href="/weha_smart_pos_aeon_customer_display/static/src/css/fontawesome.min.css"/>                
+                <link rel="stylesheet" type="text/css" href="/point_of_sale/static/src/css/customer_facing_display.css"/>
+                <link rel="stylesheet" type="text/css" href="/weha_smart_pos_aeon_customer_display/static/src/css/customer_facing_display.css"/>
+                <link rel="stylesheet" type="text/css" href="/weha_smart_pos_aeon_customer_display/static/src/css/customer_facing_header.css"/>                
+            </div>            
+        </xpath>        
+    </t>    
+
+    <t t-name="CustomerFacingDisplayOrder" t-inherit="point_of_sale.CustomerFacingDisplayOrder" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('pos-payment_info')]" position="replace">
+            <div class="pos-payment_info">
+                <!-- Carousel -->                
+                <div class="onboard-slider owl-carousel" id="testCarousel">
+                    <div class="item">
+                        <img style="width:100%;" src="https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU" alt="img"/>
+                    </div>
+                    <div class="item">
+                        <img style="width:100%;" src="https://fastly.picsum.photos/id/2/5000/3333.jpg?hmac=_KDkqQVttXw_nM-RyJfLImIbafFrqLsuGO5YuHqD-qQ" alt="img"/>
+                    </div>
+                    <div class="item">
+                        <img style="width:100%;" src="https://fastly.picsum.photos/id/6/5000/3333.jpg?hmac=pq9FRpg2xkAQ7J9JTrBtyFcp9-qvlu8ycAi7bUHlL7I" alt="img"/>                        
+                    </div>
+                </div>
+                <div>
+                    <span class="back-top" onclick="openFullscreen();"><i class="fas fa-angle-double-up"></i></span>
+                    <span class="back-top" onclick="closeFullscreen();"><i class="fas fa-angle-double-down"></i></span>
+                    <!-- <span class="fa-solid fa-user"  onclick="openFullscreen();"></span>
+                    <span class="fa-solid fa-user"  onclick="closeFullscreen();"></span>
+                    <span class="btn btn-primary" onclick="openFullscreen();">Open Fullscreen</span>
+                    <button class="btn btn-primary" onclick="closeFullscreen();">Close Fullscreen</button> -->
+                </div>
+
+                <!-- <div id="advCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="10000">                    
+                            <img src="https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU" class="d-block w-100" alt="..."/>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="10000">
+                            <img src="https://fastly.picsum.photos/id/2/5000/3333.jpg?hmac=_KDkqQVttXw_nM-RyJfLImIbafFrqLsuGO5YuHqD-qQ" class="d-block w-100" alt="..."/>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="10000">
+                            <img src="https://fastly.picsum.photos/id/6/5000/3333.jpg?hmac=pq9FRpg2xkAQ7J9JTrBtyFcp9-qvlu8ycAi7bUHlL7I" class="d-block w-100" alt="..."/>
+                        </div>
+                    </div>                   
+                </div>         -->
+            </div>
+           
+            <script src="/weha_smart_pos_aeon_customer_display/static/src/lib/js/jquery.3.6.min.js"></script>
+            <script src="/weha_smart_pos_aeon_customer_display/static/src/lib/js/bootstrap.min.js"></script>
+            <script src="/weha_smart_pos_aeon_customer_display/static/src/lib/js/jquery-ui.min.js"></script>
+            <script src="/weha_smart_pos_aeon_customer_display/static/src/lib/js/fontawesome.min.js"></script>
+            <script src="/weha_smart_pos_aeon_customer_display/static/src/lib/js/owl.min.js"></script>
+            <!-- main js  -->
+            <script src="/weha_smart_pos_aeon_customer_display/static/src/js/ChromeWidgets/customer_facing_carousel.js"></script>
+            <script src="/weha_smart_pos_aeon_customer_display/static/src/js/customer_facing_fullscreen.js"></script>
+        </xpath>
+    </t>
+    
+    <t t-name="CustomerFacingDisplayOrderLines" t-inherit="point_of_sale.CustomerFacingDisplayOrderLines" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('pos_orderlines')]" position="replace">
+            <div class="pos_orderlines">
+                <div class="pos_orderlines_header">   
+                    <div class="card" style="margin-bottom:10px;">
+                        <img src="/weha_smart_pos_login/static/src/img/aeon_log.jpg" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                          <h5 class="card-title"><t t-esc="pos.config.res_branch_id[1]"/></h5>
+                          <p class="card-text"><t t-esc="pos.get_cashier()['name']"/></p>                         
+                        </div>
+                      </div>
+                </div>
+                <div class="pos_orderlines_list">
+                    <t t-if="order">
+                        <div t-foreach="order.get_orderlines()" t-as="orderline" class="pos_orderlines_item">
+                            <div class="row">
+                                <label class="text-align-top"><t t-esc="orderline.get_quantity()"/> x</label>
+                                <br/>
+                                <br/>
+                            </div>                            
+                            <div class="row">
+                                <label class="text-align-top" t-esc="orderline.get_full_product_name()"/>                                
+                                <t t-if="orderline.get_price_source() == 'list_price'">
+                                    <br/><span class="badge badge-primary">Normal Price</span>                                   
+                                </t>
+                                <t t-if="orderline.get_price_source() == 'pdc'">
+                                    <br/><span class="badge badge-primary">PDC</span>                                    
+                                </t>
+                                <t t-if="orderline.get_price_source() == 'pdcm'">
+                                    <br/><span class="badge badge-primary">PDCM</span>                                   
+                                </t>                                
+                                <t t-if="orderline.get_price_source() == 'mix_and_match'">
+                                    <br/><span class="badge badge-primary">Mix and Match</span>                                 
+                                </t>
+                                <t t-if="orderline.get_discount_type() == 'memberday'">
+                                    <br/>AEON Member Day Discount : <t t-esc="orderline.get_discount_str()"/>%
+                                </t>                                              
+                                <t t-if="orderline.get_discount_type() == 'rtc'">
+                                    <br/>RTC Discount : <t t-esc="orderline.get_discount_str()"/>% 
+                                </t>                  
+                            </div>                            
+                            <div class="row">
+                                <label class="text-align-top text-center">@ <t t-esc="pos.format_currency_no_symbol(orderline.get_list_price())"/></label>
+                                <br/>
+                                <br/>
+                            </div>
+                            <div class="row">
+                                <label class="text-align-top" style="text-align: right;" t-esc="pos.format_currency_no_symbol(orderline.get_list_price() * orderline.get_quantity())"/>
+                                <br/>
+                                <br/>
+                            </div>                            
+                        </div>
+                    </t>
+                </div>
+                
+                <div class="pos-orderlines_payment_info">
+                    <div class="pos-orderlines_payment_info_details">
+                        <!-- <div class="pos-paymentlines">
+                            <div>
+                                <span class="pos-change_title">Total Items</span>
+                            </div>
+                            <div>
+                                <span class="pos-change_amount" t-esc="order.get_totalitem()"/>
+                            </div>
+                        </div>
+                        <div class="pos-paymentlines">
+                            <div>
+                                <span class="pos-change_title">Total Quantity</span>
+                            </div>
+                            <div>
+                                <span class="pos-change_amount" t-esc="order.get_totalquantity()"/>
+                            </div>
+                        </div>                                                 -->
+                        <!-- Order Total -->
+
+                        <div class="pos-paymentlines">
+                            <div>
+                                <span class="pos-change_title">Total (<t t-esc="order.get_totalitem()"/> items)</span>
+                            </div>
+                            <div>
+                                <span class="pos-change_amount" t-esc="pos.format_currency_no_symbol(order and order.get_total_without_discount() || 0)"/>
+                            </div>
+                        </div>           
+                        <div class="pos-total">
+                            <div>
+                                <span class="total-amount-formatting" style="font-size:2.5vw">TOTAL</span>
+                            </div>
+                            <div>
+                                <span class="pos_total-amount" style="font-size:2.5vw" t-esc="pos.format_currency_no_symbol(order and order.get_total_with_tax() || 0)"/>
+                            </div>
+                        </div>    
+                        <div class="pos-paymentlines">
+                            <div>
+                                <span class="pos-change_title">Total Disc</span>
+                            </div>
+                            <div>
+                                <span class="pos-change_amount" t-esc="pos.format_currency_no_symbol(order and order.get_total_discount() || 0)"/>
+                            </div>
+                        </div>                            
+                        <!-- Paymentlines -->
+                        <!-- <t t-call="CustomerFacingDisplayPaymentLines"/> -->
+
+                        <!-- Odoo Logo -->
+                        <div class="pos-odoo_logo_container"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>

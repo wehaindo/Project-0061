@@ -1,0 +1,15 @@
+
+<odoo>
+  <record id="email_template_consignment_settlement" model="mail.template">
+    <field name="name">Consignment Settlement Notification</field>
+    <field name="model_id" ref="model_consignment_settlement"/>
+    <field name="email_from">${(user.email or '')|safe}</field>
+    <field name="subject">Consignment Settlement for ${object.contract_id.name} - ${object.period_to}</field>
+    <field name="body_html"><![CDATA[
+      <p>Dear ${object.contract_id.partner_id.name},</p>
+      <p>Please find attached the consignment settlement for the period <b>${object.period_from}</b> to <b>${object.period_to}</b>.</p>
+      <p>Net payable: <b>${object.net_payable}</b></p>
+      <p>Regards,<br/>${(user.company_id.name or '')}</p>
+    ]]></field>
+  </record>
+</odoo>

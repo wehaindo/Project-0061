@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="weha_smart_pos_aeon_pos_access_rights.FingerDialog" owl="1">
+        <Dialog title="'Register Finger'">        
+            <div class="o_dialog_content">            
+                <p><t t-esc="state.message"/></p>
+            </div>
+            <t t-set-slot="footer">   
+                <t t-if="state.error == false">
+                    <button class="btn btn-primary" t-on-click="onConfirm"><t t-esc="'Save'" /></button>
+                </t>                
+                <button class="btn btn-secondary" t-on-click.stop="props.close"><t t-esc="'Close'" /></button>
+            </t>
+        </Dialog>
+    </t>    
+</templates>

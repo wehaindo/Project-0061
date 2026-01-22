@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">   
+    <t t-name="QrisManualPopup" owl="1">
+        <div class="popup bank-manual-popup">
+            <header class="title">
+                QRIS Information
+            </header>
+            <main class="body">
+                <input type="text" style="margin-bottom:10px"  t-model="state.merchantCodeValue" t-ref="merchantCodeRef" placeholder="Merchant Code" required="required"/>                             
+                <input type="text" style="margin-bottom:10px"  t-model="state.terminalIdValue" t-ref="terminalIdRef" placeholder="Terminal ID" required="required"/>                            
+                <input type="text" style="margin-bottom:10px"  t-model="state.approvalCodeValue" t-ref="approvalCodeRef" placeholder="Approva; Code" required="required"/>            
+            </main>
+            <footer class="footer">
+                <div class="button cancel" t-on-click="cancel">Cancel</div>
+                <div class="button confirm" t-on-click="confirm">Confirm</div>
+            </footer>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+   <t t-name="PrimaWaitingPopup" owl="1">
+       <div role="dialog" class="modal-dialog">
+           <div class="popup popup-prima-waiting-popup" >
+               <p class="title">
+                   <t t-esc="props.title" />
+               </p>
+               <div class="body">
+                    <t t-esc="props.body" />
+                    <t t-esc="props.primaPaymentStatus"/>
+               </div>
+               <div class="footer">
+                   <div class="button cancel" t-on-click="confirm">
+                       <t t-esc="props.confirmText" />
+                   </div>
+               </div>
+           </div>
+       </div>
+   </t>
+</templates>

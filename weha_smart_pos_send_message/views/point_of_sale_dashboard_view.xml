@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_config_kanban_inherit_weha_smart_pos_send_message" model="ir.ui.view">
+        <field name="name">view.pos.config.kanban.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_config_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='open_existing_session_cb']" position="after">
+                <button t-if="record.current_session_state.raw_value != 'closing_control' and record.current_session_state.raw_value === 'opened'" class="btn btn-primary" name="send_message" type="object">
+                    Send Message
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

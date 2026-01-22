@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="PaymentScreenInherit" t-inherit="point_of_sale.PaymentScreen" t-inherit-mode="extension" owl="1">
+        <!-- <xpath expr="//div[@class='paymentmethods-container']" position="replace">
+            <div class="paymentmethods-container">
+                <PaymentScreenPaymentLines paymentLines="paymentLines"/>
+                <div class="paymentmethods">
+                    <t t-foreach="env.pos.payment_methods" t-as="paymentMethod" t-key="paymentMethod.id">
+                        <t t-if="!paymentMethod.allow_pms_voucher">
+                            <div class="button paymentmethod"
+                                 t-on-click="() => this.trigger('new-payment-line', paymentMethod)">
+                                <div class="payment-name">
+                                    <t t-esc="paymentMethod.name"/>
+                                </div>
+                            </div>
+                        </t>
+                    </t>
+                </div>
+            </div>
+        </xpath> -->
+
+        
+        <xpath expr="//div[@class='payment-controls']" position="inside">            
+            <div class="pms-voucher-controls">
+                <!-- <t t-if="env.pos.get_order().get_aeon_member()"> -->
+                    <div class="button js_gift_voucher" t-on-click="usePmsVoucher">
+                        <i class="fa fa-gift" /> AEON Voucher
+                    </div>
+                 <!-- </t> -->
+            </div>
+        </xpath>
+    </t>
+</templates>

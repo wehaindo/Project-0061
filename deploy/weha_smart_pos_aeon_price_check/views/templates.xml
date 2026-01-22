@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="pos_price" name="pos_price">        
+        <html>
+            <head>
+                <title>AEON - POS System</title>
+                <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+                <link href="/weha_smart_pos_aeon_price_check/static/src/css/styles.scss" rel="stylesheet"/>
+            </head>
+            <body onkeypress="handle(event)">
+                <div class="container" id="product-container">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-md-7 px 3">
+                                <h3 class="card-title" id="product-name">Product 01</h3>                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h3 class="card-text product-price">45000</h3>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h3 class="card-text product-discount-price">43000</h3>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div class="col-md-5">
+                                <img class="card-img" src="/weha_smart_pos_aeon_price_check/static/src/img/placeholder.png"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>                   
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+                    function backToHome() {
+                        document.body.style.backgroundImage = "url('/weha_smart_pos_aeon_price_check/static/src/img/first_page.png')";                        
+                        document.getElementById("product-container").style.display = "none";
+                        document.getElementById("product-price").innerHTML = "";
+                        document.getElementById("product-discount-price").innerHTML = "";
+                        document.getElementById("product-name").innerHTML = "";
+                    }                      
+                    function goToProductNotFound() {
+                        document.body.style.backgroundImage = "url('/weha_smart_pos_aeon_price_check/static/src/img/product_not_found.png')";                        
+                        document.getElementById("product-container").style.display = "none";
+                    }
+                    function goToProductFound() {
+                        document.body.style.backgroundImage = "url('/weha_smart_pos_aeon_price_check/static/src/img/blank_page.png')";                        
+                        document.getElementById("product-container").style.display = "block";
+                    }
+                    var value = '';
+                    async function handle(e){
+                        if(e.keyCode === 13){
+                            e.preventDefault(); // Ensure it is only this code that runs                            
+                            console.log(value);
+                            fetch('/pos/price/product/' + value)
+                            .then((response) => response.json())
+                            .then((response_json) => {    
+                                console.log(response_json);
+                                value = '';
+                                if (response_json.err == true){
+                                    goToProductNotFound();
+                                    new Promise(function(resolve, reject) { 
+                                        setTimeout(() => {
+                                            backToHome();
+                                            resolve();
+                                        }, 5000)
+                                    });
+                                    <!-- const myTimeout = setTimeout(goToProductFound, 5000); -->                                    
+                                    <!-- const myTimeout = setTimeout(backToHome, 5000); -->
+                                }else{
+                                    var data = response_json.data;
+                                    console.log(data);
+                                    console.log(data.list_price);
+                                    document.getElementById("product-price").innerHTML = "44000";
+                                    document.getElementById("product-discount-price").innerHTML = "39000";
+                                    document.getElementById("product-name").innerHTML = data.display_name;
+                                    goToProductFound();
+                                    <!-- new Promise(function(resolve, reject) { 
+                                        setTimeout(() => {
+                                            backToHome();
+                                            resolve();
+                                        }, 5000)
+                                    }); -->
+                                    <!-- const myTimeout = setTimeout(goToProductFound, 5000); -->                                    
+                                }
+                            });
+                        }else{
+                            console.log(e.keyCode);
+                            value = value + String.fromCharCode(e.keyCode);
+                        }
+                    }
+                </script>
+            </body>
+        </html>
+    </template>
+</odoo>

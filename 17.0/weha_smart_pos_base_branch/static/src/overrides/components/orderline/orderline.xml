@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<templates id="template" xml:space="preserve">        
+    <t t-name="weha_smart_pos_base.Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('product-price')]" position="after">
+            <t>
+                <i id="clear_icon" class="fa fa-times-circle" style="padding-left:10px;" t-on-click="del_orderline_button"/>
+            </t>
+        </xpath>
+    </t>
+</templates> 

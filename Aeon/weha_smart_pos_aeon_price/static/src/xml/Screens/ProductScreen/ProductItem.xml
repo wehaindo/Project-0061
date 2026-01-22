@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ProductItem" t-inherit="point_of_sale.ProductItem" t-inherit-mode="extension" owl="1">
+        <xpath expr="//span[hasclass('price-tag')]" position="replace">
+            <div>
+               <t t-if="original_price_unit and price_unit">
+                <t t-if="price != original_price">
+                   <div class="price-tag">
+                        <t t-esc="price"/>
+                    </div>
+                    <div class="price-tag" style="color: #f29448;text-decoration: line-through;background-color:#595959;font-weight:800;width: max-content;">
+                        <t t-esc="original_price"/>
+                    </div>
+                </t>
+                <t t-else=" ">
+                    <div class="price-tag">
+                        <t t-esc="price" />
+                    </div>
+                </t>   
+                </t>
+                <t t-if="!(original_price_unit and price_unit)">
+                    <span class="price-tag">
+                        <t t-esc="price" />
+                    </span>
+                </t>
+            </div>
+        </xpath>
+    </t>
+</templates>

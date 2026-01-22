@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Wizard Form View -->
+    <record id="view_remove_duplicate_wizard_form" model="ir.ui.view">
+        <field name="name">remove.duplicate.wizard.form</field>
+        <field name="model">remove.duplicate.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Remove Duplicate Order Lines">
+                <header>
+                    <!-- Scan State -->
+                    <button name="action_scan_duplicates" 
+                            string="Scan for Duplicates" 
+                            type="object"
+                            class="oe_highlight"
+                            attrs="{'invisible': ['|', ('state', '!=', 'scan'), ('scanned_order_count', '>', 0)]}"/>
+                    
+                    <button name="action_confirm_removal" 
+                            string="Continue to Remove" 
+                            type="object" 
+                            class="oe_highlight"
+                            attrs="{'invisible': ['|', ('state', '!=', 'scan'), ('total_duplicate_orders', '=', 0)]}"/>
+                    
+                    <button name="action_scan_duplicates" 
+                            string="Rescan" 
+                            type="object"
+                            attrs="{'invisible': ['|', ('state', '!=', 'scan'), ('scanned_order_count', '=', 0)]}"/>
+                    
+                    <!-- Confirm State -->
+                    <button name="action_remove_duplicates" 
+                            string="Remove Duplicates" 
+                            type="object" 
+                            class="oe_highlight"
+                            attrs="{'invisible': [('state', '!=', 'confirm')]}"/>
+                    
+                    <button name="action_back_to_scan" 
+                            string="Back to Results" 
+                            type="object"
+                            attrs="{'invisible': [('state', '!=', 'confirm')]}"/>
+                    
+                    <!-- Done State -->
+                    <button name="action_reset" 
+                            string="Scan Again" 
+                            type="object"
+                            attrs="{'invisible': [('state', '!=', 'done')]}"/>
+                    
+                    <field name="state" widget="statusbar" statusbar_visible="scan,confirm,done"/>
+                </header>
+                
+                <sheet>
+                    <!-- Session Selection (Always Visible) -->
+                    <group>
+                        <group string="Select POS Sessions" colspan="2">
+                            <field name="session_ids" widget="many2many_tags" 
+                                   options="{'no_create': True}"
+                                   placeholder="Select sessions or leave empty for all"
+                                   attrs="{'readonly': [('state', 'in', ['confirm', 'done'])]}"/>
+                        </group>
+                    </group>
+                    
+                    <separator/>
+                    
+                    <!-- SCAN STATE -->
+                    <group attrs="{'invisible': [('state', '!=', 'scan')]}">
+                        <group colspan="4">
+                            <div class="alert alert-success" role="alert" 
+                                 attrs="{'invisible': [('total_duplicate_orders', '=', 0)]}">
+                                <strong>✓ Duplicate Orders Found!</strong>
+                                <p>Review the duplicate orders below by session and access token. Click "Continue to Remove" to proceed.</p>
+                            </div>
+                            <div class="alert alert-info" role="alert" 
+                                 attrs="{'invisible': [('total_duplicate_orders', '>', 0)]}">
+                                <strong>No Duplicate Orders Found</strong>
+                                <p>All scanned orders in the selected sessions are unique.</p>
+                            </div>
+                        </group>
+                        
+                        <group string="Scan Summary" colspan="2" col="2">
+                            <field name="scanned_session_count"/>
+                            <field name="scanned_order_count"/>
+                            <field name="unique_orders_count"/>
+                            <field name="total_duplicate_orders"/>
+                        </group>
+                        
+                        <notebook colspan="4" attrs="{'invisible': [('total_duplicate_orders', '=', 0)]}">
+                            <page string="Session Summary">
+                                <field name="session_summary_ids" nolabel="1">
+                                    <tree>
+                                        <field name="session_name"/>
+                                        <field name="total_orders"/>
+                                        <field name="unique_orders"/>
+                                        <field name="duplicate_orders" decoration-danger="duplicate_orders > 0"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Grouped by Access Token">
+                                <field name="order_summary_ids" nolabel="1">
+                                    <tree>
+                                        <field name="access_token"/>
+                                        <field name="total_orders"/>
+                                        <field name="duplicate_count" decoration-danger="duplicate_count > 0"/>
+                                        <field name="first_order_name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Duplicate Orders Details">
+                                <field name="duplicate_order_ids" nolabel="1">
+                                    <tree>
+                                        <field name="session_name"/>
+                                        <field name="order_name"/>
+                                        <field name="access_token"/>
+                                        <field name="date_order"/>
+                                        <field name="partner_name"/>
+                                        <field name="amount_total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                    
+                    <!-- CONFIRM STATE -->
+                    <group attrs="{'invisible': [('state', '!=', 'confirm')]}">
+                        <group colspan="4">
+                            <div class="alert alert-warning" role="alert">
+                                <strong>⚠ Warning: About to Delete Duplicate Orders</strong>
+                                <p>You are about to permanently remove <strong><field name="total_duplicate_orders" class="oe_inline"/></strong> duplicate orders from <strong><field name="scanned_session_count" class="oe_inline"/></strong> sessions.</p>
+                                <p><strong>This action cannot be undone!</strong></p>
+                                <p>Orders with the same access token will be removed, keeping only the first (oldest) order.</p>
+                            </div>
+                        </group>
+                        
+                        <group string="What Will Be Removed" colspan="2">
+                            <field name="scanned_session_count"/>
+                            <field name="scanned_order_count"/>
+                            <field name="total_duplicate_orders"/>
+                        </group>
+                        
+                        <notebook colspan="4">
+                            <page string="Affected Sessions">
+                                <field name="session_summary_ids" nolabel="1">
+                                    <tree>
+                                        <field name="session_name"/>
+                                        <field name="total_orders"/>
+                                        <field name="unique_orders"/>
+                                        <field name="duplicate_orders" decoration-danger="duplicate_orders > 0"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Orders to Remove">
+                                <field name="duplicate_order_ids" nolabel="1">
+                                    <tree>
+                                        <field name="session_name"/>
+                                        <field name="order_name"/>
+                                        <field name="access_token"/>
+                                        <field name="date_order"/>
+                                        <field name="amount_total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                    
+                    <!-- DONE STATE -->
+                    <group attrs="{'invisible': [('state', '!=', 'done')]}">
+                        <group colspan="4">
+                            <div class="alert alert-success" role="alert">
+                                <strong>✓ Removal Complete!</strong>
+                                <p><field name="removed_orders_count" class="oe_inline"/> duplicate orders have been removed from <field name="scanned_session_count" class="oe_inline"/> sessions.</p>
+                            </div>
+                        </group>
+                        
+                        <group string="Results" colspan="2" col="2">
+                            <field name="scanned_session_count"/>
+                            <field name="scanned_order_count"/>
+                            <field name="removed_orders_count"/>
+                        </group>
+                        
+                        <group colspan="4" attrs="{'invisible': [('error_messages', '=', False)]}">
+                            <label for="error_messages" string="Errors"/>
+                            <field name="error_messages" nolabel="1" widget="text"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Wizard Action -->
+    <record id="action_remove_duplicate_wizard" model="ir.actions.act_window">
+        <field name="name">Remove Duplicate Orders</field>
+        <field name="res_model">remove.duplicate.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="point_of_sale.model_pos_session"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_branch_form_inherit" model="ir.ui.view">
+        <field name="name">view.branch.form.inherit</field>
+        <field name="model">res.branch</field>
+        <field name="inherit_id" ref="multi_branch_base.view_branch_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="pos_data_page" string="POS Data">
+                    <group>
+                        <group name="server_group" string="Server Information">
+                            <field name="couchdb_server_url"/>                            
+                        </group>
+                        <group name="db_group" string="DB Information">
+                            <field name="couchdb_product_db"/>
+                            <field name="couchdb_product_pricelist_items_db"/>
+                        </group>
+                    </group>                    
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

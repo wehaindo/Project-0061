@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequences for orderpoint -->
+        <record id="sequence_pos_deposit" model="ir.sequence">
+            <field name="name">Pos Deposit</field>
+            <field name="code">pos.deposit</field>
+            <field name="prefix">DEP/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id"></field>
+        </record>
+        
+        <!-- Sequences for voucher-->
+        <record id="sequence_pos_voucher_order" model="ir.sequence">
+            <field name="name">Voucher Order</field>
+            <field name="code">pos.voucher.order</field>
+            <field name="prefix">VO/</field>
+            <field name="padding">7</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>            
+        </record>
+
+        <record id="sequence_pos_voucher" model="ir.sequence">
+            <field name="name">Voucher</field>
+            <field name="code">pos.voucher</field>
+            <field name="prefix">VOC/</field>
+            <field name="padding">7</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+    </data>
+</odoo>

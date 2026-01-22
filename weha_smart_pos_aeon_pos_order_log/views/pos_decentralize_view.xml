@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="view_pos_decentralize_order_recept_tree" model="ir.ui.view">
+        <field name="name">pos.decentralize.order.receipt.tree</field>
+        <field name="model">pos.decentralize.order.receipt</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+                <field name="pos_config_id"/>
+                <field name="pos_session_id"/>
+                <field name="pos_reference"/>
+                <field name="pos_order_receipt_html"/>                
+                <field name="pos_order_receipt_base64"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_pos_decentralize_order_receipt_form" model="ir.ui.view">
+        <field name="name">pos.decentralize.order.receipt.form</field>
+        <field name="model">pos.decentralize.order.receipt</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="pos_config_id"/>
+                        <field name="pos_session_id"/>
+                        <field name="pos_reference"/>
+                        <field name="pos_order_receipt_html"/>
+                        <field name="pos_order_receipt_base64"/>                        
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_pos_decentralize_order_receipt_search" model="ir.ui.view">
+        <field name="name">pos.decentralize.order.receipt.search</field>
+        <field name="model">pos.decentralize.order.receipt</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="name"/>
+                <field name="pos_config_id"/>
+                <field name="pos_session_id"/>
+                <field name="pos_reference"/>    
+            </search>
+        </field>
+    </record>
+
+    <record id="action_pos_decentralize_order_receipt" model="ir.actions.act_window">
+        <field name="name">Pos Decentralize Order Receipt</field>
+        <field name="res_model">pos.decentralize.order.receipt</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+    
+    <menuitem
+        id="pos_decentralize_order_reciept_menu"
+        name="Decentralize Order Receipt"
+        action="action_pos_decentralize_order_receipt"        
+        parent="weha_smart_pos_aeon_decentralize_api.pos_decentralize_menu"
+        sequence="4"/>
+        
+</odoo>

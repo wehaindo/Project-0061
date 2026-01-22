@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_pos_pos_form_inherit_weha_smart_pos_aeon_price" model="ir.ui.view">
+        <field name="name">pos.pos.view.form.inherit</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lines']/tree[1]/field[@name='full_product_name']" position="after">                
+                <field name="prc_no" optional="hide"/>
+            </xpath>
+            <xpath expr="//field[@name='lines']/tree[1]/field[@name='price_unit']" position="before">                
+                <field name="list_price" optional="hide"/>
+            </xpath>
+        
+            <xpath expr="//field[@name='lines']/tree[1]/field[@name='discount']" position="after">                
+                <field name="price_override_user" optional="hide"/>
+                <field name="price_override_reason" optional="hide"/>                
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,32 @@
+body {
+  background-image: url(/weha_smart_pos_aeon_price_check/static/src/img/first_page.png);
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  // border: inset 10px transparent;
+  box-sizing: border-box;
+} 
+
+.container {
+  display: none;
+  position: fixed;
+  top: 200px;
+  margin: 20px;
+  max-width: 95%;
+}
+
+// Bootstrap resets
+.card {
+  background-color: transparent;
+  border: none;
+  padding: 20px;
+}
+
+.card-img {
+  border-radius: 0;
+  width: 100%;
+}
+
+.product-price {
+  text-decoration-line: line-through;
+}

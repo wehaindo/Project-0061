@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pos_payment_prima_user,access_pos_payment_prima_user,model_pos_payment_prima,base.group_user,1,1,1,1
+access_prima_session_report_user,access_prima_session_report_user,model_prima_session_report,base.group_user,1,1,1,1
+access_wizard_prima_session_report_user,access_wizard_prima_session_report_user,model_wizard_prima_session_report,base.group_user,1,1,1,1

@@ -1,0 +1,78 @@
+
+<odoo>
+  <template id="portal_my_consignments" name="My Consignments" inherit_id="portal.portal_my_home">
+    <xpath expr="//div[@id='portal_my_home']" position="replace">
+      <div id="portal_my_home" class="container">
+        <h2>My Consignment Contracts</h2>
+        <t t-if="contracts">
+          <ul>
+            <t t-foreach="contracts" t-as="c">
+              <li>
+                <t t-esc="c.name"/> (<t t-esc="c.state"/>)
+                | <a t-att-href="'/my/consignments/' + str(c.id) + '/sales'">Sales</a>
+                | <a t-att-href="'/my/consignments/' + str(c.id) + '/settlements'">Settlements</a>
+              </li>
+            </t>
+          </ul>
+        </t>
+        <t t-if="not contracts">
+          <p>No consignment contracts found.</p>
+        </t>
+      </div>
+    </xpath>
+  </template>
+
+  <template id="portal_contract_sales" name="Contract Sales">
+    <t t-call="website.layout">
+      <div class="container">
+        <h2>Sales for <t t-esc="contract.name"/></h2>
+        <table class="table table-sm">
+          <thead><tr><th>Product</th><th>Qty</th><th>Subtotal</th></tr></thead>
+          <tbody>
+            <t t-foreach="sales" t-as="s">
+              <tr>
+                <td><t t-esc="s.product_id.name"/></td>
+                <td><t t-esc="s.qty"/></td>
+                <td><t t-esc="s.subtotal"/></td>
+              </tr>
+            </t>
+          </tbody>
+        </table>
+      </div>
+    </t>
+  </template>
+
+  <template id="portal_contract_settlements" name="Contract Settlements">
+    <t t-call="website.layout">
+      <div class="container">
+        <h2>Settlements for <t t-esc="contract.name"/></h2>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Period</th>
+              <th>Total Sales</th>
+              <th>Commission</th>
+              <th>Net Payable</th>
+              <th>Status</th>
+              <th>PDF</th>
+            </tr>
+          </thead>
+          <tbody>
+            <t t-foreach="settlements" t-as="s">
+              <tr>
+                <td><t t-esc="s.period_from"/> - <t t-esc="s.period_to"/></td>
+                <td><t t-esc="s.total_sales"/></td>
+                <td><t t-esc="s.total_commission"/></td>
+                <td><t t-esc="s.net_payable"/></td>
+                <td><t t-esc="s.state"/></td>
+                <td>
+                  <a t-att-href="'/my/consignment/settlement/%s/download' % (s.id)">Download</a>
+                </td>
+              </tr>
+            </t>
+          </tbody>
+        </table>
+      </div>
+    </t>
+  </template>
+</odoo>

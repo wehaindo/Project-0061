@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="PmsVoucherPopup" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <Draggable>
+                <div class="popup">
+                    <header class="title drag-handle letter-spacing">
+                        <t t-esc="props.title"/>
+                    </header>
+                    <div class="body">
+                        <div class="due-amount" style="text-align: center;">
+                            <h2>
+                                <span class="due-letter-spacing">Due Amount  :  </span>
+                                <span><t t-esc="env.pos.format_currency(env.pos.get_order().get_due())"/></span>
+                            </h2>
+                        </div>
+                        <div class="voucher-detail"  style="text-align: center;">
+                            <h2>                                
+                                <span><input style="width: 80%;font-size: 24px;text-align: center;" type="text"  placeholder="Scan Customer Voucher"
+                                            class="redeem_loyalty_input" t-model="state.VoucherNumber" t-ref="vouchernumber" /></span>
+                                <!-- <span>
+                                    <i class="fa fa-arrow-circle-right" style="margin: 0 0px 0 18px;font-size: 23px;"
+                                    aria-hidden="true" t-on-click="searchVoucher"/>
+                                </span> -->
+                            </h2>
+                        </div>
+                        <!-- <div class="amount-detail"  style="text-align: center;">
+                            <h2>
+                                <span>Amount :</span>
+                                <span class="voucher-amount"><t t-esc="env.pos.format_currency(state.VoucherAmount)"/></span>
+                            </h2>
+                        </div> -->
+                        <div class="invalid-code" t-if="!state.Valid">
+                            <td><label style="color:red"><t t-esc="state.ShowMsg"/></label></td>
+                        </div>
+                    </div>
+                    <footer class="footer">
+                        <div class="button confirm" t-on-click="confirm" t-if="state.Valid">
+                            <t t-esc="props.confirmText"/>
+                        </div>
+                        <div class="button cancel" t-on-click="cancel">
+                            <t t-esc="props.cancelText"/>
+                        </div>
+                    </footer>
+                </div>
+            </Draggable>
+        </div>
+    </t>
+
+</templates>

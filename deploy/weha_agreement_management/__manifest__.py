@@ -1,0 +1,37 @@
+# Copyright 2020 Tecnativa - Carlos Dauden
+# Copyright 2020 Tecnativa - Sergio Teruel
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+{
+    "name": "Agreement Management",
+    "summary": "WEHA Rebate in Agreements",
+    "version": "16.0.1.0.0",
+    "development_status": "Beta",
+    "category": "Agreement",
+    "website": False,
+    "author": "Dev, WEHA",
+    "license": "AGPL-3",
+    "application": True,
+    "installable": True,
+    "depends": ["base", "account", "account_invoice_refund_link", "product", "purchase", "point_of_sale", "multi_branch_base"],
+    "data": [
+        "data/ir_sequence.xml",
+        "security/contract_security.xml",
+        "security/ir.model.access.csv",
+        "views/inherit_res_partner_view.xml",
+        "views/inherit_product_view.xml",
+        "views/inherit_purchase_order_view.xml",
+        "views/inherit_res_company_view.xml",
+        "views/agreement_contract_view.xml",
+        "views/contract_outright_settlement_view.xml",
+        "views/contract_conces_settlement_view.xml",
+        "views/settlement_process_view.xml",
+        "views/profit_process_view.xml",
+        "views/contract_rebate_view.xml",
+        "views/contract_rebate_settlement_view.xml",
+        "views/contract_deduction_view.xml",
+        "views/account_invoice_view.xml",
+        "views/account_tax_view.xml",
+        "wizards/copy_contract_rebate_view.xml",
+        "views/agreement_menu_view.xml",
+    ],
+}

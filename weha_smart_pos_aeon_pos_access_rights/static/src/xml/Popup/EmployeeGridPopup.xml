@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="EmployeeGridPopup" owl="1">
+            <Draggable>
+                <div class="popup popup-control-buttons" style="min-width: 600px; max-width: 800px;">
+                    <header class="title drag-handle">
+                        Employees
+                    </header>
+                    
+                    <div class="body" style="max-height: 400px; padding: 20px;">
+                        <!-- Search Input -->
+                        <div style="margin-bottom: 15px;">
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                placeholder="Search employee by name..."
+                                t-model="state.searchQuery"
+                                t-on-input="onSearchInput"
+                                style="width: 100%; padding: 10px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px;"
+                            />
+                        </div>
+                        
+                        <!-- Tabs Navigation -->
+                        <div t-if="!state.searchQuery" style="display: flex; border-bottom: 2px solid #e0e0e0; margin-bottom: 15px;">
+                            <div 
+                                t-on-click="() => this.state.activeTab = 'frequent'"
+                                style="flex: 1; padding: 12px; text-align: center; cursor: pointer; font-weight: 600; transition: all 0.2s ease;"
+                                t-att-style="state.activeTab === 'frequent' ? 'color: #ffc107; border-bottom: 3px solid #ffc107; background-color: #fff9e6;' : 'color: #666;'">
+                                <i class="fa fa-star" style="margin-right: 5px;"></i>
+                                Frequent Cashiers
+                                <t t-if="frequentCashiers.length > 0">
+                                    <span style="background-color: #ffc107; color: #333; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-left: 5px;">
+                                        <t t-esc="frequentCashiers.length"/>
+                                    </span>
+                                </t>
+                            </div>
+                            <div 
+                                t-on-click="() => this.state.activeTab = 'all'"
+                                style="flex: 1; padding: 12px; text-align: center; cursor: pointer; font-weight: 600; transition: all 0.2s ease;"
+                                t-att-style="state.activeTab === 'all' ? 'color: #ad2181; border-bottom: 3px solid #ad2181; background-color: #fef0f8;' : 'color: #666;'">
+                                <i class="fa fa-users" style="margin-right: 5px;"></i>
+                                All Employees
+                                <span style="background-color: #ad2181; color: #fff; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-left: 5px;">
+                                    <t t-esc="employees.length"/>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab Content -->
+                        <div style="max-height: 450px; overflow-y: auto; padding-right: 5px;">
+                            <!-- Frequent Cashiers Tab -->
+                            <t t-if="state.activeTab === 'frequent' and !state.searchQuery">
+                                <t t-if="frequentCashiers.length > 0">
+                                    <div class="control-buttons"
+                                        style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; height: 300px;">
+                                        <t t-foreach="frequentCashiers" t-as="employee" t-key="employee.id">
+                                            <div class="button employee"
+                                                style="min-height: 80px; display: flex; align-items: center; justify-content: center; 
+                                                        background-color: #ffc107; color: #333; cursor: pointer; border-radius: 8px; 
+                                                        text-align: center; padding: 12px; white-space: normal; word-break: break-word;
+                                                        transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-weight: 600;"
+                                                t-on-click="() => this.selectItem(employee.id)"
+                                                t-on-mouseover="(ev) => ev.currentTarget.style.transform = 'scale(1.05)'"
+                                                t-on-mouseout="(ev) => ev.currentTarget.style.transform = 'scale(1)'">
+                                                
+                                                <div class="payment-name" style="padding: 0; width: 100%; font-size: 14px;">
+                                                    <i class="fa fa-star" style="margin-right: 5px; font-size: 12px;"></i>
+                                                    <t t-esc="employee.label" />
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <div style="text-align: center; padding: 60px 20px; color: #999;">
+                                        <i class="fa fa-star-o" style="font-size: 64px; margin-bottom: 15px; opacity: 0.3;"></i>
+                                        <p style="font-size: 16px; margin: 0;">No frequent cashiers yet</p>
+                                        <p style="font-size: 14px; margin-top: 5px;">Select cashiers from "All Employees" to add them here</p>
+                                    </div>
+                                </t>
+                            </t>
+                            
+                            <!-- All Employees Tab or Search Results -->
+                            <t t-if="state.activeTab === 'all' or state.searchQuery">
+                                <t t-set="displayList" t-value="state.searchQuery ? filteredEmployees : employees"/>
+                                
+                                <div class="control-buttons"
+                                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; height: 300px; ">
+                                    <t t-foreach="displayList" t-as="employee" t-key="employee.id">
+                                        <div class="button employee"
+                                            style="min-height: 80px; display: flex; align-items: center; justify-content: center; 
+                                                    background-color: #ad2181; color: #ffffff; cursor: pointer; border-radius: 8px; 
+                                                    text-align: center; padding: 12px; white-space: normal; word-break: break-word;
+                                                    transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+                                            t-on-click="() => this.selectItem(employee.id)"
+                                            t-on-mouseover="(ev) => ev.currentTarget.style.transform = 'scale(1.05)'"
+                                            t-on-mouseout="(ev) => ev.currentTarget.style.transform = 'scale(1)'">
+                                            
+                                            <div class="payment-name" style="padding: 0; width: 100%; font-size: 14px; font-weight: 500;">
+                                                <t t-esc="employee.label" />
+                                            </div>
+                                        </div>
+                                    </t>
+                                    
+                                    <!-- Empty State -->
+                                    <t t-if="displayList.length === 0">
+                                        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #999;">
+                                            <i class="fa fa-search" style="font-size: 48px; margin-bottom: 10px;"></i>
+                                            <p>No employees found</p>
+                                        </div>
+                                    </t>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                    
+                    <footer class="footer">
+                        <div class="button cancel" t-on-click="cancel">
+                            <t t-esc="props.cancelText" />
+                        </div>
+                    </footer>
+                </div>
+            </Draggable>
+    </t>
+
+</templates>

@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <record id="view_tree_yyt_pos_order_line_inherits" model="ir.ui.view">
+            <field name="name">POS Order Line</field>
+            <field name="model">yyt.pos.order.line</field>
+            <field name="inherit_id" ref="yyt_custom_report.view_tree_yyt_pos_order_line"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='cashier']" position="after">
+                    <field name="location_brand"/>
+                    <field name="lantai"/>
+                    <field name="luas"/>
+                </xpath>
+                <xpath expr="//field[@name='vendor_margin']" position="after">
+                    <field name="custom_promotion_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> 

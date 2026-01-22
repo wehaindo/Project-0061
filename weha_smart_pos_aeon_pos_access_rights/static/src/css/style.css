@@ -1,0 +1,53 @@
+.login-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+/* Big centered button */
+.login-main-action {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-button.select-cashier {
+    font-size: 1.5rem;
+    padding: 1.2rem 3rem;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 400px;
+}
+
+/* Bottom-right links */
+.login-alt-links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 0.6rem;    
+    bottom: 20px;
+    right: 20px;
+    width: 80%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+.login-alt-links .alt-link {
+    color: var(--link-color, #007bff);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.login-alt-links .alt-link:hover {
+    text-decoration: underline;
+}
+
+.login-or {
+    font-size: 0.8rem;
+    color: #666;
+}

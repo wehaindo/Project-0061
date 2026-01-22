@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <menuitem id="weha_res_partner_menu" 
+            name="Customer" 
+            parent="weha_smart_pos_master_menu"
+            action="base.action_partner_form" 
+            groups="group_weha_smart_pos_supervisor"
+            sequence="2"/>
+
+    </data>
+</odoo>

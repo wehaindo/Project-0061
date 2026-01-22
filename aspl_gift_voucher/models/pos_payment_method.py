@@ -1,0 +1,40 @@
+# -*- coding: utf-8 -*-
+#################################################################################
+# Author      : Acespritech Solutions Pvt. Ltd. (<www.acespritech.com>)
+# Copyright(c): 2012-Present Acespritech Solutions Pvt. Ltd.
+# All Rights Reserved.
+#
+# This program is copyright property of the author mentioned above.
+# You can`t redistribute it and/or modify it.
+#
+#################################################################################
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError
+
+
+class PosPaymentMethod(models.Model):
+    _inherit = "pos.payment.method"
+
+    allow_for_gift_voucher = fields.Boolean("Allow For Voucher")
+
+    # @api.constrains('allow_for_gift_voucher', 'split_transactions', 'journal_id')
+    # def _check_valid_method(self):
+    #     for record in self:
+    #         if record.allow_for_gift_voucher:
+    #             if not record.split_transactions:
+    #                 raise UserError(_('Please enable Identify Customer !'))
+    #             if record.journal_id:
+    #                 raise UserError(_('You can not select any journal in case of %s !') % record.name)
+
+    @api.model
+    def name_search(self, name, args=None, operator='ilike', limit=100):
+        if self._context.get('config_jr'):
+            if self._context.get('pos_payment_method_ids') and \
+                    self._context.get('pos_payment_method_ids')[0] and \
+                    self._context.get('pos_payment_method_ids')[0][2]:
+                args += [['id', 'in', self._context.get('pos_payment_method_ids')[0][2]]]
+            else:
+                return False
+        return super(PosPaymentMethod, self).name_search(name, args=args, operator=operator, limit=limit)
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

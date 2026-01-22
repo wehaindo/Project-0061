@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="paper_format_prima_session_z_report" model="report.paperformat">
+        <field name="name">Prima Session Report</field>
+        <field name="default" eval="True" />
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">80</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">1</field>
+        <field name="margin_bottom">1</field>
+        <field name="margin_left">1</field>
+        <field name="margin_right">1</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report
+        string="Prima Session Report"
+        id="action_report_prima_session_z"
+        model="pos.session"
+        report_type="qweb-pdf"
+        paperformat="weha_smart_pos_aeon_prima.paper_format_prima_session_z_report"
+        name="weha_smart_pos_aeon_prima.report_prima_session_z"
+        file="weha_smart_pos_aeon_prima.report_prima_session_z"
+    />
+
+    <template id="weha_smart_pos_aeon_prima.prima_session_z_report_pdf">
+        <t t-call="web.html_container">
+            <div class="page">
+                <div class="oe_structure"/>
+                <div align="center" style="border:1px solid black;margin:0 auto;padding:0 auto;font-size:18px">
+                    <strong>Prima Session Report</strong>
+                </div>                
+                <table style="width:100%;margin-top:15px;">
+                    <tr>
+                        <td>
+                            Printed Time
+                        </td>
+                        <td align="right">
+                            <span t-esc="o.get_prima_current_datetime()"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Salesperson 
+                        </td>
+                        <td align="right">
+                            <span t-esc="o.user_id.name"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">
+                            POS
+                        </td>
+                        <td align="right">
+                            <span t-esc="o.get_pos_name()"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">
+                            Session
+                        </td>
+                        <td align="right">
+                            <span t-field="o.name"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">
+                            Merchant ID
+                        </td>
+                        <td align="right">
+                            <span t-esc="o.get_pos_merchant_id()"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">
+                            TID
+                        </td>
+                        <td align="right">
+                            <span t-esc="o.get_pos_terminal_id()"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">
+                            Opened Date
+                        </td>
+                        <td align="right">
+                            <span t-esc="o.get_prima_opened_date()"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">
+                            Closed Date
+                        </td>
+                        <td align="right">
+                            <span t-esc="o.get_prima_closed_date()"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">
+                            Session Status
+                        </td>
+                        <td align="right">
+                            <span t-field="o.state"/>
+                        </td>
+                    </tr>
+                </table>                
+                <div align="center" style="margin-top:10px !important;">                   
+                    <strong> Payment List </strong>
+                </div>               
+                <table style="width:100%;margin-top:15px;">
+                    <tr>
+                        <td style="width:30%; border-bottom:2pt solid black; font-weight:bold;">
+                            Date Time
+                        </td>
+                        <td style="width:30%; border-bottom:2pt solid black; font-weight:bold;">
+                            Amount
+                        </td>
+                        <td style="width:40%; border-bottom:2pt solid black; font-weight:bold;">
+                            Status
+                        </td>
+                    </tr>
+                    <t t-set="approved_count" t-value="0"/>
+                    <t t-set="approved_amount" t-value="0"/>
+                    <tr t-foreach="o.get_prima_payment_detail_data()" t-as="l">
+                        <t t-if="l.get('status') == 'APPROVED'">
+                            <t t-set="approved_count" t-value="approved_count + 1"/>
+                            <t t-set="approved_amount" t-value="approved_amount + l.get('amount')"/>
+                        </t>
+                        <td class="text-left">
+                            <span t-esc="l.get('payment_date')"/><br/>
+                            <span t-esc="l.get('rrn')"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-esc="l.get('amount')" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                        </td>
+                        <td class="text-center">
+                            <span t-esc="l.get('status')"/>                                
+                        </td>
+                    </tr>
+                </table>     
+                <table style="width:100%;margin-top:15px;">                    
+                    <tr>
+                        <td class="text-left">
+                           Total  (<span t-esc="approved_count"/>)
+                        </td>
+                        <td align="right">
+                            <span t-esc="approved_amount" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                        </td>                        
+                    </tr>
+                </table>       
+            </div>
+        </t>
+    </template>
+    
+    <template id="weha_smart_pos_aeon_prima.report_prima_session_z">
+        <t t-call="web.html_container">
+            <!-- <t t-call="weha_smart_pos_aeon_prima.prima_session_z_report_pdf"/> -->
+            <t t-foreach="docs" t-as="o">
+                <t t-call="weha_smart_pos_aeon_prima.prima_session_z_report_pdf"/>
+            </t>
+        </t>
+    </template>
+</odoo>

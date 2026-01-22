@@ -1,0 +1,397 @@
+.disabledpaymentbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+/*Gift Card view*/
+.gift_voucher-screen {
+    font-size: medium;
+}
+
+.gift_voucher-screen .orders {
+    display: flex;
+    flex-flow: column nowrap;
+    overflow: hidden;
+    overflow-y: hidden;
+    overflow-y: auto;
+}
+
+.gift_voucher-screen .orders .header-row{
+    display: flex;
+    flex-flow: row nowrap;
+    flex: 1;
+    justify-content: space-evenly;
+    background: #868686;
+    color: white;
+}
+
+.gift_voucher-screen .orders .order-row {
+    display: flex;
+    flex-flow: row nowrap;
+    flex: 1;
+    justify-content: space-evenly;
+}
+
+.gift_voucher-screen .orders .col {
+    display: flex;
+    flex: 1;
+    padding: 10px;
+}
+
+.gift_voucher-screen .orders .col.start {
+    justify-content: flex-start;
+}
+
+.gift_voucher-screen .orders .col.center {
+    justify-content: center;
+}
+
+.gift_voucher-screen .orders .col.end {
+    justify-content: flex-end;
+}
+
+.gift_voucher-screen .orders .col.very-narrow {
+    flex: 0.2;
+}
+
+.gift_voucher-screen .orders .col.narrow {
+    flex: 0.5;
+}
+
+.gift_voucher-screen .orders .col.wide {
+    flex: 1.5;
+}
+
+.gift_voucher-screen .order-row:nth-child(odd) {
+    background: #DDD;
+}
+
+.gift_voucher-screen .order-row:nth-child(even) {
+    background: white;
+}
+
+.gift_voucher-screen .order-row:hover {
+    background: #AD2181;
+    color: white;
+}
+
+.gift_voucher-screen .pointer {
+    cursor: pointer;
+}
+
+.gift_voucher-screen .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 20px;
+    border-bottom: dashed 1px rgb(215,215,215);
+    flex: 0 0 80px;
+}
+
+.gift_voucher-screen .controls button {
+    font-size: medium;
+    padding: 12px;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.gift_voucher-screen .controls button.discard {
+    background: rgb(230, 230, 230);
+    border: solid 1px rgb(209, 209, 209);
+}
+
+.gift_voucher-screen .controls button.highlight {
+    background: #AD2181;
+    border: solid 1px #AD2181;
+    color: white;
+}
+
+.gift_voucher-screen .pos-search-bar {
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+    display: flex;
+    max-width: 500px;
+    flex: 1;
+}
+
+.gift_voucher-screen .pos-search-bar .search {
+    display: flex;
+    position: relative;
+    flex: 1;
+}
+
+.gift_voucher-screen .pos-search-bar .search input {
+    height: 40px;
+    font-size: medium;
+    color: #63717f;
+    padding-left: 40px;
+    border: solid 1px rgb(209, 209, 209);
+    flex: 1;
+}
+
+.gift_voucher-screen .pos-search-bar .radius-right {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.gift_voucher-screen .pos-search-bar .radius-left {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.gift_voucher-screen .pos-search-bar .search input:focus {
+    outline: none;
+}
+
+.gift_voucher-screen .pos-search-bar .search .search-icon {
+    position: absolute;
+    left: 15px;
+    top: 12px;
+   /* z-index: 1;*/
+    color: #4f5b66;
+}
+
+.gift_voucher-screen .pos-search-bar .search ul {
+    background: white;
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 2px;
+    left: 2px;
+    box-shadow: 1px 1px 3px grey;
+    font-size: small;
+    z-index: 2000;
+}
+
+.gift_voucher-screen .pos-search-bar .search li {
+    color: #AD2181;
+    margin: 0.2em 0;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-left: 35px;
+}
+
+.gift_voucher-screen .pos-search-bar .search li:hover {
+    background: #DDD;
+}
+
+.gift_voucher-screen .pos-search-bar .search li .field {
+    font-style: italic;
+}
+
+.gift_voucher-screen .pos-search-bar .search li .term {
+    font-weight: bold;
+}
+
+.gift_voucher-screen .pos-search-bar .search li.highlight {
+    background: #DDD;
+}
+
+.gift_voucher-screen .pos-search-bar .filter .down-icon {
+    position: absolute;
+    right: 13px;
+    top: 10px;
+}
+
+.gift_voucher-screen .pos-search-bar .filter {
+    height: 40px;
+    background: white;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 20px;
+    padding-right: 40px;
+    border: solid 1px rgb(209, 209, 209);
+    border-left: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 150px;
+    font-size: medium;
+}
+
+.gift_voucher-screen .pos-search-bar .filter:hover {
+    color: #868686;
+}
+
+.gift_voucher-screen .pos-search-bar .filter .options {
+    display: block;
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    z-index: 1;
+    box-shadow: 1px 1px 5px grey;
+    padding: 0.5em 0;
+    background: white;
+    color: #555555;
+}
+
+.gift_voucher-screen .pos-search-bar .filter ul.options li {
+    padding: 0.2em 1.2em;
+    border-top: none;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.gift_voucher-screen .pos-search-bar .filter ul.options li:hover {
+    background-color: #DDD;
+}
+
+.gift_voucher-screen .pos-search-bar .search {
+    display: flex;
+}
+
+.gift_card-button {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-size: medium;
+    color: white;
+}
+
+.gift_card-button.highlight {
+    background: rgb(104,69,95);
+}
+
+.gift_card-button:hover {
+    background: rgb(104,69,95);
+    cursor: pointer;
+}
+
+.gift_card-button .with-badge {
+    margin-right: 0.7em;
+    font-size: larger;
+}
+
+[badge] {
+    position: relative;
+}
+
+[badge]:after {
+    background: #AD2181;
+    border-radius: 10rem;
+    color: #fff;
+    content: attr(badge);
+    font-size: small;
+    min-width: 20px;
+    padding: 2px;
+    position: absolute;
+    text-align: center;
+    left: 0.6em;
+    bottom: 0.6em;
+}
+
+[badge^="-"]:after,
+[badge="0"]:after,
+[badge=""]:after {
+ display: none;
+}
+
+html {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: sans-serif;
+}
+.pos .control-button.highlight,
+.pos .button.highlight {
+    background: #AD2181 !important;
+    border: solid 1px #AD2181 !important;
+    color: white !important;
+}.screen .top-content .button.highlight {
+    background: rgb(110,200,155);
+    color: white;
+    border: solid 1px #AD2181;
+}
+.screen .top-content .button.highlight:hover {
+    background: rgb(120,210,165);
+}
+.payment-screen .payment-buttons .button.highlight:not(:first-child) {
+    margin-top: -1px;
+    border-top: solid 1px;
+}
+.payment-screen .payment-buttons .button.highlight .fa {
+    border-color: rgba(0, 0, 0, 0.109804);
+    background: rgba(0, 0, 0, 0.0980392);
+}
+.payment-status-container .amount.highlight {
+    font-weight: bold;
+    color: #AD2181;
+}
+.pos .clientlist-screen .client-list tr.highlight{
+    transition: all 150ms linear;
+    background: #AD2181 !important;
+    color: white;
+}
+.order-row.highlight {
+    color: #5f5f5f;
+    background-color:  #AD2181;
+    font-weight: bold;
+}
+.gift_voucher-screen .controls button.highlight {
+    background: #6EC89B;
+    border: solid 1px #AD2181;
+    color: white;
+
+}.gift_voucher-screen .pos-search-bar .search li.highlight {
+    background: #DDD;
+}
+
+.gift_card-button.highlight {
+    background: rgb(104,69,95);
+}
+
+/*  popup design*/
+.loyalty_info table{
+    width: 100%;
+    font-size: 20px
+}
+.loyalty_info table tr td{
+    padding: 8px;
+}
+.loyalty_info table tr td:first-child{
+    float: left;
+    margin-left: 29%;
+}
+.loyalty_info table tr td:last-child{
+    text-align: left;
+}
+.letter-spacing{
+    letter-spacing: : 1px;
+}
+.due-letter-spacing {
+    letter-spacing : 1px;
+    margin: 0 13px 0px 0px;
+}
+.voucher-number{
+    margin: 0 49px 0 0;
+}
+.due-amount{
+    font-size: 18px;
+    padding: 7px;
+    width: 401px;
+    /*    margin: 0 0 0 97px;*/
+}
+.popup .loyalty_info .redeem_loyalty_input{
+    min-height: 12px !important;
+    padding: 7px;
+}
+.voucher-detail{
+    font-size: 19px;
+    padding: 7px;
+    letter-spacing: 1px;
+    width: 100%;
+}
+.amount-detail{
+    font-size: 19px;
+    padding: 7px;
+    letter-spacing: 1px;
+    width: 70%;
+}
+.voucher-amount{
+    padding: 0 0 0 57px;
+}
+.invalid-code{
+    font-size: 17px;
+    margin: auto;
+    text-align: -webkit-center;
+    margin: 3px 0px 10px 0px;
+}

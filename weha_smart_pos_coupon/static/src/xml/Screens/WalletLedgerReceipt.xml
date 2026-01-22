@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="WalletLedgerReceipt" owl="1">
+        <div class="pos-receipt">
+            <table style="width:100%;">
+                <tr>
+                    <td class="pos-left-align wallet-titled-case"><b>Customer Name:</b></td>
+                    <td class="pos-center-align" style="letter-spacing:2px;">
+                        <t t-esc="env.pos.get_order().get_client().name" />
+                    </td>
+                </tr>
+            </table>
+            <table style="width:100%;">
+                <t t-set="Total_Credit" t-value="0" />
+                <t t-set="Total_Debit" t-value="0" />
+                <t t-set="balance" t-value="0" />
+                <thead>
+                    <th class="pos-left-align"><br />Order Ref</th>
+                    <th class="pos-left-align"><br />Date</th>
+                    <th class="pos-center-align" style="text-align: right;"><br />Cr.(<t t-esc="env.pos.format_currency('')"/> )</th>
+                    <th class="pos-right-align"><br />Dr.(<t t-esc="env.pos.format_currency('')"/> )</th>
+                </thead>
+                <tbody>
+                    <t t-foreach="props.wallet" t-as="record">
+                    <tr>
+                        <td class="pos-left-align">
+                            <t t-esc="record.order_id[1]"/>
+                        </td>
+                        <td class="pos-center-align" style="text-align: left;">
+                            <t t-esc="record.create_date.split(' ')[0]"/>
+                        </td>
+                        <td class="pos-center-align" style="text-align: right;">
+                            <t t-esc="record.credit.toFixed(2)"/>
+                            <t t-set="Total_Credit" t-value="Total_Credit + record.credit"/>
+                        </td>
+                        <td class="pos-right-align">
+                            <t t-esc="record.debit.toFixed(2)"/>
+                            <t t-set="Total_Debit" t-value="Total_Debit + record.debit"/>
+                        </td>
+                    </tr>
+                </t>
+                    <tr>
+                        <td colspan="4" style="padding-bottom:20px;"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="1">Cr. Total :</td>
+                        <td colspan="3"><t t-esc="env.pos.format_currency(Total_Credit.toFixed(2))"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">Dr. Total :</td>
+                        <td colspan="3"><t t-esc="env.pos.format_currency(Total_Debit.toFixed(2))"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">Balance : </td>
+                        <td colspan="3">
+                            <t t-set="balance" t-value="(Total_Credit - Total_Debit)"/>
+                            <t t-esc="env.pos.format_currency(balance.toFixed(2))"/>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </t>
+
+</templates>

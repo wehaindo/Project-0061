@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension" owl="1">
+        <xpath expr="//li[hasclass('orderline')]" position="inside">
+            <div class="qty-input">
+                <button class="qty-count qty-count--minus" t-on-click="onMinusButtonClicked" data-action="minus" type="button">-</button>
+                <span class="product-qty" readonly="1" name="product-qty" min="0" max="10" value="1">
+                    <t t-esc="props.line.quantity"/>
+                </span>
+                <button class="qty-count qty-count--add" t-on-click="onPlusButtonClicked" data-action="add" type="button">+</button>
+                <button class="qty-count qty-count--add" t-on-click="onDeleteOrderLine"  type="button">
+                    <i class="fa fa-trash"/>
+                </button>
+            </div>
+
+        </xpath>
+    </t>
+</templates>

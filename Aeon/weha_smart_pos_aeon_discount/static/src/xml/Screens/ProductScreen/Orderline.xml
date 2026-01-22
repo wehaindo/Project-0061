@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension" owl="1">
+        <xpath expr="//ul[@class='info-list']" position="inside">            
+            <!-- <t t-if="props.line.get_line_discounts()">
+                <t  t-foreach="props.line.get_line_discounts()" t-as="line_discount" t-key="line_discount.cid">
+                    <li class="info">
+                        <t t-esc="line_discount.get_line_discount_str()" />
+                    </li>
+                </t>          
+            </t> -->
+        </xpath>
+    </t>
+</templates>

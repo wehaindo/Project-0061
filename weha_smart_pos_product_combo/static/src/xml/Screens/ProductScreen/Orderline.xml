@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension" owl="1">
+        
+        <xpath expr="//span[hasclass('product-name')]" position="inside">
+            <t t-if="props.line.product.is_pack">
+             <t t-if="props.line.get_combo_products()">
+                 <span class="fa fa-edit edit-combo" style="font-size: 19px;color: green; margin-left: 10px;" t-on-click="on_click"/>
+             </t>
+         </t>
+        </xpath>
+        
+        <xpath expr="//li[hasclass('info')]" position="after">
+            <t t-if="props.line.product.is_pack">
+                <t t-if="props.line.get_combo_products()">
+                    <ul class="info-list">
+                        <t t-foreach="props.line.get_combo_products()" t-as="products">
+                            <t t-if="products != null">
+                                <span class="product-name" style="font-size: 15px;font-weight: 500;">
+                                    <t t-esc='products.display_name' /> <t t-esc="props.line.quantity"/>
+                                </span>
+                            </t>
+                            
+                        </t>
+                    </ul>
+                </t>
+            </t>
+            <!-- </t> -->
+        </xpath>
+    </t>
+</templates>

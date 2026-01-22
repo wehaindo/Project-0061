@@ -1,0 +1,50 @@
+odoo.define('weha_smart_pos_aeon_pos_access_rights.EmployeeGridPopup', function(require) {
+    'use strict';
+
+    const { useState } = owl;
+    const AbstractAwaitablePopup = require('point_of_sale.AbstractAwaitablePopup');
+    const Registries = require('point_of_sale.Registries');
+
+    class EmployeeGridPopup extends AbstractAwaitablePopup {
+        setup() {
+            super.setup();
+            this.state = useState({
+                searchQuery: '',
+            });
+        }
+
+        get employees() {
+            return this.props.employees || [];
+        }
+
+        get filteredEmployees() {
+            const query = this.state.searchQuery.toLowerCase().trim();
+            if (!query) {
+                return this.employees;
+            }
+            return this.employees.filter(emp => 
+                emp.label.toLowerCase().includes(query)
+            );
+        }
+
+        onSearchInput(ev) {
+            this.state.searchQuery = ev.target.value;
+        }
+
+        selectItem(id) {
+            const employee = this.employees.find(emp => emp.id === id);
+            if (employee) {
+                this.confirm(employee);
+            }
+        }
+    }
+
+    EmployeeGridPopup.template = 'EmployeeGridPopup';
+    EmployeeGridPopup.defaultProps = {
+        cancelText: 'Cancel',
+    };
+
+    Registries.Component.add(EmployeeGridPopup);
+
+    return EmployeeGridPopup;
+});

@@ -1,0 +1,110 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="inherit_promotion_view_id">
+            <field name="name">Inherit pos promotion form</field>
+            <field name="model">pos.promotion</field>
+            <field name="inherit_id" ref="mcs_aspl_pos_promotion.inherit_promotion_view_id"/>
+            <field name="arch" type="xml">
+
+                <field name="total_discount_emp" position="after">
+                    <field name="total_discount_tour"/>
+                </field>
+
+                <xpath expr="//notebook/page[@name='promotion_customer']/group/field[@name='percent_discount_vip']"
+                       position="after">
+                    <field name="percent_discount_tour" style="width:20%"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page name="quntity_price_all" string="Quantity Price All(Amt.)"
+                          attrs="{'invisible':[('promotion_type', '!=', 'quantity_price_all')]}">
+                        <group modifiers="{}">
+                            <field name="product_amt_multi_ids" widget="many2many_tags"
+                                   domain="[('owner_id', '=?', vendor_id)]"
+                                   options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
+                        </group>
+                        <field name="pos_quntity_amt_ids">
+                            <tree editable="bottom">
+                                <field name="quantity_amt"/>
+                                <field name="discount_price"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="inherit_promotion_view_id">
+            <field name="name">Inherit pos promotion form</field>
+            <field name="model">pos.promotion</field>
+            <field name="inherit_id" ref="aspl_pos_promotion.promotion_view_id"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='promotion_collection']" position="replace">
+                    <page name="promotion_collection" string="Condition" attrs="{'invisible':[('promotion_type','not in',['buy_x_get_y','buy_x_get_cheapest_free'])]}" autofocus="True">
+                        <field name="pos_condition_ids">
+                            <tree editable="bottom">
+                                <field name="product_x_id" domain="[('owner_id', '=?', parent.vendor_id)]" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}" widget="many2many_tags"/>
+                                <field name="discount_before_quantity"/>
+                                <field name="operator"/>
+                                <field name="quantity"/>
+                                <field name="product_y_id" attrs="{'column_invisible': [('parent.promotion_type', '=', 'buy_x_get_cheapest_free')]}" domain="[('owner_id', '=?', parent.vendor_id)]" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}" widget="many2many_tags"/>
+                                <field name="quantity_y"/>
+                                <field name="apply_keep_before_discount" attrs="{'column_invisible': [('parent.promotion_type', '!=', 'buy_x_get_cheapest_free')]}"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="srn_pos_discount_with_product.pos_product_discount_view_form" model="ir.ui.view">
+            <field name="name">pos product discount form</field>
+            <field name="model">srn.pos.product.discount</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="sku"/>
+                                <field name="name"/>
+                                <field name="disc_percentage"/>
+                                <field name="max_discount"/>
+                                <field name="only_normal_price"/>
+                                <field name="minimum_transaction"/>
+                                <field name="description"/>
+                                <field name="active"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+
+                            </group>
+                            <group>
+                                <field name="day_of_week_ids" widget="many2many_checkboxes" options="{'horizontal': true}"/>
+                                <field name="available_in_receipt"/>
+                                <label for="min_amount_show" string="Ranges Amount" attrs="{'invisible': [('available_in_receipt', '=', False)]}"/>
+                                <div attrs="{'invisible': [('available_in_receipt', '=', False)]}">
+                                    <field name="min_amount_show" class="oe_inline"/>
+                                    <span> to </span>
+                                    <field name="max_amount_show" class="oe_inline"/>
+                                </div>
+
+                                <field name="type_scan"
+                                       attrs="{'invisible': [('available_in_receipt', '=', False)]}"/>
+                                <label for="date_from" string="Ranges Date" attrs="{'invisible': [('available_in_receipt', '=', False)]}"/>
+                                <div attrs="{'invisible': [('available_in_receipt', '=', False)]}">
+                                    <field name="date_from" class="oe_inline"/>
+                                    <span> to </span>
+                                    <field name="date_to" class="oe_inline"/>
+                                </div>
+                                <field name="terms_text" widget="text" attrs="{'invisible': [('available_in_receipt', '=', False)]}"/>
+                                <field name="pos_config_ids" widget="many2many_tags" attrs="{'invisible': [('available_in_receipt', '=', False)]}"/>
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

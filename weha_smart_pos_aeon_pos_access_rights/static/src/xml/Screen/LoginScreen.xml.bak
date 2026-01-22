@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="PosAccessRightsLoginScreen" t-inherit="pos_hr.LoginScreen" t-inherit-mode="extension" owl="1">        
+        <xpath expr="//button[hasclass('login-button')]" position="replace">            
+            <t t-if="state.allowPin == false">
+                <!-- <button class="login-button allow-pin" t-on-click="activatePin">Activate PIN</button> -->
+                <button class="login-button allow-pin" t-on-click="selectSupervisor">Activate PIN</button>            
+            </t>
+            <t t-if="state.allowPin == true">
+                <button class="login-button select-cashier" t-on-click="disablePin">Disable PIN</button>                                
+            </t>            
+        </xpath>
+        <xpath expr="//div[hasclass('login-body')]/span[hasclass('login-element')][1]" position="replace">
+            <span class="login-element">
+                <t t-if="state.allowPin == true">                
+                    <button class="login-button select-cashier" t-on-click="selectCashier">Select Cashier</button>                    
+                </t>
+                <t t-if="state.allowPin == false">                
+                    <button class="login-button select-cashier" t-on-click="selectEmployee">Scan Finger</button>
+                </t>
+            </span>
+        </xpath>
+    </t>
+</templates>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_payment_method_view_form_inherit" model="ir.ui.view">
+        <field name="name">pos.payment.method.form.inherit</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='use_payment_terminal']" position="after">
+                <field name="terminal_id" attrs="{'invisible': [('use_payment_terminal', '!=', 'bcaecr')], 'required': [('use_payment_terminal', '=', 'bcaecr')]}"/>
+                <field name="trans_type" attrs="{'invisible': [('use_payment_terminal', '!=', 'bcaecr')], 'required': [('use_payment_terminal', '=', 'bcaecr')]}"/>
+                <field name="is_dev" attrs="{'invisible': [('use_payment_terminal', '!=', 'bcaecr')], 'required': [('use_payment_terminal', '=', 'bcaecr')]}"/>
+                <field name="pan" attrs="{'invisible': [('is_dev', '=', False)], 'required': [('is_dev', '=', True)]}"/>
+                <field name="expirydate" attrs="{'invisible': [('is_dev', '=', False)], 'required': [('is_dev', '=', True)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

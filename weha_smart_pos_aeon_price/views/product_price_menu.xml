@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="pos_product_price_management_menu" 
+        parent="point_of_sale.menu_point_root" 
+        name="Price Management"
+        groups="point_of_sale.group_pos_manager"/>
+    
+</odoo>

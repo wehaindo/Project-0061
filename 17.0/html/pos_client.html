@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.2.2/dist/pouchdb.min.js"></script>
+    <style>
+        .product {
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .product:hover {
+            background-color: #f8f9fa;
+        }
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+        .container-fluid {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .product-card {
+            flex: 0 0 48%;
+            margin: 1%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+        }
+        @media (max-width: 767px) {
+            .product-card {
+                flex: 0 0 100%;
+                margin: 0.5% 0;
+            }
+            .bottom-nav {
+                display: flex;
+            }
+        }
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+        .bottom-nav a {
+            color: #000;
+            text-align: center;
+            font-size: 14px;
+        }
+        .bottom-nav a i {
+            display: block;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">POS System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://via.placeholder.com/30" alt="Avatar" class="avatar">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Login</a>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-md-6">
+                <h3>Products</h3>
+                <div id="product-grid" class="product-grid">
+                    <!-- Products will be dynamically inserted here -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3>Cart</h3>
+                <ul class="list-group" id="cart-list">
+                    <!-- Cart items will be dynamically inserted here -->
+                </ul>
+                <div class="mt-3">
+                    <h4>Total: $<span id="total-price">0.00</span></h4>
+                    <button class="btn btn-success" id="checkout-btn" data-toggle="modal" data-target="#paymentModal">Checkout</button>
+                    <button class="btn btn-warning" id="hold-order-btn">Hold Order</button>
+                </div>
+                <h3 class="mt-5">Held Orders</h3>
+                <ul class="list-group" id="held-orders-list">
+                    <!-- Held orders will be dynamically inserted here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Select Payment Method</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="paymentTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="credit-card-tab" data-toggle="tab" href="#credit-card" role="tab" aria-controls="credit-card" aria-selected="true">Credit Card</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="paypal-tab" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal" aria-selected="false">PayPal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="cash-tab" data-toggle="tab" href="#cash" role="tab" aria-controls="cash" aria-selected="false">Cash</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="crypto-tab" data-toggle="tab" href="#crypto" role="tab" aria-controls="crypto" aria-selected="false">Cryptocurrency</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="bank-transfer-tab" data-toggle="tab" href="#bank-transfer" role="tab" aria-controls="bank-transfer" aria-selected="false">Bank Transfer</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="paymentTabContent">
+                        <div class="tab-pane fade show active" id="credit-card" role="tabpanel" aria-labelledby="credit-card-tab">
+                            <form id="credit-card-form">
+                                <div class="form-group">
+                                    <label for="cc-number">Credit Card Number</label>
+                                    <input type="text" class="form-control" id="cc-number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cc-name">Name on Card</label>
+                                    <input type="text" class="form-control" id="cc-name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cc-expiration">Expiration Date</label>
+                                    <input type="text" class="form-control" id="cc-expiration">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cc-cvv">CVV</label>
+                                    <input type="text" class="form-control" id="cc-cvv">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cc-amount">Amount</label>
+                                    <input type="number" class="form-control" id="cc-amount" min="0">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
+                            <form id="paypal-form">
+                                <p>Pay with PayPal. You will be redirected to PayPal to complete your purchase.</p>
+                                <div class="form-group">
+                                    <label for="paypal-email">Email</label>
+                                    <input type="email" class="form-control" id="paypal-email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="paypal-amount">Amount</label>
+                                    <input type="number" class="form-control" id="paypal-amount" min="0">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="cash" role="tabpanel" aria-labelledby="cash-tab">
+                            <form id="cash-form">
+                                <p>Pay with Cash</p>
+                                <div class="form-group">
+                                    <label for="cash-amount">Amount</label>
+                                    <input type="number" class="form-control" id="cash-amount" min="0">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="crypto" role="tabpanel" aria-labelledby="crypto-tab">
+                            <form id="crypto-form">
+                                <div class="form-group">
+                                    <label for="crypto-address">Cryptocurrency Address</label>
+                                    <input type="text" class="form-control" id="crypto-address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="crypto-amount">Amount</label>
+                                    <input type="number" class="form-control" id="crypto-amount" min="0">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="bank-transfer" role="tabpanel" aria-labelledby="bank-transfer-tab">
+                            <form id="bank-transfer-form">
+                                <div class="form-group">
+                                    <label for="bank-account">Bank Account Number</label>
+                                    <input type="text" class="form-control" id="bank-account">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bank-routing">Bank Routing Number</label>
+                                    <input type="text" class="form-control" id="bank-routing">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bank-amount">Amount</label>
+                                    <input type="number" class="form-control" id="bank-amount" min="0">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" id="payment-error" style="display: none;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="complete-payment-btn">Complete Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navbar for Mobile -->
+    <div class="bottom-nav">
+        <a href="#"><i class="fas fa-home"></i>Home</a>
+        <a href="#"><i class="fas fa-box-open"></i>Products</a>
+        <a href="#"><i class="fas fa-shopping-cart"></i>Cart</a>
+        <a href="#"><i class="fas fa-info-circle"></i>Contact</a>
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, name: "Product 1", price: 10.00 },
+            { id: 2, name: "Product 2", price: 15.00 },
+            { id: 3, name: "Product 3", price: 20.00 },
+            { id: 4, name: "Product 4", price: 25.00 },
+        ];
+
+        let cart = [];
+        const db = new PouchDB('pos_orders');
+
+        function renderProducts() {
+            const productGrid = document.getElementById('product-grid');
+            productGrid.innerHTML = '';
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <h5>${product.name}</h5>
+                    <p>$${product.price.toFixed(2)}</p>
+                `;
+                productCard.onclick = () => addToCart(product);
+                productGrid.appendChild(productCard);
+            });
+        }
+
+        function renderCart() {
+            const cartList = document.getElementById('cart-list');
+            cartList.innerHTML = '';
+            let totalPrice = 0;
+            cart.forEach(item => {
+                totalPrice += item.price;
+                const cartItem = document.createElement('li');
+                cartItem.className = 'list-group-item';
+                cartItem.innerText = `${item.name} - $${item.price.toFixed(2)}`;
+                cartList.appendChild(cartItem);
+            });
+            document.getElementById('total-price').innerText = totalPrice.toFixed(2);
+        }
+
+        function addToCart(product) {
+            cart.push(product);
+            renderCart();
+        }
+
+        async function saveOrder(paymentDetails) {
+            if (cart.length === 0) {
+                alert('Cart is empty!');
+                return;
+            }
+
+            const order = {
+                _id: new Date().toISOString(),
+                items: cart,
+                total: cart.reduce((sum, item) => sum + item.price, 0),
+                paymentDetails: paymentDetails,
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                await db.put(order);
+                alert('Order saved successfully!');
+                cart = [];
+                renderCart();
+                $('#paymentModal').modal('hide');
+                renderHeldOrders();
+            } catch (error) {
+                console.error('Error saving order:', error);
+                alert('Failed to save order.');
+            }
+        }
+
+        async function holdOrder() {
+            if (cart.length === 0) {
+                alert('Cart is empty!');
+                return;
+            }
+
+            const heldOrder = {
+                _id: 'hold_' + new Date().toISOString(),
+                items: cart,
+                total: cart.reduce((sum, item) => sum + item.price, 0),
+                timestamp: new Date().toISOString(),
+                held: true
+            };
+
+            try {
+                await db.put(heldOrder);
+                alert('Order held successfully!');
+                cart = [];
+                renderCart();
+                renderHeldOrders();
+            } catch (error) {
+                console.error('Error holding order:', error);
+                alert('Failed to hold order.');
+            }
+        }
+
+        async function renderHeldOrders() {
+            const heldOrdersList = document.getElementById('held-orders-list');
+            heldOrdersList.innerHTML = '';
+
+            try {
+                const result = await db.find({ selector: { held: true } });
+                result.docs.forEach(heldOrder => {
+                    const heldOrderItem = document.createElement('li');
+                    heldOrderItem.className = 'list-group-item';
+                    heldOrderItem.innerHTML = `
+                        <strong>Held Order - ${new Date(heldOrder.timestamp).toLocaleString()}</strong>
+                        <span class="float-right">$${heldOrder.total.toFixed(2)}</span>
+                    `;
+                    heldOrderItem.onclick = () => resumeHeldOrder(heldOrder);
+                    heldOrdersList.appendChild(heldOrderItem);
+                });
+            } catch (error) {
+                console.error('Error retrieving held orders:', error);
+            }
+        }
+
+        async function resumeHeldOrder(heldOrder) {
+            cart = heldOrder.items;
+            renderCart();
+            try {
+                await db.remove(heldOrder);
+                renderHeldOrders();
+            } catch (error) {
+                console.error('Error resuming held order:', error);
+            }
+        }
+
+        document.getElementById('complete-payment-btn').onclick = () => {
+            const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
+            const paymentDetails = [];
+
+            const creditCardAmount = parseFloat(document.getElementById('cc-amount').value) || 0;
+            if (creditCardAmount > 0) {
+                paymentDetails.push({
+                    method: 'Credit Card',
+                    details: {
+                        number: document.getElementById('cc-number').value,
+                        name: document.getElementById('cc-name').value,
+                        expiration: document.getElementById('cc-expiration').value,
+                        cvv: document.getElementById('cc-cvv').value
+                    },
+                    amount: creditCardAmount
+                });
+            }
+
+            const paypalAmount = parseFloat(document.getElementById('paypal-amount').value) || 0;
+            if (paypalAmount > 0) {
+                paymentDetails.push({
+                    method: 'PayPal',
+                    details: {
+                        email: document.getElementById('paypal-email').value
+                    },
+                    amount: paypalAmount
+                });
+            }
+
+            const cashAmount = parseFloat(document.getElementById('cash-amount').value) || 0;
+            if (cashAmount > 0) {
+                paymentDetails.push({
+                    method: 'Cash',
+                    amount: cashAmount
+                });
+            }
+
+            const cryptoAmount = parseFloat(document.getElementById('crypto-amount').value) || 0;
+            if (cryptoAmount > 0) {
+                paymentDetails.push({
+                    method: 'Cryptocurrency',
+                    details: {
+                        address: document.getElementById('crypto-address').value
+                    },
+                    amount: cryptoAmount
+                });
+            }
+
+            const bankTransferAmount = parseFloat(document.getElementById('bank-amount').value) || 0;
+            if (bankTransferAmount > 0) {
+                paymentDetails.push({
+                    method: 'Bank Transfer',
+                    details: {
+                        accountNumber: document.getElementById('bank-account').value,
+                        routingNumber: document.getElementById('bank-routing').value
+                    },
+                    amount: bankTransferAmount
+                });
+            }
+
+            const totalPaid = paymentDetails.reduce((sum, payment) => sum + payment.amount, 0);
+
+            if (totalPaid < totalAmount) {
+                document.getElementById('payment-error').style.display = 'block';
+                document.getElementById('payment-error').innerText = 'Total paid amount is less than the total order amount!';
+            } else {
+                document.getElementById('payment-error').style.display = 'none';
+                saveOrder(paymentDetails);
+            }
+        };
+
+        document.getElementById('hold-order-btn').onclick = holdOrder;
+
+        renderProducts();
+        renderHeldOrders();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

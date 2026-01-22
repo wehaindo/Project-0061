@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_consignment_contract,access_consignment_contract,model_consignment_contract,base.group_user,1,1,1,1
+access_consignment_contract_line,access_consignment_contract_line,model_consignment_contract_line,base.group_user,1,1,1,1
+access_pos_consignment_sale,access_pos_consignment_sale,model_pos_consignment_sale,base.group_user,1,1,1,1
+access_consignment_settlement,access_consignment_settlement,model_consignment_settlement,base.group_user,1,1,1,1

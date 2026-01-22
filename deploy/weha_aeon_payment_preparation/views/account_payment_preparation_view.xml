@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_payment_preparation_view_tree" model="ir.ui.view">
+        <field name="name">account.payment.preparation.view.tree</field>
+        <field name="model">account.payment.preparation</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="bill_date"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="last_calculate"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="account_payment_preparation_view_form" model="ir.ui.view">
+        <field name="name">account.payment.preparation.view.form</field>
+        <field name="model">account.payment.preparation</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <header>
+                    <button string="Calculate" name="action_calculate" type="object" class="oe_highlight" confirm="Are you sure to calculate ?"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="bill_date"/>
+                            <field name="last_calculate"/>
+                        </group>
+                        <group>
+                            <field name="amount_total_to_pay" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="date_start"/>
+                        </group>
+                        <group>
+                            <field name="date_end"/>
+                        </group>
+                    </group>
+                    <group string="Payment Preparation"/>
+                    <field name="account_payment_preparation_line_ids" nolabel="1">
+                        <tree create="false" edit="false">
+                            <field name="partner_id" />
+                            <field name="contract_id" />
+                            <field name="branch_id" />
+                            <field name="in_invoice_total" />
+                            <field name="in_refund_total" />
+                            <field name="diff_total" />
+                            <field name="is_schedule_to_pay" widget="boolean_toggle"/>
+                        </tree>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <group>
+                                        <field name="partner_id" />
+                                        <field name="contract_id" />
+                                        <field name="branch_id" />
+                                    </group>
+                                    <group>
+                                        <field name="in_invoice_total" />
+                                        <field name="in_refund_total" />
+                                        <field name="diff_total" />                                                
+                                    </group>
+                                </group>
+                                <group string="Bills and Rebates"/>
+                                <field name="account_move_ids" nolabel="1">
+                                    <tree>
+                                        <field name="name" />
+                                        <field name="move_type" />
+                                        <field name="amount_total" />
+                                    </tree>
+                                </field>
+                                
+                                <!-- <notebook>
+                                    <page name="bills_page" string="Bills">
+                                        <field name="in_invoice_ids">
+                                            <tree>
+                                                <field name="account_move_id" />
+                                                
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page name="credit_notes_page" string="Rebate">
+                                        <field name="in_refund_ids">
+                                            <tree>
+                                                <field name="account_move_id" />
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook> -->
+                            </sheet>
+                        </form>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="account_payment_preparation_view_search" model="ir.ui.view">
+        <field name="name">account.payment.preparation.view.search</field>
+        <field name="model">account.payment.preparation</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="name"/>
+                <field name="date"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="account_payment_preparation_action" model="ir.actions.act_window">
+        <field name="name">Payment Preparation</field>
+        <field name="res_model">account.payment.preparation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p>Create New Payment Preparation</p>            
+        </field>
+    </record>
+
+    <menuitem 
+        name="Payments Preparation"
+        id="menu_action_account_payment_preparation" 
+        action="account_payment_preparation_action" 
+        parent="account.menu_finance_payables" 
+        sequence="21"/>
+
+    
+    <record id="account_payment_preparation_line_view_tree" model="ir.ui.view">
+        <field name="name">account.payment.preparation.line.view.tree</field>
+        <field name="model">account.payment.preparation.line</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false">
+                <field name="preparation_id" />
+                <field name="partner_id" />
+                <field name="contract_id" />
+                <field name="branch_id" />
+                <field name="in_invoice_total" />
+                <field name="in_refund_total" />
+                <field name="diff_total" />
+                <field name="is_schedule_to_pay" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="account_payment_preparation_line_view_form" model="ir.ui.view">
+        <field name="name">account.payment.preparation.line.view.form</field>
+        <field name="model">account.payment.preparation.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="preparation_id" />
+                            <field name="partner_id" />
+                            <field name="contract_id" />
+                            <field name="branch_id" />
+                        </group>
+                        <group>
+                            <field name="in_invoice_total" />
+                            <field name="in_refund_total" />
+                            <field name="diff_total" />                                                
+                        </group>
+                    </group>
+                    <group string="Bills and Rebates"/>
+                    <field name="account_move_ids" nolabel="1">
+                        <tree>
+                            <field name="name" />
+                            <field name="move_type" />
+                            <field name="amount_total" />
+                        </tree>
+                    </field>
+                </sheet>
+            </form>            
+        </field>
+    </record>
+
+    <record id="account_payment_preparation_line_view_search" model="ir.ui.view">
+        <field name="name">account.payment.preparation.line.view.search</field>
+        <field name="model">account.payment.preparation.line</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="preparation_id" />
+                <field name="partner_id" />
+                <field name="contract_id" />
+                <field name="branch_id" />
+                <group expand="0" string="Group By">
+                    <filter string="Preparation" name="group_preparation_id" domain="[]" context="{'group_by': 'preparation_id'}"/>
+                    <filter string="Supplier" name="group_partner_id" domain="[]" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Contract" name="group_contract_id" domain="[]" context="{'group_by': 'contract_id'}"/>
+                    <filter string="Store" name="group_branch_id" domain="[]" context="{'group_by': 'branch_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="account_payment_preparation_line_action" model="ir.actions.act_window">
+        <field name="name">Payment Preparation Detail</field>
+        <field name="res_model">account.payment.preparation.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{'search_default_group_preparation_id': 1}</field>
+        <field name="help" type="html">
+            <p>Create Account Payment Preparation Line</p>
+        </field>
+    </record>
+
+    <menuitem 
+        name="Payments Preparation Line"
+        id="menu_action_account_payment_preparation_line" 
+        action="account_payment_preparation_line_action" 
+        parent="account.menu_finance_payables" 
+        sequence="22"/>    
+
+</odoo>

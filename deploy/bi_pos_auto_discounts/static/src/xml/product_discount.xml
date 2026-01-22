@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+    <t t-name="ProductItem" t-inherit="point_of_sale.ProductItem" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('product-img')]" position="inside">
+            <t t-if="env.pos.config.allow_automatic_discount === true">
+                <t t-if=" props.product.product_discount != 0">
+                    <i aria-hidden="true" style="position:absolute;top:5px;left:5px;font-size:24px;color:#099a52;" title="Offer Product"></i>
+                    <div class="product-happy-hours">
+                        <t t-esc="props.product.product_discount"/>
+                        <t>%</t>
+                    </div>
+                </t>
+                <t t-if="props.product.product_member_discount != 0">
+                    <i aria-hidden="true" style="position:absolute;top:5px;left:5px;font-size:24px;color:#099a52;" title="Offer Product"></i>
+                    <div class="product-member-discount">
+                        <t t-esc="props.product.product_member_discount"/>
+                        <t>%</t>
+                    </div>
+                </t>
+            </t>
+        </xpath>
+    </t>
+</templates>
+    

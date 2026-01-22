@@ -1,0 +1,94 @@
+body {
+  background-image: url(/weha_smart_pos_aeon_price_check/static/src/img/blank_page.png);
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  // border: inset 10px transparent;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+} 
+
+.center {
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
+// .container {
+//   display: block;
+//   position: fixed;
+//   top: 43%;
+//   // padding-top: 30%;
+//   margin: 20px;
+//   max-width: 95%;
+// }
+
+#scan-page-container {
+  display: block;
+  position: fixed;
+  top: 43%;
+  // padding-top: 30%;
+  margin: 20px;
+  max-width: 95%;
+}
+
+
+#product-not-found-container {
+  display: block;
+  position: fixed;
+  top: 35%;
+  // padding-top: 30%;
+  margin: 20px;
+  max-width: 95%;
+}
+
+#product-found-container {
+  display: block;
+  position: fixed;
+  top: 30%;
+  // padding-top: 30%;
+  margin: 20px;
+  max-width: 95%;
+}
+
+// .container {
+//   width: 80%;
+//   height: 250px;
+//   margin: 50px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   position: fixed;
+// }
+
+// Bootstrap resets
+.card {
+  background-color: transparent;
+  border: none;
+  padding: 20px;
+}
+
+.card-img {
+  border-radius: 0;
+  width: 100%;
+}
+
+.product-price {
+  text-decoration-line: line-through;
+}
+
+@media only screen and (max-width: 320px) {
+
+  .resize { 
+     font-size: 2em; 
+  }
+
+}

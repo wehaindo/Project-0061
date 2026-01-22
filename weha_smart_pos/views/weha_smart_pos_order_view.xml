@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Tree view for Voucher Location -->
+        <record id="view_weha_smart_pos_order_tree" model="ir.ui.view">
+            <field name="name">view.weha.smart.pos.order.tree</field>
+            <field name="model">smart.pos.order</field>
+            <field name="type">tree</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date_order"/>
+                    <field name="smart_pos_config_id"/>
+                    <field name="partner_id"/>
+                    <field name="user_id"/>
+                    <field name="amount_total"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form view for Voucher Stage -->
+        <record id="view_weha_smart_pos_order_form" model="ir.ui.view">
+            <field name="name">view.weha.smart.pos.order.form</field>
+            <field name="model">smart.pos.order</field>
+            <field name="type">form</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" />
+                            <h1>
+                                <field name="name" class="oe_inline"
+                                    placeholder="name" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="General Information">
+                                <field name="smart_pos_config_id" />
+                                <field name="user_id"/>
+                                <field name="couch_id" />
+                            </group>
+                            <group string="Time Information">
+                                <field name="date_order"/>
+                            </group>
+                            <group string="Order Information">
+                                <field name="partner_id"/>
+                                <field name="stock_picking_id"/>
+                            </group>
+                            <group string="Transaction Information">
+                                <field name="amount_total"/>
+                                <field name="amount_tax"/>
+                                <field name="amount_paid"/>
+                                <field name="amount_return"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="order_line" string="Order Line">
+                                <field name="smart_pos_order_line_ids" nolabel="1">
+                                    <tree>
+                                        <field name="description"/>
+                                        <field name="product_id"/>
+                                        <field name="qty"/>
+                                        <field name="price_unit"/>
+                                        <field name="tax_id"/>
+                                        <field name="amount_tax"/>
+                                        <field name="amount_total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="order_payment" string="Order Payment">
+                                <field name="smart_pos_order_payment_ids" nolabel="1">
+                                    <tree>
+                                        <field name="smart_pos_payment_method_id"/>
+                                        <field name="amount_total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Search view for "model" -->
+        <record id="view_weha_smart_pos_order_search" model="ir.ui.view">
+            <field name="name">view.weha.smart.pos.order.search</field>
+            <field name="model">smart.pos.order</field>
+            <field name="type">search</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <search string="model_search">
+                    <field name="name" />
+                    <field name="date_order"/>
+                    <field name="partner_id"/>
+                    <field name="user_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Order Date" name="order_day" domain="[]" context="{'group_by': 'date_order:day'}"/>
+                        <filter string="Status" name="status" domain="[]"  context="{'group_by': 'state'}"/>
+                        <filter string="Salesperson" name="salesperson" domain="[]" context="{'group_by': 'user_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <!-- Main window action for "model" -->
+        <record id="action_weha_smart_pos_order_act_window" model="ir.actions.act_window">
+            <field name="type">ir.actions.act_window</field>
+            <field name="name">Smart POS Order</field>
+            <field name="res_model">smart.pos.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'search_default_order_day': 1, 'search_default_status': 1, 'search_default_salesperson': 1}</field>
+            <field name="search_view_id" ref="view_weha_smart_pos_order_search" />
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add new Smart Pos Order
+                </p>
+            </field>
+        </record>
+        
+        <menuitem id="weha_smart_pos_order_menu" 
+            name="POS Order" 
+            parent="weha_smart_pos_transaction_menu"
+            action="action_weha_smart_pos_order_act_window" 
+            groups="group_weha_smart_pos_supervisor"
+            sequence="2"/>
+
+    </data>
+</odoo>

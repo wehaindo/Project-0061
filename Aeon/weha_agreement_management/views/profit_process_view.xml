@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- Form view for "model" -->
+    <record id="view_profit_process_form" model="ir.ui.view">
+        <field name="name">view.profit.process.form</field>
+        <field name="model">profit.process</field>
+        <field name="arch" type="xml">
+            <form string="Process Profit" create="true" delete="true" edit="true">
+                <header>
+                    <button name="generate_profit" type="object" string="Generate Profit"
+                        class="oe_highlight" states="draft" />
+                    <button name="confirm_profit" type="object" string="Confirm"
+                        class="oe_highlight" states="confirm" />
+                    <button name="generate_po" type="object" string="Generate Purchase Order"
+                        class="oe_highlight" states="inprogress" />
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,confirm,inprogress,posted" />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="open_profit_details"
+                            type="object" icon="fa-money">
+                            <div class="o_stat_info">
+                                <span class="o_stat_value">
+                                    <!-- <field name="related_taxes_amount"/> -->
+                                </span>
+                                <span class="o_stat_text">
+                                    Profit Details
+                                </span>
+                            </div>
+                        </button>
+                        <button class="oe_stat_button" name="open_purchase_order"
+                            type="object" icon="fa-list-alt">
+                            <div class="o_stat_info">
+                                <span class="o_stat_value">
+                                    <!-- <field name="related_taxes_amount"/> -->
+                                </span>
+                                <span class="o_stat_text">
+                                    Purchase Order
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" class="oe_inline" placeholder="name" readonly="1" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="date" readonly="1" />
+                            <field name="payment_term_id" required="1" />
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_profit_process_tree" model="ir.ui.view">
+        <field name="name">view.profit.process.tree</field>
+        <field name="model">profit.process</field>
+        <field name="arch" type="xml">
+            <tree string="Process Profit" create="true" delete="true" edit="true">
+                <field name="name" />
+                <field name="date" />
+                <field name="payment_term_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search view for "model" -->
+    <record id="view_profit_process_search" model="ir.ui.view">
+        <field name="name">view.profit.process.search</field>
+        <field name="model">profit.process</field>
+        <field name="arch" type="xml">
+            <search string="Process Profit">
+                <field name="name" />
+                <field name="date" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Main window action for "model" -->
+    <record id="action_process_profit" model="ir.actions.act_window">
+        <field name="name">Process Profit</field>
+        <field name="res_model">profit.process</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_profit_process_search" />
+    </record>
+
+</odoo>

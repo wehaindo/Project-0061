@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="cron_upload_sales_file" model="ir.cron">
+        <field name="name">Upload Sales File</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False" />
+        <field name="model_id" ref="model_pos_order_file" />
+        <field name="code">model.get_pos_order_upload()</field>
+        <field name="state">code</field>
+    </record>
+
+    <record id="cron_upload_profit_file" model="ir.cron">
+        <field name="name">Upload Profit File</field>
+        <field name="interval_number">30</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False" />
+        <field name="model_id" ref="model_pos_trans_code" />
+        <field name="code">model.get_transpos()</field>
+        <field name="state">code</field>
+    </record>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <report
+       id="pos_order_line_report"
+       model="wizard.pos.order.line.report"
+       string="Pos Order Line Report"
+       report_type="xlsx"
+       name="weha_smart_pos_aeon_pos_report.pos_order_line_report"
+       file="Pos Order Line Report"
+       attachment_use="False"/>
+</odoo>

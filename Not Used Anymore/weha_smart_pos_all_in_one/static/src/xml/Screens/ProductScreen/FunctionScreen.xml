@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<templates id="weha_pos_function_template" inherit_id="point_of_sale.template" xml:space="preserve"> 
+    
+    <t t-name="PosFunctionWidget" name="Pos Function Widget" owl="1">
+        <div class="control-button button confirm" id="pos_function" style="background-color: #6ec89b; color: #fff; width:90%;">
+            <i class="fa fa-shopping-bag"></i> Function 
+        </div>
+   	</t>
+
+    <t t-name="FunctionScreen" owl="1">
+        <div class="clientlist-screen screen">
+            <div class="screen-content">
+                <div class="top-content">
+                    <div class="button back" t-on-click="back">
+                        Back
+                    </div>
+                </div>
+                <section class="full-content">
+                    <div class="client-window">
+                        <section class="subwindow list">
+                            <div class="subwindow-container">
+                                <div class="subwindow-container-fix scrollable-y">
+                                    <div class="row">
+                                        <div class="col-3">
+                                             <div class="control-button button confirm">
+                                                <i class="fa fa-shopping-bag"></i> Function 
+                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div> 
+                </section>
+            </div>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="PrintLedgerPopup" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup popup-textinput">
+                <header class="title">
+                    <t t-esc="props.title"/>
+                </header>
+                <div class="div">
+                    <p>
+                        Start Date :
+                    <input type="date" t-model="state.startDate" t-ref="input" style="width:50%"/>
+                    </p>
+                </div>
+                <div class="div">
+                    <p>
+                        End Date :
+                    <input type="date" t-model="state.endDate" t-ref="input" style="width:50%"/>
+                    </p>
+                </div>
+                <div class="footer">
+                    <div class="button confirm" t-on-click="confirm">
+                        <t t-esc="props.confirmText"/>
+                    </div>
+                    <div class="button cancel" t-on-click="cancel">
+                        <t t-esc="props.cancelText"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

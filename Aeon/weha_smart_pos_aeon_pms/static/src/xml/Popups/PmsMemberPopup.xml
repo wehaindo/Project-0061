@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="PmsMemberPopup" owl="1">
+        <div role="dialog" class="modal-dialog modal-lg">
+            <Draggable>
+                <div class="popup">
+                    <header class="title drag-handle letter-spacing">
+                        <t t-esc="props.title"/>
+                    </header>
+                    <div class="body row">  
+                        <div class="col-6">
+                            <div class="customer-detail">                            
+                                <span>
+                                    <input style="text-align:center; width: 80%;font-size: 18px;padding: 10px; margin: 10px;" type="text"
+                                    class="redeem_loyalty_input" t-model="state.CustomerNumber" t-ref="customernumber" placeholder="Scan Customer Barcode"/>
+                                </span>
+                                <span>
+                                    <!-- <t t-if="not state.IsAeonMember">
+                                        <i class="fa fa-arrow-circle-right" style="margin: 10px 10px 10px 10px;font-size: 23px;"
+                                        aria-hidden="true" t-on-click="searchCustomer"/>
+                                    </t> -->
+                                    <t t-if="state.IsAeonMember == false">
+                                        <i class="fa fa-arrow-circle-right" style="margin: 10px 10px 10px 10px;font-size: 23px;"
+                                        aria-hidden="true" t-on-click="searchCustomer"/>
+                                    </t>
+                                    <t t-if="state.IsAeonMember == true">
+                                        <i class="fa fa fa-times-circle" style="margin: 10px 10px 10px 10px;font-size: 23px;"
+                                        aria-hidden="true" t-on-click="clearCustomer"/>
+                                    </t>
+                                </span>
+                            </div>
+                            <div class="invalid-code" t-if="state.ShowMsg">
+                                <span>
+                                    <label style="color:red"><t t-esc="state.ShowMsg"/></label>
+                                </span>
+                            </div> 
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                <t t-esc="state.CustomerInfo" />
+                            </p>                        
+                        </div>
+                    </div>
+                    <footer class="footer">
+                        <div class="button confirm" t-on-click="confirm" t-if="state.Valid" t-ref="confirmbutton">
+                            <t t-esc="props.confirmText"/>
+                        </div>
+                        <div class="button cancel" t-on-click="cancel">
+                            <t t-esc="props.cancelText"/>
+                        </div>
+                    </footer>
+                </div>
+            </Draggable>
+        </div>
+    </t>
+
+</templates>

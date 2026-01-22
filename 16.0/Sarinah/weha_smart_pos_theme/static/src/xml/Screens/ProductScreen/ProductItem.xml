@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ProductItemQty" t-inherit="point_of_sale.ProductItem" t-inherit-mode="extension" owl="1">
+        <xpath expr="//article" position="inside">
+            <div class="pos_product_info" t-on-click="onProductInfoClickSetu">
+                <i class="fa fa-info"/>
+            </div>
+        </xpath>
+       
+        
+        <xpath expr="//t[@t-esc='props.product.display_name']" position="before">
+            <t t-if="props.product.default_code">[<t t-out="props.product.default_code"/>] </t>
+        </xpath>
+        <xpath expr="//t[@t-esc='props.product.display_name']" position="after">
+            <br/>
+            <span class="list_view_details">
+                <em>1.00</em>
+                <span> </span>
+                <t t-esc="props.product.get_unit().name"/>
+                at
+                <t t-esc="price"/>
+                /
+                <t t-esc="props.product.get_unit().name"/>
+            </span>
+            <span class="list_view_details" t-if="env.pos.config.setu_display_stock and props.product.type != 'service'">
+               
+            </span>
+        </xpath>
+    </t>
+    <t t-name="OutOfStockMessagePopup" owl="1">
+        <div class="modal-dialog">
+            <div class="popup popup-textinput" style="height:260px !important">
+                <p class="title" style="width:92%">
+                    <t t-out=" props.title || 'Message' "/>
+                </p>
+                <p class="body" style="height:87px;">
+                    <t t-out="  props.body || '' "/>
+                </p>
+                <div class="footer">
+                    <div class="button cancel" t-on-click="cancel" style="width:130px">
+                        OK
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="ShopOnVariantPopup" owl="1">
+        <div role="dialog" class="modal-dialog setu_pos_variant_popup">
+            <div class="popup popup-alert setu_product_variants_popup" t-att-class="props.morevariant_class"
+                 t-attf-class="{{ env.pos.config.setu_pos_variants_group_by_attribute ? 'setu_product_variants_popup_by_attribute_name' : '' }}">
+                <header class="title">
+                    <div>
+                        <div>
+                            <span>
+                                <t t-esc="props.title"></t>
+                            </span>
+                        </div>
+                    </div>
+                </header>
+                <main id="setu_main_products"
+                      t-attf-class="main {{ (Attribute_names and Attribute_names.length > 0 ) or (VariantProductToDisplay and VariantProductToDisplay.length > 0) ? '' : 'setu_no_variant' }}">
+                    <!-- <t t-if='env.pos.config.setu_pos_enable_product_variants and !env.pos.config.setu_pos_variants_group_by_attribute and VariantProductToDisplay and VariantProductToDisplay.length > 0'>
+                        <div t-attf-class="product-list {{ AlternativeProducts.length > 0 ? 'setu_have_alternative_product' : '' }}">
+                            <t t-foreach="VariantProductToDisplay" t-as="product" t-key="product.id">
+                                <ShopOnVariantProductItem product="product"/>
+                            </t>
+                        </div>
+                    </t>
+                    <t t-if='env.pos.config.setu_pos_enable_product_variants and env.pos.config.setu_pos_variants_group_by_attribute and Attribute_names and Attribute_names.length > 0 '>
+                        <div t-attf-class="setu_group_by_attribute {{ AlternativeProducts.length > 0 ? 'setu_attribute_name_with_alternative' : '' }}">
+                            <t t-foreach="Attribute_names" t-as="attribute_name" t-key="attribute_name">
+                                <div class='setu_attribute_name_and_value'>
+                                    <div class='setu_attribute_name_id' t-att-id='attribute_name.id'>
+                                        <t t-esc='attribute_name.display_name'></t>
+                                    </div>
+                                    <div class='setu_attribute_id'>
+                                        <t t-foreach='attribute_name.product_template_value_ids' t-as='attribute_value'
+                                           t-key="attribute_value">
+                                            <t t-if="check_has_valid_attribute_value(attribute_value)">
+                                                <span t-att-class='"setu_attribute_id"+attribute_name.id'
+                                                      id='attribute_value' t-att-data-id='attribute_value'
+                                                      t-on-click='Select_attribute_value'>
+                                                    <t t-esc='env.pos.db.product_temlate_attribute_by_id[attribute_value].name'></t>
+                                                </span>
+                                            </t>
+                                        </t>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                    <t t-if='env.pos.config.setu_pos_display_alternative_products'>
+                        <t t-if="AlternativeProducts.length > 0">
+                            <div style='padding: 12px 0px;'> Alternative Products</div>
+                            <div class="product_alternative_list">
+                                <div class='product-list alternative_product_value'>
+                                    <t t-foreach="AlternativeProducts" t-as="al_product" t-key="al_product.id">
+                                        <ShopOnVariantProductItem product="al_product"/>
+                                    </t>
+                                </div>
+                            </div>
+                        </t>
+                    </t> -->
+
+                </main>
+                <footer class="footer">
+                    <t t-if='env.pos.config.setu_pos_enable_product_variants and env.pos.config.setu_pos_variants_group_by_attribute '>
+                        <div class="button confirm " t-on-click="Confirm">
+                            Add
+                        </div>
+                        <div class="button cancel" t-on-click="cancel">
+                            Close
+                        </div>
+                    </t>
+                    <t t-else=''>
+                        <div class="button bg-success cancel" t-on-click="cancel">
+                            Ok
+                        </div>
+                    </t>
+                </footer>
+            </div>
+        </div>
+    </t>
+    <t t-name="ShopOnVariantProductItem" owl="1">
+        <article class="product" tabindex="0" t-on-keypress="spaceClickProduct"
+                 t-on-click="() => this.trigger('click-product', props.product)"
+                 t-att-data-product-id="props.product.id" t-attf-aria-labelledby="article_product_{{props.product.id}}">
+            <div class="product-img">
+                <img t-att-src="imageUrl" t-att-alt="props.product.display_name"/>
+            </div>
+            <div class="product-content">
+                <div class="product-name" t-attf-id="article_product_{{props.product.id}}">
+                    <t t-esc="props.product.display_name"/><br/>
+                    <span class="price-tag">
+                        <t t-esc="price"/>
+                    </span>
+                </div>
+            </div>
+        </article>
+    </t>
+</templates>

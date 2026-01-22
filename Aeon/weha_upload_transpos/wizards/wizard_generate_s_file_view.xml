@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>			
+		<record id="view_generate_s_file_wizard" model="ir.ui.view">
+			<field name="name">generate.s.file.wizard</field>
+			<field name="model">wizard.gen.s.file</field>
+			<field name="arch" type="xml">
+				<form string="Generate S File">
+					<group>
+						<group>
+							<field name="name"/>
+							<field name="date_end"/>
+							<!-- <field name="is_copy"/>						 -->
+						</group>				
+						<group>
+							<field name="res_branch_id"/>
+						</group>	
+					</group>				
+					<footer>
+						<button name="trans_generate_s_file" string="Generate" type="object" class="btn-primary"/>
+						<button string="Cancel" class="btn-default" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_generate_s_file" model="ir.actions.act_window">
+			<field name="name">Generate S File</field>
+			<field name="res_model">wizard.gen.s.file</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<menuitem id="menu_generate_s_file" name="Generate S File" action="action_generate_s_file" parent="process_file_menu" sequence="1"/>
+		
+	</data>
+</odoo>

@@ -1,0 +1,29 @@
+/** @odoo-module **/
+
+import { PaymentScreen } from "@point_of_sale/Screens/PaymentScreen";
+import Registries from 'point_of_sale.Registries';
+import { useService } from "@web/core/utils/hooks";
+
+const PosOrderLogPaymentScreen = (PaymentScreen) =>
+    class extends PaymentScreen {
+        setup() {
+            super.setup();
+            this.posOrderLog = useService("pos_order_log");  // ✅ useService instead of new PosOrderLog()
+        }
+
+        async _finalizeValidation() {
+            const order = this.currentOrder;
+
+            this.posOrderLog.saveLogToLocalStorage(
+                this.pos.pos_config.id,
+                this.pos.pos_session.id,
+                order.name,
+                order.export_as_JSON()
+            );
+
+            // Proceed with original flow
+            await super._finalizeValidation();
+        }
+    };
+
+Registries.Component.extend(PaymentScreen, PosOrderLogPaymentScreen);

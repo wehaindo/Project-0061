@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="aspl_pos_wallet_assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/aspl_pos_wallet/static/src/css/pos.css"/>
+            <script type="text/javascript" src="/aspl_pos_wallet/static/src/js/Screens/ProductScreen/ControlButtons/AddToWallet.js"></script>
+            <script type="text/javascript" src="/aspl_pos_wallet/static/src/js/Screens/ProductScreen/ControlButtons/PrintWalletLedger.js"></script>
+            <script type="text/javascript" src="/aspl_pos_wallet/static/src/js/Screens/ClientListScreen/ClientListScreen.js"></script>
+            <script type="text/javascript" src="/aspl_pos_wallet/static/src/js/Screens/PaymentScreen/PaymentScreen.js"></script>
+            <script type="text/javascript" src="/aspl_pos_wallet/static/src/js/Screens/WalletHistoryScreen/WalletHistoryScreen.js"></script>
+            <script type="text/javascript" src="/aspl_pos_wallet/static/src/js/Screens/WalletHistoryScreen/WalletHistoryList.js"></script>
+            <script type="text/javascript" src="/aspl_pos_wallet/static/src/js/Screens/ReceiptScreen/WalletLedgerReceipt.js"></script>
+            <script type="text/javascript" src="/aspl_pos_wallet/static/src/js/Screens/ReceiptScreen/ReceiptScreen.js"></script>
+            <script type="text/javascript" src="/aspl_pos_wallet/static/src/js/Popups/AddMoneyToWalletPopup.js"></script>
+            <script type="text/javascript" src="/aspl_pos_wallet/static/src/js/Popups/PaymentWalletPopup.js"></script>
+            <script type="text/javascript" src="/aspl_pos_wallet/static/src/js/Popups/PrintLedgerPopup.js"></script>
+            <script type="text/javascript" src="/aspl_pos_wallet/static/src/js/models.js"></script>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_branch_group_erp_manager,res_branch_group_erp_manager,model_res_branch,base.group_erp_manager,1,1,1,1
+access_res_branch_group_user,res_branch_group_user,model_res_branch,,1,0,0,0
+
+access_business_unit_group_erp_manager,business_unit_group_erp_manager,model_business_unit,base.group_erp_manager,1,1,1,1
+access_business_unit_group_user,business_unit_group_user,model_business_unit,,1,0,0,0
+
+access_res_business_unit_erp_manager,res_business_unit_erp_manager,model_business_unit,base.group_erp_manager,1,1,1,1
+access_res_line_erp_manager,res_line_erp_manager,model_res_line,base.group_erp_manager,1,1,1,1
+access_res_division_erp_manager,res_division_erp_manager,model_res_division,base.group_erp_manager,1,1,1,1
+access_res_group_erp_manager,res_group_erp_manager,model_res_group,base.group_erp_manager,1,1,1,1
+access_res_department_erp_manager,res_department_erp_manager,model_res_department,base.group_erp_manager,1,1,1,1
+
+access_product_sub_category_erp_manager,product_sub_category_erp_manager,model_product_sub_category,base.group_erp_manager,1,1,1,1

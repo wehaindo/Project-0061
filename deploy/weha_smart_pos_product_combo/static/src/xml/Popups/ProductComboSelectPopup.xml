@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+	<t t-name="ProductComboSelectPopup" owl="1">
+		<Draggable>
+			<div class="popup popup-textinput" style="max-width: 800px !important;">
+				<header class="title drag-handle">
+					Product Combo
+				</header>
+				<div class="body" style="display: grid; max-height: 600px;">
+					<span class="required-products">Required Products</span>
+					<div class="product-div" style="display: flex; overflow-x: auto; overflow-y: hidden;margin: 10px;">
+						<t t-if="props.required_products">
+							<t t-foreach="req_product" t-as="product" t-key="product.id">
+								<ProductItem product="product" />
+							</t>
+						</t>
+					</div>
+					<!-- <div class="product-div" style="display: flex; overflow-x: auto; overflow-y: hidden;margin: 10px;">
+						<t t-if="props.required_products">
+							<t t-foreach="req_product" t-as="product" t-key="product.id">
+								<div class='required-product' style="margin-right: 10px;" t-att-data-product-id="product.id" tabindex="0" t-attf-aria-labelledby="article_product_#{product.id}">
+									<div class="product-img">
+										<img t-att-src='product.product_image_url' alt="Product image"/>
+									</div>
+									<div class="product-name" t-attf-id="article_product_#{product.id}">
+										<t t-esc="product.display_name"/>
+									</div>
+								</div>
+							</t>
+						</t>
+					</div> -->
+					<span class="optional-products">Optional Products</span>
+					<div class="optional-div" style="display: flex; overflow-x: auto; overflow-y: hidden;margin: 10px;">
+						<t t-if="props.optional_products">
+							<t t-foreach="optional_product" t-as="product" t-key="product.id">
+								<div class='optional-product' style="margin-right: 10px;" t-att-data-product-id="product.id" tabindex="0" t-attf-aria-labelledby="article_product_#{product.id}" t-on-click="renderElement">
+									<div class="product-img">
+										<img t-att-src='product.product_image_url' alt="Product image"/>
+										<span class="remove-product" t-att-data-product-id="product.id">
+											<i class="fa fa-times"/>
+										</span>
+									</div>
+									<div class="product-name" t-attf-id="article_product_#{product.id}">
+										<t t-esc="product.display_name"/>
+									</div>
+								</div>
+							</t>
+						</t>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="button cancel" t-on-click="cancel">
+						Cancel 
+					</div>
+					<div class="button confirm-add" id="change_date" t-on-click="add_confirm" >
+						Apply 
+					</div>
+				</div>
+			</div>
+		</Draggable>
+	</t>
+
+</templates>

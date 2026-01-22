@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="view_product_items_file_form" model="ir.ui.view">
+        <field name="name">Product Items File Form</field>
+        <field name="model">product.items.file</field>
+        <field name="arch" type="xml">
+            <form string="Product Items File" create="true" delete="true" edit="true">
+                <header>
+                    <!-- <button string="Split File" name="process_split_file" type="object"/> -->
+                    <button string="Import File" name="import_data" type="object" class="oe_highlight" />
+                    <button string="Process File" name="process_generate_data" type="object" class="oe_highlight" />
+                    <button string="Sync File" name="process_sync_data" type="object" class="oe_highlight" />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_product_items_line"
+                            class="oe_stat_button"
+                            icon="fa-shopping-basket"
+                            type="object">
+                            <field name="items_line_count" widget="statinfo" string="Lines"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="filename" invisible="1" />
+                            <field name="file" filename="filename" string="Product File" />
+                            <field name="is_use_thread"/>
+                            <!-- <field name="split_number"/>                            -->
+                        </group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                        </group>
+                    </group>
+                    <!-- <field name="line_ids">
+                        <tree>
+                            <field name="file" />
+                            <field name="filename" />
+                            <field name="state" />
+                        </tree>
+                    </field>             -->
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="activity_ids"/>
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_product_items_file_tree" model="ir.ui.view">
+        <field name="name">Product Items File Tree</field>
+        <field name="model">product.items.file</field>
+        <field name="arch" type="xml">
+            <tree string="Product Items File" create="true" delete="true" edit="true">
+                <field name="date_start"/>
+                <field name="filename" /> 
+                <field name="file"/>        
+                <field name="date_end"/>
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_items_file_action" model="ir.actions.act_window">
+        <field name="name">Product Items</field>
+        <field name="res_model">product.items.file</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_product_items_line_form" model="ir.ui.view">
+        <field name="name">Product Items Line Form</field>
+        <field name="model">product.items.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Re-Process" name="action_reprocess" type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>                        
+                        <field name="name"/>               
+                        <field name="crud"/>                             
+                        <field name="couchdb_data"/>
+                    </group>                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_product_items_line_tree" model="ir.ui.view">
+        <field name="name">Product Items Line Tree</field>
+        <field name="model">product.items.line</field>
+        <field name="arch" type="xml">
+            <tree string="Product Items Line" create="false" delete="false" edit="false">
+                <field name="name"/>
+                <field name="crud"/>
+                <field name="err_msg"/>
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>

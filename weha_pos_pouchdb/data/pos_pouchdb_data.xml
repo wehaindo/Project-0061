@@ -1,0 +1,14 @@
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_sync_couchdb" model="ir.cron">
+            <field name="name">Sync Pos Order from CouchDB Server</field>
+            <field name="model_id" ref="model_pos_sync_couchdb"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.sync()</field>
+            <field name="interval_number">10</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+        </record>
+    </data>
+</odoo>

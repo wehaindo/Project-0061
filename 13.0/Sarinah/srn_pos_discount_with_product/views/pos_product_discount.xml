@@ -1,0 +1,53 @@
+<odoo>
+    <record id="pos_product_discount_view_form" model="ir.ui.view">
+        <field name="name">pos product discount form</field>
+        <field name="model">srn.pos.product.discount</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="sku"/>
+                        <field name="name"/>
+                        <field name="disc_percentage"/>
+                        <field name="max_discount"/>
+                        <field name="only_normal_price"/>
+                        <field name="minimum_transaction"/>
+                        <field name="description"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pos_product_discount_view_tree" model="ir.ui.view">
+        <field name="name">pos product discount tree</field>
+        <field name="model">srn.pos.product.discount</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sku"/>
+                <field name="name"/>
+                <field name="disc_percentage"/>
+                <field name="max_discount"/>
+                <field name="only_normal_price"/>
+                <field name="minimum_transaction"/>
+                <field name="description"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_pos_product_discount_view" model="ir.actions.act_window">
+        <field name="name">POS Product Discount</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">srn.pos.product.discount</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p>
+            Add new pos product discount
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="pos_product_discount_menu" name="POS Product Discount" action="action_pos_product_discount_view" parent="point_of_sale.menu_point_config_product"/>
+</odoo>

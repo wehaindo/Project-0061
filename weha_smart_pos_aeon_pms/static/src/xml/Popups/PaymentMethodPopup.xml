@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    
+    <t t-name="PaymentMethodPopup" t-inherit="weha_smart_pos_base_payment.PaymentMethodPopup" t-inherit-mode="extension" owl="1">        
+        <xpath expr="//div[hasclass('body')]" position="replace">
+            <div class="body" style="display: grid; max-height: 600px;">                
+                <span class="required-products">Cash Payment</span>
+                <div class="product-div" style="display: flex; overflow-x: auto; overflow-y: hidden;margin: 10px;">
+                    <div class="control-buttons" t-on-click="cancel" style="display: grid; grid-template-columns: auto auto auto auto;">
+                        <t t-foreach="paymentMethods" t-as="paymentMethod" t-key="paymentMethod.id">
+                            <t t-if="paymentMethod.pos_payment_method_type === 'cash'">                               
+                                    <div class="button paymentmethod" style="height:80px;align-items:center;background-color:#ad2181;color:#ffffff"
+                                        t-on-click="() => this.parent.trigger('new-payment-line', paymentMethod)">
+                                        <div class="payment-name" style="padding: 0px;">
+                                            <t t-esc="paymentMethod.name" />
+                                        </div>
+                                    </div>                                
+                            </t>                            
+                        </t>
+                    </div>
+                </div>
+                <span class="required-products">Comm Payment</span>
+                <div class="optional-div" style="display: flex; overflow-x: auto; overflow-y: hidden;margin: 10px;">
+                    <div class="control-buttons" t-on-click="cancel" style="display: grid; grid-template-columns: auto auto auto auto;">
+                        <t t-foreach="paymentMethods" t-as="paymentMethod" t-key="paymentMethod.id">
+                            <t t-if="paymentMethod.pos_payment_method_type === 'comm'">
+                                <div class="button paymentmethod" style="height:80px;align-items:center;background-color:#ad2181;color:#ffffff"
+                                    t-on-click="() => this.parent.trigger('new-payment-line', paymentMethod)">
+                                    <div class="payment-name" style="padding: 0px;">
+                                        <t t-esc="paymentMethod.name" />
+                                    </div>
+                                </div>
+                            </t>                            
+                        </t>
+                    </div>
+                </div>
+                <span class="required-products">No Comm Payment</span>
+                <div class="optional-div" style="display: flex; overflow-x: auto; overflow-y: hidden;margin: 10px;">
+                    <div class="control-buttons" t-on-click="cancel" style="display: grid; grid-template-columns: auto auto auto auto;">
+                        <t t-foreach="paymentMethods" t-as="paymentMethod" t-key="paymentMethod.id">
+                            <t t-if="paymentMethod.pos_payment_method_type === 'nocomm'">
+                                <div class="button paymentmethod" style="height:80px;align-items:center;background-color:#ad2181;color:#ffffff"
+                                    t-on-click="() => this.parent.trigger('new-payment-line', paymentMethod)">
+                                    <div class="payment-name" style="padding: 0px;">
+                                        <t t-esc="paymentMethod.name" />
+                                    </div>
+                                </div>
+                            </t>                            
+                        </t>
+                    </div>
+                </div>
+                <!-- <div class="control-buttons" t-on-click="cancel" style="display: grid; grid-template-columns: auto auto auto auto;">
+                    <t t-foreach="this.parent.payment_methods_from_config" t-as="paymentMethod" t-key="paymentMethod.id">
+                        <t t-if="!paymentMethod.allow_pms_voucher">                            
+                            <div class="button paymentmethod" style="height:80px;align-items:center;background-color:#ad2181;color:#ffffff"
+                                t-on-click="() => this.parent.trigger('new-payment-line', paymentMethod)">
+                                <div class="payment-name" style="padding: 0px;">
+                                    <t t-esc="paymentMethod.name" />
+                                </div>
+                            </div>                
+                        </t>
+                    </t>
+                </div> -->
+            </div>
+        </xpath>       
+    </t>
+</templates>

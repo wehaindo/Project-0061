@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="giftVoucherRedeemPopup" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <Draggable>
+                <div class="popup">
+                    <header class="title drag-handle letter-spacing">
+                        <t t-esc="props.title"/>
+                    </header>
+                    <div class="loyalty_info">
+                        <div class="due-amount">
+                            <span class="due-letter-spacing">Due Amount  :  </span>
+                            <span><t t-esc="env.pos.format_currency(env.pos.get_order().get_due())"/></span>
+                        </div>
+                        <div class="voucher-detail">
+                            <span class="voucher-number"> Number  :</span>
+                            <span><input style="width: 135px;font-size: 18px;" type="text"
+                                         class="redeem_loyalty_input" t-model="state.GiftVoucherNumber"/></span>
+                            <span>
+                                <i class="fa fa-arrow-circle-right" style="margin: 0 0px 0 18px;font-size: 23px;"
+                                   aria-hidden="true" t-on-click="searchVoucher"/>
+                            </span>
+                        </div>
+                        <div class="amount-detail">
+                            <span>Amount :</span>
+                            <span class="voucher-amount"><t t-esc="state.GiftVoucherAmount"/></span>
+                        </div>
+                        <div class="invalid-code" t-if="state.ShowMsg">
+                            <td><label style="color:red"><t t-esc="state.ShowMsg"/></label></td>
+                        </div>
+                    </div>
+                    <footer class="footer">
+                        <div class="button confirm" t-on-click="confirm">
+                            <t t-esc="props.confirmText"/>
+                        </div>
+                        <div class="button cancel" t-on-click="cancel">
+                            <t t-esc="props.cancelText"/>
+                        </div>
+                    </footer>
+                </div>
+            </Draggable>
+        </div>
+    </t>
+
+</templates>

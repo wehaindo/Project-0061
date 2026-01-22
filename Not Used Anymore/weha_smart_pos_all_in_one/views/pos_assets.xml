@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="weha_smart_pos_all_in_one assets" inherit_id="point_of_sale.assets">
+			<xpath expr="." position="inside">
+				<!-- <script type="text/javascript" src="/weha_pos/static/src/js/Screens/ProductScreen/ButtonList.js"/>
+				<script type="text/javascript" src="/weha_pos/static/src/js/Screens/ProductScreen/OrderWidget.js"/>
+				<script type="text/javascript" src="/weha_pos/static/src/js/Screens/ProductScreen/Orderline.js"/>
+				<script type="text/javascript" src="/weha_pos/static/src/js/Screens/ProductScreen/TopupPopup.js"/>
+				<script type="text/javascript" src="/weha_pos/static/src/js/Screens/ProductScreen/TopupButton.js"/>
+				<script type="text/javascript" src="/weha_pos/static/src/js/Screens/ProductScreen/RefundButton.js"/>
+				<script type="text/javascript" src="/weha_pos/static/src/js/Screens/ProductScreen/FunctionButton.js"/>
+				<script type="text/javascript" src="/weha_pos/static/src/js/Screens/ProductScreen/FunctionScreen.js"/> -->
+				<!-- <script type="text/javascript" src="/weha_pos/static/src/lib/qrcode/qrcode.js"></script> -->
+				<link rel="stylesheet" href="/weha_pos/static/src/css/screen.css"/>
+			</xpath>
+		</template>
+    </data>
+</odoo>

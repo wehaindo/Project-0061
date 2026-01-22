@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">        
+        <xpath expr="//div[hasclass('orderlines')]" position="replace">
+            <div class="orderlines">
+                <t t-foreach="receipt.orderlines" t-as="line" t-key="line.id">                    
+                    <div t-esc="line.product_name_wrapped[0]" />
+                    <WrappedProductNameLines line="line" />
+
+                    <div class="pos-receipt-left-padding">
+                        <t t-if="env.pos.config.iface_tax_included === 'total'">
+                            <t t-esc="Math.round(line.quantity * Math.pow(10, env.pos.dp['Product Unit of Measure'])) / Math.pow(10, env.pos.dp['Product Unit of Measure'])"/>
+                            <t t-if="!line.is_in_unit" t-esc="line.unit_name" />
+                            x
+                            <t t-esc="env.pos.format_currency(line.price_lst)"/>
+                            <span t-esc="env.pos.format_currency_no_symbol(line.quantity * line.price_lst)" class="price_display pos-receipt-right-align"/>                 
+                            <br/>
+                            <t t-if="line.price_source == 'pdc'">
+                                <span>Item Promo</span>
+                                <t t-if="line.discount !== 0">
+                                    <span t-esc="env.pos.format_currency_no_symbol(-1 * line.quantity * line.discount_amount)" class="price_display pos-receipt-right-align"/>
+                                </t>
+                                <t t-else="">
+                                    <span t-esc="env.pos.format_currency_no_symbol(-1 * line.quantity * (line.price_lst - line.price))" class="price_display pos-receipt-right-align"/>                                 
+                                </t>                                
+                            </t>
+                            <t t-if="line.price_source == 'pdcm'">
+                                <span>Item Promo</span>                                
+                                <t t-if="line.discount !== 0">
+                                    <span t-esc="env.pos.format_currency_no_symbol(-1 * line.quantity * line.discount_amount)" class="price_display pos-receipt-right-align"/>
+                                </t>
+                                <t t-else="">
+                                    <span t-esc="env.pos.format_currency_no_symbol(-1 * line.quantity * (line.price_lst - line.price))" class="price_display pos-receipt-right-align"/>                                 
+                                </t>
+                            </t>
+                            <t t-if="line.price_source == 'mix_and_match'">
+                                <span>MM Disc <t t-esc="line.promotion_code"/></span>
+                                <t t-if="line.discount !== 0">
+                                    <span t-esc="env.pos.format_currency_no_symbol(-1 * line.quantity * line.discount_amount)" class="price_display pos-receipt-right-align"/>
+                                </t>
+                                <t t-else="">
+                                    <span t-esc="env.pos.format_currency_no_symbol(-1 * line.quantity * (line.price_lst - line.price))" class="price_display pos-receipt-right-align"/>                                 
+                                </t>
+                            </t>                            
+                        </t>
+                        <t t-else="">
+                            <t t-esc="env.pos.format_currency_no_symbol(line.price)"/>
+                        </t>
+                    </div>
+
+                    <t t-if="line.discount !== 0">
+                        <t t-if="line.discount_type == 'memberday'">
+                            <div class="pos-receipt-left-padding">
+                                AEON Member Disc: <t t-esc="line.discount" />%
+                                <span t-esc="env.pos.format_currency_no_symbol(-1 * line.price_with_tax_before_discount * line.discount / 100)" class="price_display pos-receipt-right-align"/>                                 
+                            </div>    
+                        </t>
+                        <t t-elif="line.discount_type == 'rtc'">
+                            <div class="pos-receipt-left-padding">
+                                RTC Disc: <t t-esc="line.discount" />%
+                                <span t-esc="env.pos.format_currency_no_symbol(-1 * line.price_with_tax_before_discount * line.discount / 100)" class="price_display pos-receipt-right-align"/>                                 
+                            </div>    
+                        </t>
+                        <t t-else="">
+                            <div class="pos-receipt-left-padding">
+                                Discount: <t t-esc="line.discount" />%
+                                <span t-esc="env.pos.format_currency_no_symbol(-1 * line.price_with_tax_before_discount * line.discount / 100)" class="price_display pos-receipt-right-align"/>                                 
+                            </div>    
+                        </t>
+                    </t>    
+
+                    <t t-if="line.customer_note">
+                        <div class="pos-receipt-left-padding pos-receipt-customer-note">
+                            <t t-esc="line.customer_note"/>
+                        </div>
+                    </t>
+                    
+                    <t t-if="line.pack_lot_lines">
+                        <div class="pos-receipt-left-padding">
+                            <ul>
+                                <t t-foreach="line.pack_lot_lines" t-as="lot" t-key="lot.cid">
+                                    <li>
+                                        SN <t t-esc="lot.lot_name"/>
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+                    </t>
+                </t>                        
+            </div>            
+        </xpath>
+    </t>
+</templates>

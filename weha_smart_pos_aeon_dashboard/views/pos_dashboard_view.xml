@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="action_aeon_pos_dashboard" model="ir.actions.client">
+            <field name="name">Pos Dashboard</field>
+            <field name="tag">weha_smart_pos_aeon_dashboard.pos_dashboard</field>
+        </record>
+    </data>
+
+    <menuitem name="POS Dashboard" id="menu_pos_dashboard" sequence="10">
+        <menuitem name="POS Dashboard" id="menu_aeon_pos_dashboard" sequence="10" action="action_aeon_pos_dashboard"/>
+    </menuitem>
+
+</odoo>

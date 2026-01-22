@@ -1,0 +1,10 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="mcs_vernoss_product_code_burn" model="ir.config_parameter">
+            <field name="key">vernoss_product_code_burn</field>
+            <field name="value">ZPTS</field>
+        </record>
+
+    </data>
+</odoo>

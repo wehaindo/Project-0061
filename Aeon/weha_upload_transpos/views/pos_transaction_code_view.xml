@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="view_pos_trans_code_form" model="ir.ui.view">
+        <field name="name">POS Transaction Code Form</field>
+        <field name="model">pos.trans.code</field>
+        <field name="arch" type="xml">
+            <form string="POS Transaction Code" create="false" delete="true" edit="false">
+                <header>
+                    <button name="action_save_to_directory" string="Save For Profit" type="object" class="oe_hightlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date" />
+                            <field name="master_code_filename" invisible="1"/>
+                            <field name="master_code_file" filename="master_code_filename"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_pos_trans_code_tree" model="ir.ui.view">
+        <field name="name">POS Transaction Code Tree</field>
+        <field name="model">pos.trans.code</field>
+        <field name="arch" type="xml">
+            <tree string="POS Transaction Code" create="false" delete="true" edit="false">
+                <field name="date" />
+                <field name="master_code_filename" />
+                <field name="master_code_file" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="pos_trans_code_action" model="ir.actions.act_window">
+        <field name="name">POS Transaction Code</field>
+        <field name="res_model">pos.trans.code</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

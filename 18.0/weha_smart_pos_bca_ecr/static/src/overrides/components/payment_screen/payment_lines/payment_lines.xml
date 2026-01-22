@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="weha_smart_pos_bca_ecr.PaymentScreenPaymentLines" t-inherit="point_of_sale.PaymentScreenPaymentLines" t-inherit-mode="extension">
+        <xpath expr="//t[contains(@t-elif, 'line.payment_status') and contains(@t-elif, 'reversed')]" position="after">
+            <t t-elif="line.payment_status == 'waitingInput'">
+                <div class="electronic_status">
+                    Waiting Input for ECR Information
+                </div>    
+                <div class="o_pos_payment_buttons" style="display: flex; gap: 8px;">
+                    <div class="button send_payment_cancel highlight text-bg-primary" title="Input Information" t-on-click="() => console.log('Implement Input Popup')">
+                        Input
+                    </div>
+                    <div class="button send_payment_cancel highlight text-bg-primary" title="Cancel Payment Request" t-on-click="() => this.props.sendPaymentCancel(line)">
+                        Cancel
+                    </div>
+                </div>                
+            </t>
+        </xpath>
+    </t>
+</templates>

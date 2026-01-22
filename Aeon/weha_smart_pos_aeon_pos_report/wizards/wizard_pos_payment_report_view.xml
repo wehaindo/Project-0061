@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wizard_pos_payment_report_view" model="ir.ui.view">
+        <field name="name">wizard.pos.payment.report.form</field>
+        <field name="model">wizard.pos.payment.report</field>
+        <field name="arch" type="xml">
+            <form string="Pos Payment Report">
+                <group>
+                    <group>
+                        <field name="start_date"/>
+                    </group>
+                    <group>
+                        <field name="end_date"/>
+                    </group>                                        
+                </group>                 
+                <footer>
+                    <button name="generate_report" string="Download" type="object" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_pos_payment_repot" model="ir.actions.act_window">
+        <field name="name">Pos Payment Report</field>
+        <field name="res_model">wizard.pos.payment.report</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_pos_payment_report" name="Pos Payment Report" action="action_wizard_pos_payment_repot" parent="point_of_sale.menu_point_rep" sequence="10"/>
+
+</odoo>

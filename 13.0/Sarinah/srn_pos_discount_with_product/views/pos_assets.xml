@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="pos_referal_extend_assets" inherit_id="point_of_sale.assets">
+        <!-- JS -->
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/srn_pos_discount_with_product/static/src/js/pos_product_discount.js"/>
+        </xpath>
+    </template>
+</odoo>

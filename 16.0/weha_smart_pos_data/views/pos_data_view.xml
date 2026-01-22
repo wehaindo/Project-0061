@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_data_view_form" model="ir.ui.view">
+        <field name="name">pos.data.view.form</field>
+        <field name="model">pos.data</field>
+        <field name="arch" type="xml">
+            <form string="" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="pos_data_count"/>
+                        <field name="pos_data_str"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pos_data_view_tree" model="ir.ui.view">
+        <field name="name">pos.data.view.tree</field>
+        <field name="model">pos.data</field>
+        <field name="arch" type="xml">
+            <tree string="" create="false" edit="false">
+                <field name="name"/>
+                <field name="pos_data_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pos_data_view_search" model="ir.ui.view">
+        <field name="name">pos.data.view.search</field>
+        <field name="model">pos.data</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_pos_data" model="ir.actions.act_window">
+        <field name="name">POS Data</field>
+        <field name="res_model">pos.data</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p>Create for POS Data</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_point_pos_data_pos_data"
+        name="POS Data"
+        parent="menu_point_pos_data"
+        sequence="0"
+        action="action_pos_data"
+        groups="point_of_sale.group_pos_manager"/>
+
+</odoo>

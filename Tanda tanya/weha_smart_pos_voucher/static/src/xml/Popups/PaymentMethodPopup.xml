@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+<t t-name="PaymentMethodPopup" t-inherit="weha_smart_pos_base_payment.PaymentMethodPopup" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[@class='control-buttons']" position="replace">
+            <div class="control-buttons" t-on-click="cancel" style="display: grid; grid-template-columns: auto auto auto auto;">
+                <t t-foreach="paymentMethods" t-as="paymentMethod" t-key="paymentMethod.id">
+                    <t t-if="!paymentMethod.allow_for_gift_voucher">
+                        <div class="button paymentmethod"
+                             t-on-click="() => this.parent.trigger('new-payment-line', paymentMethod)">
+                            <div class="payment-name" style="padding: 0px;">
+                                <t t-esc="paymentMethod.name"/>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </div>    
+        </xpath>
+    </t>
+</templates>

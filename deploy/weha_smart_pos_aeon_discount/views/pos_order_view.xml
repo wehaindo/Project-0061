@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_pos_form_inherit" model="ir.ui.view">
+        <field name="name">.pos.pos.view.form.inherit</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lines']/form[1]/group[1]" position="after">
+                <group name="discounts" string="Discounts">
+                    <field name="pos_order_line_discounts">
+                        <tree>
+                            <field name="discount_source"/>
+                            <field name="discount_type"/>
+                            <field name="discount_percentage"/>
+                            <field name="discount_fixed"/>
+                        </tree>
+                    </field>
+                </group>
+            </xpath>       
+        </field>
+    </record>
+</odoo>

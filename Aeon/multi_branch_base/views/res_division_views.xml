@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+<!--        form view       -->
+        <record id="view_division_form" model="ir.ui.view">
+            <field name="name">res.division.form</field>
+            <field name="model">res.division</field>
+            <field name="arch" type="xml">
+                <form string="Retail division">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="code"/>
+                            <field name="line_id"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+<!--        tree view       -->
+        <record id="view_division_tree" model="ir.ui.view">
+            <field name="name">res.division.tree</field>
+            <field name="model">res.division</field>
+            <field name="arch" type="xml">
+                <tree string="Retail division" sample="1">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_res_division_form" model="ir.actions.act_window">
+            <field name="name">Retail Division</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.division</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new division
+              </p><p>
+                Create and manage division for the companies that will be managed by Odoo from here.
+              </p>
+            </field>
+        </record>
+<!--        Menu item       -->
+        <menuitem action="action_res_division_form" id="menu_action_res_division_form" parent="base.menu_users" sequence="13"/>
+    </data>
+</odoo>

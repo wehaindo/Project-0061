@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<templates id="template" xml:space="preserve">        
+    <t t-name="weha_smart_pos_base.ProductScreen" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension">
+         
+        <!--Modify Control Button for Detect Position -->
+        <xpath expr="//div[hasclass('control-buttons')]" position="replace">
+            <t t-if="pos.config.is_set_control_button_position == false">
+                <div class="control-buttons d-flex flex-wrap border-bottom overflow-hidden bg-300"
+                    t-if="!ui.isSmall">
+                    <t t-foreach="controlButtons" t-as="cb" t-key="cb.name">
+                            <t t-component="cb.component" t-key="cb.name"/>
+                    </t>
+                </div>
+            </t>          
+        </xpath>
+        
+        <!--Mmove Control Buttons to Left Screen -->
+        <xpath expr="//div[hasclass('leftpane')]" position="before">
+            <t t-if="pos.config.is_set_control_button_position == true">
+                <div class="buttonpane" t-if="!ui.isSmall">
+                    <div class="control-buttons">
+                        <t t-if="!ui.isSmall and controlButtons.length > 1">                    
+                            <t t-foreach="controlButtons" t-as="cb" t-key="cb.name">
+                                <t t-component="cb.component" t-key="cb.name"/>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+
+        <!--Modify Right Pane for Show Toggle -->
+        <xpath expr="//div[hasclass('rightpane')]" position="replace">
+            <t t-if="ui.isSmall">
+                <div class="rightpane overflow-auto d-flex flex-grow-1 flex-column bg-300 w-60" t-if="!ui.isSmall || pos.mobile_pane === 'right'">                
+                    <ProductsWidget />
+                    <t t-if="ui.isSmall">
+                        <div class="product-reminder d-flex justify-content-center align-items-center py-1 text-bg-warning bg-opacity-50 fw-bolder" t-if="state.showProductReminder" t-key="animationKey" >
+                            <span><t t-esc="selectedOrderlineQuantity"/> <t t-esc="selectedOrderlineDisplayName"/> <t t-esc="selectedOrderlineTotal"/></span>
+                        </div>
+                        <div class="switchpane d-flex h-12">
+                            <button class="btn-switchpane pay-button btn w-50 rounded-0 fw-bolder" t-attf-class="{{ primaryPayButton ? 'btn-primary' : 'btn-secondary' }}" t-on-click="() => currentOrder.pay()">
+                                <span class="fs-1 d-block">Pay</span>
+                                <span><t t-esc="total" /></span>
+                            </button>
+                            <button class="btn-switchpane btn w-50 btn-secondary rounded-0 fw-bolder review-button" t-on-click="switchPane">
+                                <span class="fs-1 d-block">Review</span>
+                                <span><t t-esc="items"/> items</span>
+                            </button>
+                        </div>
+                    </t>
+                </div>
+            </t>
+            <t t-else="">
+                <t t-if="pos.config.is_show_product_grid">
+                    <div class="rightpane overflow-auto d-flex flex-grow-1 flex-column bg-300 w-60" t-if="!ui.isSmall || pos.mobile_pane === 'right'">                
+                        <ProductsWidget />
+                        <t t-if="ui.isSmall">
+                            <div class="product-reminder d-flex justify-content-center align-items-center py-1 text-bg-warning bg-opacity-50 fw-bolder" t-if="state.showProductReminder" t-key="animationKey" >
+                                <span><t t-esc="selectedOrderlineQuantity"/> <t t-esc="selectedOrderlineDisplayName"/> <t t-esc="selectedOrderlineTotal"/></span>
+                            </div>
+                            <div class="switchpane d-flex h-12">
+                                <button class="btn-switchpane pay-button btn w-50 rounded-0 fw-bolder" t-attf-class="{{ primaryPayButton ? 'btn-primary' : 'btn-secondary' }}" t-on-click="() => currentOrder.pay()">
+                                    <span class="fs-1 d-block">Pay</span>
+                                    <span><t t-esc="total" /></span>
+                                </button>
+                                <button class="btn-switchpane btn w-50 btn-secondary rounded-0 fw-bolder review-button" t-on-click="switchPane">
+                                    <span class="fs-1 d-block">Review</span>
+                                    <span><t t-esc="items"/> items</span>
+                                </button>
+                            </div>
+                        </t>
+                    </div>    
+                </t>
+            </t>
+                        
+        </xpath>
+
+        <!-- Show Total Items and Total Quantity -->
+        <xpath expr="//OrderWidget" position="attributes">
+            <attribute name="isShowTotalItems">pos.config.is_show_total_items</attribute>
+            <attribute name="totalItems">totalItems</attribute>
+            <attribute name="isShowTotalQuantity">pos.config.is_show_total_quantity</attribute>            
+            <attribute name="totalQuantity">totalQuantity</attribute>
+        </xpath>
+
+    </t>
+</templates>

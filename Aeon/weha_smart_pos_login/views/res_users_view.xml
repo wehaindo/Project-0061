@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_users_form_inherit_weha_smart_pos_login" model="ir.ui.view">
+        <field name="name">res.users.view.form.inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button string="Set RFID" name="%(action_wizard_pos_rfid)d" type="action" class="oe_highlight"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="pos_login" string="POS Login">
+                    <group>
+                        <field name="rfid" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="smart_pos_wallet_view_tree" model="ir.ui.view">
+        <field name="name">smart.pos.wallet.view.tree</field>
+        <field name="model">smart.pos.wallet</field>
+        <field name="arch" type="xml">
+            <tree string="Wallet">
+                <field name="name" />
+                <field name="customer_id" />
+                <field name="amount" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="smart_pos_wallet_view_form" model="ir.ui.view">
+        <field name="name">smart.pos.wallet.view.form</field>
+        <field name="model">smart.pos.wallet</field>
+        <field name="arch" type="xml">
+            <form string="Wallet">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div>
+                        <h2>
+                            <field name="name" />
+                        </h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="customer_id" />
+                            <field name="amount" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="details" string="Details">
+                            <field name="smart_pos_wallet_detail_ids">
+                                <tree>
+                                    <field name="trans_date" />
+                                    <field name="detail_type" />
+                                    <field name="is_correction" />
+                                    <field name="end_date" />
+                                    <field name="amount" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="smart_pos_wallet_view_search" model="ir.ui.view">
+        <field name="name">smart.pos.wallet.view.search</field>
+        <field name="model">smart.pos.wallet</field>
+        <field name="arch" type="xml">
+            <search string="Search Wallet">
+                <field name="name" />
+                <field name="customer_id" />
+                <field name="state" />
+            </search>
+        </field>
+    </record>
+
+    <record id="action_smart_pos_wallet" model="ir.actions.act_window">
+        <field name="name">Wallet</field>
+        <field name="res_model">smart.pos.wallet</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                    Click to add new Smart Pos Wallet
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="weha_smart_pos_wallet_menu" 
+            name="Wallet" 
+            parent="weha_smart_pos_master_menu"
+            action="action_smart_pos_wallet" 
+            groups="group_weha_smart_pos_supervisor"
+            sequence="2"/>
+</odoo>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="SetuProductScreen" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension" owl="1">
+
+        <xpath expr="//div[hasclass('pads')]" position="after">
+            <div style="text-align: center;" class="NumpadVisibility" t-on-click="NumpadVisibility" data-hotkey="n">
+                <span class="hd_numpad">Show Numpad</span>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[hasclass('leftpane')]" position="before">
+            <xpath expr="//div[hasclass('rightpane')]" position="move"/>
+        </xpath>
+
+        <xpath expr="//div[hasclass('leftpane')]" position="attributes">
+            <attribute name="t-attf-class">
+            #{ this.currentOrder.get_orderlines().length or env.isMobile ? 'show_panel' : 'hide_panel'}
+            </attribute>
+        </xpath>
+
+        <xpath expr="//div[hasclass('rightpane')]" position="attributes">
+            <attribute name="id">rightpaneBg</attribute>
+        </xpath>
+
+        <xpath expr="//div[hasclass('rightpane')]" position="before">
+             <div class="dn_sidebar"
+                  style="border-radius: 8px;display: none;justify-content: space-between;flex-direction: column;flex-direction: column;align-items: center;">
+                 <div class="setu_control_buttons">
+                     <CashierName/>
+                 </div>
+                 <div class="bottom_bar">
+                     <img  t-attf-src="/web/image?model=res.company&amp;id=#{this.env.pos.company.id}&amp;field=logo" style="margin-bottom: 14px;padding: 0 8px;max-width: 185px;position: relative;left: 50%;transform: translate(-50%,0);"/>
+                 </div>
+                 <span class="breadcrumb-button breadcrumb-home close_side_bar_menu" t-if="env.isMobile" t-on-click="_closeSideBar"><i role="img" aria-label="menu" title="menu" class="fa fa-close"></i></span>
+             </div>
+        </xpath>
+
+
+        <xpath expr="//div[hasclass('setu_control_buttons')]" position="inside">
+            <div class="control-buttons">
+                <t t-foreach="controlButtons" t-as="cb" t-key="cb.name">
+                    <t t-component="cb.component" t-key="cb.name"/>
+                </t>
+            </div>
+        </xpath>
+
+
+        <xpath expr="//div[hasclass('control-buttons')]" position="inside">
+             <CashMoveButton/>
+            <TicketButton/>
+                <CustomerFacingDisplayButton t-if="this.env.pos.config.iface_customer_facing_display"/>
+                <HeaderButton/>
+        </xpath>
+	 <xpath expr="//t[@t-if='env.isMobile and controlButtons.length > 3']/div[hasclass('control-button')]" position="attributes">
+            <attribute name="class" separator=" " add="more_button"/>
+        </xpath>
+    </t>
+
+
+    <t t-inherit="point_of_sale.OrderSummary" t-inherit-mode="extension" owl="1">
+         <xpath expr="//div[hasclass('summary')]/div[hasclass('line')]/div[hasclass('entry')]/div[hasclass('subentry')]" position="before">
+             <div class="subentry">
+                    <t t-set="total_items" t-value="getTotalItems()" />
+                            Total Items:
+                            <span class="value" id="total_items">
+                                    <t t-esc="total_items"/>
+                            </span>
+                     </div>
+             <div class="subentry">
+                    <t t-set="total_qty" t-value="getTotalQty()" />
+                             Total Qty:
+                             <span class="value" id="total_qty">
+                                    <t t-esc="total_qty"/>
+                             </span>
+                     </div>
+         </xpath>
+    </t>
+
+    <t t-inherit="point_of_sale.CashierName" t-inherit-mode="extension" owl="1">
+         <xpath expr="//span[hasclass('username')]" position="before">
+             <div class="user_info_panel">
+                <SyncNotification/>
+             </div>
+         </xpath>
+        <xpath expr="//div[hasclass('user_info_panel')]" position="inside">
+            <xpath expr="//span[hasclass('username')]" position="move"/>
+        </xpath>
+        <xpath expr="//span[@t-if ='!env.isMobile']" position="attributes">
+            <attribute name="t-if"></attribute>
+        </xpath>
+    </t>
+
+    <t t-inherit="point_of_sale.TicketButton" t-inherit-mode="extension" owl="1">
+         <xpath expr="//div[@t-if ='!env.isMobile']" position="attributes">
+            <attribute name="t-if"></attribute>
+        </xpath>
+    </t>
+
+    <t t-inherit="point_of_sale.HeaderButton" t-inherit-mode="extension" owl="1">
+         <xpath expr="//t[@t-if ='!env.isMobile']" position="attributes">
+            <attribute name="t-if"></attribute>
+        </xpath>
+    </t>
+
+
+</templates>

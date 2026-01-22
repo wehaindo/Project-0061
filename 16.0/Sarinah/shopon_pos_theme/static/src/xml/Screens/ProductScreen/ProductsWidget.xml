@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.ProductsWidget" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('product-list-container')]" position="attributes">
+            <attribute name="id">setu_main_products</attribute>
+        </xpath>
+         <xpath expr="//div[hasclass('product-list')]" position="attributes">
+            <attribute name="t-attf-class">
+            #{ env.pos.config.setu_layout_view == 'grid_view' ? '' : 'list_view'}
+            </attribute>
+        </xpath>
+    </t>
+</templates>

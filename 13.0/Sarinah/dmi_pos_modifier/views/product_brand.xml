@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="srn_extra_field_location_lantai_luas_product_brand_inherit" model="ir.ui.view">
+            <field name="name">Product Brand Inherit</field>
+            <field name="model">product.brand</field>
+            <field name="inherit_id" ref="bi_product_brand.product_brand_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/group" position="after">
+                    <group>
+                        <field name="location_id"/>
+                        <field name="lantai"/>
+                        <field name="luas"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> 

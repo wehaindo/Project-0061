@@ -1,0 +1,16 @@
+.pos .pos-receipt-container > div {
+    width: 280px;
+    font-size: 12px;
+}
+
+.pos-receipt .pos-receipt-contact {
+    text-align: center;
+    font-size: 100%;
+}
+
+
+.pos-receipt .pos-receipt-amount {
+    padding-left: 0em;
+    font-size: 100%;
+    font-weight: 300;
+}

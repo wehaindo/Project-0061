@@ -1,0 +1,15 @@
+
+<odoo>
+  <record id="ir_cron_consignment_monthly_settlement" model="ir.cron">
+    <field name="name">Consignment: Monthly settlement generation</field>
+    <field name="model_id" ref="model_consignment_settlement"/>
+    <field name="state">code</field>
+    <field name="code">model.cron_generate_monthly_settlements()</field>
+    <field name="active">True</field>
+    <field name="interval_number">1</field>
+    <field name="interval_type">months</field>
+    <field name="numbercall">-1</field>
+    <field name="doall" eval="False"/>
+    <field name="nextcall">2025-10-01 02:00:00</field>
+  </record>
+</odoo>

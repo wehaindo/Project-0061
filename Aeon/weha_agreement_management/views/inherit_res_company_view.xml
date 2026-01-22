@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="res_company_settings" model="ir.ui.view">
+        <field name="name">Res Company Settings</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Contract Settings">
+                    <group>
+                        <group string="Product Rebate">
+                            <field name="rebate_product_id" />
+                            <field name="journal_id" />
+                            <field name="account_id" />
+                        </group>
+                    </group>
+                </page>
+
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

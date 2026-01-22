@@ -1,0 +1,64 @@
+odoo.define('weha_smart_pos_bag_charge.BagChargePopup', function (require) {
+    'use strict';
+
+    const AbstractAwaitablePopup = require('point_of_sale.AbstractAwaitablePopup');
+    const Registries = require('point_of_sale.Registries');
+    const { _lt } = require('@web/core/l10n/translation');
+
+    const { useState } = owl;
+
+    // formerly SelectionPopupWidget
+    class BagChargePopup extends AbstractAwaitablePopup {
+        /**
+         * Value of the `item` key of the selected element in the Selection
+         * Array is the payload of this popup.
+         *
+         * @param {Object} props
+         * @param {String} [props.confirmText='Confirm']
+         * @param {String} [props.cancelText='Cancel']
+         * @param {String} [props.title='Select']
+         * @param {String} [props.body='']
+         * @param {Array<Selection>} [props.list=[]]
+         *      Selection {
+         *          id: integer,
+         *          label: string,
+         *          isSelected: boolean,
+         *          item: any,
+         *      }
+         */
+        setup() {
+            super.setup();
+            this.state = useState(
+                { 
+                    selectedId: this.props.list.find((item) => item.isSelected) 
+                }
+            );
+        }
+        
+        selectItem(itemId) {
+            this.state.selectedId = itemId;
+            this.confirm();
+        }
+        /**
+         * We send as payload of the response the selected item.
+         *
+         * @override
+         */
+        getPayload() {
+            const selected = this.props.list.find((item) => this.state.selectedId === item.id);
+            return selected && selected.item;
+        }
+    }
+    BagChargePopup.template = 'BagChargePopup';
+    BagChargePopup.defaultProps = {
+        cancelText: _lt('Cancel'),
+        title: _lt('Select'),
+        body: '',
+        list: [],
+        confirmKey: false,
+    };
+
+    Registries.Component.add(BagChargePopup);
+
+    return BagChargePopup;
+});

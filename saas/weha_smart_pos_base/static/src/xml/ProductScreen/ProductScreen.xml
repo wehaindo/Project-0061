@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<templates id="template" xml:space="preserve">    
+    <!-- <t t-name="ButtonList" owl="1">
+        
+    </t> -->
+
+    <t t-name="ProductScreen" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension" owl="1">        
+        
+        <xpath expr="//div[hasclass('control-buttons')]" position="replace">
+            <t t-if="env.isMobile">
+                <div class="control-buttons">
+                    <t t-if="controlButtons.length > 3">
+                        <div class="control-button" t-on-click="_displayAllControlPopup">More...</div>
+                    </t>
+                </div>
+            </t>
+        </xpath>
+
+        <xpath expr="//div[hasclass('leftpane')]" position="before">
+            <div class="buttonpane" t-if="!env.isMobile || mobile_pane === 'button'">
+                <div class="control-buttons">
+                    <t t-if="env.isMobile and controlButtons.length > 1">
+                        <div class="control-button" t-on-click="_displayAllControlPopup">More...</div>
+                    </t>
+                    <t t-else="">
+                        <t t-foreach="controlButtons" t-as="cb" t-key="cb.name">
+                            <t t-component="cb.component" t-key="cb.name"/>
+                        </t>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[hasclass('rightpane')]" position="replace">
+            <!-- <attribute name="t-att-style">'display: none;' if  env.pos.config.is_show_product_grid else ''</attribute>  -->
+            <!-- <attribute name="t-att-hidden">!env.pos.config.is_show_product_grid</attribute> -->
+            <t t-if="env.pos.config.is_show_product_grid == true">
+                <div class="rightpane" t-if="!env.isMobile || state.mobile_pane === 'right' || env.pos.config.is_show_product_grid">
+                    
+                        <ProductsWidget mobileSearchBarIsShown="props.mobileSearchBarIsShown"/>
+                    
+                    <MobileOrderWidget t-if="env.isMobile" pane="state.mobile_pane" onSwitchPane.bind="switchPane"/>
+                    
+                </div>
+            </t>
+        </xpath>
+
+    </t>
+</templates>

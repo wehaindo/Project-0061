@@ -1,0 +1,50 @@
+odoo.define('weha_smart_pos_aeon_pos_access_rights.SupervisorGridPopup', function(require) {
+    'use strict';
+
+    const AbstractAwaitablePopup = require('point_of_sale.AbstractAwaitablePopup');
+    const Registries = require('point_of_sale.Registries');
+    const { _lt } = require('@web/core/l10n/translation');
+    const { useState } = owl;
+
+    class SupervisorGridPopup extends AbstractAwaitablePopup {
+        /**
+         * @param {Object} props
+         * @param {string} props.startingValue
+         */
+        setup() {
+            super.setup();
+            this.parent = this.props.parent;
+            this.employees = this.props.employees;
+            console.log('employees');
+            console.log(this.employees);
+            this.state = useState({ selectedId: this.props.employees.find((item) => item.isSelected) });
+        }
+
+        selectItem(itemId) {
+            this.state.selectedId = itemId;
+            this.confirm();
+        }
+
+        /**
+         * We send as payload of the response the selected item.
+         *
+         * @override
+         */
+        getPayload() {
+            const selected = this.props.employees.find((item) => this.state.selectedId === item.id);
+            return selected && selected.item;
+        }
+    }
+    SupervisorGridPopup.template = 'SupervisorGridPopup';
+    SupervisorGridPopup.defaultProps = {
+        cancelText: _lt('Back'),
+        controlButtons: [],
+        confirmKey: false,
+    };
+
+    
+
+    Registries.Component.add(SupervisorGridPopup);
+
+    return SupervisorGridPopup;
+});

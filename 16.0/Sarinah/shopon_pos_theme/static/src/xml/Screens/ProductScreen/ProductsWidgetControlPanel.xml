@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.ProductsWidgetControlPanel" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('search-bar-container')]" position="inside">
+            <button class="btnLayout" t-attf-class="#{ env.pos.config.setu_layout_view == 'grid_view' ? '' : 'd-none'}"
+                    data-hotkey="l" type="button" id="list_view" t-on-click="onToggleLayout" data-bs-toggle="tooltip" title="List View"><i class="fa fa-list"></i></button>
+            <button class="btnLayout" t-attf-class="#{ env.pos.config.setu_layout_view == 'grid_view' ? 'd-none' : ''}"
+                    data-hotkey="l" type="button" id="grid_view" t-on-click="onToggleLayout" data-bs-toggle="tooltip" title="Grid View"><i class="fa fa-th"></i></button>            
+        </xpath>
+
+        <xpath expr="//div[hasclass('search-bar-container')]/t[@t-if='!env.isMobile || props.mobileSearchBarIsShown']" position="replace">
+        </xpath>
+        <xpath expr="//div[hasclass('search-bar-container')]/span[@t-if='env.isMobile']" position="replace">
+        </xpath>
+
+
+
+        <xpath expr="//span[hasclass('breadcrumb')]" position="inside">
+               <div class="search-bar-container sb-product">
+                        <span class="oe_status oe_icon icon breadcrumb-button breadcrumb-home"
+                              t-on-click="_toggleMobileSearchbar">
+                            <i t-attf-class="fa {{props.mobileSearchBarIsShown ? 'fa-arrow-left' : 'fa-search'}}"/>
+                        </span>
+                   <t t-if="props.mobileSearchBarIsShown">
+                            <div class="pos-search-bar">
+                                <i class="fa fa-search"/>
+                                <input t-ref="search-word-input-product" placeholder="Search Products..." type="text"
+                                       autofocus="autofocus" t-on-keyup="updateSearch"/>
+                                <i class="fa fa-times search-clear-partner" t-on-click="_clearSearch"/>
+                            </div>
+                        </t>
+                    </div>
+                <span class="breadcrumb-button breadcrumb-home" t-if="!env.isMobile" t-on-click="_toggleSideBar">
+                    <i role="img" aria-label="menu" title="menu" class="fa fa-bars" data-hotkey="m"></i>
+                </span>
+       </xpath>
+        <xpath expr="//t[@t-if='!props.hasNoCategories']" position="before">
+            <t t-if="props.hasNoCategories">
+                <div class="categories-header">
+                    <div class="breadcrumbs">
+                        <span class="breadcrumb-button breadcrumb-home" t-if="!env.isMobile" t-on-click="_toggleSideBar">
+                            <i role="img" aria-label="menu" title="menu" class="fa fa-bars" data-hotkey="m"></i>
+                        </span>
+                       <div class="search-bar-container sb-product">
+                           <span class="oe_status oe_icon icon breadcrumb-button breadcrumb-home" t-on-click="_toggleMobileSearchbar">
+                               <i t-attf-class="fa {{props.mobileSearchBarIsShown ? 'fa-arrow-left' : 'fa-search'}}"/>
+                           </span>
+                           <t t-if="props.mobileSearchBarIsShown">
+                                <div class="pos-search-bar">
+                                    <i class="fa fa-search"/>
+                                    <input t-ref="search-word-input-product" placeholder="Search Products..." type="text"
+                                           autofocus="autofocus" t-on-keyup="updateSearch"/>
+                                    <i class="fa fa-times search-clear-partner" t-on-click="_clearSearch"/>
+                                </div>
+                            </t>
+                       </div>
+                    </div>
+                </div>
+            </t>
+         </xpath>
+
+        <!--        <xpath expr="//t[@t-if='!props.hasNoCategories']" position="attributes">-->
+        <!--            <attribute name="t-if">true</attribute>-->
+        <!--        </xpath>-->
+
+    </t>
+</templates>

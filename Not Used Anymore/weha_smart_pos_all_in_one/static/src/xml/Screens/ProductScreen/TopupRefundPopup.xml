@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<templates id="template" inherit_id="point_of_sale.template" xml:space="preserve"> 
+    
+    <t t-name="TopupButtonWidget" name="Topup Button Widget" owl="1">
+        <div class="control-button button confirm" id="pos_topup_button" t-on-click="renderElement">
+            <i class="fa fa-shopping-bag"></i> Topup 
+        </div>
+   	</t>
+
+    <t t-name="TopupPopupWidget" owl="1">
+        <div class="modal-dialog">
+            <div class="popup popup-confirm" style="height: 350px;">
+                <p class="title" style="background-color: #875a7b; color: #fff;">Topup Wallet</p>
+                <div class="body">
+                    <div class='div-container' style="height: 200px;">
+                        <input type="text"/>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="button" id="button_10000">
+                                        <i class="fa fa-shopping-bag"></i> 10000 
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="button" id="button_20000">
+                                        <i class="fa fa-shopping-bag"></i> 20000 
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="button" id="button_50000">
+                                        <i class="fa fa-shopping-bag"></i> 50000
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="button" id="button_100000">
+                                        <i class="fa fa-shopping-bag"></i> 100000
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                
+                                </td>
+                                <td>
+                                
+                                </td>
+                                <td>
+                                
+                                </td>
+                                 <td>
+                                
+                                </td>
+                            </tr>
+
+                        </table>
+                       
+                       
+                       
+                    </div>
+		        </div>
+
+                <div class="footer" style="background-color: #875a7b; color: #fff;position:fixed;bottom:0;">
+                	<div class="button cancel" t-on-click="go_back_screen">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+     <t t-name="RefundButtonWidget" name="Refund Button Widget" owl="1">
+        <div class="control-button button confirm" id="pos_refund_button">
+            <i class="fa fa-shopping-bag"></i> Refund 
+        </div>
+   	</t>
+
+
+    <t t-name="RefundPopupWidget" owl="1">
+        <div class="modal-dialog">
+            <div class="popup popup-confirm" style="height: 350px">
+                <p class="title">Refund Card</p>
+                <div class="body">
+                </div>
+                <div class="footer">
+                    <div class="button cancel" t-on-click="go_back_screen">
+                        Cancel 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

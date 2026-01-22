@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_aspl_gift_voucher,access_aspl_gift_voucher,model_aspl_gift_voucher,base.group_user,1,1,1,1
+access_aspl_gift_voucher_redeem,access_aspl_gift_voucher_redeem,model_aspl_gift_voucher_redeem,base.group_user,1,1,1,1

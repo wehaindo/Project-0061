@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pos_cash_count,pos.cash.count,model_pos_cash_count,point_of_sale.group_pos_user,1,1,1,1
+access_pos_cash_count_detail,pos.cash.count.detail,model_pos_cash_count_detail,point_of_sale.group_pos_user,1,1,1,1

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="agreement_rebate_settlement_sequence" model="ir.sequence">
+        <field name="name">Agreement rebate settlement</field>
+        <field name="code">agreement.rebate.settlement</field>
+        <field eval="4" name="padding" />
+        <field name="prefix">ARS</field>
+    </record>
+    <record id="contract_conces_settlement_sequence" model="ir.sequence">
+        <field name="name">Contract Conces settlement</field>
+        <field name="code">contract.conces.settlement</field>
+        <field eval="4" name="padding" />
+        <field name="prefix">CS</field>
+    </record>
+    <record id="contract_outright_settlement_sequence" model="ir.sequence">
+        <field name="name">Contract Outright settlement</field>
+        <field name="code">contract.outright.settlement</field>
+        <field eval="4" name="padding" />
+        <field name="prefix">OS</field>
+    </record>
+    <record id="agreement_type_rebate_sale" model="agreement.type">
+        <field name="name">Rebate agreements for sales</field>
+        <field name="is_rebate">True</field>
+        <field name="domain">sale</field>
+    </record>
+    <record id="agreement_type_rebate_purchase" model="agreement.type">
+        <field name="name">Rebate agreements for purchases</field>
+        <field name="is_rebate">True</field>
+        <field name="domain">purchase</field>
+    </record>
+    <record id="agreement_type_rebate_pointofsale" model="agreement.type">
+        <field name="name">Rebate agreements for point of sale</field>
+        <field name="is_rebate">True</field>
+        <field name="domain">pointofsale</field>
+    </record>
+</odoo>

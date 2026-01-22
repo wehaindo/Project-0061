@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ScanQrCode">
+        <center>
+            <img class="payment_qr_code_disable" style="width:150px;height:150px;" src="/weha_smart_pos_qris/static/src/img/QR-Code.png" id="paymentQrCode"/>
+        </center>
+    </t>    
+    
+    <template  t-name="weha_smart_pos_qris.CustomerFacingDisplayHead" t-inherit="point_of_sale.CustomerFacingDisplayHead"  t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('resources')]" position="inside">
+            <link rel="stylesheet" type="text/css" href="/web/static/lib/bootstrap/dist/css/bootstrap.css"/> 
+            <link rel="stylesheet" type="text/css" href="/weha_smart_pos_qris/static/src/css/pos_qris.css"/>             
+        </xpath>
+    </template>
+
+    <template  t-name="weha_smart_pos_qris.CustomerFacingDisplayQrCode" t-inherit="point_of_sale.CustomerFacingDisplayOrder"  t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('pos-company_logo')]" position="after">
+            <t t-call="ScanQrCode"/> 
+        </xpath>
+    </template>
+</templates>

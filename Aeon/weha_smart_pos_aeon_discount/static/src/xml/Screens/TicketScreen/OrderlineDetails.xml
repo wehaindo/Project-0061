@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="OrderlineDetails" t-inherit="point_of_sale.OrderlineDetails" t-inherit-mode="extension" owl="1"> 
+        <xpath expr="//li[hasclass('info')]" position="after">                       
+            <t t-if="get_discount() > 0">
+                <li class="discount-info">
+                    <t t-if="get_discount_type() == 'memberday'">
+                        <span>AEON Member Disc: <t t-esc="get_discount()"/>%</span>
+                    </t>
+                    <t t-else="">
+                        <span>Discount: <t t-esc="get_discount()"/>%</span>
+                    </t>            
+                </li>
+            </t>            
+        </xpath>
+    </t>
+</templates>

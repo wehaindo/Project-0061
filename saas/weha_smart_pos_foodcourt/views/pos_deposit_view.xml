@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_pos_deposit_tree" model="ir.ui.view">
+            <field name="name">pos.deposit.tree</field>
+            <field name="model">pos.deposit</field>
+            <field name="arch" type="xml">
+                <tree create="false" default_order="order_id asc">
+                    <field name="customer_id"/>
+                    <field name="order_id"/>
+                    <field name="cashier_id"/>
+                    <field name="type"/>
+                    <field name="debit"/>
+                    <field name="credit"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pos_deposit_search" model="ir.ui.view">
+            <field name="name">pos.deposit.search</field>
+            <field name="model">pos.deposit</field>
+            <field name="arch" type="xml">
+                <search string="POS Deposit">
+                    <field name="customer_id" />
+                    <field name="cashier_id" />
+                    <field name="order_id"/>
+                    <field name="create_date"/>
+                    <filter string="Change" name="type" domain="[('type','=','change')]"/>
+                    <filter string="Return" name="type" domain="[('type','=','return')]"/>
+                    <filter string="Credit" name="type" domain="[('credit','>','0')]"/>
+                    <filter string="Debit" name="type" domain="[('debit','>','0')]"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Customer" name="customer_id" context="{'group_by':'customer_id'}"/>
+                        <filter string="Cashier" name='cashier_id' context="{'group_by':'cashier_id'}"/>
+                        <filter string="Type" name='type' context="{'group_by':'type'}" domain="['|',('type','=','change'),('type','=','return')]"/>
+                        <filter name="group_by_month" string="Creation Date" domain="[]" context="{'group_by':'create_date:day'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+         <!-- <record id="wallet_account_line_tree_view" model="ir.ui.view">
+            <field name="name">wallet.account.line.tree.view</field>
+            <field name="model">account.move.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date"/>
+                    <field name="account_id"/>
+                    <field name="move_id"/>
+                    <field name="name"/>
+                    <field name="debit"/>
+                    <field name="credit"/>
+                    <field name="balance"/>
+                </tree>
+            </field>
+        </record> -->
+
+        <record id="action_pos_deposit" model="ir.actions.act_window">
+            <field name="name">Deposit</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos.deposit</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem id="menu_deposit_main" name="Deposit" parent="point_of_sale.menu_point_root"/>
+        <menuitem id="menu_pos_deposit" 
+            action="action_pos_deposit"  
+            name="Deposit" 
+            parent="menu_deposit_main" 
+            sequence='1'/>
+
+    </data>
+</odoo>

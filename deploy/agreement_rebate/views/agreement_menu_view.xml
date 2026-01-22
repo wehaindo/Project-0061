@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<odoo>
+    <menuitem
+        id="agreement_rebate_settlement_menu_root"
+        name="Settlements"
+        parent="agreement.agreement_menu_root"
+        groups="group_use_agreement_rebate"
+        sequence="10"
+    />
+    <!-- <menuitem
+        id="agreement_rebate_settlement_menu"
+        action="agreement_rebate_settlement_action"
+        name="Settlements"
+        parent="agreement_rebate_settlement_menu_root"
+        sequence="10"
+    /> -->
+    <menuitem
+        id="contract_conces_settlement_menu"
+        action="action_conces_act_window"
+        name="Consigment Settlements"
+        parent="agreement_rebate_settlement_menu_root"
+        sequence="11"
+    />
+    <menuitem
+        id="contract_outright_settlement_menu"
+        action="action_outright_act_window"
+        name="Outright Settlements"
+        parent="agreement_rebate_settlement_menu_root"
+        sequence="12"
+    />
+    <!-- <menuitem
+        id="agreement_rebate_settlement_line_menu"
+        action="agreement_rebate_settlement_line_action"
+        name="Settlement Lines"
+        parent="agreement_rebate_settlement_menu_root"
+        sequence="20"
+    />
+    <menuitem
+        id="agreement_settlement_create_menu"
+        action="agreement_settlement_create_action"
+        name="Create settlements"
+        parent="agreement_rebate_settlement_menu_root"
+        sequence="60"
+    /> -->
+    <menuitem
+        id="contract_settlement_create_menu"
+        action="contract_settlement_create_action"
+        name="Create Settlements"
+        parent="agreement_rebate_settlement_menu_root"
+        sequence="61"
+    />
+    <menuitem
+        id="contract_invoice_create_menu"
+        action="contract_invoice_create_action"
+        name="Process Settlements"
+        parent="agreement_rebate_settlement_menu_root"
+        sequence="71"
+    />
+    <!-- <menuitem
+        id="agreement_rebate_settings_menu"
+        action="agreement_config_settings_action"
+        name="Settings"
+        parent="agreement.agreement_config_menu"
+        groups="group_use_agreement_rebate"
+        sequence="10"
+    /> -->
+    <!-- <menuitem
+        id="agreement_rebate_condition_menu"
+        action="agreement_rebate_condition_action"
+        name="Rebate conditions"
+        parent="agreement.agreement_setting_menu"
+        groups="group_use_agreement_rebate"
+        sequence="10"
+    /> -->
+</odoo>

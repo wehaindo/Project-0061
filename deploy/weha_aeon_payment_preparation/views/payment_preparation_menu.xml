@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem 
+        name="Payment Preparation"
+        id="menu_action_account_payment_preparation" 
+        action="account_payment_preparation_action" 
+        parent="account.menu_finance_payables" 
+        sequence="21"/>
+
+</odoo>

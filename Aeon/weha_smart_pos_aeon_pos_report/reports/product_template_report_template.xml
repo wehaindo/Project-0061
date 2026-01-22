@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <report
+       id="product_template_report"
+       model="wizard.product.template.report"
+       string="Product Template Report"
+       report_type="xlsx"
+       name="weha_smart_pos_aeon_pos_report.product_template_report"
+       file="Product Template Report"
+       attachment_use="False"/>
+</odoo>

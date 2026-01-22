@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_view_form_inherit_gift_order" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.gift</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='pos_technical_section']" position="after">
+                    <h2 name="order">Gift Voucher</h2>
+                    <div class="row mt16 o_settings_container" id="pos_wallet">
+                        <div class="col-xs-12 col-md-6 o_setting_box" id="enable_wallet">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_enable_gift_voucher"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_enable_gift_voucher"/>
+                                <div class="text-muted" id="pos_enable_wallet">
+                                    Enable to use Gift Voucher in POS Interface.
+                                </div>
+                                <div class="content-group mt16"
+                                     attrs="{'invisible' : [('pos_enable_gift_voucher', '=',False)],'required':[('pos_enable_gift_voucher','==',True)]}">
+                                    <div class="row mt16">
+                                        <label string="Account" for="pos_gift_voucher_account_id"
+                                               class="col-md-3 o_light_label"/>
+                                        <field name="pos_gift_voucher_account_id"
+                                               attrs="{'invisible':[('pos_enable_gift_voucher','=',False)],'required':[('pos_enable_gift_voucher','=',True)]}"
+                                               options="{'no_create': True,'no_open':True, 'no_edit': True}"/>
+                                    </div>
+                                </div>
+                                <div class="content-group mt16"
+                                     attrs="{'invisible' : [('pos_enable_gift_voucher', '=', False)],'required':[('pos_enable_gift_voucher','==',True)]}">
+                                    <div class="row mt16">
+                                        <label string="Payment Method" for="pos_gift_voucher_payment_method"
+                                               class="col-md-3 o_light_label"/>
+                                        <field name="pos_gift_voucher_payment_method"
+                                               domain="[('allow_for_gift_voucher', '=', True)]"
+                                               attrs="{'invisible':[('pos_enable_gift_voucher','=',False)],'required':[('pos_enable_gift_voucher','=',True)]}"
+                                               context="{'pos_payment_method_ids': pos_payment_method_ids, 'config_jr': True}"
+                                               options="{'no_create': True,'no_open':True, 'no_edit': True}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

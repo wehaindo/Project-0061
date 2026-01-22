@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <menuitem id="menu_pos_enhancement"
+                name="Enhancements"
+                parent="point_of_sale.menu_point_root"
+                groups="point_of_sale.group_pos_manager"
+                sequence="11"
+        />
+    </data>
+</odoo>

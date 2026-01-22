@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem
+        id="menu_weha_pos_root"
+        name="WEHA POS"
+        groups="group_pos_manager,group_pos_user"
+        web_icon="weha_pos,static/description/icon.svg"
+        sequence="50"/>
+
+    <!-- Orders menu -->
+    <menuitem id="menu_weha_pos_orders"
+        name="Orders"
+        parent="menu_weha_pos_root"
+        sequence="10"/>
+
+    <!-- Reporting menu -->
+    <menuitem id="menu_weha_pos_rep"
+        name="Reporting"
+        parent="menu_weha_pos_root"
+        sequence="90"
+        groups="group_pos_manager"/>
+
+    <!-- Config menu and sub menus -->
+    <menuitem id="menu_weha_pos_configuration"
+        name="Configuration"
+        parent="menu_weha_pos_root"
+        sequence="100"
+        groups="group_pos_manager"/>
+ 
+        
+</odoo>

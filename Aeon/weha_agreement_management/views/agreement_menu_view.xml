@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="agreement_menu_root"
+        name="Agreements"
+        web_icon="agreement,static/description/icon.png"
+        sequence="10"
+    />
+    <!-- ########### -->
+    <menuitem
+        id="agreement_menu"
+        name="Agreements"
+        parent="agreement_menu_root"
+        sequence="0"
+    />
+    <menuitem
+        id="contract_menu"
+        action="agreement_contract_action"
+        name="Contracts"
+        parent="agreement_menu"
+        sequence="1"
+    />
+    <menuitem
+        id="rebate_menu"
+        action="contract_rebate_action"
+        name="Rebates"
+        parent="agreement_menu"
+        sequence="2"
+    />
+    <menuitem
+        id="deduction_menu"
+        action="contract_deduction_action"
+        name="Deductions"
+        parent="agreement_menu"
+        sequence="3"
+    />
+    <menuitem
+        id="supplier_menu"
+        action="contacts.action_contacts"
+        name="Suppliers"
+        parent="agreement_menu_root"
+        sequence="1"
+    />
+    <menuitem
+        id="product_menu"
+        action="point_of_sale.product_template_action_pos_product"
+        name="Products"
+        parent="agreement_menu_root"
+        sequence="2"
+    />
+    <!-- ########### -->
+    <menuitem
+        id="data_processing_menu"
+        name="Data Processing"
+        parent="agreement_menu_root"
+        sequence="3"
+    />
+    <menuitem
+        id="conces_settlement_menu"
+        action="action_conces_settlement"
+        name="Profit Details"
+        parent="data_processing_menu"
+        sequence="1"
+    />
+    <menuitem
+        id="outright_settlement_menu"
+        action="contract_rebate_settlement_action"
+        name="Rebate Details"
+        parent="data_processing_menu"
+        sequence="2"
+    />
+    <menuitem
+        id="generate_profit_menu"
+        action="action_process_profit"
+        name="Process Profit"
+        parent="data_processing_menu"
+        sequence="7"
+    />
+    <menuitem
+        id="generate_settlement_menu"
+        action="action_process_rebate"
+        name="Process Rebate"
+        parent="data_processing_menu"
+        sequence="8"
+    />
+    <menuitem
+        id="copy_contract_rebate_menu"
+        action="action_copy_contract_rebate"
+        name="Copy Contract Rebate"
+        parent="data_processing_menu"
+        sequence="12"
+    />
+    <!-- <menuitem
+        id="agreement_setting_menu"
+        name="Settings"
+        parent="agreement_menu_root"
+        sequence="20"
+    /> -->
+</odoo>

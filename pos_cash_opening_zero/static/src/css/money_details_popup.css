@@ -1,0 +1,11 @@
+.pos .popup.money-details {
+    max-width: 800px !important;
+    max-height: 800px;
+    width: 100%;
+}
+
+.pos .money-details .money-details-table {
+    width: 100%;
+}
+
+

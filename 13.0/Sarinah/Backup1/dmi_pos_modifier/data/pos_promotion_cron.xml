@@ -1,0 +1,25 @@
+<odoo>
+    <data noupdate="1">
+<!--        <record id="ir_cron_expired_promotions" model="ir.cron">-->
+<!--            <field name="name">Cron Expired Promotions</field>-->
+<!--            <field name="model_id" ref="model_srn_pos_product_discount"/>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="code">model.cron_expired_promotions()</field>-->
+<!--            <field name="active" eval="True"/>-->
+<!--            <field name="interval_type">days</field>-->
+<!--            <field name="interval_number">1</field>-->
+<!--            <field name="numbercall" eval="-1"/>-->
+<!--            <field name="nextcall" eval="(datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d 00:00:01')"/>-->
+<!--        </record>-->
+    <record id="ir_cron_action_generate_pos_inventory_adjusment" model="ir.cron">
+        <field name="name">Action Generate POS Promotion Inventory Adjustment</field>
+        <field name="model_id" ref="model_srn_pos_product_discount"/> 
+        <field name="state">code</field>
+        <field name="code">model._cron_generate_pos_inventory_adjusment()</field>  
+        <field name="user_id" ref="base.user_admin"/> 
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">False</field>
+    </record>
+    </data>
+</odoo>

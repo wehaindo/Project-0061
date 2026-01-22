@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ProductShowButton" owl="1">
+        <div class="oe_status" t-on-click="onClick">
+            <div class="js_connected oe_icon"
+                title="Show or Hide Product Grid">
+                <i class="fa fa-fw fa-list" role="img" aria-label="Product Grid"></i>
+            </div>
+        </div>
+    </t>
+
+</templates>

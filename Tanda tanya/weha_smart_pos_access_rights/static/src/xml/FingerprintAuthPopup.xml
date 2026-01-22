@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="FingerprintAuthPopup" owl="1">
+        <div class="popup fingerprint-auth-popup">
+            <header class="title">
+                Fingerprint Authentication
+            </header>
+            <main class="body">
+
+            </main>
+            <footer class="footer">
+                <div class="button cancel" t-on-click="cancel">Cancel</div>
+                <div class="button confirm" t-on-click="confirm">Confirm</div>
+            </footer>
+        </div>
+    </t>
+</templates>

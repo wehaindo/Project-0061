@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_contract_settlement_create_wiz" model="ir.ui.view">
+        <field name="name">contract.settlement.create.wiz</field>
+        <field name="model">contract.settlement.create.wiz</field>
+        <field name="arch" type="xml">
+            <form string="Create Settlements">
+                <group>
+                    <field name="date" />
+                    <field name="date_from" />
+                    <field name="date_to" />
+                    <field name="supplier_sub_type" />
+                    <!-- <field name="jurnal_id" /> -->
+                </group>
+                <footer>
+                    <button
+                        string="Create settlements"
+                        name="action_create_settlement"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="contract_settlement_create_action" model="ir.actions.act_window">
+        <field name="name">Create Settlement</field>
+        <field name="res_model">contract.settlement.create.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

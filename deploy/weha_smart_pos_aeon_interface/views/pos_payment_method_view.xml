@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_payment_method_view_form_weha_smart_pos_aoen_interface" model="ir.ui.view">
+      <field name="name">pos.payment.method.form.inherit.aoen.interface</field>
+      <field name="model">pos.payment.method</field>
+      <field namse="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+      <field name="arch" type="xml">
+          <xpath expr="//field[@name='use_payment_terminal']" position="after">
+                <field name="terminal_id" attrs="{'invisible': [('use_payment_terminal', '!=', 'bca_ecr')], 'required': [('use_payment_terminal', '=', 'bca_ecr')]}"/>
+          </xpath>
+      </field>
+    </record>
+</odoo>

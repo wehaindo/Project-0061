@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="CashInOutReceipt" owl="1">
+        <div class="pos-receipt">
+            <h2 class="pos-receipt-center-align">                
+                <span t-esc="header"/>
+            </h2>
+            <div>
+                <span>Store : <t t-esc="storeName"/></span>
+                <span t-esc="dateTrans" class="pos-receipt-right-align"/>
+            </div>
+            <div>                
+                <span>Staff : <t t-esc="cashier"/></span>
+                <span  class="pos-receipt-right-align">
+                    Auth.Staff : <t t-esc="supervisor"/>
+                </span>
+            </div>
+            <div>
+                <div>----------------------------------------</div>
+            </div>           
+            
+            <t t-if="type == 'in'">
+                <div class="responsive-price">
+                    <t t-esc="'Total'"/>
+                    <span t-esc="amount" class="pos-receipt-right-align"/>
+                </div>        
+            </t>
+            <t t-if="type == 'out'">
+                <div class="responsive-price">
+                    <t t-esc="'Total'"/>
+                    <span t-esc="amount" class="pos-receipt-right-align"/>
+                </div>   
+            </t>
+            <t t-if="type == 'count'">
+                <t t-foreach="details" t-as="detail" t-key="detail.value">
+                    <div class="responsive-price">
+                        <t t-esc="detail.description"/>
+                        <t t-esc="detail.quantity"/>
+                        <span t-esc="env.pos.format_currency(detail.total)" class="pos-receipt-right-align"/>
+                    </div>        
+                </t>
+            </t>
+            <br />
+        </div>
+    </t>
+</templates>

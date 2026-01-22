@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_branch_form_inherit" model="ir.ui.view">
+        <field name="name">branch.form.inherit</field>
+        <field name="model">res.branch</field>
+        <field name="inherit_id" ref="multi_branch_base.view_branch_form"/>
+        <field name="arch" type="xml">
+            <field name="couchdb_name" position="after">
+                <!-- <field name="couchdb_product_categories"/> -->
+                <field name="couchdb_product_pricelist_items"/>      
+                <!-- <field name="couchdb_product_barcode"/>  -->
+                <!-- <field name="couchdb_pos_order"/>             -->
+            </field>
+        </field>
+    </record>
+</odoo>

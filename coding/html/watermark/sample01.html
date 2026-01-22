@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>POS Receipt with Watermark</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            width: 280px;
+            margin: 0 auto;
+            padding: 10px;
+            background: #fff;
+        }
+        .pos-receipt {
+            position: relative;
+            border: 1px dashed #ccc;
+            padding: 10px;
+            overflow: hidden;
+        }
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 48px;
+            color: rgba(180, 180, 180, 0.15);
+            font-weight: bold;
+            text-transform: uppercase;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 0;
+        }
+        .pos-receipt-content {
+            position: relative;
+            z-index: 1;
+        }
+        .pos-center {
+            text-align: center;
+        }
+        .pos-line {
+            border-top: 1px dashed #aaa;
+            margin: 8px 0;
+        }
+        .pos-item {
+            display: flex;
+            justify-content: space-between;
+        }
+        .pos-footer {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="pos-receipt">
+    <div class="watermark">PAID</div>
+
+    <div class="pos-receipt-content">
+        <div class="pos-center">
+            <strong>My Store</strong><br>
+            Jalan Sudirman No. 123<br>
+            Jakarta, Indonesia<br>
+            Telp: 021-555-1234
+        </div>
+
+        <div class="pos-line"></div>
+
+        <div class="pos-item">
+            <span>Product A</span>
+            <span>Rp 50.000</span>
+        </div>
+        <div class="pos-item">
+            <span>Product B</span>
+            <span>Rp 25.000</span>
+        </div>
+
+        <div class="pos-line"></div>
+
+        <div class="pos-item">
+            <strong>Total</strong>
+            <strong>Rp 75.000</strong>
+        </div>
+
+        <div class="pos-center" style="margin-top:10px;">
+            <em>Thank you for shopping!</em>
+        </div>
+
+        <div class="pos-footer">
+            Printed on 01/11/2025 19:45<br>
+            Cashier: Wahyu
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

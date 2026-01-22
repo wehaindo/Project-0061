@@ -1,0 +1,45 @@
+<odoo>
+
+    <record id="purchase_approval_purchase_approval_rule_tree_view" model="ir.ui.view">
+        <field name="name">
+            purchase_approval_rule.tree</field>
+        <field name="model">weha.purchase.approval.rule</field>
+        <field name="arch" type="xml">
+            <tree string="Purchase Order Approval Rule">
+                <field name="approval_rule_seq" widget="handle" />
+                <field name="res_partner_id" />
+                <field name="next_approval_id" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_model_purchase_approval_rule" model="ir.ui.view">
+        <field name="name">
+            weha.purchase.approval.rule</field>
+        <field name="model">weha.purchase.approval.rule</field>
+        <field name="arch" type="xml">
+            <form create="true" delete="true" edit="true">
+                <sheet>
+                    <group>
+                        <field name="approval_rule_seq" />
+                        <field name="res_partner_id" />
+                        <field name="next_approval_id" />
+                        <field name="mail_tamplate_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_purchase_approval_rule" model="ir.actions.act_window">
+        <field name="name">Purchase
+            Approval Rule</field>
+        <field name="res_model">weha.purchase.approval.rule</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="menu_purchase_approval_rule"
+        name="Purchase Approval"
+        parent="purchase.menu_purchase_config"
+        action="action_purchase_approval_rule"
+    />
+</odoo>

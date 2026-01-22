@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- VIEWS: "Human readable name"
+    
+        - Model·········: model
+        - _rec_name·····: name
+        - Domain········: []
+        - Context·······: \{}
+        - Parent menu ··: base.menu_custom
+        - View priority·: 16    
+        - Sequence····..: 10
+        - Action help···: Something about model
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- Tree view for "model" -->
+    <record id="view_conces_tree" model="ir.ui.view">
+        <field name="name">view.conces.tree</field>
+        <field name="model">contract.conces.settlement</field>
+        <field name="type">tree</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <tree string="Consigment Settlement" create="false" delete="false" edit="false">
+                <field name="name" />
+                <field name="date" />
+                <field name="date_from" />
+                <field name="date_to" />
+
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view for "model" -->
+    <record id="view_conces_form" model="ir.ui.view">
+        <field name="name">view.conces.form</field>
+        <field name="model">contract.conces.settlement</field>
+        <field name="type">form</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <form string="Consigment Settlement" create="false" delete="false" edit="false">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" class="oe_inline"
+                                placeholder="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="date" />
+                        <field name="date_from" />
+                        <field name="date_to" />
+                    </group>
+                    <field name="conces_settlement_line_ids" widget="many2many"
+                        options="{'no_create': True}">
+                        <tree>
+                            <field name="partner_id" />
+                            <field name="agreement_id" />
+                            <field name="calculate_rebate_amoun"/>
+                            <!-- <field name="conces_settlement_product_ids" widget="many2many_tags"
+                                options="{'no_create': True}" /> -->
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search view for "model" -->
+    <record id="view_conces_search" model="ir.ui.view">
+        <field name="name">view.conces.search</field>
+        <field name="model">contract.conces.settlement</field>
+        <field name="type">search</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <search string="Consigment">
+                <field name="name" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Main window action for "model" -->
+    <record id="action_conces_act_window" model="ir.actions.act_window">
+        <field name="name">Consigment Settlement</field>
+        <field name="res_model">contract.conces.settlement</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_conces_search" />
+    </record>
+
+    <!-- Main menu for "model"
+    <record id="menu_conces" model="ir.ui.menu">
+        <field name="name">Consigment Settlement</field>
+        <field name="sequence" eval="10" />
+        <field name="action" ref="action_conces_act_window" />
+        <field name="parent_id" ref="agreement_rebate.agreement_rebate_settlement_menu_root" />
+    </record> -->
+
+</odoo>

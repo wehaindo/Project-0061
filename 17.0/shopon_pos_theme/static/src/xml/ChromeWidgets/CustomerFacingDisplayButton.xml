@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-inherit="point_of_sale.CustomerFacingDisplayButton" t-inherit-mode="extension" owl="1">
+
+        <xpath expr="//div[hasclass('oe_status')]" position="replace">
+            <div class="control-button" t-on-click="onClick">
+                <div t-if="state.status === 'warning'">
+                    <i class="fa fa-fw fa-desktop" role="img" aria-label="Customer Screen Warning" title="Customer Screen Warning"></i> <span>Customer Screen</span>
+                </div>
+                <div t-if="state.status === 'failure'">
+                    <i class="fa fa-fw fa-desktop" role="img" aria-label="Customer Screen Disconnected" title="Customer Screen Disconnected"></i> <span>Customer Screen</span>
+                </div>
+                <div t-if="state.status === 'success'">
+                    <i class="fa fa-fw fa-desktop" role="img" aria-label="Customer Screen Connected" title="Customer Screen Connected"></i> <span>Customer Screen</span>
+                </div>
+            </div>
+        </xpath>
+
+    </t>
+
+</templates>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_branch_form_inherit" model="ir.ui.view">
+        <field name="name">branch.form.inherit</field>
+        <field name="model">res.branch</field>
+        <field name="inherit_id" ref="multi_branch_base.view_branch_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Customer Display">
+                    <field name="image_ids">
+                        <tree>
+                            <field name="filename"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_res_branch_display_image_form" model="ir.ui.view">
+        <field name="name">view_res_branch_display_image_form</field>
+        <field name="model">res.branch.display.image</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="filename" invisible="1"/>
+                        <field name="filebin" filename="filename" string="Image File"/>                                  
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

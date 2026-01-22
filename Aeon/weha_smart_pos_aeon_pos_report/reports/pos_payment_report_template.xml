@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <report
+       id="pos_payment_report"
+       model="wizard.pos.payment.report"
+       string="Pos Payment Report"
+       report_type="xlsx"
+       name="weha_smart_pos_aeon_pos_report.pos_payment_report"
+       file="Pos Payment Report"
+       attachment_use="False"/>
+</odoo>

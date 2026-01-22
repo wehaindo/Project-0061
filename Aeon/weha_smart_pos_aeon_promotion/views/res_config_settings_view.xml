@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_view_form_inherit_weha_smart_pos_default_customer" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.weha.smart.pos.default.customer</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='pos_interface_section']" position="inside">
+                <div class="col-12 col-lg-6 o_setting_box">
+                    <div class="o_setting_left_pane">
+                        <field name="is_set_default_customer"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Default Customer</span>
+                        <br/>
+                        <field name="customer_id" nolabel="1" attrs="{'invisible': [('is_set_default_customer','=', False)], 'required':[('is_set_default_customer','=', True)]}" />   
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

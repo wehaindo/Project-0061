@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree view for "model" -->
+    <record id="view_pos_cash_count_tree" model="ir.ui.view">
+        <field name="name">view.pos.cash.count.tree</field>
+        <field name="model">pos.cash.count</field>
+        <field name="type">tree</field>
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <tree string="pos_cash_count_tree">
+                <field name="name" />
+                <field name="res_user_id"/>
+                <field name="hr_employee_id"/>
+                <field name="supervisor_id"/>
+                <field name="pos_session_id"/>    
+                <field name='trans_type'/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- Form view for "model" -->
+    <record id="view_pos_cash_count_form" model="ir.ui.view">
+        <field name="name">view.pos.cash.count.form</field>
+        <field name="model">pos.cash.count</field>
+        <field name="type">form</field>        
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <form string="pos_cash_count_form" create="false" edit="false" delete="false">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" class="oe_inline"
+                                placeholder="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="res_user_id"/>
+                            <field name="hr_employee_id"/>                            
+                        </group>
+                        <group>
+                            <field name="pos_session_id"/>
+                            <field name="supervisor_id"/>
+                            <field name='trans_type'/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="pos_cash_count_line_page" string="Lines">                            
+                            <field name="pos_cash_count_detail_ids" readonly="1">
+                                <tree>                                    
+                                    <field name="description"/>
+                                    <field name="pos_payment_method_id"/>
+                                    <field name="cash_count_type"/>
+                                    <field name="quantity"/>
+                                    <field name="total"/>
+                                    <field name="counted"/>
+                                    <field name="difference"/>
+                                </tree>
+                            </field>                            
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Search view for "model" -->
+    <record id="view_pos_cash_count_search" model="ir.ui.view">
+        <field name="name">view.pos.cash.count.search</field>
+        <field name="model">pos.cash.count</field>
+        <field name="type">search</field>        
+        <field name="priority" eval="16" />        
+        <field name="arch" type="xml">
+            <search string="model_search">
+                <field name="name" />
+                <field name="res_user_id"/>
+                <field name="hr_employee_id"/>
+                <field name="pos_session_id"/>
+            </search>
+        </field>
+    </record>
+    
+    <!-- Main window action for "model" -->
+    <record id="action_pos_cash_count_act_window" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">POS Cash Count</field>
+        <field name="res_model">pos.cash.count</field>
+        <field name="view_mode">tree,form</field>        
+        <field name="target">current</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="search_view_id" ref="view_pos_cash_count_search" />
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add new to create POS Cash Count
+            </p>
+            <p>
+                Something about model
+            </p>
+        </field>
+    </record>
+    
+    <!-- Main menu for "model" -->
+    <menuitem
+        id="menu_pos_cash_count"
+        name="POS Cash Count"
+        action="action_pos_cash_count_act_window"        
+        parent="point_of_sale.menu_point_root"
+        sequence="30"/>
+    
+
+</odoo>

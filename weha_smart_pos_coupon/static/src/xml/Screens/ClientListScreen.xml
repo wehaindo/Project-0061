@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ClientListScreen" t-inherit="point_of_sale.ClientListScreen" t-inherit-mode="extension" owl="1">
+        <xpath expr="//table[hasclass('client-list')]//thead//tr" position="inside">
+            <th>Wallet</th>
+        </xpath>
+        <xpath expr="//div[hasclass('back')]" position="after">
+            <div t-if="isNextButtonVisible">
+                <div class="button" style="display:inline-block" t-on-click="addMoneyToWallet">
+                    <img src="/aspl_pos_wallet/static/src/img/wallet_22px.png" style="height:30px;float:left;"/>
+                    Add to wallet
+                </div>
+            </div>
+        </xpath>
+    </t>
+
+    <t t-name="ClientLine" t-inherit="point_of_sale.ClientLine" t-inherit-mode="extension" owl="1">
+        <xpath expr="//tr" position="inside">
+            <td>
+                <t t-esc="env.pos.format_currency(props.partner.remaining_wallet_amount)"/>
+            </td>
+        </xpath>
+    </t>
+
+</templates>

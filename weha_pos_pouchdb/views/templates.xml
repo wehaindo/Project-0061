@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="assets_backend" name="pos_pouchdb assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/pos_pouchdb/static/src/libs/js/pouchdb-7.2.1.min.js"/>
+        </xpath>
+    </template>
+    <template id="pos_pouchdb_assets" name="pos_pouchdb assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/pos_pouchdb/static/src/js/database.js"/>
+        </xpath>
+    </template>
+</odoo>

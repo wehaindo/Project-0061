@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Tree view for Voucher Location -->
+        <record id="view_weha_smart_pos_session_tree" model="ir.ui.view">
+            <field name="name">view.weha.smart.pos.session.tree</field>
+            <field name="model">smart.pos.session</field>
+            <field name="type">tree</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="session_date"/>
+                    <field name="smart_pos_config_id"/>
+                    <field name="date_open"/>
+                    <field name="date_close"/>
+                    <field name="cashier_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form view for Voucher Stage -->
+        <record id="view_weha_smart_pos_session_form" model="ir.ui.view">
+            <field name="name">view.weha.smart.pos.session.form</field>
+            <field name="model">smart.pos.session</field>
+            <field name="type">form</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="trans_close" string="Close Session" type="object" class="btn btn-primary"/>
+                        <field  name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" />
+                            <h1>
+                                <field name="name" class="oe_inline"
+                                    placeholder="name" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="General Information">
+                                <field name="smart_pos_config_id"/>
+                                <field name="cashier_id"/>
+                            </group>
+                            <group string="Time Information">
+                                <field name="ref"/>
+                                <field name="session_date"/>
+                                <field name="date_open"/>
+                                <field name="date_close"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="pos_orders" string="Pos Orders">
+                                <field name="smart_pos_order_ids" readonly="1" nolabel="1">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="date_order"/>
+                                        <field name="partner_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="pos_order_payments" string="Pos Order Payments">
+                                <field name="smart_pos_session_payment_ids" readonly="1" nolabel="1">
+                                    <tree>
+                                        <field name="smart_pos_payment_method_id"/>
+                                        <field name="amount_total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Search view for "model" -->
+        <record id="view_weha_smart_pos_session_search" model="ir.ui.view">
+            <field name="name">view.weha.smart.pos.session.search</field>
+            <field name="model">smart.pos.session</field>
+            <field name="type">search</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <search string="model_search">
+                    <field name="name" />
+                    <field name="smart_pos_config_id"/>
+                    <field name="session_date"/>
+                    <field name="cashier_id"/>
+                    <field name="state"/>
+                </search>
+            </field>
+        </record>
+        
+        <!-- Main window action for "model" -->
+        <record id="action_weha_smart_pos_session_act_window" model="ir.actions.act_window">
+            <field name="type">ir.actions.act_window</field>
+            <field name="name">Smart POS Session</field>
+            <field name="res_model">smart.pos.session</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="view_weha_smart_pos_session_search" />
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add new Smart Pos Session
+                </p>
+            </field>
+        </record>
+        
+        <!-- <menuitem id="weha_smart_pos_session_menu" name="POS Session" parent="weha_smart_pos_transaction_menu"
+            action="action_weha_smart_pos_session_act_window" sequence="1"/> -->
+
+    </data>
+</odoo>

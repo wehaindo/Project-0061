@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_category_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.category.form.inherit</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="multi_branch_base.product_category_form_view_inherit_branch"/>
+        <field name="arch" type="xml">
+            <xpath expr='//sheet' position="before">
+                <header>
+                    <button name="action_sync" string="Sync to CouchDB" type="object" class="oe_highlight"/>
+                </header>
+            </xpath>
+            <group name="department" position="after">
+                <group name="aeon_product_category">
+                    <group string="POS Data">
+                        <field name="product_category_couchdb_sync" />
+                        <field name="product_category_json" />
+                        <field name="product_category_couchdb_id" />
+                        <field name="product_category_couchdb_rev" />
+                    </group>
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>

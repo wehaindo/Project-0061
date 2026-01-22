@@ -1,0 +1,162 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="inherit_promotion_view_id">
+            <field name="name">Inherit pos.promotion form</field>
+            <field name="model">pos.promotion</field>
+            <field name="inherit_id" ref="aspl_pos_promotion.promotion_view_id"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button name="action_confirm" string="Confirm" class="oe_highlight"
+                                states="draft" type="object"/>
+                        <button name="action_approve1" string="Approve" class="oe_highlight"
+                                states="approve1" groups="mcs_aspl_pos_promotion.group_approval_1" type="object"/>
+                        <button name="action_approve2" string="Approve" class="oe_highlight"
+                                states="approve2" groups="mcs_aspl_pos_promotion.group_approval_2" type="object"/>
+                        <button name="action_set_to_draft" string="Set To Draft"
+                                states="approved"
+                                groups="mcs_aspl_pos_promotion.group_approval_1,mcs_aspl_pos_promotion.group_approval_2"
+                                type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,approve1,approve2,approved"/>
+                    </header>
+                </xpath>
+
+                <xpath expr="//sheet/div" position="after">
+                    <div class="oe_title">
+                        <h1>
+                            <field name="sequence_number"/>
+                        </h1>
+                    </div>
+                </xpath>
+
+                <field name="promotion_code" position="after">
+                    <field name="available_in_pos" widget="many2many_tags"
+                           options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
+                    <!-- Modif by yayat -->
+                    <field name="vendor_id" domain="[('is_merchant', '=', True)]"
+                           options="{'no_create': True, 'no_create_edit':True, 'no_open': True}" attrs="{'readonly': [('promotion_type','=','dicount_total')]}"/>
+                    <field name="vendor_shared"/>
+                    <field name="sarinah_shared" force_save="1"/>
+                </field>
+
+                <field name="product_id_qty" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_create_edit':True, 'no_open': True}</attribute>
+                    <attribute name="widget">many2many_tags</attribute>
+                    <attribute name="domain">[('owner_id', '=?', vendor_id)]</attribute>
+                </field>
+                <field name="product_id_qty" position="after">
+                    <field name="type_disc_qty"/>
+                </field>
+                <field name="product_id_amt" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_create_edit':True, 'no_open': True}</attribute>
+                    <attribute name="domain">[('owner_id', '=?', vendor_id)]</attribute>
+                </field>
+
+                <field name="product_x_id" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_create_edit':True, 'no_open': True}</attribute>
+                    <attribute name="domain">[('owner_id', '=?', parent.vendor_id)]</attribute>
+                    <attribute name="widget">many2many_tags</attribute>
+                </field>
+
+                <field name="product_y_id" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_create_edit':True, 'no_open': True}</attribute>
+                    <attribute name="domain">[('owner_id', '=?', parent.vendor_id)]</attribute>
+                    <attribute name="widget">many2many_tags</attribute>
+                </field>
+
+                <field name="product_id_dis" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_create_edit':True, 'no_open': True}</attribute>
+                    <attribute name="domain">[('owner_id', '=?', parent.vendor_id)]</attribute>
+                    <attribute name="widget">many2many_tags</attribute>
+                </field>
+
+                <field name="product_ids" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_create_edit':True, 'no_open': True}</attribute>
+                    <attribute name="domain">[('owner_id', '=?', parent.vendor_id)]</attribute>
+                </field>
+
+                <field name="parent_product_ids" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_create_edit':True, 'no_open': True}</attribute>
+                    <attribute name="domain">[('owner_id', '=?', vendor_id)]</attribute>
+                </field>
+
+                <field name="total_discount" position="after">
+                    <field name="total_discount_vip"/>
+                    <field name="total_discount_emp"/>
+                </field>
+
+                <field name="categ_ids" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_create_edit':True, 'no_open': True}</attribute>
+                </field>
+
+                <xpath expr="//notebook" position="inside">
+                    <page name="promotion_invoice" string="Products Discount" attrs="{'invisible': [('promotion_type',
+                        '!=','discount_on_product')]}">
+                        <group>
+                            <!--                            <field name="discount_on_products" domain="[('owner_id', '=?', vendor_id)]" widget="many2many_tags"/>-->
+                            <!--                            <field name="discount"/>-->
+                        </group>
+                        <field name="discount_seasonal_ids">
+                            <tree editable="bottom">
+                                <field name="product_ids" widget="many2many_tags"
+                                       options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"
+                                       domain="[('owner_id', '=?', parent.vendor_id), ('available_in_pos','=', True)]"
+                                />
+                                <field name="discount_type" required="1"/>
+                                <field name="products_discount_1" attrs="{'invisible': [('discount_type','=','seasonal')]}"/>
+                                <field name="products_discount_2" attrs="{'invisible': [('discount_type','=','seasonal')]}"/>
+                                <field name="products_discount" attrs="{'invisible': [('discount_type','=','on_top')]}"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page name="promotion_customer" string="Discount Percentage" attrs="{'invisible': [('promotion_type', '!=', 'discount_on_customer')]}">
+                        <group>
+                            <field name="percent_discount_reg" style="width:20%"/>
+                            <field name="percent_discount_emp" style="width:20%"/>
+                            <field name="percent_discount_vip" style="width:20%"/>
+                        </group>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!-- Add By Yayat -->
+        <record model="ir.ui.view" id="inherit_pos_promotion_tree">
+            <field name="name">Inherit pos.promotion tree</field>
+            <field name="model">pos.promotion</field>
+            <field name="inherit_id" ref="aspl_pos_promotion.pos_promotion_tree"/>
+            <field name="arch" type="xml">
+                <field name="to_date" position="after">
+                    <field name="remark" />
+                </field>
+            </field>
+        </record>
+
+
+        <record id="pos_config_inherit_view" model="ir.ui.view">
+            <field name="name">pos.config.inherit.view</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <div id="category_reference" position="before">
+                    <div class="col-12 col-lg-6 o_setting_box" id="config_promotion_ids">
+                        <div class="o_setting_right_pane">
+                            <label string="Select Promotions" for="promotion_ids"/>
+                            <div class="text-muted">
+                                Select Promotions
+                            </div>
+                            <div class="content-group mt16">
+                                <field name="promotion_ids" colspan="4" nolabel="1" widget="many2many_tags"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </field>
+        </record>
+
+    </data>
+</odoo>

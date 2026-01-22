@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="view_department_file_form" model="ir.ui.view">
+        <field name="name">Department File Form</field>
+        <field name="model">res.department.file</field>
+        <field name="arch" type="xml">
+            <form string="Department File" create="true" delete="true" edit="true">
+                <header>
+                    
+                    <button string="Generate File" name="process_download" type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="filename" invisible="1"/>
+                            <field name="file" filename="filename" string="Department File"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_department_file_tree" model="ir.ui.view">
+        <field name="name">Department File Tree</field>
+        <field name="model">res.department.file</field>
+        <field name="arch" type="xml">
+            <tree string="Department File" create="true" delete="true" edit="true">
+                <field name="filename" />
+                <field name="file" filename="filename"/>
+                <field name="is_use_thread"/>
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="department_file_action" model="ir.actions.act_window">
+        <field name="name">Department File</field>
+        <field name="res_model">res.department.file</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

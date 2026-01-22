@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension" owl="1">
+        <xpath expr="//li[hasclass('info')]" position="replace">
+            <li class="info">
+                <em>
+                    <t t-esc="props.line.get_quantity_str()" />
+                </em>
+                <span> </span><t t-esc="props.line.get_unit().name" />
+                at
+                <t t-if="props.line.display_discount_policy() == 'without_discount' and
+                    env.pos.round_decimals_currency(props.line.get_unit_display_price()) &lt; env.pos.round_decimals_currency(props.line.get_list_price())">
+                    <s>
+                        <t t-esc="env.pos.format_currency(props.line.get_list_price(),'Product Price')" />
+                    </s>
+                    <t t-esc="env.pos.format_currency(props.line.get_unit_display_price(),'Product Price')" />
+                </t>
+                <t t-else="">
+                    <t t-esc="env.pos.format_currency(props.line.get_unit_display_price(),'Product Price')" />
+                </t>
+                /
+                <t t-esc="props.line.get_unit().name" />
+            </li>        
+        </xpath>
+
+        <xpath expr="//li[hasclass('info')]" position="after">
+            <div class="flex-container">
+                <t t-if="props.line.get_price_source() == 'list_price'">
+                    <span class="orderline-badge">Normal Price</span>
+                </t>
+                <t t-if="props.line.get_price_source() == 'override'">
+                    <span class="orderline-badge">Price Override</span>
+                </t>
+                <t t-if="props.line.get_price_source() == 'pdc'">
+                    <span class="orderline-badge">PDC</span>
+                </t>
+                <t t-if="props.line.get_price_source() == 'pdcm'">
+                    <span class="orderline-badge">PDCM</span>
+                </t>
+                <t t-if="props.line.get_price_source() == 'member_day'">
+                    <span class="orderline-badge">Member Day</span>
+                </t>
+                <t t-if="props.line.get_price_source() == 'manual_discount'">
+                    <span class="orderline-badge">Manual Discount</span>
+                </t>
+                <t t-if="props.line.get_price_source() == 'mix_and_match'">
+                    <span class="orderline-badge">Mix and Match</span>
+                </t>
+            </div>
+        </xpath>
+        
+    </t>    
+</templates>

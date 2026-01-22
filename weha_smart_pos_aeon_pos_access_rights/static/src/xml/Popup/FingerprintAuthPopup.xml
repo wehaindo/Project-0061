@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="FingerprintAuthPopup" owl="1">
+        <div class="popup fingerprint-auth-popup">
+            <header class="title">
+                Fingerprint Authentication
+            </header>
+            <main class="body">                
+                Hi, <t t-esc="props.employee.name"/>                
+                <br/>
+                <br/>
+                <t t-if="state.error == false">
+                    <div style="text-align: center; font-size: 64px; color: #ad2181; margin: 20px 0;">
+                        <i class="fa fa-hand-o-up"></i>
+                    </div>
+                </t>
+                <t t-if="state.error == true">
+                    <div style="text-align: center; font-size: 64px; color: red; margin: 20px 0;">
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </div>
+                </t>
+                <br/>
+                <t t-esc="state.message"/>
+            </main>
+            <footer class="footer">
+                <div class="button cancel" t-on-click="cancel">Cancel</div>
+            </footer>
+        </div>
+    </t>
+</templates>

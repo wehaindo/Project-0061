@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="pos_login" name="Login">
+        <html>
+            <head>
+                <title>AEON - POS System</title>
+                <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+                <style>
+                    body,html {
+                        background-image: url('/weha_smart_pos_login/static/src/img/aeon_log.jpg');
+                        height: 100%;
+                        background-size: cover;                     
+                        <!-- background-repeat: no-repeat; -->
+                        background-position: center;
+                        border: inset 10px transparent;
+                        box-sizing: border-box;
+                    }
+                    .container {
+                        position: fixed;
+                        bottom: 10px;
+                        max-width: 100%;
+                    }
+                    #profile-img {
+                        height:180px;
+                    }
+                    .h-80 {
+                        height: 80% !important;
+                    }
+                    #login .container #login-row #login-column #login-box {
+                        margin-top: 120px;
+                        max-width: 600px;
+                        height: 320px;
+                        border: 1px solid #9C9C9C;
+                        background-color: #EAEAEA;
+                    }
+                    #login .container #login-row #login-column #login-box #login-form {
+                        padding: 20px;
+                        background: white;
+                    }
+                    #login .container #login-row #login-column #login-box #login-form #register-link {
+                        margin-top: -85px;
+                    }
+                    .form-signin {
+                        margin-bottom: 0px;
+                    }
+                </style>
+            </head>
+            <body onkeypress="handle(event)">    
+                <div class="container">
+                    
+                    <div id="login-row" class="row justify-content-center align-items-center">
+                        
+                        <div id="login-column" class="col-md-6" style="background: rgb(255,255,255,0.5);padding:20px;  border-radius: 25px;">
+                            <div id="login-store" class="col-md-12" style="font-weight:bold;">
+                                Store : (<span t-esc="res_branch_code"/>)<span t-esc="res_branch_name"/>, POS : <span t-esc="pos_config_name"/>
+                            </div>
+                            <t t-if="is_pos_found == true">
+                                <div id="login-box" class="col-md-12" style="margin-top:10px;">
+                                    <form  class="row form-signin" action="/pos/scan" method="POST">
+                                        <input type="hidden" name="pos_config" t-att-value="pos_config_id"/>
+                                        <div class="col-sm-12 col-md-4">
+                                            <input class="form-control" type="text" name="emp_id" id="emp_id" style="width:100%;" placeholder="Card ID"/>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <input class="form-control" type="password" name="emp_barcode" id="emp_barcode" style="width:100%;" placeholder="Password"/>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <button class="btn btn-primary btn-block btn-signin" type="submit">Continue</button>
+                                        </div>
+                                    </form>
+                                    <div class="text-center" style="margin-top:10px;">
+                                        <span><t t-esc="message"/></span>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>                
+                <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>                   
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+                    var value = '';
+                    async function handle(e){
+                        if(e.keyCode === 13){
+                            e.preventDefault(); // Ensure it is only this code that runs
+                            document.getElementById("emp_id").value = value;                            
+                            console.log(value);
+                            value = '';
+                        }else{
+                            console.log(e.keyCode);
+                            value = value + String.fromCharCode(e.keyCode);
+                        }
+                    }
+                </script>
+            </body>
+        </html>
+    </template>
+</odoo>

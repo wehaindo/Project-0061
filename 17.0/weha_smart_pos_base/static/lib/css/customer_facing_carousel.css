@@ -1,0 +1,31 @@
+.owl-carousel .owl-stage {
+  display: flex;
+}
+
+.owl-carousel .owl-item img {
+  display: block;
+  width: 100%;
+  object-fit: fill;
+  object-position: center;
+  height: 90vh !important;
+}
+
+.owl-dots {
+  text-align: center;
+  padding-top: 0px;
+}
+.owl-dots button.owl-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #ccc;
+  margin: 0 3px;
+}
+.owl-dots button.owl-dot.active {
+  background-color: #ffffff;
+}
+.owl-dots button.owl-dot:focus {
+  outline: none;
+}
+

@@ -1,0 +1,48 @@
+.pos-receipt {
+    position: relative;
+    overflow: visible !important; /* Allow watermark to be visible on print */
+}
+
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 48px; /* Smaller size for thermal receipt paper */
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.5); /* Darker for better print visibility */
+    opacity: 0.5;
+    z-index: 1000;
+    pointer-events: none;
+    white-space: nowrap;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+@media print {
+    .pos-receipt {
+        position: relative !important;
+        overflow: visible !important;
+        min-height: 500px !important; /* Ensure enough space for watermark */
+    }
+    
+    .watermark {
+        /* -webkit-print-color-adjust: exact !important; */
+        /* print-color-adjust: exact !important;         */
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) rotate(-45deg) !important;
+        color: rgba(0, 0, 0, 0.5) !important; /* Solid black instead of rgba */
+        opacity: 0.5 !important; /* Use opacity for lightness */
+        font-size: 36px !important; /* Smaller for thermal paper */
+        font-weight: 900 !important; /* Extra bold */
+        display: block !important;
+        visibility: visible !important;
+        z-index: 9999 !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        white-space: nowrap !important;
+    }
+}

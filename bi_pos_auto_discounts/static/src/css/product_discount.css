@@ -1,0 +1,32 @@
+.pos .product .product-happy-hours {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    opacity: 0.8;
+    color: white;
+    line-height: 13px;
+    background: #099a52;
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+
+.pos .product .product-member-discount {
+    position: absolute;
+    top: 5px;
+    left: 40px;
+    opacity: 0.8;
+    color: white;
+    line-height: 13px;
+    background: #d38f35;
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+
+
+.pos .happy-hours-button{
+    margin-left:1px;
+    background: #cd1111fc;
+    color: white;
+    text-align: center;
+    padding: 0px 8px;
+}

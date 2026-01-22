@@ -1,0 +1,503 @@
+A1011001  LADIES CASUAL                           D
+A1011002  LADIES MISSY                            D
+A1011003  LADIES CAREER                           D
+A1011004  LADIES FORMAL                           D
+A1011005  LADIES TRADITIONAL                      D
+A1011006  LADIES PLUS                             D
+A1011007  LADIES MATERNITY                        D
+A1021008  CHIC AVENUE                             D
+A1021009  ORANGE SORBET                           D
+A1021010  TI:ZED LADIES                           D
+A1021011  FLEURBULOUS                             D
+A1021012  ARCADIA                                 D
+A1021013  AGENDA                                  D
+A1021014  CREME                                   D
+A1031015  BRA                                     D
+A1031016  PANTIES                                 D
+A1031017  LADIES HOME WEAR                        D
+A1031018  LADIES SOCKS & STOCKING                 D
+A1381019  LADIES ACCESSORIES                      D
+A1051020  MEN YOUNG CASUAL                        D
+A1051021  MEN CASUAL                              D
+A1051022  MEN BUSINESS                            D
+A1051023  MEN TRADITIONAL                         D
+A1061024  MEN SHOP                                D
+A1071025  MEN INNERWEAR                           D
+A1071026  MEN HOME WEAR                           D
+A1071027  MEN SOCKS                               D
+A1381028  MEN ACCESSORIES                         D
+A1091029  BABY FURNITURE                          D
+A1091030  BABY BEDDING & TOWEL                    D
+A1091031  BABY FEEDING                            D
+A1091032  BABY HEALTH CARES & ACC                 D
+A1091033  BABY NEEDS                              D
+A1091034  BABY WEAR                               D
+A1091035  BABY NATIONAL BRANDS                    D
+A1101036  SCHOOL UNIFORM                          D
+A1101037  KINDERGARTEN BOYS                       D
+A1101038  KINDERGARTEN GIRLS                      D
+A1101039  BOY APPAREL                             D
+A1101040  GIRL APPAREL                            D
+A1101041  IQ BOYS                                 D
+A1101042  IQ GIRLS                                D
+A1111043  CHILDREN SHOP BOYS                      D
+A1111044  CHILDREN SHOP GIRLS                     D
+A1121045  CHILDREN INNERWEAR                      D
+A1121046  CHILDREN HOME WEAR                      D
+A1121047  CHILDREN SOCKS                          D
+A1131048  BOY SHOES                               D
+A1131049  GIRL SHOES                              D
+A1131050  BOY BAG                                 D
+A1131051  GIRL BAG                                D
+A1131052  CHILDREN ACCESSORIES                    D
+A1141053  BOY TOYS                                D
+A1141054  GIRL TOYS                               D
+A1141055  EDUCATIONAL TOYS                        D
+A1141056  PRESCHOOL TOYS                          D
+A1141057  FAMILY FUN & GAMES                      D
+A7011058  CHANEL                                  D
+A7011059  CHRISTIAN DIOR                          D
+A7011060  CLARINS                                 D
+A7011061  CLINIQUE                                D
+A7011062  ELIZABERTH ARDEN                        D
+A7011063  ESTEE LAUDER                            D
+A7011064  KOSE                                    D
+A7011065  LANCOME                                 D
+A7011066  SKII                                    D
+A7011067  SHISEIDO                                D
+A7011068  BIOTHERM                                D
+A7011069  ORIGIN                                  D
+A7011070  BOBBY BROWN                             D
+A7011071  ANNA SUI                                D
+A7011072  SHISEIDO SERVICE                        D
+A7011073  LANCOME SERVICE                         D
+A7011074  BIOTHERM SERVICE                        D
+A7021075  ADF FRAGRANCE                           D
+A7021076  P&G FRAGRANCE                           D
+A7021077  PRESTIGE FRAGRANCE                      D
+A7021078  LUXASIA FRAGRANCE                       D
+A7021079  PCI FRAGRANCE                           D
+A7031080  L'OREAL                                 D
+A7031081  MAYBELLINE                              D
+A7031082  REVLON                                  D
+A7031083  ZA                                      D
+A7031084  SILKY GIRL                              D
+A7031085  MAX FACTOR                              D
+A7031086  IN2IT                                   D
+A7041087  BEAUTY CARE PRODUCTS                    D
+A7041088  BEAUTY CARE SERVICE                     D
+A1191089  LADIES SHOES                            D
+A1191090  MEN SHOES                               D
+A1191091  SHOES CARES                             D
+A1201092  LADIES BAGS                             D
+A1201093  MEN'S BAGS                              D
+A1211094  TRAVELLING GOODS                        D
+A1211095  SPORTS GOODS                            D
+A1021096  HUSH PUPPIES LADIES                     D
+A1021097  SABRINA TEO                             D
+A1051098  MEN PLUS                                D
+A1061099  HUSH PUPPIES MEN                        D
+A1091100  HUSH PUPPIES BABY                       D
+A1111101  HUSH PUPPIES BOYS                       D
+A1111102  HUSH PUPPIES GIRLS                      D
+A7011103  MENARD                                  D
+A7011104  MENARD SERVICE                          D
+A7011105  CHRISTIAN DIOR SERVICE                  D
+A7011106  CLARINS SERVICE                         D
+A7011107  ELIZABERTH ARDEN SERVICE                D
+A7011108  ESTEE LAUDER SERVICE                    D
+A7011109  KOSE SERVICE                            D
+A7011110  SKII SERVICE                            D
+A7011111  LAB SERIES SERVICE                      D
+A7021112  COTY FRANGRANCE                         D
+A1201113  EESATTO                                 D
+A1201114  BENEDETTI POLO CREATION                 D
+A1111115  KIDS PLANET                             D
+A1021116  HONEYS                                  D
+A1201117  NARAYA                                  D
+A1021142  TOPVALU COLLECTION                      D
+A1021143  DOUBLE FOCUS                            D
+A1021144  LEVI'S                                  D
+A1061145  TOPVALU COLLECTION                      D
+A1061146  CARIBBEAN JOE                           D
+A1061147  DOUBLE FOCUS                            D
+A1061148  LEVI'S                                  D
+A7031149  ULTIMAII                                D
+A7031150  NYX                                     D
+A7041151  LIFE STYLE SHOP                         D
+A1021152  WRANGLER LADIES                         D
+A1061153  WRANGLER MEN                            D
+A1021154  THE EXECUTIVE LADIES                    D
+A1061155  THE EXECUTIVE MEN                       D
+A1061159  KITSCH                                  D
+A1021162  KINI                                    D
+A1611611  LADIES UNDER WEAR                       D
+A1611612  LADIES BRA                              D
+A1611613  LADIES PANTIES                          D
+A1611614  LADIES SOCKS & STOCKING                 D
+A1611615  LADIES HOME WEAR                        D
+A1611621  MEN TOPS UNDER WEAR                     D
+A1611622  MEN BOTTOMS UNDER WEAR                  D
+A1611623  MEN SOCKS                               D
+A1611624  MEN HOME WEAR                           D
+A1711711  LADIES OUTER                            D
+A1711712  LADIES TOPS                             D
+A1711713  LADIES BOTTOMS                          D
+A1711714  LADIES SET                              D
+A1711715  LADIES SWIMWEAR                         D
+A1721721  MEN OUTER                               D
+A1721722  MEN TOPS                                D
+A1721723  MEN BOTTOMS                             D
+A1721724  MEN SET                                 D
+A1721725  MEN SWIMWEAR                            D
+A1731731  ACCESSORIES                             D
+A1731734  GOODS                                   D
+A1731735  FOOT WEAR                               D
+A2012001  CONFECTIONARY                           D
+A2012002  SNACK                                   D
+A2012003  SEASONAL                                D
+A2022004  SEASONING                               D
+A2022005  MATERIAL                                D
+A2022006  IMPORTED FOOD                           D
+A2022007  NON HALAL GROCERY                       D
+A2022008  DAILY                                   D
+A2032009  HOT BEVERAGE                            D
+A2032010  COLD BEVERAGE                           D
+A2032011  BEER                                    D
+A2032012  WINE                                    D
+A2032013  HARD LIQUOR                             D
+A7052014  PET CARE                                D
+A7052015  CLEANING                                D
+A7052016  SANITARY                                D
+A7052017  TOBACCO                                 D
+A7062018  KITCHEN GOODS                           D
+A7062019  CLEANING GOODS                          D
+A7072020  TOILETRIES                              D
+A7082021  SKIN CARE                               D
+A7082022  GROOMING                                D
+A7092023  PRESCRIPTION  POISON                    D
+A7092024  HEALTH SUPPORT                          D
+A2092025  DAILY FOOD                              D
+A2092026  BREAD                                   D
+A2092027  FRESH DRINK                             D
+A2092028  DAIRY PRODUCT                           D
+A2102029  PROCESSED FOOD                          D
+A2102030  ICE-CREAM & DESSERT                     D
+A2112031  FRESH SEAFOOD                           D
+A2112032  PROCESSED SEAFOOD                       D
+A2122033  RED MEAT                                D
+A2122034  POULTRY                                 D
+A2122035  PORK                                    D
+A2122036  HAM - SAUSAGE - PICKLES                 D
+A2132037  VEGETABLE                               D
+A2132038  FRUIT                                   D
+A2142039  DELICA                                  D
+A2142040  SUSHI                                   D
+A2152041  BREAD                                   D
+A2152042  CAKE / DESERT                           D
+A2162043  FOOD                                    D
+A2162044  DRINK                                   D
+A2162045  TAKE OUT (KIOSK)                        D
+A3013001  BEDDING OUTRIGHT                        D
+A3013002  KIDS BEDDING                            D
+A3023003  BATH ESSENTIAL                          D
+A3023004  TOWEL                                   D
+A3033005  INTERIOR LIVING                         D
+A3033006  INTERIOR DECORATION                     D
+A3033007  INTERIOR DINING & KITCHEN               D
+A3043008  HOME FURNITURE                          D
+A3043009  KIDS FURNITURE & STORAGE                D
+A3053010  HOME STORAGE                            D
+A3063011  HOBBY & CRAFTS                          D
+A3073012  DINING                                  D
+A3073013  KITCHEN                                 D
+A3083014  LAUNDRY & CLEANING                      D
+A3083015  WATER TREATMENT                         D
+A3093016  SMALL APPLIANCE                         D
+A3093017  LARGE APPLIANCE                         D
+A3093018  PERSONAL CARE APPLIANCE                 D
+A3093019  MASSAGE AND RELAXATION                  D
+A3093020  AIR COND-FAN AND AIR-TREATMENT          D
+A3093021  LIGHTING                                D
+A3103022  AUDIO                                   D
+A3103023  VISUAL                                  D
+A3103024  AUDIO & VISUAL ACCESSORIES              D
+A3113025  ELEC. - AFTER SALES & SERVICES          D
+A3123026  PERSONAL COMPUTERS                      D
+A3123027  TABLETS                                 D
+A3123028  PC ACCESSORIES                          D
+A3133029  CAMERAS                                 D
+A3143030  SMART PHONES                            D
+A3143031  MOBILE PHONES                           D
+A3143032  MOBILE PHONES ACCESSORIES               D
+A3143033  TELEPHONE                               D
+A3153034  PRINTERS & FAX MACHINE                  D
+A3163035  MMEDIA - AFTER SALES & SERVICES         D
+A3173036  OFFICE                                  D
+A3183037  SCHOOL                                  D
+A3193038  FANCY                                   D
+A3203039  HOME                                    D
+A3213040  SPORT APPARELS                          D
+A3213041  SPORT SHOES                             D
+A3213042  SWIMMING                                D
+A3213043  SPORTS GOODS                            D
+A3213044  CYCLING                                 D
+A3213045  GOLF                                    D
+A3213046  FISHING                                 D
+A3223047  HARDWARE                                D
+A3223048  ELECTRICAL FITTINGS                     D
+A3233049  CAR CARE & ACCESSORIES                  D
+A3233050  MOTOR CYCLE CARE & ACCESSORIES          D
+A3243051  GARDENING GOODS                         D
+A3283071  iRASHIKU OFFICE                         D
+A3283072  iRASHIKU SCHOOL                         D
+A3283073  iRASHIKU FANCY                          D
+A3283074  iRASHIKU HOME                           D
+A3283075  iRASHIKU SERVICE                        D
+A3293076  HC BEDDING OUTRIGHT                     D
+A3293078  HC BATH ESSENTIAL                       D
+A3293079  HC TOWEL                                D
+A3293080  HC INTERIOR LIVING                      D
+A3293081  HC INTERIOR DECORATION                  D
+A3293082  HC INTERIOR DINING & KITCHEN            D
+A3293083  HC HOME FURNITURE                       D
+A3293084  HC HOME STORAGE                         D
+A3293085  HC ZAKKA LIVING ROOM                    D
+A3293086  HC ZAKKA BEDROOM                        D
+A3293087  HC ZAKKA BATHROOM                       D
+A3293088  HC ZAKKA KITCHEN ROOM                   D
+A3293089  HC ZAKKA DINING ROOM                    D
+A3293090  HC ZAKKA GARDEN/BALCONY                 D
+A3303091  HC DINING                               D
+A3303092  HC KITCHEN                              D
+A3303093  HC LAUNDRY & CLEANING                   D
+A3303094  HC WATER TREATMENT                      D
+A3313095  HC ELECTRICAL                           D
+A3323096  HC STATIONERY                           D
+A3333097  HC HOME REPAIR & IMPROVEMENT            D
+A3343098  HC SPORTS GOODS                         D
+A4014011  STORE EVENTS                            D
+A4014012  SERVICE&REPAIR (GM1)                    D
+A4014013  SWW CONCESS                             D
+A4014014  LUCKY BAG                               D
+A4014015  D.C LOSS / SHORTAGE                     D
+A4014016  DAISO SHOP                              D
+A4014017  AEON FANTASY                            D
+A4014018  THE BODY SHOP                           D
+A1015101  LADIES CASUAL ( C )                     C
+A1015102  LADIES MISSY ( C )                      C
+A1015103  LADIES CAREER ( C )                     C
+A1015104  LADIES FORMAL ( C )                     C
+A1015105  LADIES TRADITIONAL  ( C )               C
+A1015106  LADIES PLUS ( C )                       C
+A1015107  LADIES MATERNITY ( C )                  C
+A1025108  LADIES SHOP ( C )                       C
+A1035109  LADIES INNERWEAR  ( C )                 C
+A1035110  LADIES HOME WEAR  ( C )                 C
+A1035111  LADIES SOCKS & STOCKING ( C )           C
+A1385112  LADIES ACCESSORIES ( C )                C
+A1055113  MEN YOUNG CASUAL ( C )                  C
+A1055114  MEN CASUAL ( C )                        C
+A1055115  MEN BUSINESS ( C )                      C
+A1055116  MEN TRADITIONAL ( C )                   C
+A1065117  MEN SHOP ( C )                          C
+A1075118  MEN INNERWEAR ( C )                     C
+A1075119  MEN HOME WEAR ( C )                     C
+A1075120  MEN SOCKS ( C )                         C
+A1385121  MEN ACCESSORIES ( C )                   C
+A1095122  BABY NEEDS ( C )                        C
+A1095123  BABY WEAR (C )                          C
+A1095124  MATERNITY ( C )                         C
+A1105125  BOY APPAREL ( C )                       C
+A1105126  GIRL APPAREL ( C )                      C
+A1115127  CHILDREN SHOP ( C )                     C
+A1125128  CHILDREN INNERWEAR ( C )                C
+A1125129  CHILDREN HOME WEAR ( C )                C
+A1125130  CHILDREN SOCKS ( C )                    C
+A1135131  BOY SHOES ( C )                         C
+A1135132  GIRL SHOES ( C )                        C
+A1135133  BOY BAG ( C )                           C
+A1135134  GIRL BAG ( C )                          C
+A1135135  CHILDREN ACCESSORIES ( C )              C
+A1145136  HOBBY ( C )                             C
+A7015137  LANEIGE( C )                            C
+A7015138  KANEBO ( C )                            C
+A7015139  ASTALIFT ( C )                          C
+A7015140  SAN SOUCIS ( C )                        C
+A7025141  FRAGRANCE ( C )                         C
+A7035142  BUDGET COSMETIC ( C )                   C
+A7045143  BEAUTY CARE PRODUCTS ( C )              C
+A7045144  BEAUTY CARE SERVICE ( C )               C
+A1195145  LADIES SHOES ( C )                      C
+A1195146  MEN SHOES ( C )                         C
+A1195147  SHOES CARES ( C )                       C
+A1205148  LADIES BAGS ( C)                        C
+A1205149  MEN'S BAGS ( C )                        C
+A1215150  TRAVELLING GOODS ( C )                  C
+A1215151  SPORTS GOODS ( C )                      C
+A7015152  SHISEIDO ( C )                          C
+A7015153  KOSE ( C )                              C
+A7015154  OHUI / WHOO ( C )                       C
+A7015155  SHISEIDO SERVICE ( C )                  C
+A7015156  KOSE SERVICE ( C )                      C
+A7015157  OHUI / WHOO SERVICE ( C )               C
+A7015158  ASTALIFT SERVICE ( C )                  C
+A7015159  KANEBO SERVICE ( C )                    C
+A7025160  FAR EAST ( C )                          C
+A7025161  BPI ( C )                               C
+A7035162  MISSHA ( C )                            C
+A7035163  OTTIE ( C )                             C
+A7035164  ZA ( C )                                C
+A7035165  REVLON ( C )                            D
+A7035166  BOURJOIS ( C )                          C
+A7035167  KATE ( C )                              C
+A7035168  JAPAN SHINING BEAUTY (C)                C
+A7015169  L`OCCITANE (C)                          C
+A7025170  BOURJOIS FRAGRANCE (C)                  C
+A7015171  CLINIQUE (C)                            C
+A7015172  ESTEE LAUDER (C)                        C
+A7035179  LA GIRL (C)                             C
+A7025192  AURA CANTIK ( C )                       C
+A7025193  AROMA ABADI ( C )                       C
+A7035194  ARCANCIL ( C )                          C
+A7035195  PAC ( C )                               C
+A7045196  LIFE STYLE SHOP ( C )                   C
+A7035197  THE FACE SHOP (C)                       C
+A7035198  BEYOND (C)                              C
+A7035199  VOV (C)                                 C
+A2015201  CONFECTIONARY & SNACK & SEASONAL ( C )  C
+A2025202  SEASONING &  MATERIAL & IMPORTED FOOD  (C
+A2025203  NON HALAL ( C )                         C
+A2035204  BEVERAGE ( C )                          C
+A2035205  WINE ( C )                              C
+A7055206  NONFOOD (C )                            C
+A7075207  PERSONAL CARE ( C)                      C
+A7085208  BEAUTY CARE ( C)                        C
+A7095209  HEALTH CARE ( C)                        C
+A2095210  DAILY & DAIRY (C)                       C
+A2115211  SEAFOOD( C )                            C
+A2125212  MEAT ( C )                              C
+A2135213  PRODUCE ( C )                           C
+A2145214  DELICA ( C )                            C
+A2145215  SUSHI ( C)                              C
+A2155216  BAKERY ( C)                             C
+A2155217  CAKE / DESERT ( C)                      C
+A2165218  DRINK ( C)                              C
+A3015301  BEDDING ( C )                           C
+A3015302  KIDS BEDDING ( C )                      C
+A3025303  BATH & TOWEL ( C )                      C
+A3035304  INTERIOR & LIVING ( C )                 C
+A3045305  HOME FURNITURE ( C )                    C
+A3045306  KIDS FURNITURE & STORAGE ( C )          C
+A3055307  HOME STORAGE ( C )                      C
+A3065308  HOBBY & CRAFTS ( C )                    C
+A3075309  DINING ( C )                            C
+A3075310  KITCHEN ( C )                           C
+A3085311  LAUNDRY & CLEANING ( C )                C
+A3085312  WATER TREATMENT ( C )                   C
+A3095313  SMALL APPLIANCE ( C )                   C
+A3095314  LARGE APPLIANCE ( C )                   C
+A3095315  MASSAGE AND RELAXATION ( C )            C
+A3095316  AIR COND-FAN & AIR-TREAT ( C )          C
+A3095317  LIGHTING ( C )                          C
+A3105318  AUDIO & VISUAL ( C )                    C
+A3105319  AUDIO & VISUAL ACC. ( C )               C
+A3125320  PERSONAL COMPUTERS ( C )                C
+A3125321  TABLETS ( C )                           C
+A3125322  PC ACCESSORIES ( C )                    C
+A3135323  CAMERAS ( C )                           C
+A3145324  SMART PHONES ( C )                      C
+A3145325  MOBILE PHONES ( C )                     C
+A3145326  MOBILE PHONES ACCESSORIES ( C )         C
+A3145327  TELEPHONE ( C )                         C
+A3155328  PRINTERS & FAX MACHINE ( C )            C
+A3175329  OFFICE ( C )                            C
+A3185330  SCHOOL ( C )                            C
+A3195331  FANCY ( C )                             C
+A3205332  HOME ( C )                              C
+A3215333  SPORT APPARELS ( C )                    C
+A3215334  SPORT SHOES ( C )                       C
+A3215335  SWIMMING ( C )                          C
+A3215336  SPORTS GOODS ( C )                      C
+A3215337  CYCLING ( C )                           C
+A3215338  GOLF ( C )                              C
+A3215339  FISHING ( C )                           C
+A3225340  HARDWARE ( C )                          C
+A3225341  ELECTRICAL FITTINGS ( C )               C
+A3235342  CAR CARE & ACCESSORIES ( C )            C
+A3235343  MOTOR CYCLE CARE & ACCES. ( C )         C
+A3235344  ENEOS ( C )                             C
+A3245345  GARDENING GOODS ( C )                   C
+A3255346  CAFE (C)                                C
+A3095352  PERSONAL CARE APPLIANCE ( C )           C
+A3215353  CAFE ( C )                              C
+A3285361  iRASHIKU OFFICE ( C )                   C
+A3285362  iRASHIKU HOME ( C )                     C
+A3285363  iRASHIKU FANCY ( C )                    C
+A3285364  iRASHIKU HOME ( C )                     C
+A3285365  iRASHIKU SERVICE ( C )                  C
+A1715401  LADIES SPORTS APPAREL (C)               C
+A1725402  MEN SPORTS APPAREL (C)                  C
+A1735403  SPORTS GOODS (C)                        C
+A7035408  THE BALM (C)                            C
+A7035409  STUDIOMAKEUP (C)                        C
+A7035420  LAKME (C)                               C
+A7035421  ABSOLUTE NEW YORK (C)                   C
+A7035422  COPIA (C)                               C
+A7035427  BYS (C)                                 C
+A7035429  FOCALLURE (C)                           C
+A7035430  YOU (C)                                 C
+A7035431  SILKY GIRL (C)                          C
+A7035432  KLARA (C)                               C
+A7035433  ULTIMA II ( C )                         C
+A7105771  CONCESSIONARY                           C
+A7115781  CONCESSIONARY                           C
+A7125791  CONCESSIONARY SERVICE                   D
+A7125792  CONCESSIONARY LIVE                      C
+A7107201  ECONOMY FOOD                            D
+A7107202  DOG PREMIUM FOOD                        D
+A7107203  CAT PREMIUM FOOD                        D
+A7107204  TREATS                                  D
+A7107205  SMALL ANIMAL/AQUA FOOD                  D
+A7107206  SUPPLEMENT                              D
+A7107207  TOPVALU IMPORT PF                       D
+A7107208  PET NURSING CARE                        D
+A7107209  CAT FOOD                                D
+A7107210  BIRD                                    D
+A7107211  OTHER ANIMALS                           D
+A7117221  ACCESSORIES                             D
+A7117222  TOYS                                    D
+A7117223  CARE & CLEANING                         D
+A7117224  TOILETRIES                              D
+A7117225  APPAREL/FASHION                         D
+A7117226  FUNITURE                                D
+A7117227  SMALL ANIMAL/AQUA GOODS                 D
+A7117228  TOPVALU IMPORT NF                       D
+A7117229  PET ACCESSORIES                         D
+A7117230  PET BEAUTY CARE                         D
+A7127241  GROOMING                                D
+A9019011  COSMETIC VOUCHER                        N
+A9019012  AMUSEMENT                               N
+A9019013  DELIVERY CHARGES                        N
+A9019014  STAMP DUTY                              N
+A9019015  AEON GIFT VOUCHES SALE                  N
+A9019016  COSMECTICS                              N
+A9019017  PEARL MAGAZINE                          N
+A9019018  AEON CARD RC & PB                       N
+A9019019  FREE PARKING                            N
+A9019020  PWP JUSCO SELECTION                     N
+A9019021  GIFT ITEMS                              N
+A9019022  MOONCAKE VOUCHER                        N
+A9019023  POH KONG GEMS FEST                      N
+A9019024  WAOH                                    N
+A9019025  F1 TICKET                               N
+A9019026  AEON CARD 2 DAYS SPECIAL                N
+A9019027  AEON CARD INSURANCE                     N
+A9019028  PLASTICS BAG                            N
+A9019029  CAPCOM                                  N
+A9039031  AEON CARD EVENT                         N
+A9029041  AEON CARD POINTS                        N
+A9029042  AEON CARD RENEWAL FEE                   N
+A9029043  AEON CARD GIFT ITEM                     N
+A9019047  PRE-BOOKING DEPOSIT                     N
+A9019048  SERVICE CHARGE                          N

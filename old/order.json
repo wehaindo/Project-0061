@@ -1,0 +1,132 @@
+{
+  "jsonrpc": "2.0",
+  "method": "call",
+  "params": {
+    "service": "object",
+    "method": "execute",
+    "args": [
+      "tracker",
+      "2",
+      "pelang1",
+      "pos.order",
+      "create",
+      [
+        {
+          "message_follower_ids": [],
+          "message_ids": [],
+          "rating_ids": [],
+          "website_message_ids": [],
+          "access_token": "a5838de4-af2b-4ce1-932c-88da5e761c99",
+          "name": "Order 2025111000002",
+          "date_order": "2025-11-10 07:07:26",
+          "user_id": 2,
+          "amount_difference": false,
+          "amount_tax": 0,
+          "amount_total": 1,
+          "amount_paid": 1,
+          "amount_return": 0,
+          "lines": [
+            [
+              0,
+              0,
+              {
+                "id": "c1a5c515-c685-4f3e-978b-843f631dbd17",
+                "product_id": 15,
+                "name": "Product Combo 001",
+                "full_product_name": "Product Combo 001",
+                "qty": 1,
+                "price_unit": 1,
+                "price_subtotal": 1,
+                "price_subtotal_incl": 1,
+                "tax_ids": [
+                  [
+                    4                    
+                  ]
+                ],
+                "attribute_value_ids": [],
+                "custom_attribute_value_ids": [],
+                "pack_lot_ids": [],
+                "refund_orderline_ids": [],
+                "refunded_orderline_id": false,
+                "combo_parent_id": false,
+                "combo_line_ids": [],
+                "combo_item_id": false,
+                "note": false,
+                "customer_note": false,
+                "discount": false,
+                "order_id": false,
+                "price_extra": 0,
+                "price_type": "original",
+                "skip_change": false,
+                "uuid": "7960c865-ab3a-48bb-80f6-e488b5dd217f"
+              }
+            ]
+          ],
+          "email": "",
+          "company_id": 1,
+          "pricelist_id": false,
+          "partner_id": false,
+          "sequence_number": 1,
+          "session_id": 76,
+          "state": "paid",
+          "account_move": false,
+          "picking_ids": [],
+          "procurement_group_id": false,
+          "floating_order_name": false,
+          "general_note": "",
+          "nb_print": 0,
+          "pos_reference": "${id.substring(0,8)}",
+          "fiscal_position_id": false,
+          "payment_ids": [
+            [
+              0,
+              0,
+              {
+                "name": false,
+                "amount": 1,
+                "payment_method_id": 3,
+                "payment_date": "2025-11-10 07:07:25",
+                "card_type": false,
+                "card_brand": false,
+                "card_no": false,
+                "cardholder_name": false,
+                "payment_ref_no": false,
+                "payment_method_authcode": false,
+                "payment_method_issuer_bank": false,
+                "payment_method_payment_mode": false,
+                "transaction_id": false,
+                "payment_status": false,
+                "ticket": "",
+                "is_change": false,
+                "account_move_id": false,
+                "uuid": "8a5a54f5-6a5f-4672-b0fb-1cd91de14dc1",
+                "id": "8a5a54f5-6a5f-4672-b0fb-1cd91de14dc1",
+                "create_uid": false,
+                "create_date": false,
+                "write_uid": false,
+                "write_date": false,
+                "online_account_payment_id": false
+              }
+            ]
+          ],
+          "to_invoice": false,
+          "shipping_date": false,
+          "is_tipped": false,
+          "tip_amount": false,
+          "ticket_code": "tlr0a",
+          "has_deleted_line": false,
+          "id": "a5838de4-af2b-4ce1-932c-88da5e761c99",
+          "uuid": "a5838de4-af2b-4ce1-932c-88da5e761c99",
+          "create_uid": false,
+          "create_date": false,
+          "write_uid": false,
+          "write_date": "2025-11-10 07:07:26",
+          "l10n_id_qris_transaction_ids": [],
+          "employee_id": false,
+          "next_online_payment_amount": false
+        }
+      ]
+    ]    
+  },
+  "id": 1
+}
