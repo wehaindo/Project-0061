@@ -294,8 +294,14 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                         }
                     }
                     
-                    // Always show final confirmation before returning to login
-                    await self.showFinalConfirmation(type);
+                    // Close ClosePosPopup and return to login
+                    self.closeClosePosPopup();
+                    
+                    // Show final confirmation and return to login
+                    // Small delay to ensure popup is closed first
+                    setTimeout(async () => {
+                        await self.showFinalConfirmation(type);
+                    }, 200);
                 });
             }     
 
@@ -662,7 +668,8 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     : this.env._t('Mid cash count completed. Click OK to return to the login screen.');
                 
                 try {
-                    const { confirmed } = await this.showPopup('ConfirmPopup', {
+                    // Use global showPopup from env since ClosePosPopup is already closed
+                    const { confirmed } = await this.env.services.popup.add('ConfirmPopup', {
                         title: this.env._t(`${countType} Cash Count Complete`),
                         body: message,
                         confirmText: this.env._t('OK'),
@@ -671,6 +678,7 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     // Whether confirmed or cancelled, always return to login
                 } catch (error) {
                     console.log('Error showing confirmation popup:', error);
+                    console.log('Proceeding to login screen anyway');
                 }
                 
                 // Always return to login screen regardless of popup response
