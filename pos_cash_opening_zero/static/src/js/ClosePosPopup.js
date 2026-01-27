@@ -715,24 +715,27 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     this.env.pos.reset_cashier();
                     console.log('Cashier reset completed');
                     
-                    // Show login screen
+                    // Show login screen using the POS chrome component
                     console.log('Attempting to show LoginScreen...');
-                    await this.showTempScreen('LoginScreen');
+                    
+                    // Get the chrome component from the POS
+                    const chrome = this.env.pos.chrome || this.chrome;
+                    if (chrome && chrome.showTempScreen) {
+                        await chrome.showTempScreen('LoginScreen');
+                        console.log('LoginScreen shown via chrome');
+                    } else if (this.showTempScreen) {
+                        await this.showTempScreen('LoginScreen');
+                        console.log('LoginScreen shown via this.showTempScreen');
+                    } else {
+                        // Direct manipulation of the screen
+                        console.log('Using direct screen manipulation');
+                        this.env.pos.set('tempScreen', { name: 'LoginScreen' });
+                    }
+                    
                     console.log('LoginScreen shown successfully');
                 } catch (error) {
                     console.log('Error in returnToLogin:', error);
-                    
-                    // Fallback: try alternative method
-                    try {
-                        console.log('Trying fallback method...');
-                        this.env.pos.reset_cashier();
-                        const chrome = this.env.pos.chrome;
-                        if (chrome) {
-                            chrome.showTempScreen('LoginScreen');
-                        }
-                    } catch (e2) {
-                        console.log('Fallback also failed:', e2);
-                    }
+                    console.log('Error stack:', error.stack);
                 }
             }
 
