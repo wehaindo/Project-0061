@@ -203,8 +203,6 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     args: [data],
                 }).then((response) => {
                     console.log(response);
-                    self.cancel();
-                    self.showLoginScreen();                                            
                     let header = `
                         <h2 style="text-align: center;">                
                             * * CASH COUNT * *
@@ -252,9 +250,31 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     `;
 
                     let printWindow = window.open('', '', 'width=400,height=600');
-                    printWindow.document.write(receipt);
-                    printWindow.document.close();
-                    printWindow.print();                                                                
+                    if (printWindow) {
+                        printWindow.document.write(receipt);
+                        printWindow.document.close();
+                        printWindow.print();
+                        
+                        // Wait for print dialog to close, then exit to login screen
+                        printWindow.onafterprint = function() {
+                            printWindow.close();
+                            self.cancel();
+                            self.showLoginScreen();
+                        };
+                        
+                        // Also handle if user closes the window without printing
+                        const checkWindowClosed = setInterval(function() {
+                            if (printWindow.closed) {
+                                clearInterval(checkWindowClosed);
+                                self.cancel();
+                                self.showLoginScreen();
+                            }
+                        }, 500);
+                    } else {
+                        // If popup blocked, still exit to login screen
+                        self.cancel();
+                        self.showLoginScreen();
+                    }                                                                
                 });
             }     
 
@@ -379,7 +399,15 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                                 employees: employees,
                         });
                         if (supervisorConfirmed && employee) {
-                            await this.processCashCount(employee,'end');                                                                                    
+                            var { payload: status } = await this.showPopup('FingerprintAuthPopup', {employee: employee});
+                            console.log(status);
+                            if(status){
+                                await this.processCashCount(employee,'end');
+                            }else{
+                                await this.showPopup('ErrorPopup', {
+                                    body: this.env._t('End Cash Count failed!'),                    
+                                });
+                            }                            
                         }else{
                             await this.showPopup('ErrorPopup', {
                                 body: this.env._t('End Cash Count failed!'),                    
