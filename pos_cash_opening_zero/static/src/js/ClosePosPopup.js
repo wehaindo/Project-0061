@@ -379,7 +379,15 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                                 employees: employees,
                         });
                         if (supervisorConfirmed && employee) {
-                            await this.processCashCount(employee,'end');                                                                                    
+                            var { payload: status } = await this.showPopup('FingerprintAuthPopup', {employee: employee});
+                            console.log(status);
+                            if(status){
+                                await this.processCashCount(employee,'end');
+                            }else{
+                                await this.showPopup('ErrorPopup', {
+                                    body: this.env._t('End Cash Count failed!'),                    
+                                });
+                            }                            
                         }else{
                             await this.showPopup('ErrorPopup', {
                                 body: this.env._t('End Cash Count failed!'),                    
