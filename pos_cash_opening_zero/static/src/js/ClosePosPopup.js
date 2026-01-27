@@ -647,24 +647,36 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
             async showFinalConfirmation(type) {
                 const countType = type === 'end' ? 'End' : 'Mid';
                 const message = type === 'end' 
-                    ? this.env._t('End cash count completed.\n\nThe system will now return to the login screen.')
-                    : this.env._t('Mid cash count completed.\n\nClick OK to return to the login screen.');
+                    ? this.env._t('End cash count completed. The system will now return to the login screen.')
+                    : this.env._t('Mid cash count completed. Click OK to return to the login screen.');
                 
-                await this.showPopup('ConfirmPopup', {
-                    title: this.env._t(`${countType} Cash Count Complete`),
-                    body: message,
-                    confirmText: this.env._t('OK'),
-                    cancelText: false, // No cancel button
-                });
+                try {
+                    const { confirmed } = await this.showPopup('ConfirmPopup', {
+                        title: this.env._t(`${countType} Cash Count Complete`),
+                        body: message,
+                        confirmText: this.env._t('OK'),
+                    });
+                    
+                    // Whether confirmed or cancelled, always return to login
+                } catch (error) {
+                    console.log('Error showing confirmation popup:', error);
+                }
                 
-                // Always return to login screen
-                this.cancel();
+                // Always return to login screen regardless of popup response
                 await this.returnToLogin();
             }
 
             async returnToLogin() {
+                console.log('returnToLogin called');
+                // Close the current popup first
+                if (this.canCancel()) {
+                    this.trigger('close-popup');
+                }
+                
                 // Small delay for smoother transition
                 await new Promise(resolve => setTimeout(resolve, 300));
+                
+                // Reset cashier and show login screen
                 this.env.pos.reset_cashier();
                 await this.showTempScreen('LoginScreen');
             }
