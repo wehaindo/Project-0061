@@ -662,26 +662,9 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
             }
 
             async showFinalConfirmation(type) {
-                const countType = type === 'end' ? 'End' : 'Mid';
-                const message = type === 'end' 
-                    ? this.env._t('End cash count completed. The system will now return to the login screen.')
-                    : this.env._t('Mid cash count completed. Click OK to return to the login screen.');
-                
-                try {
-                    // Use global showPopup from env since ClosePosPopup is already closed
-                    const { confirmed } = await this.env.services.popup.add('ConfirmPopup', {
-                        title: this.env._t(`${countType} Cash Count Complete`),
-                        body: message,
-                        confirmText: this.env._t('OK'),
-                    });
-                    
-                    // Whether confirmed or cancelled, always return to login
-                } catch (error) {
-                    console.log('Error showing confirmation popup:', error);
-                    console.log('Proceeding to login screen anyway');
-                }
-                
-                // Always return to login screen regardless of popup response
+                console.log('showFinalConfirmation called for type:', type);
+                // Skip showing confirmation popup since ClosePosPopup is already closed
+                // Just return to login screen directly
                 await this.returnToLogin();
             }
 
