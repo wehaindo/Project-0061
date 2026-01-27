@@ -203,8 +203,6 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     args: [data],
                 }).then((response) => {
                     console.log(response);
-                    self.cancel();
-                    self.showLoginScreen();                                            
                     let header = `
                         <h2 style="text-align: center;">                
                             * * CASH COUNT * *
@@ -256,6 +254,26 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                         printWindow.document.write(receipt);
                         printWindow.document.close();
                         printWindow.print();
+                        
+                        // Wait for print dialog to close, then exit to login screen
+                        printWindow.onafterprint = function() {
+                            printWindow.close();
+                            self.cancel();
+                            self.showLoginScreen();
+                        };
+                        
+                        // Also handle if user closes the window without printing
+                        const checkWindowClosed = setInterval(function() {
+                            if (printWindow.closed) {
+                                clearInterval(checkWindowClosed);
+                                self.cancel();
+                                self.showLoginScreen();
+                            }
+                        }, 500);
+                    } else {
+                        // If popup blocked, still exit to login screen
+                        self.cancel();
+                        self.showLoginScreen();
                     }                                                                
                 });
             }     
