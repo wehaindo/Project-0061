@@ -294,14 +294,29 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                         }
                     }
                     
-                    // Close ClosePosPopup and return to login
+                    // Return to login and close popup
+                    // Do this BEFORE closing popup so we still have context
+                    console.log('Preparing to return to login...');
+                    self.env.pos.reset_cashier();
+                    
+                    // Close popup first
                     self.closeClosePosPopup();
                     
-                    // Show final confirmation and return to login
-                    // Small delay to ensure popup is closed first
+                    // Then show login screen after a small delay
                     setTimeout(async () => {
-                        await self.showFinalConfirmation(type);
-                    }, 200);
+                        console.log('Showing login screen after popup close');
+                        try {
+                            const chrome = self.env.pos.chrome;
+                            if (chrome && chrome.showTempScreen) {
+                                await chrome.showTempScreen('LoginScreen');
+                                console.log('Login screen shown successfully');
+                            } else {
+                                console.log('Chrome not available');
+                            }
+                        } catch (e) {
+                            console.log('Error showing login screen:', e);
+                        }
+                    }, 300);
                 });
             }     
 
