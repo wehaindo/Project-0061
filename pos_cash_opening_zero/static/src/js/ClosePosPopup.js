@@ -684,21 +684,19 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                 this.popupClosed = true;
                 
                 try {
-                    // Method 1: Try to resolve the popup promise
-                    if (this.props && this.props.resolve) {
-                        console.log('Method 1: Resolving via props.resolve');
-                        this.props.resolve({ confirmed: false, payload: null });
-                        return;
-                    }
+                    // Method 1: Cancel like the confirm button does
+                    console.log('Method 1: Using cancel');
+                    this.cancel();
+                    return;
                 } catch (e) {
                     console.log('Method 1 failed:', e);
                 }
                 
                 try {
-                    // Method 2: Try super.cancel
-                    if (this.canCancel && this.canCancel()) {
-                        console.log('Method 2: Using super.cancel');
-                        super.cancel();
+                    // Method 2: Try to reject the popup promise
+                    if (this.props && this.props.reject) {
+                        console.log('Method 2: Rejecting via props.reject');
+                        this.props.reject();
                         return;
                     }
                 } catch (e) {
@@ -706,22 +704,14 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                 }
                 
                 try {
-                    // Method 3: Trigger close event
-                    console.log('Method 3: Triggering close-popup event');
-                    this.trigger('close-popup');
-                } catch (e) {
-                    console.log('Method 3 failed:', e);
-                }
-                
-                try {
-                    // Method 4: Direct DOM manipulation as last resort
-                    console.log('Method 4: Attempting DOM close');
-                    const popupElement = document.querySelector('.modal-dialog.popup');
-                    if (popupElement) {
-                        popupElement.remove();
+                    // Method 3: Try to resolve the popup promise
+                    if (this.props && this.props.resolve) {
+                        console.log('Method 3: Resolving via props.resolve');
+                        this.props.resolve({ confirmed: false, payload: null });
+                        return;
                     }
                 } catch (e) {
-                    console.log('Method 4 failed:', e);
+                    console.log('Method 3 failed:', e);
                 }
             }
 
