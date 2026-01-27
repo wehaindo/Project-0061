@@ -299,6 +299,9 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     console.log('Preparing to return to login...');
                     self.env.pos.reset_cashier();
                     
+                    // Store reference to showTempScreen before closing popup
+                    const showTempScreenFn = self.showTempScreen ? self.showTempScreen.bind(self) : null;
+                    
                     // Close popup first
                     self.closeClosePosPopup();
                     
@@ -306,15 +309,21 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     setTimeout(async () => {
                         console.log('Showing login screen after popup close');
                         try {
-                            const chrome = self.env.pos.chrome;
-                            if (chrome && chrome.showTempScreen) {
-                                await chrome.showTempScreen('LoginScreen');
+                            if (showTempScreenFn) {
+                                console.log('Using bound showTempScreen method');
+                                await showTempScreenFn('LoginScreen');
                                 console.log('Login screen shown successfully');
                             } else {
-                                console.log('Chrome not available');
+                                console.log('showTempScreen not available');
+                                // Try trigger method
+                                if (self.trigger) {
+                                    console.log('Trying trigger method');
+                                    self.trigger('show-temp-screen', { screen: 'LoginScreen' });
+                                }
                             }
                         } catch (e) {
                             console.log('Error showing login screen:', e);
+                            console.log('Error details:', e.message);
                         }
                     }, 300);
                 });
