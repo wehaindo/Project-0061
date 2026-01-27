@@ -294,38 +294,21 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                         }
                     }
                     
-                    // Return to login and close popup
-                    // Do this BEFORE closing popup so we still have context
+                    // Return to login BEFORE closing popup
                     console.log('Preparing to return to login...');
-                    self.env.pos.reset_cashier();
                     
-                    // Store reference to showTempScreen before closing popup
-                    const showTempScreenFn = self.showTempScreen ? self.showTempScreen.bind(self) : null;
+                    // Call showLoginScreen BEFORE closing the popup while we still have context
+                    try {
+                        console.log('Calling showLoginScreen before closing popup');
+                        await self.showLoginScreen();
+                        console.log('showLoginScreen completed');
+                    } catch (e) {
+                        console.log('Error calling showLoginScreen:', e);
+                    }
                     
-                    // Close popup first
+                    // Now close the popup after login screen is shown
+                    console.log('Now closing popup after login screen shown');
                     self.closeClosePosPopup();
-                    
-                    // Then show login screen after a small delay
-                    setTimeout(async () => {
-                        console.log('Showing login screen after popup close');
-                        try {
-                            if (showTempScreenFn) {
-                                console.log('Using bound showTempScreen method');
-                                await showTempScreenFn('LoginScreen');
-                                console.log('Login screen shown successfully');
-                            } else {
-                                console.log('showTempScreen not available');
-                                // Try trigger method
-                                if (self.trigger) {
-                                    console.log('Trying trigger method');
-                                    self.trigger('show-temp-screen', { screen: 'LoginScreen' });
-                                }
-                            }
-                        } catch (e) {
-                            console.log('Error showing login screen:', e);
-                            console.log('Error details:', e.message);
-                        }
-                    }, 300);
                 });
             }     
 
