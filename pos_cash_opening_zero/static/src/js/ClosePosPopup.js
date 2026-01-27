@@ -213,8 +213,7 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     console.log(response);
                     console.log('Cash count created successfully, closing ClosePosPopup');
                     
-                    // Close ClosePosPopup after successful save
-                    self.closeClosePosPopup();
+                    
                     
                     // Generate receipt content
                     let header = `
@@ -284,6 +283,8 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                             printWindow.onafterprint = function() {
                                 printWindow.close();
                                 self.cancel();
+                                // Close ClosePosPopup after successful save
+                                self.closeClosePosPopup();
                                 self.showLoginScreen();
                             };
                             
@@ -292,6 +293,8 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                                 if (printWindow.closed) {
                                     clearInterval(checkWindowClosed);
                                     self.cancel();
+                                    // Close ClosePosPopup after successful save
+                                    self.closeClosePosPopup();
                                     self.showLoginScreen();
                                 }
                             }, 500);
@@ -300,6 +303,8 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     
                     // Close popup and return to login - using the same pattern as original code
                     self.cancel();
+                    // Close ClosePosPopup after successful save
+                    self.closeClosePosPopup();
                     self.showLoginScreen();
                 });
             }     
@@ -660,12 +665,7 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                 printWindow.print();                                                                                
             }
 
-            async showFinalConfirmation(type) {
-                console.log('showFinalConfirmation called for type:', type);
-                // Skip showing confirmation popup since ClosePosPopup is already closed
-                // Just return to login screen directly
-                await this.returnToLogin();
-            }
+            
 
             closeClosePosPopup() {
                 console.log('Closing ClosePosPopup - attempting all methods');
@@ -702,39 +702,6 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     }
                 } catch (e) {
                     console.log('Method 3 failed:', e);
-                }
-            }
-
-            async returnToLogin() {
-                console.log('returnToLogin called');
-                console.log('Current cashier:', this.env.pos.get_cashier());
-                
-                try {
-                    // Reset cashier
-                    this.env.pos.reset_cashier();
-                    console.log('Cashier reset completed');
-                    
-                    // Show login screen using the POS chrome component
-                    console.log('Attempting to show LoginScreen...');
-                    
-                    // Get the chrome component from the POS
-                    const chrome = this.env.pos.chrome || this.chrome;
-                    if (chrome && chrome.showTempScreen) {
-                        await chrome.showTempScreen('LoginScreen');
-                        console.log('LoginScreen shown via chrome');
-                    } else if (this.showTempScreen) {
-                        await this.showTempScreen('LoginScreen');
-                        console.log('LoginScreen shown via this.showTempScreen');
-                    } else {
-                        // Direct manipulation of the screen
-                        console.log('Using direct screen manipulation');
-                        this.env.pos.set('tempScreen', { name: 'LoginScreen' });
-                    }
-                    
-                    console.log('LoginScreen shown successfully');
-                } catch (error) {
-                    console.log('Error in returnToLogin:', error);
-                    console.log('Error stack:', error.stack);
                 }
             }
 
