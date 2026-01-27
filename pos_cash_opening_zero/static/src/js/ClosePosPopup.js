@@ -708,10 +708,32 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
 
             async returnToLogin() {
                 console.log('returnToLogin called');
+                console.log('Current cashier:', this.env.pos.get_cashier());
                 
-                // Reset cashier and show login screen
-                this.env.pos.reset_cashier();
-                await this.showTempScreen('LoginScreen');
+                try {
+                    // Reset cashier
+                    this.env.pos.reset_cashier();
+                    console.log('Cashier reset completed');
+                    
+                    // Show login screen
+                    console.log('Attempting to show LoginScreen...');
+                    await this.showTempScreen('LoginScreen');
+                    console.log('LoginScreen shown successfully');
+                } catch (error) {
+                    console.log('Error in returnToLogin:', error);
+                    
+                    // Fallback: try alternative method
+                    try {
+                        console.log('Trying fallback method...');
+                        this.env.pos.reset_cashier();
+                        const chrome = this.env.pos.chrome;
+                        if (chrome) {
+                            chrome.showTempScreen('LoginScreen');
+                        }
+                    } catch (e2) {
+                        console.log('Fallback also failed:', e2);
+                    }
+                }
             }
 
             async showLoginScreen() {
