@@ -203,8 +203,10 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     args: [data],
                 }).then((response) => {
                     console.log(response);
-                    self.cancel();
-                    self.showLoginScreen();                                            
+                    if (type === 'mid') {
+                        self.cancel();
+                        self.showLoginScreen();
+                    }                                            
                     let header = `
                         <h2 style="text-align: center;">                
                             * * CASH COUNT * *
@@ -252,9 +254,11 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     `;
 
                     let printWindow = window.open('', '', 'width=400,height=600');
-                    printWindow.document.write(receipt);
-                    printWindow.document.close();
-                    printWindow.print();                                                                
+                    if (printWindow) {
+                        printWindow.document.write(receipt);
+                        printWindow.document.close();
+                        printWindow.print();
+                    }                                                                
                 });
             }     
 
