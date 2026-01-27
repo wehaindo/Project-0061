@@ -671,22 +671,46 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
             }
 
             closeClosePosPopup() {
-                console.log('Closing ClosePosPopup');
+                console.log('Closing ClosePosPopup - attempting all methods');
                 try {
-                    // Try to close popup properly by resolving its promise
+                    // Method 1: Try to resolve the popup promise
                     if (this.props && this.props.resolve) {
+                        console.log('Method 1: Resolving via props.resolve');
                         this.props.resolve({ confirmed: false, payload: null });
+                        return;
                     }
                 } catch (e) {
-                    console.log('Error closing popup via resolve:', e);
-                    // Fallback: try super.cancel
-                    try {
-                        if (this.canCancel()) {
-                            super.cancel();
-                        }
-                    } catch (e2) {
-                        console.log('Error closing popup via cancel:', e2);
+                    console.log('Method 1 failed:', e);
+                }
+                
+                try {
+                    // Method 2: Try super.cancel
+                    if (this.canCancel && this.canCancel()) {
+                        console.log('Method 2: Using super.cancel');
+                        super.cancel();
+                        return;
                     }
+                } catch (e) {
+                    console.log('Method 2 failed:', e);
+                }
+                
+                try {
+                    // Method 3: Trigger close event
+                    console.log('Method 3: Triggering close-popup event');
+                    this.trigger('close-popup');
+                } catch (e) {
+                    console.log('Method 3 failed:', e);
+                }
+                
+                try {
+                    // Method 4: Direct DOM manipulation as last resort
+                    console.log('Method 4: Attempting DOM close');
+                    const popupElement = document.querySelector('.modal-dialog.popup');
+                    if (popupElement) {
+                        popupElement.remove();
+                    }
+                } catch (e) {
+                    console.log('Method 4 failed:', e);
                 }
             }
 
