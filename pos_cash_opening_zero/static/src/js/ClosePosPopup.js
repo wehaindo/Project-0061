@@ -27,6 +27,7 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                 this.state.allowPin = false;                 
                 this.state.mid = false;
                 this.state.end = false;
+                this.popupClosed = false; // Flag to track if popup has been closed
                 onWillStart(this.OnWillStart);
                 onMounted(this.mounted);
 
@@ -37,6 +38,12 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
             }
 
             async mounted(){
+                // Check if popup was already closed by cash count process
+                if (this.popupClosed) {
+                    console.log('Popup already closed, skipping mount');
+                    return;
+                }
+                
                 console.log('getItem - allowPin');
                 console.log(localStorage.getItem('allowPin'));           
                 let allowPin = localStorage.getItem('allowPin');
@@ -672,6 +679,10 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
 
             closeClosePosPopup() {
                 console.log('Closing ClosePosPopup - attempting all methods');
+                
+                // Set flag to prevent re-rendering
+                this.popupClosed = true;
+                
                 try {
                     // Method 1: Try to resolve the popup promise
                     if (this.props && this.props.resolve) {
