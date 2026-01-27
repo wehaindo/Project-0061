@@ -203,10 +203,8 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     args: [data],
                 }).then((response) => {
                     console.log(response);
-                    if (type === 'mid') {
-                        self.cancel();
-                        self.showLoginScreen();
-                    }                                            
+                    self.cancel();
+                    self.showLoginScreen();                                            
                     let header = `
                         <h2 style="text-align: center;">                
                             * * CASH COUNT * *
