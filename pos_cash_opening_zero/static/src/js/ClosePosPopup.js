@@ -197,12 +197,15 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                 }
                 console.log('data');
                 console.log(data);
+                
                 await this.rpc({
                     model: 'pos.cash.count',
                     method: 'create_from_ui',
                     args: [data],
-                }).then((response) => {
+                }).then(async (response) => {
                     console.log(response);
+                    
+                    // Generate receipt content
                     let header = `
                         <h2 style="text-align: center;">                
                             * * CASH COUNT * *
@@ -249,32 +252,39 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                         </div>    
                     `;
 
-                    let printWindow = window.open('', '', 'width=400,height=600');
-                    if (printWindow) {
-                        printWindow.document.write(receipt);
-                        printWindow.document.close();
-                        printWindow.print();
-                        
-                        // Wait for print dialog to close, then exit to login screen
-                        printWindow.onafterprint = function() {
-                            printWindow.close();
-                            self.cancel();
-                            self.showLoginScreen();
-                        };
-                        
-                        // Also handle if user closes the window without printing
-                        const checkWindowClosed = setInterval(function() {
-                            if (printWindow.closed) {
-                                clearInterval(checkWindowClosed);
-                                self.cancel();
-                                self.showLoginScreen();
-                            }
-                        }, 500);
-                    } else {
-                        // If popup blocked, still exit to login screen
-                        self.cancel();
-                        self.showLoginScreen();
-                    }                                                                
+                    // Show success message with print option
+                    const countType = type === 'end' ? 'End' : 'Mid';
+                    const { confirmed } = await this.showPopup('ConfirmPopup', {
+                        title: this.env._t('Cash Count Submitted'),
+                        body: this.env._t(`${countType} cash count has been recorded successfully.\n\nWould you like to print the receipt?`),
+                        confirmText: this.env._t('Print Receipt'),
+                        cancelText: this.env._t('Skip Print'),
+                    });
+                    
+                    if (confirmed) {
+                        // User wants to print
+                        let printWindow = window.open('', '', 'width=400,height=600');
+                        if (printWindow) {
+                            printWindow.document.write(receipt);
+                            printWindow.document.close();
+                            printWindow.print();
+                            
+                            // Handle print completion
+                            printWindow.onafterprint = function() {
+                                printWindow.close();
+                            };
+                            
+                            // Monitor window close
+                            const checkWindowClosed = setInterval(function() {
+                                if (printWindow.closed) {
+                                    clearInterval(checkWindowClosed);
+                                }
+                            }, 500);
+                        }
+                    }
+                    
+                    // Always show final confirmation before returning to login
+                    await self.showFinalConfirmation(type);
                 });
             }     
 
@@ -632,6 +642,31 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                 printWindow.document.write(receipt);
                 printWindow.document.close();
                 printWindow.print();                                                                                
+            }
+
+            async showFinalConfirmation(type) {
+                const countType = type === 'end' ? 'End' : 'Mid';
+                const message = type === 'end' 
+                    ? this.env._t('End cash count completed.\n\nThe system will now return to the login screen.')
+                    : this.env._t('Mid cash count completed.\n\nClick OK to return to the login screen.');
+                
+                await this.showPopup('ConfirmPopup', {
+                    title: this.env._t(`${countType} Cash Count Complete`),
+                    body: message,
+                    confirmText: this.env._t('OK'),
+                    cancelText: false, // No cancel button
+                });
+                
+                // Always return to login screen
+                this.cancel();
+                await this.returnToLogin();
+            }
+
+            async returnToLogin() {
+                // Small delay for smoother transition
+                await new Promise(resolve => setTimeout(resolve, 300));
+                this.env.pos.reset_cashier();
+                await this.showTempScreen('LoginScreen');
             }
 
             async showLoginScreen() {
