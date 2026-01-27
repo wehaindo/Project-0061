@@ -204,6 +204,10 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                     args: [data],
                 }).then(async (response) => {
                     console.log(response);
+                    console.log('Cash count created successfully, closing ClosePosPopup');
+                    
+                    // Close ClosePosPopup after successful save
+                    self.closeClosePosPopup();
                     
                     // Generate receipt content
                     let header = `
@@ -666,26 +670,32 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                 await this.returnToLogin();
             }
 
+            closeClosePosPopup() {
+                console.log('Closing ClosePosPopup');
+                try {
+                    // Try to close popup properly by resolving its promise
+                    if (this.props && this.props.resolve) {
+                        this.props.resolve({ confirmed: false, payload: null });
+                    }
+                } catch (e) {
+                    console.log('Error closing popup via resolve:', e);
+                    // Fallback: try super.cancel
+                    try {
+                        if (this.canCancel()) {
+                            super.cancel();
+                        }
+                    } catch (e2) {
+                        console.log('Error closing popup via cancel:', e2);
+                    }
+                }
+            }
+
             async returnToLogin() {
                 console.log('returnToLogin called');
                 
                 // Reset cashier and show login screen
                 this.env.pos.reset_cashier();
                 await this.showTempScreen('LoginScreen');
-                
-                // Force close the ClosePosPopup by calling cancel with resolved payload
-                setTimeout(() => {
-                    try {
-                        // Try to close popup properly
-                        this.props.resolve({ confirmed: false, payload: null });
-                    } catch (e) {
-                        console.log('Error closing popup:', e);
-                        // Fallback: try super.cancel
-                        if (this.canCancel()) {
-                            super.cancel();
-                        }
-                    }
-                }, 100);
             }
 
             async showLoginScreen() {
