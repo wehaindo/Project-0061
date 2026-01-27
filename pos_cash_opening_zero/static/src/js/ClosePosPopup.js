@@ -283,32 +283,24 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                             // Handle print completion
                             printWindow.onafterprint = function() {
                                 printWindow.close();
+                                self.cancel();
+                                self.showLoginScreen();
                             };
                             
                             // Monitor window close
-                            const checkWindowClosed = setInterval(function() {
+                           const checkWindowClosed = setInterval(function() {
                                 if (printWindow.closed) {
                                     clearInterval(checkWindowClosed);
+                                    self.cancel();
+                                    self.showLoginScreen();
                                 }
                             }, 500);
                         }
                     }
                     
-                    // Return to login BEFORE closing popup
-                    console.log('Preparing to return to login...');
-                    
-                    // Call showLoginScreen BEFORE closing the popup while we still have context
-                    try {
-                        console.log('Calling showLoginScreen before closing popup');
-                        await self.showLoginScreen();
-                        console.log('showLoginScreen completed');
-                    } catch (e) {
-                        console.log('Error calling showLoginScreen:', e);
-                    }
-                    
-                    // Now close the popup after login screen is shown
-                    console.log('Now closing popup after login screen shown');
-                    self.closeClosePosPopup();
+                    // Close popup and return to login - using the same pattern as original code
+                    self.cancel();
+                    self.showLoginScreen();
                 });
             }     
 
