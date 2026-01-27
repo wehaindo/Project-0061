@@ -664,9 +664,6 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                 
                 // Always return to login screen regardless of popup response
                 await this.returnToLogin();
-                
-                // Ensure popup is closed
-                this.trigger('close-temp-screen');
             }
 
             async returnToLogin() {
@@ -676,14 +673,17 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                 this.env.pos.reset_cashier();
                 await this.showTempScreen('LoginScreen');
                 
-                // Close the ClosePosPopup after showing login screen
-                // Small delay to ensure login screen is shown first
+                // Force close the ClosePosPopup by calling cancel with resolved payload
                 setTimeout(() => {
-                    if (this.canCancel()) {
-                        super.cancel();
-                    } else {
-                        // Force close the popup
-                        this.trigger('close-popup');
+                    try {
+                        // Try to close popup properly
+                        this.props.resolve({ confirmed: false, payload: null });
+                    } catch (e) {
+                        console.log('Error closing popup:', e);
+                        // Fallback: try super.cancel
+                        if (this.canCancel()) {
+                            super.cancel();
+                        }
                     }
                 }, 100);
             }
