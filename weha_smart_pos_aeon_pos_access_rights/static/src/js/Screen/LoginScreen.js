@@ -93,17 +93,38 @@ odoo.define('weha_smart_pos_aeon_pos_access_rights.LoginScreen', function (requi
                         // console.log(confirmedPin);
                         // console.log(inputPin);
 
-                        if (!confirmed) {
-                            return;
-                        }
+                        // if (!confirmed) {
+                        //     return;
+                        // }
 
                         if (employee && employee.pin) {
-                            employee = await this.askPin(employee);
+                            const { confirmed: pinConfirmed, payload: inputPin } = await this.showPopup('NumberPopup', {
+                                isPassword: true,
+                                title: this.env._t('Password ?'),
+                                startingValue: null,
+                            });
+                            
+                            console.log(pinConfirmed);
+                            console.log(inputPin);
+                            
+                            // Check if PIN was cancelled
+                            if (!pinConfirmed) {
+                                return;
+                            }
+                            
+                            // Verify the PIN matches
+                            if (employee.pin !== inputPin) {
+                                await this.showPopup('ErrorPopup', {
+                                    title: this.env._t('Incorrect PIN'),
+                                    body: this.env._t('The PIN you entered is incorrect. Please try again.'),
+                                });
+                                return;
+                            }
                         }
 
                         if (employee) {
                             await this.activatePin();
-                        }                                                             
+                        }                                                      
                     }
             }
 

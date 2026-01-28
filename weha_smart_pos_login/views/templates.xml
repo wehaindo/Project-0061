@@ -155,8 +155,8 @@
                                 <div id="login-box" class="col-md-12" style="margin-top:10px;">
                                     <form  class="row form-signin" action="/pos/scan" method="POST">
                                         <input type="hidden" name="pos_config" t-att-value="pos_config_id"/>
-                                        <input  type="hidden" name="emp_id" id="emp_id"  value="2305023"/>
-                                        <input type="hidden" name="emp_barcode" id="emp_barcode" value="05023"/>                                        
+                                        <input  type="hidden" name="emp_id" id="emp_id"  value="6914751802119518"/>
+                                        <input type="hidden" name="emp_barcode" id="emp_barcode" value="6914751802119518"/>                                        
                                         <div class="col-sm-12 col-md-12">
                                             <button class="btn btn-primary btn-block btn-signin" type="submit">Open Register</button>
                                         </div>

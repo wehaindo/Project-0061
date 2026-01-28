@@ -36,7 +36,7 @@ class PosHome(http.Controller):
 
         pos_config_id = request.env['pos.config'].sudo().search([('pos_config_code','=',code)], limit=1)        
         if pos_config_id:
-            # pos_config = request.env['pos.config'].sudo().browse(pos_config_id.id)
+            # pos_config = request.env['pos.config'].sudo().browse(pos_config_id.id)            
             values['is_pos_found'] = True
             values['pos_config_id'] = pos_config_id.id
             values['pos_config_code'] = pos_config_id.code
@@ -44,6 +44,9 @@ class PosHome(http.Controller):
             values['res_branch_id'] = pos_config_id.res_branch_id.id
             values['res_branch_name'] = pos_config_id.res_branch_id.name
             values['res_branch_code'] = pos_config_id.res_branch_id.code
+            values['pos_session_id'] = False
+            if pos_config_id.current_session_id:
+                values['pos_session_id'] = pos_config_id.current_session_id.id
         else:
             values['is_pos_found'] = False
             values['pos_config_id'] = 0
@@ -52,6 +55,7 @@ class PosHome(http.Controller):
             values['res_branch_id'] = 0
             values['res_branch_name'] = "Store not found"
             values['res_branch_code'] = ""
+            values['pos_session_id'] = False
         #values['pos_session_id'] = pos_session_id
         response = request.render('weha_smart_pos_login.pos_login', values)
         return response
@@ -80,13 +84,16 @@ class PosHome(http.Controller):
                     uid = request.session.uid
                     _logger.info("Already Login")
 
-            
+            if pos_config.current_session_id:
+                if pos_config.current_session_id.user_id.id != uid:
+                    return request.redirect('/pos/login/' + pos_config.pos_config_code + '?message=POS already used by ' + pos_config.pos_session_username  + '!')                        
+
             if uid:
                 pos_config = request.env['pos.config'].browse(pos_config_id)                
                 pos_config.open_fast_login()
                 url = '/pos/ui/' + '?config_id=%d' % pos_config.id
                 return request.redirect(url)
             else:
-                return request.redirect('/pos/login' + pos_config.pos_config_code + '?message=Username or Password failed')                    
+                return request.redirect('/pos/login/' + pos_config.pos_config_code + '?message=Username or Password failed')                    
         except odoo.exceptions.AccessDenied as e:
             return request.redirect('/pos/login/' + pos_config.pos_config_code + '?message=Username or Password failed')

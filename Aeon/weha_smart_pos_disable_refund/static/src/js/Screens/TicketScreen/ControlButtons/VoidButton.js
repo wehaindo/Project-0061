@@ -51,12 +51,14 @@ odoo.define('weha_smart_pos_disable_refund.VoidButton', function (require) {
         async _voidOrder() {
             // define partner -> generate orderline -> define payment
             var order = this.props.order;
-            console.log("order refund")
+            console.log("order void")
             console.log(order);            
             if (!order) return;
             const void_order = this.env.pos.add_new_order();
             this.init_data(order, void_order);
             await this.add_orderlines(order, void_order);
+            void_order.set_is_void(true);
+            void_order.set_void_parent_pos_reference(order.name);
             this.add_payments(order,void_order);
             this.env.pos.set_order(void_order);
             this.showScreen('ProductScreen');

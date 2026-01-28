@@ -10,6 +10,7 @@
 #################################################################################
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
+import hashlib
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -23,8 +24,27 @@ class PosSession(models.Model):
             loaded_data['res.users.supervisor.by.id'] = {supervisor['id']: supervisor for supervisor in loaded_data['res.users.supervisor']}
             loaded_data['res.users.supervisor.by.rfid'] = {supervisor['rfid']: supervisor for supervisor in loaded_data['res.users.supervisor']}
         if self.config_id.module_pos_hr:
-            loaded_data['employee_by_user_id'] = {employee['user_id']: employee for employee in loaded_data['hr.employee']}
-            loaded_data['employee_by_id'] = {employee['id']: employee for employee in loaded_data['hr.employee']}
+            # loaded_data['employee_by_user_id'] = {employee['user_id']: employee for employee in loaded_data['hr.employee']}
+            # loaded_data['employee_by_id'] = {employee['id']: employee for employee in loaded_data['hr.employee']}
+            # Search all employees directly with sudo to access all fields
+            all_employees = self.env['hr.employee'].sudo().search_read(
+                [],
+                ['id', 'name', 'user_id', 'barcode', 'pin', 'fingerprint_primary', 'fingerprint_secondary']
+            )
+            # for employee in all_employees:
+            #     # Hash barcode and pin for security            
+            #     if employee.get('pin'):
+            #         employee['pin'] = hashlib.sha1(employee['pin'].encode('utf8')).hexdigest() if employee['pin'] else False
+                
+            # Create mappings
+            
+            loaded_data['employee_by_user_id'] = {employee['user_id'][0]: employee for employee in all_employees if employee.get('user_id')}
+            loaded_data['employee_by_id'] = {employee['id']: employee for employee in all_employees}
+            
+            # Log for debugging
+            _logger.info("Total employees loaded: %s", len(all_employees))
+            _logger.info("Employees with user_id: %s", len(loaded_data['employee_by_user_id']))
+
 
     def _pos_ui_models_to_load(self):
         result = super()._pos_ui_models_to_load()

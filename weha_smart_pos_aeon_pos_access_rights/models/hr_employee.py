@@ -15,7 +15,30 @@ import hashlib
 
 _logger = logging.getLogger(__name__)
 
-
+class HrEmployeePublic(models.Model):
+    _inherit = 'hr.employee.public'
+    
+    fingerprint_primary = fields.Text(
+        string='Primary Fingerprint',
+        related='employee_id.fingerprint_primary',
+        readonly=True
+    )
+    fingerprint_secondary = fields.Text(
+        string='Secondary Fingerprint',
+        related='employee_id.fingerprint_secondary',
+        readonly=True
+    )
+    fingerprint_primary_id = fields.Binary(
+        string='Primary Fingerprint Binary',
+        related='employee_id.fingerprint_primary_id',
+        readonly=True
+    )
+    fingerprint_secondary_id = fields.Binary(
+        string='Secondary Fingerprint Binary',
+        related='employee_id.fingerprint_secondary_id',
+        readonly=True
+    )
+    
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
     
