@@ -8,7 +8,11 @@
 # You can`t redistribute it and/or modify it.
 #
 #################################################################################
-from . import pos_order
-from . import pos_config
-from . import res_config_settings
-from . import pos_reason
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError, ValidationError
+
+class PosReason(models.Model):
+    _name = 'pos.reason'
+
+    name = fields.Char("Code", size=100)
+    description = fields.Char("Description", size=255)
