@@ -27,6 +27,7 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                 this.state.allowPin = false;                 
                 this.state.mid = false;
                 this.state.end = false;
+                this.popupClosed = false; // Flag to track if popup has been closed
                 onWillStart(this.OnWillStart);
                 onMounted(this.mounted);
 
@@ -37,6 +38,12 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
             }
 
             async mounted(){
+                // Check if popup was already closed by cash count process
+                if (this.popupClosed) {
+                    console.log('Popup already closed, skipping mount');
+                    return;
+                }
+                
                 console.log('getItem - allowPin');
                 console.log(localStorage.getItem('allowPin'));           
                 let allowPin = localStorage.getItem('allowPin');
@@ -197,12 +204,18 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                 }
                 console.log('data');
                 console.log(data);
+                
                 await this.rpc({
                     model: 'pos.cash.count',
                     method: 'create_from_ui',
                     args: [data],
-                }).then((response) => {
+                }).then(async (response) => {
                     console.log(response);
+                    console.log('Cash count created successfully, closing ClosePosPopup');
+                    
+                    
+                    
+                    // Generate receipt content
                     let header = `
                         <h2 style="text-align: center;">                
                             * * CASH COUNT * *
@@ -249,32 +262,50 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                         </div>    
                     `;
 
-                    let printWindow = window.open('', '', 'width=400,height=600');
-                    if (printWindow) {
-                        printWindow.document.write(receipt);
-                        printWindow.document.close();
-                        printWindow.print();
-                        
-                        // Wait for print dialog to close, then exit to login screen
-                        printWindow.onafterprint = function() {
-                            printWindow.close();
-                            self.cancel();
-                            self.showLoginScreen();
-                        };
-                        
-                        // Also handle if user closes the window without printing
-                        const checkWindowClosed = setInterval(function() {
-                            if (printWindow.closed) {
-                                clearInterval(checkWindowClosed);
+                    // Show success message with print option
+                    const countType = type === 'end' ? 'End' : 'Mid';
+                    const { confirmed } = await this.showPopup('ConfirmPopup', {
+                        title: this.env._t('Cash Count Submitted'),
+                        body: this.env._t(`${countType} cash count has been recorded successfully.\n\nWould you like to print the receipt?`),
+                        confirmText: this.env._t('Print Receipt'),
+                        cancelText: this.env._t('Skip Print'),
+                    });
+                    
+                    if (confirmed) {
+                        // User wants to print
+                        let printWindow = window.open('', '', 'width=400,height=600');
+                        if (printWindow) {
+                            printWindow.document.write(receipt);
+                            printWindow.document.close();
+                            printWindow.print();
+                            
+                            // Handle print completion
+                            printWindow.onafterprint = function() {
+                                printWindow.close();
                                 self.cancel();
+                                // Close ClosePosPopup after successful save
+                                self.closeClosePosPopup();
                                 self.showLoginScreen();
-                            }
-                        }, 500);
-                    } else {
-                        // If popup blocked, still exit to login screen
-                        self.cancel();
-                        self.showLoginScreen();
-                    }                                                                
+                            };
+                            
+                            // Monitor window close
+                           const checkWindowClosed = setInterval(function() {
+                                if (printWindow.closed) {
+                                    clearInterval(checkWindowClosed);
+                                    self.cancel();
+                                    // Close ClosePosPopup after successful save
+                                    self.closeClosePosPopup();
+                                    self.showLoginScreen();
+                                }
+                            }, 500);
+                        }
+                    }
+                    
+                    // Close popup and return to login - using the same pattern as original code
+                    self.cancel();
+                    // Close ClosePosPopup after successful save
+                    self.closeClosePosPopup();
+                    self.showLoginScreen();
                 });
             }     
 
@@ -632,6 +663,46 @@ odoo.define('pos_cash_opening_zero.ClosePosPopup', function (require) {
                 printWindow.document.write(receipt);
                 printWindow.document.close();
                 printWindow.print();                                                                                
+            }
+
+            
+
+            closeClosePosPopup() {
+                console.log('Closing ClosePosPopup - attempting all methods');
+                
+                // Set flag to prevent re-rendering
+                this.popupClosed = true;
+                
+                try {
+                    // Method 1: Cancel like the confirm button does
+                    console.log('Method 1: Using cancel');
+                    this.cancel();
+                    return;
+                } catch (e) {
+                    console.log('Method 1 failed:', e);
+                }
+                
+                try {
+                    // Method 2: Try to reject the popup promise
+                    if (this.props && this.props.reject) {
+                        console.log('Method 2: Rejecting via props.reject');
+                        this.props.reject();
+                        return;
+                    }
+                } catch (e) {
+                    console.log('Method 2 failed:', e);
+                }
+                
+                try {
+                    // Method 3: Try to resolve the popup promise
+                    if (this.props && this.props.resolve) {
+                        console.log('Method 3: Resolving via props.resolve');
+                        this.props.resolve({ confirmed: false, payload: null });
+                        return;
+                    }
+                } catch (e) {
+                    console.log('Method 3 failed:', e);
+                }
             }
 
             async showLoginScreen() {
