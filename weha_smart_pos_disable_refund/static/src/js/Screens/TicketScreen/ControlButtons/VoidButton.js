@@ -223,22 +223,51 @@ odoo.define('weha_smart_pos_disable_refund.VoidButton', function (require) {
                                 });      
                             }
                         }                        
-                    }else{                                        
-                        const { payload: password } = await this.showPopup('PasswordInputPopup', {
-                            title: this.env._t('Supervisor Pin?'),                    
-                            isInputSelected: true,                        
-                        }); 
+                    }else{
+                        // Show supervisor grid first
+                        const employees = this.env.pos.res_users_supervisors
+                        .filter((supervisor) => this.env.pos.employee_by_user_id[supervisor.id])
+                        .map((supervisor) => {
+                            const employee = this.env.pos.employee_by_user_id[supervisor.id]
+                            return {
+                                id: employee.id,
+                                item: employee,
+                                label: employee.name,
+                                isSelected: false,
+                                fingerprintPrimary: employee.fingerprint_primary,
+                            };
+                        });
 
-                        if ( password ){
-                            var supervisor = this.env.pos.res_users_supervisor_by_rfid[password];
-                            if (supervisor) {
+                        let {confirmed: supervisorConfirmed, payload: employee} = await this.showPopup('SupervisorGridPopup', {
+                            title: this.env._t('Supervisor'),
+                            employees: employees,
+                        });
+
+                        if (supervisorConfirmed && employee) {
+                            // Ask for PIN after selecting supervisor
+                            if (employee.pin) {
+                                const { confirmed, payload: inputPin } = await this.showPopup('NumberPopup', {
+                                    isPassword: true,
+                                    title: this.env._t('Password ?'),
+                                    startingValue: null,
+                                });
+
+                                if (confirmed && employee.pin === inputPin) {
+                                    this.posActivityLog.saveLogToLocalStorage('Ticket Screen','Void Transaction',order.cashier.id);
+                                    await this._voidOrder();
+                                } else {
+                                    await this.showPopup('ErrorPopup', {
+                                        body: this.env._t('Incorrect Password'),                    
+                                    });
+                                }
+                            } else {
                                 this.posActivityLog.saveLogToLocalStorage('Ticket Screen','Void Transaction',order.cashier.id);
                                 await this._voidOrder();
-                            }else{
-                                await this.showPopup('ErrorPopup', {
-                                    body: this.env._t('Void transaction failed!'),                    
-                                });       
                             }
+                        } else {
+                            await this.showPopup('ErrorPopup', {
+                                body: this.env._t('Void transaction failed!'),                    
+                            });
                         }
                                         
                     }        

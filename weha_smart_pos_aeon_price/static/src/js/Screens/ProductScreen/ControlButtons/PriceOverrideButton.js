@@ -65,37 +65,69 @@ odoo.define('weha_smart_pos_aeon_price_change.PriceOverrideButton', function(req
                         isInputSelected: true,
                     });    
                     var newPrice = payload;
-                    if ( confirmed ) {                
-                        const { confirmed, payload } = await this.showPopup('PasswordInputPopup', {
-                            title: this.env._t('Supervisor Pin?'),        
-                            body: "Reason code : " + reasonCode +  " - " + "New Price : " + newPrice,             
-                            isInputSelected: true,                        
-                        }); 
-    
-                        if ( confirmed ){
-                            console.log('this.env.pos.res_users_supervisor_by_rfid');
-                            console.log(this.env.pos.res_users_supervisor_by_rfid);
-                            var supervisor = this.env.pos.res_users_supervisor_by_rfid[payload];
-                            if (supervisor) {
-                                if(supervisor.id === this.env.pos.config.current_user_id[0]){
-                                    await this.showPopup('ErrorPopup', {
-                                        body: this.env._t('Supervisor cannot override product price!'),                    
-                                    });   
-                                }else{
+                    if ( confirmed ) {
+                        // Show supervisor grid first
+                        const employees = this.env.pos.res_users_supervisors
+                        .filter((supervisor) => this.env.pos.employee_by_user_id[supervisor.id])
+                        .map((supervisor) => {
+                            const employee = this.env.pos.employee_by_user_id[supervisor.id]
+                            return {
+                                id: employee.id,
+                                item: employee,
+                                label: employee.name,
+                                isSelected: false,
+                                fingerprintPrimary: employee.fingerprint_primary,
+                            };
+                        });
+
+                        let {confirmed: supervisorConfirmed, payload: employee} = await this.showPopup('SupervisorGridPopup', {
+                            title: this.env._t('Supervisor'),
+                            employees: employees,
+                        });
+
+                        if (supervisorConfirmed && employee) {
+                            // Check if supervisor is the same as current user
+                            if(employee.user_id && employee.user_id[0] === this.env.pos.config.current_user_id[0]){
+                                await this.showPopup('ErrorPopup', {
+                                    body: this.env._t('Supervisor cannot override product price!'),                    
+                                });
+                                return;
+                            }
+
+                            // Ask for PIN after selecting supervisor
+                            if (employee.pin) {
+                                const { confirmed, payload: inputPin } = await this.showPopup('NumberPopup', {
+                                    isPassword: true,
+                                    title: this.env._t('Password ?'),
+                                    startingValue: null,
+                                });
+
+                                if (confirmed && employee.pin === inputPin) {
                                     console.log('supervisor');
-                                    console.log(supervisor);
+                                    console.log(employee);
                                     orderline.price_manually_set = true;
                                     orderline.set_unit_price(newPrice);
                                     orderline.set_price_source('override');    
-                                    orderline.set_price_override_user(supervisor.id);
+                                    orderline.set_price_override_user(employee.user_id[0]);
                                     orderline.set_price_override_reason(reasonCode);
+                                } else {
+                                    await this.showPopup('ErrorPopup', {
+                                        body: this.env._t('Incorrect Password'),                    
+                                    });
                                 }
-                            }else{
-                 
-                                await this.showPopup('ErrorPopup', {
-                                    body: this.env._t('Price override failed!'),                    
-                                });    
+                            } else {
+                                console.log('supervisor');
+                                console.log(employee);
+                                orderline.price_manually_set = true;
+                                orderline.set_unit_price(newPrice);
+                                orderline.set_price_source('override');    
+                                orderline.set_price_override_user(employee.user_id[0]);
+                                orderline.set_price_override_reason(reasonCode);
                             }
+                        } else {
+                            await this.showPopup('ErrorPopup', {
+                                body: this.env._t('Price override failed!'),                    
+                            });
                         }
                     }
     

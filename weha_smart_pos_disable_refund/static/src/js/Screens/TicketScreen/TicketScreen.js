@@ -93,15 +93,50 @@ odoo.define('weha_smart_pos_disable_refund.TicketScreen', function (require) {
                                     });       
                                 }                                
                             }                                             
-                        }else{                            
-                            const { payload: passwordPayload } = await this.showPopup('PasswordInputPopup', {
-                                title: this.env._t('Supervisor Pin?'),   
-                                body: reasonPayload,               
-                                isInputSelected: true,                        
-                            }); 
-                            if ( passwordPayload ){
-                                var supervisor = this.env.pos.res_users_supervisor_by_rfid[passwordPayload];
-                                if (supervisor) {
+                        }else{
+                            // Show supervisor grid first
+                            const employees = this.env.pos.res_users_supervisors
+                            .filter((supervisor) => this.env.pos.employee_by_user_id[supervisor.id])
+                            .map((supervisor) => {
+                                const employee = this.env.pos.employee_by_user_id[supervisor.id]
+                                return {
+                                    id: employee.id,
+                                    item: employee,
+                                    label: employee.name,
+                                    isSelected: false,
+                                    fingerprintPrimary: employee.fingerprint_primary,
+                                };
+                            });
+
+                            let {confirmed: supervisorConfirmed, payload: employee} = await this.showPopup('SupervisorGridPopup', {
+                                title: this.env._t('Supervisor'),
+                                employees: employees,
+                            });
+
+                            if (supervisorConfirmed && employee) {
+                                // Ask for PIN after selecting supervisor
+                                if (employee.pin) {
+                                    const { confirmed, payload: inputPin } = await this.showPopup('NumberPopup', {
+                                        isPassword: true,
+                                        title: this.env._t('Password ?'),
+                                        startingValue: null,
+                                    });
+
+                                    if (confirmed && employee.pin === inputPin) {
+                                        const syncorder = this.getSelectedSyncedOrder();
+                                        console.log(syncorder);
+                                        await super._onDoRefund();                                
+                                        const order = this.env.pos.get_order();
+                                        order.set_is_refund(true);
+                                        order.set_refund_parent_pos_reference(syncorder.name);
+                                        console.log(order);
+                                        this.posActivityLog.saveLogToLocalStorage('Ticket Screen','Refund Transaction',order.cashier.id);
+                                    } else {
+                                        await this.showPopup('ErrorPopup', {
+                                            body: this.env._t('Incorrect Password'),                    
+                                        });
+                                    }
+                                } else {
                                     const syncorder = this.getSelectedSyncedOrder();
                                     console.log(syncorder);
                                     await super._onDoRefund();                                
@@ -110,12 +145,12 @@ odoo.define('weha_smart_pos_disable_refund.TicketScreen', function (require) {
                                     order.set_refund_parent_pos_reference(syncorder.name);
                                     console.log(order);
                                     this.posActivityLog.saveLogToLocalStorage('Ticket Screen','Refund Transaction',order.cashier.id);
-                                }else{
-                                    await this.showPopup('ErrorPopup', {
-                                        body: this.env._t('Refund transaction failed!'),                    
-                                    });       
-                                }                                
-                            }                                                                                                        
+                                }
+                            } else {
+                                await this.showPopup('ErrorPopup', {
+                                    body: this.env._t('Refund transaction failed!'),                    
+                                });
+                            }                          
                         }      
                     }else{
                         throw new Error('Refund reason is required');
