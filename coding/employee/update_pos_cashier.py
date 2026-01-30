@@ -8,7 +8,7 @@ username = "admin"  # Change to your username
 password = "pelang123"  # Change to your password
 
 # Get POS Config ID from command line argument
-pos_config_id = 31
+pos_config_id = 16
 # Common endpoint
 common = xmlrpc.client.ServerProxy(f"{url}/xmlrpc/2/common", allow_none=True)
 uid = common.authenticate(db, username, password, {})

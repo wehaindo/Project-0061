@@ -11,11 +11,16 @@ odoo.define('weha_smart_pos_disable_refund.TicketScreen', function (require) {
             setup() {
                 super.setup();
                 this.posActivityLog = new PosActivityLog();
-                this.state = useState({allowPin:false});
+                // Don't override state, just add allowPin property
+                Object.assign(this.state, { allowPin: false });
                 onMounted(this.mounted);
             }
 
-           mounted(){
+           async mounted(){
+                // Call parent mounted if it exists
+                if (super.mounted) {
+                    await super.mounted();
+                }
                 console.log('getItem - allowPin');
                 console.log(localStorage.getItem('allowPin'));           
                 let allowPin = localStorage.getItem('allowPin');

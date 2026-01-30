@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Dashboard Action -->
+    <record id="action_pos_activity_log_dashboard" model="ir.actions.client">
+        <field name="name">Activity Log Dashboard</field>
+        <field name="tag">pos_activity_log_dashboard</field>
+    </record>
+    
+    <!-- Dashboard Form View (for settings/config if needed) -->
+    <record id="view_pos_activity_log_dashboard_form" model="ir.ui.view">
+        <field name="name">pos.activity.log.dashboard.form</field>
+        <field name="model">pos.activity.log.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="POS Activity Log Dashboard">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
