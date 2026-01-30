@@ -3,12 +3,19 @@
     <t t-name="weha_smart_pos_aeon_dashboard.KpiTemplate" owl="1">
         <div class="col-lg-3 m-0 p-0">
             <div class="shadow-sm border m-2 p-4 bg-white text-center cursor-pointer">
-                <div class="h1 fw-bold text-dark" style="font-size: 48px">100</div>
+                <div class="h1 fw-bold text-dark" style="font-size: 48px">
+                    <t t-esc="formatValue(props.value)"/>
+                </div>
                 <div class="h3 text-muted"><t t-esc="props.title"/></div>
+                <t t-if="props.subtitle">
+                    <div class="h5 text-info mt-2">
+                        <t t-esc="props.subtitle"/>
+                    </div>
+                </t>
                 <div class="h3 mt-5">
-                    <span t-attf-class="text-success">
-                        <span t-attf-class="me-1 fa fa-arrow-up"/>
-                        10%
+                    <span t-attf-class="{{getPercentageClass()}}">
+                        <span t-attf-class="me-1 fa {{getArrowIcon()}}"/>
+                        <t t-esc="Math.abs(props.percentage).toFixed(2)"/>%
                     </span>
                     <span> since last period</span>
                 </div>

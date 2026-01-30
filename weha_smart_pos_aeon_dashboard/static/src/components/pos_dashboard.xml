@@ -2,28 +2,18 @@
 <templates xml:space="preserve">
     <t t-name="weha_smart_pos_aeon_dashboard.PosDashboard" owl="1">
         <div class="vh-100 overflow-auto bg-muted">
+            <!-- Header Section -->
             <div class="row m-3">
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col m-0 p-0">
                             <div class="shadow-sm border m-2 p-4 bg-white">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <h1 class="text-primary fw-bold">AEON Pos Dashboard</h1>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row m-3">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col m-0 p-0">
-                            <div class="shadow-sm border m-2 p-4 bg-white">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <h3 class="text-primary fw-bold">Stores Performance</h3>
-                                    <div class="d-flex">
+                                    <div>
+                                        <h1 class="text-primary fw-bold mb-2">AEON POS Dashboard</h1>
+                                        <p class="text-muted mb-0">Comprehensive Store Performance Monitoring</p>
+                                    </div>
+                                    <div class="d-flex gap-2">
                                         <select class="form-select" t-model="state.period" t-on-change="onChangePeriod">
                                             <option value="0">Today</option>
                                             <option value="7">Last 7 Days</option>
@@ -31,70 +21,248 @@
                                             <option value="90">Last 90 Days</option>                                            
                                         </select>
                                         <select class="form-select" t-model="state.store" t-on-change="onChangeStore">
-                                            <option value="0">All Store</option>                                        
+                                            <option value="0">All Stores</option>
+                                            <t t-foreach="state.stores" t-as="store" t-key="store.id">
+                                                <option t-att-value="store.id"><t t-esc="store.name"/></option>
+                                            </t>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <KpiTemplate title="'Total Amount'" />
-                        <KpiTemplate title="'Total Orders'" />
-                        <KpiTemplate title="'Total Customers'"/>
-                        <KpiTemplate title="'Total Member Days'" />
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <t t-if="state.isLoading">
+                <div class="row m-3">
+                    <div class="col-lg-12 text-center p-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-3 text-muted">Loading dashboard data...</p>
                     </div>
-                    <div class="row">
-                        <div class="col m-0 p-0">
-                            <div class="shadow-sm border m-2 p-4 bg-white">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <ChartTemplate type="'bar'" title="'Stores'" data="state.storeData"/>
+                </div>
+            </t>
+
+            <!-- Main Dashboard Content -->
+            <t t-if="!state.isLoading">
+                <!-- KPI Section -->
+                <div class="row m-3">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col m-0 p-0">
+                                <div class="shadow-sm border m-2 p-3 bg-white">
+                                    <h3 class="text-primary fw-bold">Key Performance Indicators</h3>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 m-0 p-0">
-                            <div class="shadow-sm border m-2 p-4 bg-white text-center cursor-pointer">
-                                <table class="table">
-                                    <thead>
-                                      <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Handle</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">3</th>
-                                        <td colspan="2">Larry the Bird</td>
-                                        <td>@twitter</td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
+                        <div class="row">
+                            <KpiTemplate 
+                                title="'Total Revenue'" 
+                                value="state.revenue.current"
+                                percentage="state.revenue.percentage"
+                                isCurrency="true"
+                                subtitle="'Avg Order: ' + formatCurrency(state.revenue.average_order)"
+                            />
+                            <KpiTemplate 
+                                title="'Total Orders'" 
+                                value="state.orders.current"
+                                percentage="state.orders.percentage"
+                                isCurrency="false"
+                            />
+                            <KpiTemplate 
+                                title="'Unique Customers'"
+                                value="state.customers.current"
+                                percentage="state.customers.percentage"
+                                isCurrency="false"
+                                subtitle="'Members: ' + state.customers.member_percentage + '%'"
+                            />
+                            <KpiTemplate 
+                                title="'Items Sold'" 
+                                value="state.products.total_items_sold"
+                                percentage="0"
+                                isCurrency="false"
+                                subtitle="'Avg per Order: ' + state.products.avg_items_per_order"
+                            />
+                        </div>
+
+                        <!-- Charts Section -->
+                        <div class="row mt-3">
+                            <div class="col-lg-8 m-0 p-0">
+                                <div class="shadow-sm border m-2 p-4 bg-white">
+                                    <h4 class="text-primary mb-3">Daily Sales Trend</h4>
+                                    <ChartTemplate type="'line'" title="'Daily Sales Performance'" data="state.dailyChartData"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 m-0 p-0">
+                                <div class="shadow-sm border m-2 p-4 bg-white">
+                                    <h4 class="text-primary mb-3">Payment Methods</h4>
+                                    <ChartTemplate type="'doughnut'" title="'Payment Distribution'" data="state.paymentChartData"/>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 m-0 p-0">
-                            <div class="shadow-sm border m-2 p-4 bg-white text-center cursor-pointer">
-                                
+
+                        <!-- Store Comparison Chart (Only if All Stores selected) -->
+                        <t t-if="state.store == 0">
+                            <div class="row">
+                                <div class="col-lg-12 m-0 p-0">
+                                    <div class="shadow-sm border m-2 p-4 bg-white">
+                                        <h4 class="text-primary mb-3">Store Performance Comparison</h4>
+                                        <ChartTemplate type="'bar'" title="'Sales by Store'" data="state.storeChartData"/>
+                                    </div>
+                                </div>
                             </div>
+                        </t>
+
+                        <!-- Analytics Tables -->
+                        <div class="row">
+                            <!-- Top Products -->
+                            <div class="col-lg-6 m-0 p-0">
+                                <div class="shadow-sm border m-2 p-4 bg-white">
+                                    <h4 class="text-primary mb-3">Top 10 Products</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Product</th>
+                                                    <th scope="col" class="text-end">Qty</th>
+                                                    <th scope="col" class="text-end">Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-if="state.topProducts.length == 0">
+                                                    <tr>
+                                                        <td colspan="4" class="text-center text-muted">No data available</td>
+                                                    </tr>
+                                                </t>
+                                                <t t-foreach="state.topProducts" t-as="product" t-key="product.id">
+                                                    <tr>
+                                                        <th scope="row"><t t-esc="product_index + 1"/></th>
+                                                        <td><t t-esc="product.name"/></td>
+                                                        <td class="text-end"><t t-esc="formatNumber(product.qty)"/></td>
+                                                        <td class="text-end"><t t-esc="formatCurrency(product.amount)"/></td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Top Categories -->
+                            <div class="col-lg-6 m-0 p-0">
+                                <div class="shadow-sm border m-2 p-4 bg-white">
+                                    <h4 class="text-primary mb-3">Top 10 Categories</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Category</th>
+                                                    <th scope="col" class="text-end">Qty</th>
+                                                    <th scope="col" class="text-end">Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-if="state.topCategories.length == 0">
+                                                    <tr>
+                                                        <td colspan="4" class="text-center text-muted">No data available</td>
+                                                    </tr>
+                                                </t>
+                                                <t t-foreach="state.topCategories" t-as="category" t-key="category.id">
+                                                    <tr>
+                                                        <th scope="row"><t t-esc="category_index + 1"/></th>
+                                                        <td><t t-esc="category.name"/></td>
+                                                        <td class="text-end"><t t-esc="formatNumber(category.qty)"/></td>
+                                                        <td class="text-end"><t t-esc="formatCurrency(category.amount)"/></td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cashier Performance -->
+                        <div class="row">
+                            <div class="col-lg-6 m-0 p-0">
+                                <div class="shadow-sm border m-2 p-4 bg-white">
+                                    <h4 class="text-primary mb-3">Cashier Performance</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Cashier</th>
+                                                    <th scope="col" class="text-end">Orders</th>
+                                                    <th scope="col" class="text-end">Total Sales</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-if="state.cashierPerformance.length == 0">
+                                                    <tr>
+                                                        <td colspan="4" class="text-center text-muted">No data available</td>
+                                                    </tr>
+                                                </t>
+                                                <t t-foreach="state.cashierPerformance" t-as="cashier" t-key="cashier.id">
+                                                    <tr>
+                                                        <th scope="row"><t t-esc="cashier_index + 1"/></th>
+                                                        <td><t t-esc="cashier.name"/></td>
+                                                        <td class="text-end"><t t-esc="formatNumber(cashier.orders)"/></td>
+                                                        <td class="text-end"><t t-esc="formatCurrency(cashier.amount)"/></td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Store Comparison Table -->
+                            <t t-if="state.store == 0">
+                                <div class="col-lg-6 m-0 p-0">
+                                    <div class="shadow-sm border m-2 p-4 bg-white">
+                                        <h4 class="text-primary mb-3">Store Comparison</h4>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Store</th>
+                                                        <th scope="col" class="text-end">Orders</th>
+                                                        <th scope="col" class="text-end">Total Sales</th>
+                                                        <th scope="col" class="text-end">Avg Order</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-if="state.storeComparison.length == 0">
+                                                        <tr>
+                                                            <td colspan="5" class="text-center text-muted">No data available</td>
+                                                        </tr>
+                                                    </t>
+                                                    <t t-foreach="state.storeComparison" t-as="store" t-key="store.id">
+                                                        <tr>
+                                                            <th scope="row"><t t-esc="store_index + 1"/></th>
+                                                            <td><t t-esc="store.name"/></td>
+                                                            <td class="text-end"><t t-esc="formatNumber(store.orders)"/></td>
+                                                            <td class="text-end"><t t-esc="formatCurrency(store.amount)"/></td>
+                                                            <td class="text-end"><t t-esc="formatCurrency(store.avg_order)"/></td>
+                                                        </tr>
+                                                    </t>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
                         </div>
                     </div>
                 </div>
-            </div>            
+            </t>
         </div>
     </t>
 </templates>

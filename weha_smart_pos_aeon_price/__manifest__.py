@@ -5,8 +5,10 @@
     "sequence": 5,
     "depends" : [
         'point_of_sale',
+        'pos_hr',
         'multi_branch_base',        
-        'weha_smart_pos_aeon_price_base',
+        'weha_smart_pos_aeon_price_base',        
+        'weha_smart_pos_aeon_activity_log',
         'weha_smart_pos_aeon_pos_access_rights',
         'weha_smart_pos_popup',
         'weha_smart_pos_receipt_logo',

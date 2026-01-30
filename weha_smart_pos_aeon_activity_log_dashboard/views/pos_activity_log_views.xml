@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Enhanced Tree View for Activity Logs -->
+    <record id="view_pos_activity_log_tree_enhanced" model="ir.ui.view">
+        <field name="name">pos.activity.log.tree.enhanced</field>
+        <field name="model">pos.activity.log</field>
+        <field name="arch" type="xml">
+            <tree string="Activity Logs" create="false" delete="false">
+                <field name="timestamp"/>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="hr_employee_id"/>
+                <field name="pos_config_id"/>
+                <field name="pos_session_id"/>
+                <field name="pos_order_reference"/>
+                <field name="details"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- Enhanced Form View for Activity Logs -->
+    <record id="view_pos_activity_log_form_enhanced" model="ir.ui.view">
+        <field name="name">pos.activity.log.form.enhanced</field>
+        <field name="model">pos.activity.log</field>
+        <field name="arch" type="xml">
+            <form string="Activity Log" create="false" delete="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="timestamp"/>
+                            <field name="user_id"/>
+                            <field name="hr_employee_id"/>
+                        </group>
+                        <group>
+                            <field name="pos_config_id"/>
+                            <field name="pos_session_id"/>
+                            <field name="pos_order_reference"/>
+                            <field name="pos_order_id"/>
+                        </group>
+                    </group>
+                    <group string="Details">
+                        <field name="details" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Search View with Filters -->
+    <record id="view_pos_activity_log_search" model="ir.ui.view">
+        <field name="name">pos.activity.log.search</field>
+        <field name="model">pos.activity.log</field>
+        <field name="arch" type="xml">
+            <search string="Activity Logs">
+                <field name="name" string="Activity Type"/>
+                <field name="user_id"/>
+                <field name="hr_employee_id"/>
+                <field name="pos_config_id"/>
+                <field name="pos_session_id"/>
+                <field name="pos_order_reference"/>
+                
+                <filter name="today" string="Today"
+                    domain="[('timestamp','&gt;=', datetime.datetime.now().replace(hour=0, minute=0, second=0))]"/>
+                <filter name="this_week" string="This Week"
+                    domain="[('timestamp','&gt;=', (context_today() - datetime.timedelta(days=7)).strftime('%%Y-%%m-%%d'))]"/>
+                <filter name="this_month" string="This Month"
+                    domain="[('timestamp','&gt;=', (context_today() - datetime.timedelta(days=30)).strftime('%%Y-%%m-%%d'))]"/>
+                
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Activity Type" name="group_by_name" context="{'group_by': 'name'}"/>
+                    <filter string="User" name="group_by_user" context="{'group_by': 'user_id'}"/>
+                    <filter string="Employee" name="group_by_employee" context="{'group_by': 'hr_employee_id'}"/>
+                    <filter string="POS Config" name="group_by_config" context="{'group_by': 'pos_config_id'}"/>
+                    <filter string="POS Session" name="group_by_session" context="{'group_by': 'pos_session_id'}"/>
+                    <filter string="Date" name="group_by_date" context="{'group_by': 'timestamp:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <!-- Action for Activity Logs List -->
+    <record id="action_pos_activity_log_list" model="ir.actions.act_window">
+        <field name="name">Activity Logs</field>
+        <field name="res_model">pos.activity.log</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_pos_activity_log_search"/>
+        <field name="context">{'search_default_today': 1}</field>
+    </record>
+
+</odoo>

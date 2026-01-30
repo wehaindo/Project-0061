@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Main Menu -->
+    <menuitem id="menu_pos_activity_log_root"
+        name="POS Activity Logs"
+        web_icon="weha_smart_pos_aeon_activity_log_dashboard,static/description/icon.png"
+        sequence="100"/>
+    
+    <!-- Dashboard Menu -->
+    <menuitem id="menu_pos_activity_log_dashboard"
+        name="Dashboard"
+        parent="menu_pos_activity_log_root"
+        action="action_pos_activity_log_dashboard"
+        sequence="1"/>
+    
+    <!-- Activity Logs Menu -->
+    <menuitem id="menu_pos_activity_logs"
+        name="Activity Logs"
+        parent="menu_pos_activity_log_root"
+        action="action_pos_activity_log_list"
+        sequence="2"/>
+
+</odoo>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="weha_smart_pos_aeon_activity_log_dashboard.Dashboard" owl="1">
+        <div class="pos_activity_dashboard">
+            <!-- Header -->
+            <div class="dashboard_header">
+                <h2>POS Activity Log Dashboard</h2>
+                <div class="header_actions">
+                    <button class="btn btn-primary" t-on-click="onRefresh">
+                        <i class="fa fa-refresh"/> Refresh
+                    </button>
+                    <button class="btn btn-success" t-on-click="onExport">
+                        <i class="fa fa-download"/> Export CSV
+                    </button>
+                    <button class="btn btn-info" t-on-click="onViewAllLogs">
+                        <i class="fa fa-list"/> View All Logs
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div t-if="state.loading" class="loading_container">
+                <i class="fa fa-spinner fa-spin fa-3x"/>
+                <p>Loading dashboard data...</p>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div t-else="" class="dashboard_content">
+                
+                <!-- Statistics Tiles -->
+                <div class="stats_tiles">
+                    <div class="stat_tile tile_total">
+                        <div class="tile_icon">
+                            <i class="fa fa-database"/>
+                        </div>
+                        <div class="tile_content">
+                            <h3 t-esc="state.stats.total"/>
+                            <p>Total Activities</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat_tile tile_today">
+                        <div class="tile_icon">
+                            <i class="fa fa-calendar-day"/>
+                        </div>
+                        <div class="tile_content">
+                            <h3 t-esc="state.stats.today"/>
+                            <p>Today</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat_tile tile_week">
+                        <div class="tile_icon">
+                            <i class="fa fa-calendar-week"/>
+                        </div>
+                        <div class="tile_content">
+                            <h3 t-esc="state.stats.this_week"/>
+                            <p>This Week</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat_tile tile_month">
+                        <div class="tile_icon">
+                            <i class="fa fa-calendar-alt"/>
+                        </div>
+                        <div class="tile_content">
+                            <h3 t-esc="state.stats.this_month"/>
+                            <p>This Month</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="charts_row">
+                    <div class="chart_container">
+                        <canvas id="activityTypeChart"/>
+                    </div>
+                    <div class="chart_container">
+                        <canvas id="topUsersChart"/>
+                    </div>
+                </div>
+
+                <!-- Timeline Chart -->
+                <div class="chart_full_width">
+                    <canvas id="timelineChart"/>
+                </div>
+
+                <!-- Recent Activities Table -->
+                <div class="recent_activities">
+                    <h3>Recent Activities</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Activity Type</th>
+                                <th>User</th>
+                                <th>Employee</th>
+                                <th>POS Config</th>
+                                <th>Session</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="state.dashboardData and state.dashboardData.recent_activities">
+                                <t t-foreach="state.dashboardData.recent_activities" t-as="activity" t-key="activity.id">
+                                    <tr>
+                                        <td t-esc="activity.timestamp"/>
+                                        <td><span class="badge badge-info" t-esc="activity.name"/></td>
+                                        <td t-esc="activity.user"/>
+                                        <td t-esc="activity.employee"/>
+                                        <td t-esc="activity.pos_config"/>
+                                        <td t-esc="activity.pos_session"/>
+                                        <td t-esc="activity.details"/>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <tr>
+                                    <td colspan="7" class="text-center">No recent activities found</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </t>
+
+</templates>

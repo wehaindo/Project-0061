@@ -8,8 +8,7 @@ username = "admin"  # Change to your username
 password = "pelang123"  # Change to your password
 
 # Get POS Config ID from command line argument
-pos_config_id = 15
-
+pos_config_id = 16
 # Common endpoint
 common = xmlrpc.client.ServerProxy(f"{url}/xmlrpc/2/common", allow_none=True)
 uid = common.authenticate(db, username, password, {})
@@ -26,7 +25,7 @@ if uid:
     print("\n[1] Searching for Cashier job position...")
     job_ids = models.execute_kw(db, uid, password,
         'hr.job', 'search',
-        [[['name', 'ilike', 'Cashier']]])
+        [['|',['name', 'ilike', 'Cashier'],['name', 'ilike', 'Supervisor']]])
     
     if not job_ids:
         print("❌ No 'Cashier' job position found!")

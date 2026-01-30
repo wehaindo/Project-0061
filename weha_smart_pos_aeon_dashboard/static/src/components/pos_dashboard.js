@@ -14,126 +14,202 @@ export class PosDashboard extends Component {
 
     setup(){
         this.state = useState({
-            quotations: {
-                value:10,
-                percentage:6,
+            // KPI Data
+            revenue: {
+                current: 0,
+                previous: 0,
+                percentage: 0,
+                average_order: 0
             },
-            storeData: {
-                labels: [
-                    '23-03-2024',
-                    '24-03-2024',
-                ],
-                datasets: [
-                    {
-                        label: '7001',
-                        data: [300, 450],
-                        hoverOffset: 4
-                    },
-                    {
-                        label: '7002',
-                        data: [500, 400],
-                        hoverOffset: 4
-                    },
-                    {
-                        label: '7003',
-                        data: [250, 350],
-                        hoverOffset: 4
+            orders: {
+                current: 0,
+                previous: 0,
+                percentage: 0
+            },
+            customers: {
+                current: 0,
+                previous: 0,
+                percentage: 0,
+                members: 0,
+                member_percentage: 0
+            },
+            products: {
+                total_items_sold: 0,
+                unique_products: 0,
+                avg_items_per_order: 0
+            },
+            
+            // Chart Data
+            dailyChartData: {
+                labels: [],
+                datasets: [{
+                    label: 'Daily Sales',
+                    data: [],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2,
+                    fill: true
                 }]
             },
-            period:7,
-            stores:[],
-            store:0,
-            storeDatasheet:[]
+            storeChartData: {
+                labels: [],
+                datasets: []
+            },
+            hourlyChartData: {
+                labels: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', 
+                         '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'],
+                datasets: [{
+                    label: 'Sales by Hour',
+                    data: [],
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 2
+                }]
+            },
+            paymentChartData: {
+                labels: [],
+                datasets: [{
+                    label: 'Payment Methods',
+                    data: [],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 206, 86, 0.8)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(153, 102, 255, 0.8)',
+                        'rgba(255, 159, 64, 0.8)'
+                    ]
+                }]
+            },
+            
+            // Tables Data
+            topProducts: [],
+            topCategories: [],
+            cashierPerformance: [],
+            storeComparison: [],
+            
+            // Filters
+            period: 7,
+            stores: [],
+            store: 0,
+            
+            // Loading state
+            isLoading: true
         })
+        
         this.orm = useService("orm")
         this.actionService = useService("action")
-
-
-        onWillStart(async ()=>{
-            this.getDates()
-            await this.getStores();
-            // await this.getQuotations()
-            await this.getOrders()
+        
+        onWillStart(async () => {
+            await this.getStores()
+            await this.loadDashboardData()
         })
     }
 
     async onChangePeriod(){        
-        this.getDates()
-        // await this.getQuotations()
-        await this.getOrders()
+        await this.loadDashboardData()
     }
 
     async onChangeStore(){
-        this.getDates()
-        // await this.getQuotations()
-        await this.getOrders()
+        await this.loadDashboardData()
     }
     
-    getDates(){
-        this.state.current_date = moment().subtract(0, 'days').format('YYYY-MM-DD')
-        this.state.previous_date = moment().subtract(this.state.period, 'days').format('YYYY-MM-DD')
-        console.log(this.state.current_date)
-        console.log(this.state.previous_date)
-    }
-
     async getStores(){
-        const stores = await this.orm.searchRead("res.branch", [], ["name"])
-        console.log("Stores: " + stores)
-        this.state.stores = stores
+        try {
+            const stores = await this.orm.searchRead("res.branch", [], ["name"])
+            this.state.stores = stores
+        } catch (error) {
+            console.error("Error fetching stores:", error)
+        }
     }
 
-    async getOrders(){        
-        console.log('getOrders')        
-        var self = this
-        var labels = []
-        var datasets = []
-
-        let currentMoment = moment().subtract(this.state.period, 'days');
-        let endMoment = moment().add(1, 'days');        
-        while (currentMoment.isBefore(endMoment, 'day')) {            
-            labels.push(currentMoment.format('DD-MM-YYYY'));                                   
-            currentMoment.add(1, 'days');        
+    async loadDashboardData(){
+        this.state.isLoading = true
+        
+        try {
+            const storeId = this.state.store ? parseInt(this.state.store) : false
+            
+            // Get comprehensive dashboard data
+            const data = await this.orm.call(
+                "pos.dashboard",
+                "get_dashboard_data",
+                [],
+                {
+                    period: parseInt(this.state.period),
+                    store_id: storeId
+                }
+            )
+            
+            // Update KPIs
+            this.state.revenue = data.revenue
+            this.state.orders = data.orders
+            this.state.customers = data.customers
+            this.state.products = data.products
+            
+            // Update tables
+            this.state.topProducts = data.top_products
+            this.state.topCategories = data.top_categories
+            this.state.cashierPerformance = data.cashiers
+            this.state.storeComparison = data.stores
+            
+            // Update charts
+            await this.loadChartData()
+            
+        } catch (error) {
+            console.error("Error loading dashboard data:", error)
+        } finally {
+            this.state.isLoading = false
         }
-
-        this.state.stores.map(async function(store_id){
-            console.log(store_id)
-            let data = [];
-            let currentDate = moment().subtract(self.state.period, 'days');
-            let endDate = moment().add(1, 'days');   
-            while (currentDate.isBefore(endDate, 'day')) {
-                console.log(`Loop at ${currentDate.format('DD-MM-YYYY')}`);
-                let nextDate  = moment(currentDate.format('YYYY-MM-DD')).add(1,'days')
-                let domain = [
-                    ['branch_id','=',store_id.id],
-                    ['date_order','>',currentDate.format('YYYY-MM-DD') +  " 00:00:00"],
-                    ['date_order','<',nextDate.format('YYYY-MM-DD') + " 00:00:00"],
-                    ['state', 'in', ['paid','posted']]
-                ]
-                console.log(domain)      
-                const current_revenue = await self.orm.readGroup("pos.order", domain, ["amount_total:sum"], [])
-                console.log(current_revenue[0].amount_total)
-                if(current_revenue){
-                    if(current_revenue[0].amount_total == null){
-                        data.push(0)
-                    }else{
-                        data.push(current_revenue[0].amount_total)
-                    }        
-                }else{
-                    data.push(0)
-                }                                
-                currentDate.add(1, 'days');        
-            }   
-            const vals = {
-                label: store_id.name,
-                data: data,
-                hoverOffset: 4
+    }
+    
+    async loadChartData(){
+        try {
+            const storeId = this.state.store ? parseInt(this.state.store) : false
+            
+            // Get daily chart data
+            const dailyData = await this.orm.call(
+                "pos.dashboard",
+                "get_daily_chart_data",
+                [],
+                {
+                    period: parseInt(this.state.period),
+                    store_id: storeId
+                }
+            )
+            
+            this.state.dailyChartData.labels = dailyData.labels
+            this.state.dailyChartData.datasets[0].data = dailyData.data
+            
+            // Get store comparison chart data (only if all stores selected)
+            if (!storeId) {
+                const storeData = await this.orm.call(
+                    "pos.dashboard",
+                    "get_store_chart_data",
+                    [],
+                    {
+                        period: parseInt(this.state.period)
+                    }
+                )
+                
+                this.state.storeChartData.labels = storeData.labels
+                this.state.storeChartData.datasets = storeData.datasets
             }
-            datasets.push(vals)         
-        })
-        this.state.storeData.labels = labels
-        this.state.storeData.datasets = datasets
-        // console.log(labels)
-        // console.log(datasets)
+            
+        } catch (error) {
+            console.error("Error loading chart data:", error)
+        }
+    }
+    
+    formatCurrency(value){
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        }).format(value)
+    }
+    
+    formatNumber(value){
+        return new Intl.NumberFormat('id-ID').format(value)
     }
 }
 
