@@ -33,6 +33,18 @@ odoo.define('pos_access_right_hr.ActionPad_extension', function(require) {
        }
        else {return false;}
      }
+     
+     /**
+     * Check if cash drawer opening is allowed
+     */
+     get allow_open_cash_drawer() {
+       if (this.env.pos.config.module_pos_hr) {
+           const cashierId = this.env.pos.get_cashier().id;
+           const sessionAccess = this.env.pos.session_access.find(access => access.id === cashierId);
+           return sessionAccess ? sessionAccess.allow_open_cash_drawer : false;
+       }
+       else {return false;}
+     }
   };
   Registries.Component.extend(ActionpadWidget, ActionpadWidgetAccessRight);
   return ActionpadWidget;

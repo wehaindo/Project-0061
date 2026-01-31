@@ -50,3 +50,6 @@ class HrEmployeeBase(models.AbstractModel):
     disable_remove_button = fields.Boolean(
         string="POS-Disable Remove Button",
         help="Disable the back button on the POS", default=True)
+    allow_open_cash_drawer = fields.Boolean(
+        string="POS-Allow Open Cash Drawer",
+        help="Allow opening cash drawer from POS screen", default=False)

@@ -43,9 +43,6 @@ class pos_order_file(models.Model):
                 
     def item_record(self, line, row, is_duplicate):
         # HEADER
-        _logger.info('item_record')
-        _logger.info(line)
-        _logger.info(row)
         branch_code = line.branch_id.code
         if line.is_void == False and line.is_refund == False:
             sni_comment = str("0043").zfill(4) # 0043-Valid Sales, 0000-Total Record, 0044-Refund, 0045-Void 
@@ -66,14 +63,11 @@ class pos_order_file(models.Model):
         #     pos_trans_num = "0".zfill(8)
 
         if line.pos_reference:
-            if not is_duplicate:
-                _logger.info('not duplicate')            
-                _logger.info(str(line.pos_reference))
+            if not is_duplicate:            
                 receipt_no = str(line.pos_reference).replace("Order","")
                 # pos_trans_num = str(int(receipt_no)).zfill(8)
                 pos_trans_num = str(int(receipt_no))[-8:].zfill(8)
             else:
-                _logger.info('duplicate')
                 receipt_no = str(line.pos_reference).replace("Order","")[-4:]
                 order_ref = line.name.split('/')[1][-4:]
                 pos_trans_num = order_ref + receipt_no                
@@ -158,7 +152,6 @@ class pos_order_file(models.Model):
         filler20 = "0".zfill(1)                                 # default '0'
         session = line.session_id.name[4:] or "0"
         cashier_id = str(row.order_id.employee_id.barcode).zfill(7)
-
         
         if row.price_source == "pdcm":
             pdcm = row.list_price-row.price_unit
@@ -243,7 +236,6 @@ class pos_order_file(models.Model):
 
         item_record = f'{filler1}{sni_sales_type}{sku}{qty}{filler2}{regular_sell}{filler3}{actual_sell}{filler4}{staff_id}{filler5}{lay_by_flag}{filler6}{disc_type}{filler7}{acs_disc_amount}{dept_num}{gift_voucher_from}{gift_voucher_to}{denom_val}{ppn_amount}{ppn_code}{sales_person_id}{lay_by_num}{filler18}{sales_type}{filler20}{cashier_id}{member_price_disc}{mix_and_max_disc}{total_received_disc}{pos_disc}{staff_disc}{perishable_disc}{article_disc}{sttd_disc}{promotion_disc}{mfr_disc}{price_change_promo_no}{price_change_member_no}{mix_and_max_no}{group_price_change}{privilege_member}{over_write_flag}{cdo_no}{mommy_card_disc}{member_card_disc}{tax_code}{sales_tax_amount}'
         master_code = f"{header}{item_record}\n"
-        _logger.info(master_code)
         return master_code
             
     def total_record(self, line, row, is_duplicate):
@@ -345,15 +337,13 @@ class pos_order_file(models.Model):
             refund_reason = "".ljust(4, " ")                            # default ''
             refund_description = "".ljust(100, " ")                     # default ''    
         else:
-            _logger.info(line)
             if line.is_void:
                 domain = [
                     ('pos_reference','=',line.void_parent_pos_reference)
                 ]
-                _logger.info(domain)
                 refund_parent_id = self.env['pos.order'].search(domain, limit=1)
-                _logger.info('void_parent_id')
-                _logger.info(refund_parent_id)
+                # _logger.info('void_parent_id')
+                # _logger.info(refund_parent_id)
                 refund_number = refund_parent_id.pos_reference.replace("Order","")[2:].ljust(8, " ")        # default ''
                 refund_store_code = branch_code.ljust(4, " ")                                           # default ''
                 refund_trans_date = refund_parent_id.date_order.strftime('%Y%m%d').ljust(8, " ")           # default ''            
@@ -365,11 +355,10 @@ class pos_order_file(models.Model):
                 domain = [
                     ('pos_reference','=',line.refund_parent_pos_reference)
                 ]
-                _logger.info(domain)
                 # _logger.info(domain)
                 refund_parent_id = self.env['pos.order'].search(domain, limit=1)
-                _logger.info('refund_parent_id')
-                _logger.info(refund_parent_id)
+                # _logger.info('refund_parent_id')
+                # _logger.info(refund_parent_id)
                 refund_number = refund_parent_id.pos_reference.replace("Order","")[2:].ljust(8, " ")        # default ''
                 refund_store_code = branch_code.ljust(4, " ")                                           # default ''
                 refund_trans_date = refund_parent_id.date_order.strftime('%Y%m%d').ljust(8, " ")           # default ''            
@@ -494,9 +483,6 @@ class pos_order_file(models.Model):
     def payment_rounding(self, line, row, is_duplicate):
         # Summary sales berdasarkan Payment Type berdasakan kode kartu
         # HEADER
-        _logger.info(line)
-        _logger.info(row)
-        _logger.info(is_duplicate)
         branch_code = line.branch_id.code
         if line.is_void == False and line.is_refund == False:
             sni_comment = str("0043").zfill(4) # 0043-Valid Sales, 0000-Total Record, 0044-Refund, 0045-Void 
@@ -512,12 +498,10 @@ class pos_order_file(models.Model):
         # pos_trans_num = str(int(''.join(filter(str.isdigit, line.name)))).zfill(7)
         if line.pos_reference:
             if not is_duplicate:            
-                _logger.info(line.pos_reference)
                 receipt_no = str(line.pos_reference).replace("Order","")
                 # pos_trans_num = str(int(receipt_no)).zfill(8)
                 pos_trans_num = str(int(receipt_no))[-8:].zfill(8)
             else:
-                _logger.info(line.pos_reference)
                 receipt_no = str(line.pos_reference).replace("Order","")[-4:]
                 order_ref = line.name.split('/')[1][-4:]
                 pos_trans_num = order_ref + receipt_no                
@@ -608,11 +592,25 @@ class pos_order_file(models.Model):
         # TYPE D
         filler1 = "0"                                           # default '0'
         cashier_id = type_d['cashier_id'].zfill(9)
-        loan_amount = f"{float('0'):0.2f}".zfill(23)
-        middle_collec_amount = f"{float('0'):0.2f}".zfill(23)
-        cash_sales = f"{float(type_d['cash_sales']):0.2f}".zfill(23)             # default '0'
-        filler2 = "0000000000"                                                   # default '0'
-        cash_count = f"{float(type_d['cash_count']):0.2f}".zfill(13)             # default '0'
+        if type_d['loan_amount']:
+            loan_amount = f"{float(type_d['loan_amount']):0.2f}".zfill(23)
+        else:
+            loan_amount = f"{float('0'):0.2f}".zfill(23)
+        
+        if type_d['middle_collec_amount']:
+            middle_collec_amount = f"{float(-1 * type_d['middle_collec_amount']):0.2f}".zfill(23)
+        else:
+            middle_collec_amount = f"{float('0'):0.2f}".zfill(23)
+                
+        if type_d['cash_sales'] :            
+            cash_sales = f"{float(type_d['cash_sales']):0.2f}".zfill(23)             # default '0'
+        else:
+            cash_sales = f"{float(0):0.2f}".zfill(23)
+        filler2 = "0000000000"                                                       # default '0'
+        if type_d['cash_count'] :            
+            cash_count = f"{float(type_d['cash_count']):0.2f}".zfill(13)             # default '0'
+        else:
+            cash_count = f"{float(0):0.2f}".zfill(13)             # default '0'
 
         cash_record = f"{filler1}{cashier_id}{loan_amount}{middle_collec_amount}{cash_sales}{filler2}{cash_count}"
         master_record = f'{header}{cash_record}\n'
@@ -630,8 +628,8 @@ class pos_order_file(models.Model):
         flags = "0".zfill(2)
         pos_regis_num = type_e['pos_config_code'].zfill(3).ljust(6," ")
         receipt_no = type_e['pos_ref'].replace("Order","")
-        # pos_trans_num = str(int(receipt_no)).zfill(8)
         pos_trans_num = str(int(receipt_no))[-8:].zfill(8)
+        # pos_trans_num = str(int(receipt_no)).zfill(8)
 
         # A-Item Record, B-Total Record, C-Payment Record, D-Cash Record, E-Tender Count Record
         sni_format = "E".zfill(1) 
@@ -658,12 +656,13 @@ class pos_order_file(models.Model):
             payment_sales = f"{float(type_e['payment_sales']):0.2f}".zfill(23)
         else:
             payment_sales = f"{float('0'):0.2f}".zfill(23)
-
-        if type_e['payment_count']:
+                
+        if type_e['payment_count']:      
             payment_count = f"{float(type_e['payment_count']):0.2f}".zfill(23)
+            # payment_count = f"{float(pos_cash_counts[0]['counted']):0.2f}".zfill(23)        
         else:
             payment_count = f"{float('0'):0.2f}".zfill(23)
-
+    
         tender_count_record = f'{filler1}{sni_sales_type}{pos_id}{payment_type}{payment_sales}{payment_count}'
         master_record = f'{header}{tender_count_record}\n'
 
@@ -677,8 +676,8 @@ class pos_order_file(models.Model):
         flags = "0".zfill(2)      # default '0'
         pos_regis_num = type_t['pos_config_code'].zfill(3).ljust(6," ")
         receipt_no = type_t['pos_ref'].replace("Order","")
-        # pos_trans_num = str(int(receipt_no)).zfill(8)
         pos_trans_num = str(int(receipt_no))[-8:].zfill(8)
+        # pos_trans_num = str(int(receipt_no)).zfill(8)
         sni_format = "T".zfill(1) # A-Item Record, B-Total Record, C-Payment Record, D-Cash Record, E-Tender Count Record
 
         header = f'{sni_comment}{store_number}{flags}{pos_regis_num}{pos_trans_num}{sni_format}'
@@ -795,8 +794,6 @@ class pos_order_file(models.Model):
                 total_cash_amount = 0 
                 for order in orders:
                     # TYPE A
-                    _logger.info("order")
-                    _logger.info(order)
                     i = 0                            
                     is_duplicate = False
                     if order.pos_reference in duplicate_data:
@@ -813,7 +810,6 @@ class pos_order_file(models.Model):
                             total_sales += row.price_subtotal_incl                             
                     row = ""
                     # TYPE B
-                    _logger.info('total_record')
                     total_record = self.total_record(order, row, is_duplicate)
                     output.write(total_record)                    
                     
@@ -950,6 +946,51 @@ class pos_order_file(models.Model):
                     GROUP BY d.branch_id, f.code, d.config_id, g.code, e.login, b.code ORDER BY b.code
                 """.format(group['branch_id'], 'CSH',start_date_time, end_date_time)
                 # _logger.info(strSQL_type_d)
+                strSQL_type_d = """                    
+		            SELECT d.branch_id as branch_id,
+                    f.code as branch_code,
+                    d.config_id as pos_config_id,
+                    g.code as pos_config_code,
+                    a.session_id as pos_session_id,
+                    e.id as employee_id,
+                    e.barcode as cashier_id,
+                    c.code as payment_code,
+                    max(a.pos_reference) as pos_ref,
+                    sum(b.amount) as cash_sales,
+                    (SELECT sum(pccd.total)
+                        FROM pos_cash_count pcc
+                        LEFT JOIN pos_cash_count_detail pccd ON pccd.pos_cash_count_id = pcc.id
+                        LEFT JOIN hr_employee he ON pcc.hr_employee_id = he.id
+                        LEFT JOIN pos_payment_method ppm ON ppm.id = pccd.pos_payment_method_id
+                        WHERE pcc.hr_employee_id = e.id AND pcc.pos_session_id = a.session_id AND pccd.cash_count_type = 'cash_in' ) as loan_amount,
+                    (SELECT sum(pccd.total)
+                        FROM pos_cash_count pcc
+                        LEFT JOIN pos_cash_count_detail pccd ON pccd.pos_cash_count_id = pcc.id
+                        LEFT JOIN hr_employee he ON pcc.hr_employee_id = he.id
+                        LEFT JOIN pos_payment_method ppm ON ppm.id = pccd.pos_payment_method_id
+                        WHERE pcc.hr_employee_id = e.id AND pcc.pos_session_id = a.session_id AND pccd.cash_count_type = 'cash_out' ) as middle_collec_amount,
+                    (SELECT sum(pccd.counted)
+                        FROM pos_cash_count pcc
+                        LEFT JOIN pos_cash_count_detail pccd ON pccd.pos_cash_count_id = pcc.id
+                        LEFT JOIN hr_employee he ON pcc.hr_employee_id = he.id
+                        LEFT JOIN pos_payment_method ppm ON ppm.id = pccd.pos_payment_method_id
+                        WHERE pcc.hr_employee_id = e.id AND pcc.pos_session_id = a.session_id AND ppm.code = 'CSH' ) as cash_count,
+                    (SELECT sum(pccd.difference)
+                        FROM pos_cash_count pcc
+                        LEFT JOIN pos_cash_count_detail pccd ON pccd.pos_cash_count_id = pcc.id
+                        LEFT JOIN hr_employee he ON pcc.hr_employee_id = he.id
+                        LEFT JOIN pos_payment_method ppm ON ppm.id = pccd.pos_payment_method_id
+                        WHERE pcc.hr_employee_id = e.id AND ppm.code = 'CSH' ) as cash_difference
+                    FROM pos_order a
+                    LEFT JOIN pos_payment b ON b.pos_order_id = a.id
+                    LEFT JOIN pos_payment_method c ON c.id  = b.payment_method_id
+                    LEFT JOIN pos_session d on d.id = a.session_id
+                    LEFT JOIN hr_employee e on e.id = a.employee_id
+                    LEFT JOIN res_branch f on f.id = d.branch_id
+                    LEFT JOIN pos_config g on g.id = d.config_id
+                    WHERE d.branch_id = '{}' AND c.code = '{}' AND a.date_order BETWEEN '{}' AND '{}'
+                    GROUP BY d.branch_id, f.code, d.config_id, g.code, a.session_id, e.id, e.barcode, c.code, c.id ORDER BY c.code;""".format(group['branch_id'], 'CSH',start_date_time, end_date_time)
+                _logger.info(strSQL_type_d)
                 self.env.cr.execute(strSQL_type_d)
                 data_type_d = self.env.cr.dictfetchall()
                 for type_d in data_type_d:
@@ -1000,8 +1041,56 @@ class pos_order_file(models.Model):
                     LEFT JOIN pos_config g on g.id = d.config_id
                     WHERE d.branch_id = '{}' AND c.date_order BETWEEN '{}' AND '{}'
                     GROUP BY d.branch_id, f.code, d.config_id, g.code, e.login, b.code ORDER BY b.code
-                """.format(group['branch_id'],start_date_time, end_date_time)
+                """.format(group['branch_id'],start_date_time, end_date_time)                
                 # _logger.info(strSql_type_e)
+                strSql_type_e = """
+                    SELECT d.branch_id as branch_id,
+                        f.code as branch_code,
+                        d.config_id as pos_config_id,
+                        g.code as pos_config_code,
+                        g.id as pos_config_id,
+                        c.code as payment_code,
+                        c.id as payment_id,
+                        max(a.pos_reference) as pos_ref,
+                        sum(b.amount) as payment_sales,
+                        (SELECT pccd.counted
+                            FROM pos_cash_count pcc
+                            LEFT JOIN pos_cash_count_detail pccd ON pccd.pos_cash_count_id = pcc.id
+                            LEFT JOIN pos_session ps ON ps.id = pcc.pos_session_id 
+                            LEFT JOIN pos_payment_method ppm ON ppm.id = pccd.pos_payment_method_id
+                            WHERE ps.config_id = g.id AND pccd.pos_payment_method_id = c.id ORDER BY pcc.name DESC limit 1 ) as payment_count			
+                    FROM pos_order a
+                    LEFT JOIN pos_payment b ON b.pos_order_id = a.id 
+                    LEFT JOIN pos_payment_method c ON c.id  = b.payment_method_id
+                    LEFT JOIN pos_session d on d.id = a.session_id
+                    LEFT JOIN res_branch f on f.id = d.branch_id
+                    LEFT JOIN pos_config g on g.id = d.config_id                    
+                    WHERE d.branch_id = '{}' AND a.date_order BETWEEN '{}' AND '{}'
+                    GROUP BY d.branch_id, f.code, d.config_id, g.code, g.id, c.code, c.id ORDER BY c.code;
+                """.format(group['branch_id'],start_date_time, end_date_time)      
+                _logger.info(strSql_type_e)          
+                # strSql_type_e = """
+                #     SELECT d.branch_id as branch_id, f.code as branch_code, 
+                #            d.config_id as pos_config_id, g.code  as pos_config_code, 
+                #            max(c.pos_reference) as pos_ref, e.login as cashier_id, b.code as payment_code, 
+                #            sum(a.amount) as payment_sales, latest_count.counted as payment_count 
+                #     FROM pos_payment a
+                #     LEFT JOIN pos_payment_method b ON b.id  = a.payment_method_id 
+                #     LEFT JOIN pos_order c on c.id = a.pos_order_id
+                #     LEFT JOIN pos_session d on d.id = c.session_id
+                #     LEFT JOIN (
+                #         SELECT 
+                #             pos_session_id,
+                #             max(name),
+                #             counted
+                #         FROM pos_cash_count                        
+                #     ) latest_count ON latest_count.pos_session_id = d.id
+                #     LEFT JOIN res_users e on e.id = d.user_id
+                #     LEFT JOIN res_branch f on f.id = d.branch_id
+                #     LEFT JOIN pos_config g on g.id = d.config_id
+                #     WHERE d.branch_id = '{}' AND c.date_order BETWEEN '{}' AND '{}'
+                #     GROUP BY d.branch_id, f.code, d.config_id, g.code, e.login, b.code ORDER BY b.code
+                # """.format(group['branch_id'],start_date_time, end_date_time)                
                 self.env.cr.execute(strSql_type_e)
                 data_type_e = self.env.cr.dictfetchall()
                 for type_e in data_type_e:
@@ -1135,7 +1224,7 @@ class pos_order_file(models.Model):
                 _logger.info(total_sales)
                 _logger.info(total_refund)
                 _logger.info(total_sales + total_refund)
-                return True
+                return ""
     
     date = fields.Datetime(
         string='Datetime',

@@ -15,12 +15,13 @@
                             <field name="disable_customer"/>
                             <field name="disable_plus_minus"/>
                             <field name="disable_numpad"/>
+                            <field name="disable_discount"/>
                         </group>
                         <group>
-                            <field name="disable_discount"/>
                             <field name="disable_qty"/>
                             <field name="disable_price"/>
                             <field name="disable_remove_button"/>
+                            <field name="allow_open_cash_drawer"/>
                         </group>
                     </group>
                 </page>

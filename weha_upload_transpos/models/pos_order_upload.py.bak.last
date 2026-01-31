@@ -157,8 +157,7 @@ class pos_order_file(models.Model):
         sales_type = "02".zfill(2)                              # 01-Barcode, 02-Short SKU
         filler20 = "0".zfill(1)                                 # default '0'
         session = line.session_id.name[4:] or "0"
-        cashier_id = str(row.order_id.employee_id.barcode).zfill(7)
-
+        cashier_id = str(row.order_id.user_id.login).zfill(7)
         
         if row.price_source == "pdcm":
             pdcm = row.list_price-row.price_unit
