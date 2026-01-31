@@ -1041,56 +1041,8 @@ class pos_order_file(models.Model):
                     LEFT JOIN pos_config g on g.id = d.config_id
                     WHERE d.branch_id = '{}' AND c.date_order BETWEEN '{}' AND '{}'
                     GROUP BY d.branch_id, f.code, d.config_id, g.code, e.login, b.code ORDER BY b.code
-                """.format(group['branch_id'],start_date_time, end_date_time)                
+                """.format(group['branch_id'],start_date_time, end_date_time)
                 # _logger.info(strSql_type_e)
-                strSql_type_e = """
-                    SELECT d.branch_id as branch_id,
-                        f.code as branch_code,
-                        d.config_id as pos_config_id,
-                        g.code as pos_config_code,
-                        g.id as pos_config_id,
-                        c.code as payment_code,
-                        c.id as payment_id,
-                        max(a.pos_reference) as pos_ref,
-                        sum(b.amount) as payment_sales,
-                        (SELECT pccd.counted
-                            FROM pos_cash_count pcc
-                            LEFT JOIN pos_cash_count_detail pccd ON pccd.pos_cash_count_id = pcc.id
-                            LEFT JOIN pos_session ps ON ps.id = pcc.pos_session_id 
-                            LEFT JOIN pos_payment_method ppm ON ppm.id = pccd.pos_payment_method_id
-                            WHERE ps.config_id = g.id AND pccd.pos_payment_method_id = c.id ORDER BY pcc.name DESC limit 1 ) as payment_count			
-                    FROM pos_order a
-                    LEFT JOIN pos_payment b ON b.pos_order_id = a.id 
-                    LEFT JOIN pos_payment_method c ON c.id  = b.payment_method_id
-                    LEFT JOIN pos_session d on d.id = a.session_id
-                    LEFT JOIN res_branch f on f.id = d.branch_id
-                    LEFT JOIN pos_config g on g.id = d.config_id                    
-                    WHERE d.branch_id = '{}' AND a.date_order BETWEEN '{}' AND '{}'
-                    GROUP BY d.branch_id, f.code, d.config_id, g.code, g.id, c.code, c.id ORDER BY c.code;
-                """.format(group['branch_id'],start_date_time, end_date_time)      
-                _logger.info(strSql_type_e)          
-                # strSql_type_e = """
-                #     SELECT d.branch_id as branch_id, f.code as branch_code, 
-                #            d.config_id as pos_config_id, g.code  as pos_config_code, 
-                #            max(c.pos_reference) as pos_ref, e.login as cashier_id, b.code as payment_code, 
-                #            sum(a.amount) as payment_sales, latest_count.counted as payment_count 
-                #     FROM pos_payment a
-                #     LEFT JOIN pos_payment_method b ON b.id  = a.payment_method_id 
-                #     LEFT JOIN pos_order c on c.id = a.pos_order_id
-                #     LEFT JOIN pos_session d on d.id = c.session_id
-                #     LEFT JOIN (
-                #         SELECT 
-                #             pos_session_id,
-                #             max(name),
-                #             counted
-                #         FROM pos_cash_count                        
-                #     ) latest_count ON latest_count.pos_session_id = d.id
-                #     LEFT JOIN res_users e on e.id = d.user_id
-                #     LEFT JOIN res_branch f on f.id = d.branch_id
-                #     LEFT JOIN pos_config g on g.id = d.config_id
-                #     WHERE d.branch_id = '{}' AND c.date_order BETWEEN '{}' AND '{}'
-                #     GROUP BY d.branch_id, f.code, d.config_id, g.code, e.login, b.code ORDER BY b.code
-                # """.format(group['branch_id'],start_date_time, end_date_time)                
                 self.env.cr.execute(strSql_type_e)
                 data_type_e = self.env.cr.dictfetchall()
                 for type_e in data_type_e:
@@ -1099,34 +1051,6 @@ class pos_order_file(models.Model):
                     # _logger.info('tender_count_record')
                     # _logger.info(tender_count_record)
                     max_row += 1
-                total_sales_refund = total_sales + total_refund   
-
-                # # TYPE E
-                # # TYPE - REFUND - 0044
-                # strSql_type_e = """
-                #     SELECT d.branch_id as branch_id, f.code as branch_code, 
-                #            d.config_id as pos_config_id, g.code as pos_config_code, 
-                #            max(c.pos_reference) as pos_ref, e.login as cashier_id, b.code as payment_code, 
-                #            sum(a.amount) as payment_sales, count(*) as payment_count 
-                #     FROM pos_payment a
-                #     LEFT JOIN pos_payment_method b ON b.id  = a.payment_method_id 
-                #     LEFT JOIN pos_order c on c.id = a.pos_order_id
-                #     LEFT JOIN pos_session d on d.id = c.session_id
-                #     LEFT JOIN res_users e on e.id = d.user_id
-                #     LEFT JOIN res_branch f on f.id = d.branch_id
-                #     LEFT JOIN pos_config g on g.id = d.config_id
-                #     WHERE a.amount < 0 AND d.branch_id = '{}' AND c.date_order BETWEEN '{}' AND '{}'
-                #     GROUP BY d.branch_id, f.code, d.config_id, g.code, e.login, b.code ORDER BY b.code
-                # """.format(group['branch_id'],start_date_time, end_date_time)
-                # _logger.info(strSql_type_e)
-                # self.env.cr.execute(strSql_type_e)
-                # data_type_e = self.env.cr.dictfetchall()
-                # for type_e in data_type_e:
-                #     tender_count_record = self.tender_count_record("0044", type_e) # TYPE E
-                #     output.write(tender_count_record)
-                #     _logger.info('tender_count_record')
-                #     _logger.info(tender_count_record)
-                #     max_row += 1
                 total_sales_refund = total_sales + total_refund   
 
                 #TYPE T

@@ -37,5 +37,5 @@ class PosSession(models.Model):
         result['search_params']['fields'].extend(
             ['disable_payment', 'disable_customer', 'disable_plus_minus',
              'disable_numpad', 'disable_qty', 'disable_discount',
-             'disable_price', 'disable_remove_button'])
+             'disable_price', 'disable_remove_button', 'allow_open_cash_drawer'])
         return result

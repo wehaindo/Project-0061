@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Add button to pricelist item form view -->
+        <record id="view_pricelist_item_form_clean_couchdb" model="ir.ui.view">
+            <field name="name">product.pricelist.item.form.clean.couchdb</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button name="action_manual_clean_expired_pricelist" 
+                                string="Clean Expired from CouchDB" 
+                                type="object" 
+                                class="oe_highlight"
+                                groups="base.group_system"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

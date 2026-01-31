@@ -29,7 +29,14 @@
     'author': 'Cybrosys Techno Solutions',
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
-    'depends': ['base', 'hr', 'point_of_sale', 'pos_hr'],
+    'depends': [
+        'base', 
+        'hr', 
+        'point_of_sale', 
+        'pos_hr', 
+        'weha_smart_pos_aeon_activity_log',
+        'weha_smart_pos_aeon_pos_access_rights',
+    ],
     'website': 'https://www.cybrosys.com/',
     'data': [
         'views/hr_employee_views.xml',
@@ -39,8 +46,12 @@
             'pos_access_right_hr/static/src/js/models.js',
             'pos_access_right_hr/static/src/js/NumpadWidgetAccessRight.js',
             'pos_access_right_hr/static/src/js/ActionpadWidgetAccessRight.js',
+            'pos_access_right_hr/static/src/js/jQuery.print.min.js',
+            'pos_access_right_hr/static/src/js/OpenCashDrawer.js',
+            'pos_access_right_hr/static/src/css/pos_cash_drawer.css',
             'pos_access_right_hr/static/src/xml/NumpadWidgetAccessRight.xml',
             'pos_access_right_hr/static/src/xml/ActionpadWidgetAccessRight.xml',
+            'pos_access_right_hr/static/src/xml/PaymentScreenCashDrawer.xml',
             'pos_access_right_hr/static/src/js/ProductScreenAccessRight.js'
         ],
     },

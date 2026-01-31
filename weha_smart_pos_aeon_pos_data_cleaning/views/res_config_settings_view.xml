@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Configuration for POS Data Cleaning -->
+        <record id="view_pos_config_settings_inherit_cleaning" model="ir.ui.view">
+            <field name="name">res.config.settings.inherit.pos.cleaning</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='pos_other_devices']" position="after">
+                    <h2>POS Data Cleaning</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="pricelist_retention_days"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pricelist_retention_days"/>
+                                <div class="text-muted">
+                                    Number of days to retain expired pricelists in CouchDB (negative value, e.g., -7 for 7 days after expiry)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
