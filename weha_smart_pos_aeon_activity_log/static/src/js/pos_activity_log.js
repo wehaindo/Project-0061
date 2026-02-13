@@ -10,6 +10,9 @@ odoo.define('weha_smart_pos_aeon_activity_log.PosActivityLog', function(require)
         }
         // Utility function to save logs in local storage
         saveLogToLocalStorage(name, details, res_users_id, hr_employee_id, pos_config_id, pos_session_id, pos_order_reference) {
+            // Get current datetime in ISO format
+            const currentDateTime = new Date().toISOString();
+            
             var log = {
                 name: name,
                 details: details,
@@ -17,7 +20,8 @@ odoo.define('weha_smart_pos_aeon_activity_log.PosActivityLog', function(require)
                 hr_employee_id: hr_employee_id,
                 pos_config_id: pos_config_id,
                 pos_session_id: pos_session_id,
-                pos_order_reference : pos_order_reference
+                pos_order_reference : pos_order_reference,
+                timestamp: currentDateTime
             }
             const logs = JSON.parse(localStorage.getItem(LOCAL_LOG_KEY)) || [];
             logs.push(log);

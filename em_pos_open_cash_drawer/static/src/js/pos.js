@@ -68,7 +68,15 @@ odoo.define('em_pos_open_cash_drawer', function (require) {
         new_js_cashdrawer() {
             var self = this;
             var order = this.env.pos.get_order();
-            this.posActivityLog.saveLogToLocalStorage('Product Screen','Open Cash Drawer',order.cashier.id);
+            this.posActivityLog.saveLogToLocalStorage(
+                'Payment Screen',
+                'Open Cash Drawer',
+                this.env.pos.user.id,
+                order.cashier.id,
+                this.env.pos.config.id,
+                this.env.pos.pos_session.id,
+                false
+            );
             $("<center><div id='content_id'>Open Cash Drawer</div></center>").print();
         }
     }
