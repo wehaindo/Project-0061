@@ -37,7 +37,7 @@ class PosActivityLog(models.Model):
     user_id = fields.Many2one('res.users','User')
     hr_employee_id = fields.Many2one('hr.employee','Employee')    
     pos_config_id = fields.Many2one('pos.config', string="POS Config")
-    res_branch_id = fields.Many2one(related='pos_config_id.res_branch_id', string="Branch")
+    res_branch_id = fields.Many2one(related='pos_config_id.res_branch_id', string="Branch", store=True)
     pos_session_id = fields.Many2one('pos.session', string="POS Session")
     pos_order_reference = fields.Char('POS Reference')
     pos_order_id = fields.Many2one('pos.order', string="POS Order")
