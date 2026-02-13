@@ -39,7 +39,21 @@ odoo.define('weha_smart_pos_aeon_pos_access_rights.LoginScreen', function (requi
             async disablePin(){
                 localStorage.setItem('allowPin', 'false');
                 localStorage.removeItem('allowPinDate');
-                this.state.allowPin = false;     
+                this.state.allowPin = false;
+                
+                // Log activity when PIN is deactivated
+                const currentEmployee = this.env.pos.get_cashier();
+                if (currentEmployee) {
+                    this.posActivityLog.saveLogToLocalStorage(
+                        'Login Screen',
+                        'PIN Deactivated (Switched to Fingerprint)',
+                        this.env.pos.user.id,
+                        currentEmployee.id,
+                        this.env.pos.config.id,
+                        this.env.pos.pos_session.id,
+                        currentEmployee.name
+                    );
+                }
             }   
 
             async selectSupervisor() {
@@ -123,7 +137,7 @@ odoo.define('weha_smart_pos_aeon_pos_access_rights.LoginScreen', function (requi
                         }
 
                         if (employee) {
-                            await this.activatePin();
+                            await this.activatePin(employee);
                         }                                                      
                     }
             }
@@ -217,11 +231,26 @@ odoo.define('weha_smart_pos_aeon_pos_access_rights.LoginScreen', function (requi
                 }
             }
 
-            async activatePin(){
+            async activatePin(employee){
                 let currentDate = new Date().toDateString();
                 localStorage.setItem('allowPin','true');
                 localStorage.setItem('allowPinDate', currentDate);
-                this.state.allowPin = true;     
+                this.state.allowPin = true;
+                
+                // Log activity when PIN is activated
+                // Use the employee parameter if provided, otherwise get current cashier
+                const logEmployee = employee || this.env.pos.get_cashier();
+                if (logEmployee) {
+                    this.posActivityLog.saveLogToLocalStorage(
+                        'Login Screen',
+                        'PIN Activated',
+                        this.env.pos.user.id,
+                        logEmployee.id,
+                        this.env.pos.config.id,
+                        this.env.pos.pos_session.id,
+                        logEmployee.name
+                    );
+                }
             }
            
         }       

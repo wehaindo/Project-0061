@@ -10,6 +10,7 @@
                 <field name="name"/>
                 <!-- <field name="user_id" /> -->
                 <field name="hr_employee_id" />
+                <field name="res_branch_id"/>
                 <field name="pos_config_id"/>
                 <field name="pos_session_id"/>
                 <field name="pos_order_reference"/>
@@ -33,6 +34,7 @@
                             <field name="hr_employee_id" />
                         </group>
                         <group>
+                            <field name="res_branch_id"/>
                             <field name="pos_config_id" />
                             <field name="pos_session_id" />
                             <field name="pos_order_reference" />                            
@@ -54,6 +56,8 @@
                 <field name="name"/>
                 <field name="user_id"/>
                 <field name="hr_employee_id"/>
+                <field name="res_branch_id"/>
+                <field name="pos_config_id"/>
             </search>
         </field>
     </record>
