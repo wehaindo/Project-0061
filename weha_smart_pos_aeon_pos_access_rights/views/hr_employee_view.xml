@@ -9,6 +9,31 @@
             <xpath expr="//header" position="inside">
                 <button name="open_finger_dialog" type="object" string="Register Finger" class="oe_highlight"/>
             </xpath>
+            <xpath expr="//page[@name='hr_settings']" position="after">
+                <page string="POS Security" name="pos_security" groups="base.group_erp_manager">
+                    <group>
+                        <group string="Login Settings">
+                            <field name="disable_login_screen"/>
+                        </group>
+                        <group string="PIN Expiry Management">
+                            <field name="pin_last_change_date" readonly="1"/>
+                            <field name="pin_expiry_days"/>
+                            <field name="pin_reminder_days_before"/>
+                            <field name="pin_reminder_sent" readonly="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Fingerprint Authentication">
+                            <field name="fingerprint_primary" readonly="1"/>
+                            <field name="fingerprint_secondary" readonly="1"/>
+                        </group>
+                        <group string="Fingerprint ID (Binary)">
+                            <field name="fingerprint_primary_id" widget="image" readonly="1"/>
+                            <field name="fingerprint_secondary_id" widget="image" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
         </field>
     </record>
 
