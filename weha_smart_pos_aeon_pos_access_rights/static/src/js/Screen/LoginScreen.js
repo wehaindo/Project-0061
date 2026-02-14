@@ -147,6 +147,7 @@ odoo.define('weha_smart_pos_aeon_pos_access_rights.LoginScreen', function (requi
                 if (this.env.pos.config.module_pos_hr) {
                     const employees = this.env.pos.employees
                         .filter((employee) => employee.id !== this.env.pos.get_cashier().id)
+                        .filter((employee) => !employee.disable_login_screen) // Exclude employees with disabled login
                         .map((employee) => {
                             return {
                                 id: employee.id,
@@ -201,6 +202,7 @@ odoo.define('weha_smart_pos_aeon_pos_access_rights.LoginScreen', function (requi
                 if (this.env.pos.config.module_pos_hr) {
                     const employees = this.env.pos.employees
                         .filter((employee) => employee.id !== this.env.pos.get_cashier().id)
+                        .filter((employee) => !employee.disable_login_screen) // Exclude employees with disabled login
                         .map((employee) => {
                             return {
                                 id: employee.id,

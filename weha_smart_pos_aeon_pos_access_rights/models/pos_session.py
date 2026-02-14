@@ -60,6 +60,24 @@ class PosSession(models.Model):
 
         return result
 
+    def _loader_params_hr_employee(self):
+        """
+        Extend to add additional fields for POS access rights
+        """
+        result = super()._loader_params_hr_employee()
+        result['search_params']['fields'].extend([
+            'disable_login_screen',
+            'pin_last_change_date',
+            'pin_expiry_days',
+            'pin_reminder_sent',
+            'pin_reminder_days_before',
+            'fingerprint_primary',
+            'fingerprint_secondary',
+            'fingerprint_primary_id',
+            'fingerprint_secondary_id'
+        ])
+        return result
+
     def _loader_params_res_users_supervisor(self):
         if len(self.config_id.supervisor_ids) > 0:
             domain = [('id', 'in', self.config_id.supervisor_ids.ids)]
