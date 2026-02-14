@@ -60,24 +60,6 @@ class PosSession(models.Model):
 
         return result
 
-    def _loader_params_hr_employee(self):
-        """
-        Extend to add additional fields for POS access rights
-        """
-        result = super()._loader_params_hr_employee()
-        result['search_params']['fields'].extend([
-            'disable_login_screen',
-            'pin_last_change_date',
-            'pin_expiry_days',
-            'pin_reminder_sent',
-            'pin_reminder_days_before',
-            'fingerprint_primary',
-            'fingerprint_secondary',
-            'fingerprint_primary_id',
-            'fingerprint_secondary_id'
-        ])
-        return result
-
     def _loader_params_res_users_supervisor(self):
         if len(self.config_id.supervisor_ids) > 0:
             domain = [('id', 'in', self.config_id.supervisor_ids.ids)]
@@ -90,6 +72,9 @@ class PosSession(models.Model):
         return supervisor_ids
     
     def _get_pos_ui_hr_employee(self, params):
+        """
+        Override to add additional fields for fingerprint and PIN expiry management
+        """
         employees = self.env['hr.employee'].search_read(**params['search_params'])
         employee_ids = [employee['id'] for employee in employees]
         user_ids = [employee['user_id'] for employee in employees if employee['user_id']]
@@ -97,11 +82,38 @@ class PosSession(models.Model):
 
         employees_barcode_pin = self.env['hr.employee'].browse(employee_ids).get_barcodes_and_pin_hashed()
         bp_per_employee_id = {bp_e['id']: bp_e for bp_e in employees_barcode_pin}
+        
+        # Get additional fields for each employee
+        additional_fields = self.env['hr.employee'].browse(employee_ids).read([
+            'disable_login_screen',
+            'pin_last_change_date',
+            'pin_expiry_days',
+            'pin_reminder_sent',
+            'pin_reminder_days_before',
+            'fingerprint_primary',
+            'fingerprint_secondary',
+            'fingerprint_primary_id',
+            'fingerprint_secondary_id'
+        ])
+        additional_fields_by_id = {field['id']: field for field in additional_fields}
+        
         for employee in employees:
             employee['role'] = 'manager' if employee['user_id'] and employee['user_id'] in manager_ids else 'cashier'
             employee['barcode'] = bp_per_employee_id[employee['id']]['barcode']
             employee['pin'] = bp_per_employee_id[employee['id']]['pin']
             employee['fingerprint_primary'] = bp_per_employee_id[employee['id']]['fingerprint_primary']
             
-        _logger.info(employees)
+            # Add additional fields
+            emp_additional = additional_fields_by_id.get(employee['id'], {})
+            employee['disable_login_screen'] = emp_additional.get('disable_login_screen', False)
+            employee['pin_last_change_date'] = emp_additional.get('pin_last_change_date', False)
+            employee['pin_expiry_days'] = emp_additional.get('pin_expiry_days', 90)
+            employee['pin_reminder_sent'] = emp_additional.get('pin_reminder_sent', False)
+            employee['pin_reminder_days_before'] = emp_additional.get('pin_reminder_days_before', 7)
+            # Note: fingerprint_primary is already set from get_barcodes_and_pin_hashed()
+            employee['fingerprint_secondary'] = emp_additional.get('fingerprint_secondary', False)
+            employee['fingerprint_primary_id'] = emp_additional.get('fingerprint_primary_id', False)
+            employee['fingerprint_secondary_id'] = emp_additional.get('fingerprint_secondary_id', False)
+            
+        _logger.info("Loaded %s employees with extended fields", len(employees))
         return employees

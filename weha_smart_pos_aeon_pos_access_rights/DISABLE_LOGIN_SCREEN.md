@@ -31,16 +31,36 @@ class HrEmployeePublic(models.Model):
 ```
 
 #### 3. Field Loading (models/pos_session.py)
-The field is loaded into the POS session via `_loader_params_hr_employee`:
+The field is loaded into the POS session via the enhanced `_get_pos_ui_hr_employee` method:
 ```python
-def _loader_params_hr_employee(self):
-    result = super()._loader_params_hr_employee()
-    result['search_params']['fields'].extend([
+def _get_pos_ui_hr_employee(self, params):
+    """
+    Override to add additional fields for fingerprint and PIN expiry management
+    """
+    employees = self.env['hr.employee'].search_read(**params['search_params'])
+    employee_ids = [employee['id'] for employee in employees]
+    
+    # Get additional fields including disable_login_screen
+    additional_fields = self.env['hr.employee'].browse(employee_ids).read([
         'disable_login_screen',
+        'pin_last_change_date',
+        'pin_expiry_days',
         # ... other fields
     ])
-    return result
+    
+    # Merge additional fields into employee data
+    for employee in employees:
+        employee['disable_login_screen'] = emp_additional.get('disable_login_screen', False)
+        # ... other field assignments
+    
+    return employees
 ```
+
+**Note**: This approach is preferred over `_loader_params_hr_employee()` because it:
+- Consolidates all field loading logic in one place
+- Avoids potential conflicts with parent modules
+- Provides better control over data transformation
+- Is more maintainable and easier to debug
 
 ### Frontend (JavaScript)
 
