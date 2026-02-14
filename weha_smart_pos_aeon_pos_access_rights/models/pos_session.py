@@ -26,10 +26,18 @@ class PosSession(models.Model):
         if self.config_id.module_pos_hr:
             # loaded_data['employee_by_user_id'] = {employee['user_id']: employee for employee in loaded_data['hr.employee']}
             # loaded_data['employee_by_id'] = {employee['id']: employee for employee in loaded_data['hr.employee']}
-            # Search all employees directly with sudo to access all fields
+            # Search all employees directly with sudo to access all fields INCLUDING disable_login_screen
             all_employees = self.env['hr.employee'].sudo().search_read(
                 [],
-                ['id', 'name', 'user_id', 'barcode', 'pin', 'fingerprint_primary', 'fingerprint_secondary']
+                [
+                    'id', 'name', 'user_id', 'barcode', 'pin', 
+                    'fingerprint_primary', 'fingerprint_secondary',
+                    'disable_login_screen',  # Add this field
+                    'pin_last_change_date',
+                    'pin_expiry_days',
+                    'pin_reminder_sent',
+                    'pin_reminder_days_before'
+                ]
             )
             # for employee in all_employees:
             #     # Hash barcode and pin for security            
@@ -44,6 +52,8 @@ class PosSession(models.Model):
             # Log for debugging
             _logger.info("Total employees loaded: %s", len(all_employees))
             _logger.info("Employees with user_id: %s", len(loaded_data['employee_by_user_id']))
+            _logger.info("Employees with disable_login_screen: %s", 
+                        len([e for e in all_employees if e.get('disable_login_screen')]))
 
 
     def _pos_ui_models_to_load(self):
