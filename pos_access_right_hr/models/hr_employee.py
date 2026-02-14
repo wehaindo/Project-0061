@@ -53,17 +53,3 @@ class HrEmployeeBase(models.AbstractModel):
     allow_open_cash_drawer = fields.Boolean(
         string="POS-Allow Open Cash Drawer",
         help="Allow opening cash drawer from POS screen", default=False)
-    
-    # Fingerprint fields
-    fingerprint_primary = fields.Text(
-        string='Primary Fingerprint',
-        help='Primary fingerprint data for employee authentication')
-    fingerprint_secondary = fields.Text(
-        string='Secondary Fingerprint',
-        help='Secondary fingerprint data for employee authentication')
-    fingerprint_primary_id = fields.Binary(
-        string='Primary Fingerprint Binary',
-        help='Binary data for primary fingerprint')
-    fingerprint_secondary_id = fields.Binary(
-        string='Secondary Fingerprint Binary',
-        help='Binary data for secondary fingerprint')

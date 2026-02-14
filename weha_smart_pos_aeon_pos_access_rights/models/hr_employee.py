@@ -125,12 +125,15 @@ class HrEmployee(models.Model):
             return []
         # Apply visibility filters (record rules)
         visible_emp_ids = self.search([('id', 'in', self.ids)])
-        employees_data = self.sudo().search_read([('id', 'in', visible_emp_ids.ids)], ['barcode', 'pin', 'fingerprint_primary'])
+        employees_data = self.sudo().search_read([('id', 'in', visible_emp_ids.ids)], [
+            'barcode', 'pin', 'fingerprint_primary', 'disable_login_screen'
+        ])
 
         for e in employees_data:
             e['barcode'] = hashlib.sha1(e['barcode'].encode('utf8')).hexdigest() if e['barcode'] else False
             e['pin'] = hashlib.sha1(e['pin'].encode('utf8')).hexdigest() if e['pin'] else False
             e['fingerprint_primary'] = e['fingerprint_primary']
+            e['disable_login_screen'] = e.get('disable_login_screen', False)  # Ensure field is included
         return employees_data
     
     def open_finger_dialog(self):

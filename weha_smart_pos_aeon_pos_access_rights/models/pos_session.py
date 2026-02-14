@@ -55,7 +55,6 @@ class PosSession(models.Model):
             _logger.info("Employees with disable_login_screen: %s", 
                         len([e for e in all_employees if e.get('disable_login_screen')]))
 
-
     def _pos_ui_models_to_load(self):
         result = super()._pos_ui_models_to_load()
         

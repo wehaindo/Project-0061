@@ -145,9 +145,19 @@ odoo.define('weha_smart_pos_aeon_pos_access_rights.LoginScreen', function (requi
             async selectEmployee() {
                 console.log("Select Employee 1");
                 if (this.env.pos.config.module_pos_hr) {
+                    // Debug: Log all employees with disable_login_screen status
+                    console.log("All employees:", this.env.pos.employees);
+                    this.env.pos.employees.forEach(emp => {
+                        console.log(`Employee: ${emp.name}, ID: ${emp.id}, disable_login_screen: ${emp.disable_login_screen}`);
+                    });
+                    
                     const employees = this.env.pos.employees
                         .filter((employee) => employee.id !== this.env.pos.get_cashier().id)
-                        .filter((employee) => !employee.disable_login_screen) // Exclude employees with disabled login
+                        .filter((employee) => {
+                            const shouldExclude = employee.disable_login_screen;
+                            console.log(`Filtering ${employee.name}: disable_login_screen=${shouldExclude}, will ${shouldExclude ? 'EXCLUDE' : 'INCLUDE'}`);
+                            return !shouldExclude;
+                        })
                         .map((employee) => {
                             return {
                                 id: employee.id,
@@ -157,6 +167,8 @@ odoo.define('weha_smart_pos_aeon_pos_access_rights.LoginScreen', function (requi
                                 fingerprintPrimary: employee.fingerprint_primary,
                             };
                         });
+                    
+                    console.log("Filtered employees for popup:", employees);
                     
                     // let {confirmed, payload: employee} = await this.showPopup('SelectionPopup', {
                     //     title: this.env._t('Change Cashier'),
@@ -200,9 +212,19 @@ odoo.define('weha_smart_pos_aeon_pos_access_rights.LoginScreen', function (requi
             async selectCashier() {
                 console.log("Select Cashier 1");
                 if (this.env.pos.config.module_pos_hr) {
+                    // Debug: Log all employees with disable_login_screen status
+                    console.log("All employees:", this.env.pos.employees);
+                    this.env.pos.employees.forEach(emp => {
+                        console.log(`Employee: ${emp.name}, ID: ${emp.id}, disable_login_screen: ${emp.disable_login_screen}`);
+                    });
+                    
                     const employees = this.env.pos.employees
                         .filter((employee) => employee.id !== this.env.pos.get_cashier().id)
-                        .filter((employee) => !employee.disable_login_screen) // Exclude employees with disabled login
+                        .filter((employee) => {
+                            const shouldExclude = employee.disable_login_screen;
+                            console.log(`Filtering ${employee.name}: disable_login_screen=${shouldExclude}, will ${shouldExclude ? 'EXCLUDE' : 'INCLUDE'}`);
+                            return !shouldExclude;
+                        })
                         .map((employee) => {
                             return {
                                 id: employee.id,
@@ -212,6 +234,8 @@ odoo.define('weha_smart_pos_aeon_pos_access_rights.LoginScreen', function (requi
                                 fingerprintPrimary: employee.fingerprint_primary,
                             };
                         });
+                    
+                    console.log("Filtered employees for popup:", employees);
     
                     let {confirmed, payload: employee} = await this.showPopup('EmployeeGridPopup', {
                         title: this.env._t('Change Cashier'),
