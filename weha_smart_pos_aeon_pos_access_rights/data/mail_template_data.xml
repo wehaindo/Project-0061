@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Email Template for PIN Reminder -->
+        <record id="email_template_pin_reminder" model="mail.template">
+            <field name="name">POS PIN Expiry Reminder</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="subject">Important: Your POS PIN is expiring soon</field>
+            <field name="email_from">${object.company_id.email or ''}</field>
+            <field name="email_to">${object.work_email or object.user_id.email or ''}</field>
+            <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; font-size: 14px;">
+    <div style="padding: 20px; background-color: #f5f5f5;">
+        <div style="max-width: 600px; margin: 0 auto; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <!-- Header -->
+            <div style="background-color: #875A7B; color: white; padding: 20px; border-radius: 8px 8px 0 0;">
+                <h2 style="margin: 0; font-size: 24px;">⚠️ PIN Expiry Notice</h2>
+            </div>
+            
+            <!-- Body -->
+            <div style="padding: 30px;">
+                <p style="font-size: 16px; color: #333;">Dear <strong>${object.name}</strong>,</p>
+                
+                <p style="font-size: 14px; color: #555; line-height: 1.6;">
+                    This is a friendly reminder that your POS (Point of Sale) PIN is set to expire soon.
+                </p>
+                
+                <div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; border-radius: 4px;">
+                    <p style="margin: 0; font-size: 14px; color: #856404;">
+                        <strong>⏰ Days until expiry:</strong> ${ctx.get('days_until_expiry', 'N/A')} days<br/>
+                        <strong>📅 Expiry date:</strong> ${ctx.get('expiry_date', 'N/A')}
+                    </p>
+                </div>
+                
+                <p style="font-size: 14px; color: #555; line-height: 1.6;">
+                    For security reasons, please change your PIN before it expires. Once expired, you will not be able to access the POS system until your PIN is updated.
+                </p>
+                
+                <div style="margin: 25px 0; padding: 15px; background-color: #f8f9fa; border-radius: 4px;">
+                    <h3 style="margin-top: 0; font-size: 16px; color: #333;">How to change your PIN:</h3>
+                    <ol style="font-size: 14px; color: #555; line-height: 1.8; margin: 0; padding-left: 20px;">
+                        <li>Log in to the system</li>
+                        <li>Go to Employees → Select your profile</li>
+                        <li>Update your PIN in the "Point of Sale" section</li>
+                        <li>Save the changes</li>
+                    </ol>
+                </div>
+                
+                <p style="font-size: 13px; color: #777; margin-top: 30px;">
+                    If you need assistance, please contact your supervisor or IT support.
+                </p>
+            </div>
+            
+            <!-- Footer -->
+            <div style="background-color: #f8f9fa; padding: 20px; border-radius: 0 0 8px 8px; text-align: center;">
+                <p style="font-size: 12px; color: #999; margin: 0;">
+                    This is an automated message. Please do not reply to this email.
+                </p>
+                % if object.company_id:
+                <p style="font-size: 12px; color: #999; margin: 5px 0 0 0;">
+                    ${object.company_id.name}
+                </p>
+                % endif
+            </div>
+        </div>
+    </div>
+</div>
+            </field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

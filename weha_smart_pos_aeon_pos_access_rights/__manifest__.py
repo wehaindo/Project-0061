@@ -18,7 +18,9 @@
     'price': 0,
     'currency': 'USD',
     'images': ['static/description/main_background.png'],
-    "data": [        
+    "data": [
+        'data/mail_template_data.xml',
+        'data/ir_cron_data.xml',
         'views/res_config_settings_view.xml',
         'views/res_branch_view.xml',
         'views/hr_employee_view.xml'
